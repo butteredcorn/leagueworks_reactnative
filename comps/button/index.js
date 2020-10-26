@@ -1,34 +1,36 @@
 import React from "react";
-import {View, Text, Button, StyleSheet} from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
-container:{
-    display:"flex",
-    justifyContent:"center",
-    backgroundColor:"#FD8700",
-    height:"16px",
-    width:"50px",
-    padding:"10px",
-    borderRadius:"5px"
-},
-text:{
-    color:"#FFF",
-    fontSize:"16",
-    fontWeight:"bold"
-}
+  container: {
+    display: "flex",
+    justifyContent: "center",
+    textAlign: "center",
+    backgroundColor: "#FD8700",
+    height: "30px",
+    width: "108px",
+    padding: "10px",
+    borderRadius: "5px"
+  },
+  firstText: {
+    fontSize: "12px",
+    fontWeight: "bold",
+    color: "#FFF"
+  }
 });
 
-const MyButton = ({text})=> {
-    // No <div> in react-native
-    return (
-    <View>
-        <Button style={styles.container}><Text>{text}</Text></Button>
+const MyButton = ({ text }) => {
+  // No <div> in react-native
+  return (
+    <View style={styles.container}>
+      <Text style={styles.firstText}>{text}</Text>
     </View>
-    );
-}
+  );
+};
 
 MyButton.defaultProps = {
-    text: "Button"
+  text: "Button"
 };
 
 export default MyButton;
+
