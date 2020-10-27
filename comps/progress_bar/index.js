@@ -18,8 +18,29 @@ const styles = StyleSheet.create({
     // F35B04 is rgba(243, 91, 4, 1)
     // linear-gradient(to right, rgba(255,0,0,0), rgba(255,0,0,1))
   },
-  // Middle
+  check: {
+    width: 10,
+    height: 8,
+    backgroundImage: "url(/check.svg)",
+    position: "absolute"
+  },
+  // Left
   circle1: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    width: 16,
+    height: 16,
+    backgroundColor: "#F18701",
+    borderRadius: "50%",
+    position: "absolute",
+    left: 0
+  },
+  // Middle
+  circle2: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
     width: 16,
     height: 16,
     backgroundImage:
@@ -28,31 +49,34 @@ const styles = StyleSheet.create({
     position: "absolute"
   },
   // Right
-  circle2: {
+  circle3: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
     width: 16,
     height: 16,
     backgroundColor: "#F35B04",
     borderRadius: "50%",
     position: "absolute",
     right: 0
-  },
-  // Left
-  circle3: {
-    width: 16,
-    height: 16,
-    backgroundColor: "#F18701",
-    borderRadius: "50%",
-    position: "absolute",
-    left: 0
   }
 });
 const MyProgressBar = () => {
   return (
     <View style={styles.container}>
       <View style={styles.line} />
-      <View style={styles.circle1} />
-      <View style={styles.circle2} />
-      <View style={styles.circle3} />
+
+      <View style={styles.circle1}>
+        <View style={styles.check} />
+      </View>
+
+      <View style={styles.circle2}>
+        <View style={styles.check} />
+      </View>
+
+      <View style={styles.circle3}>
+        <View style={styles.check} />
+      </View>
     </View>
   );
 };
