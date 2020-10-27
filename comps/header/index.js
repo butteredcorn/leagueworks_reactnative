@@ -1,23 +1,24 @@
 import React from "react";
-import {View, Text, StyleSheet} from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
-    title:{
-        fontWeight:"bold",
-        fontSize:"18px"
-    }
-})
+  firstText: {
+    fontWeight: "bold",
+    fontSize: "18px",
+    color: "black"
+  }
+});
 
-const MyHeader =({text})=>{
-return(
-    <View>
-        <Text style={styles.title}>{text}</Text>
+const MyHeader = ({ head }) => {
+  return (
+    <View styles>
+      <Text styles={styles.firstText}>{head}</Text>
     </View>
-);
-}
+  );
+};
 
-MyHeader.DefaultProps = {
-    text:"Header"
+MyHeader.defaultProps = {
+  head: "Default Header"
 };
 
 export default MyHeader;
