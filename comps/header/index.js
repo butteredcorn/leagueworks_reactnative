@@ -4,7 +4,7 @@ import { View, Text, StyleSheet } from "react-native";
 const styles = StyleSheet.create({
   firstText: {
     fontWeight: "bold",
-    fontSize: "18px",
+    fontSize: 36,
     color: "black"
   }
 });
@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
 const MyHeader = ({ head }) => {
   return (
     <View styles>
-      <Text styles={styles.firstText}>{head}</Text>
+      <Text style={styles.firstText}>{head}</Text>
     </View>
   );
 };
