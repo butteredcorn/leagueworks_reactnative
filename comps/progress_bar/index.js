@@ -31,8 +31,7 @@ const styles = StyleSheet.create({
   circle2: {
     width: 16,
     height: 16,
-    backgroundImage:
-      "linear-gradient(to right, rgba(241,135,1,1), rgba(243,91,4,1))",
+    backgroundColor: "#F35B04",
     borderRadius: "50%",
     position: "absolute",
     right: 0
@@ -41,8 +40,7 @@ const styles = StyleSheet.create({
   circle3: {
     width: 16,
     height: 16,
-    backgroundImage:
-      "linear-gradient(to right, rgba(241,135,1,1), rgba(243,91,4,1))",
+    backgroundColor: "#F18701",
     borderRadius: "50%",
     position: "absolute",
     left: 0
