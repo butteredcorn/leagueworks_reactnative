@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
     position: "relative",
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "space-between",
+    justifyContent: "center",
     width: 325,
     height: 50
   },
@@ -21,18 +21,33 @@ const styles = StyleSheet.create({
     height: 1,
     backgroundColor: "#ececec",
     bottom: 0
+  },
+  bell: {
+    // not sure how to make the image changeable with props
+    backgroundImage: "url(/bell.svg)",
+    width: 18,
+    height: 18,
+    position: "absolute",
+    left: 25
+  },
+  arrow: {
+    backgroundImage: "url(/arrow.svg)",
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "contain",
+    width: 18,
+    height: 18,
+    position: "absolute",
+    right: 25
   }
 });
 const MySection = ({ text, image }) => {
   return (
     <View style={styles.container}>
-      {/* The image one's are just placeholders */}
-      <Image source={{ uri: image }} style={{ width: 20, height: 20 }} />
+      <View style={styles.bell} />
 
       <Text style={styles.text}>{text}</Text>
 
-      {/* Not 100% sure hot to do the icons */}
-      <Image source={{ uri: image }} style={{ width: 20, height: 20 }} />
+      <View style={styles.arrow} />
 
       <View style={styles.line}></View>
     </View>
