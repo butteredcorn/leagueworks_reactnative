@@ -11,7 +11,7 @@ const Input = ({ text }) => {
         style={{
           height: 37,
           width: 271,
-          borderColor: "gray",
+          borderColor: "white",
           borderWidth: 1,
           borderRadius: 33,
           padding: 15,
