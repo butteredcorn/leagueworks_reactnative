@@ -14,7 +14,8 @@ const MsgInput = ({ text }) => {
         borderColor: "white",
         borderWidth: 0.1,
         paddingLeft: 20,
-        paddingRight: 20
+        paddingRight: 20,
+        backgroundColor:"#FFF"
       }}
     >
       <View

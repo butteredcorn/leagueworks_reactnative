@@ -16,7 +16,8 @@ const Input = ({ text }) => {
           borderRadius: 33,
           padding: 15,
           outline: "none",
-          marginBottom:20
+          marginBottom:20,
+          backgroundColor:"#FFF"
         }}
         onChangeText={(text) => onChangeText(text)}
         value={value}
