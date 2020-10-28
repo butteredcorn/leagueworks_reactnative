@@ -15,7 +15,7 @@ const MsgInput = ({ text }) => {
         borderWidth: 0.1,
         paddingLeft: 20,
         paddingRight: 20,
-        backgroundColor:"#FFF"
+        backgroundColor: "#FFF"
       }}
     >
       <View
@@ -43,6 +43,7 @@ const MsgInput = ({ text }) => {
         }}
         onChangeText={(text) => onChangeText(text)}
         value={value}
+        placeholder="Message here..."
       />
       <View
         style={{
