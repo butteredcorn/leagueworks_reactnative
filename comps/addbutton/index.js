@@ -3,12 +3,15 @@ import { StyleSheet, Text, View } from "react-native";
 
 const styles = StyleSheet.create({
   box: {
-    display: "flex"
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center"
   },
   container: {
     backgroundImage: "url(/add.png)",
     width: 24,
-    height: 24
+    height: 24,
+    marginRight: 10
   }
 });
 
