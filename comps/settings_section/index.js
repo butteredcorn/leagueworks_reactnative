@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet, Image } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
   container: {
@@ -8,7 +8,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     width: 325,
-    height: 50
+    height: 50,
+
+    margin: 50
   },
   text: {
     fontWeight: "bold",
@@ -22,9 +24,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#ececec",
     bottom: 0
   },
-  bell: {
-    // not sure how to make the image changeable with props
-    backgroundImage: "url(/bell.svg)",
+  icon: {
     width: 18,
     height: 18,
     position: "absolute",
@@ -40,10 +40,12 @@ const styles = StyleSheet.create({
     right: 25
   }
 });
-const MySection = ({ text, image }) => {
+const MySection = ({ text, icon }) => {
+  const iconstyles = { backgroundImage: icon ? icon : "url(/)" };
+
   return (
     <View style={styles.container}>
-      <View style={styles.bell} />
+      <View style={[styles.icon, iconstyles]} />
 
       <Text style={styles.text}>{text}</Text>
 

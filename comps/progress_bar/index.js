@@ -7,7 +7,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     width: 159,
-    height: 16
+    height: 16,
+
+    margin: 50
   },
   line: {
     width: 143,
@@ -61,7 +63,9 @@ const styles = StyleSheet.create({
     right: 0
   }
 });
-const MyProgressBar = () => {
+const MyProgressBar = ({ middle }) => {
+  const middlestyles = { opacity: middle ? middle : 1 };
+
   return (
     <View style={styles.container}>
       <View style={styles.line} />
@@ -70,7 +74,7 @@ const MyProgressBar = () => {
         <View style={styles.check} />
       </View>
 
-      <View style={styles.circle2}>
+      <View style={[styles.circle2, middlestyles]}>
         <View style={styles.check} />
       </View>
 
