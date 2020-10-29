@@ -1,28 +1,15 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
-
-import React from 'react';
-import {View, StyleSheet} from "react-native";
-import Button from "../comps/Button";
-
+import React from "react";
+import { Button, Image, StyleSheet, Text, View } from "react-native";
+import MySwitch from "./comps/Switch";
+import MyAvatar from "./comps/Avatar";
 
 const App = () => {
-  return <View>
-    <Button/>
-  </View>
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor:"#FFF",
-    justifyContent:"center"
-  }
-})
+  return (
+    <View>
+      <MyAvatar img="url(/girl.jpg)" />
+      <MySwitch />
+    </View>
+  );
+};
 
 export default App;
