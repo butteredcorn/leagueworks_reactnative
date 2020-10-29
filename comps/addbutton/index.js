@@ -15,13 +15,17 @@ const styles = StyleSheet.create({
   }
 });
 
-const AddButton = () => {
+const AddButton = ({ text }) => {
   return (
     <View style={styles.box}>
       <View style={styles.container} />
-      <Text>Add Admin</Text>
+      <Text>{text}</Text>
     </View>
   );
+};
+
+AddButton.defaultProps = {
+  text: "Add Admin"
 };
 
 export default AddButton;
