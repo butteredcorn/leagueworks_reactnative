@@ -12,8 +12,7 @@ const styles = StyleSheet.create({
   },
   indivcont: {
     alignItems: "center",
-    width: 90,
-    backgroundColor: "#FAD"
+    width: 90
   },
   border: {
     width: 80,
@@ -35,62 +34,45 @@ const styles = StyleSheet.create({
   }
 });
 const MyTab = ({ text }) => {
-  const [firstSelected, setfirstSelected] = useState(true);
-  const [secondSelected, setsecondSelected] = useState(true);
-  const [thirdSelected, setthirdSelected] = useState(true);
+  const [selected, setSelected] = useState(1);
 
   return (
     <View style={styles.container}>
       <TouchableHighlight
         onPress={() => {
-          setfirstSelected(!firstSelected);
+          setSelected(1);
         }}
       >
         <View style={styles.indivcont}>
           <Text style={styles.text}>{text}</Text>
           <View
-            style={[
-              styles.border,
-              firstSelected ? styles.border : styles.border,
-              secondSelected ? styles.border : styles.noborder,
-              thirdSelected ? styles.border : styles.noborder
-            ]}
+            style={[selected === 1 ? styles.border : styles.noborder]}
           ></View>
         </View>
       </TouchableHighlight>
 
       <TouchableHighlight
         onPress={() => {
-          setsecondSelected(!secondSelected);
+          setSelected(2);
         }}
       >
         <View style={styles.indivcont}>
           <Text style={styles.text}>{text}</Text>
           <View
-            style={[
-              styles.border,
-              firstSelected ? styles.border : styles.noborder,
-              secondSelected ? styles.border : styles.border,
-              thirdSelected ? styles.border : styles.noborder
-            ]}
+            style={[selected === 2 ? styles.border : styles.noborder]}
           ></View>
         </View>
       </TouchableHighlight>
 
       <TouchableHighlight
         onPress={() => {
-          setthirdSelected(!thirdSelected);
+          setSelected(3);
         }}
       >
         <View style={styles.indivcont}>
           <Text style={styles.text}>{text}</Text>
           <View
-            style={[
-              styles.border,
-              firstSelected ? styles.border : styles.noborder,
-              secondSelected ? styles.border : styles.noborder,
-              thirdSelected ? styles.border : styles.border
-            ]}
+            style={[selected === 3 ? styles.border : styles.noborder]}
           ></View>
         </View>
       </TouchableHighlight>
