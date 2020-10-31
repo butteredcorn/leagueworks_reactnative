@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, TextInput, Stylesheet } from "react-native";
+import { View, Text, TextInput, Stylesheet, Image } from "react-native";
 
 const MsgInput = ({ text }) => {
   const [value, onChangeText] = React.useState();
@@ -18,19 +18,16 @@ const MsgInput = ({ text }) => {
         backgroundColor: "#FFF"
       }}
     >
-      <View
+      <Image
         style={{
-          backgroundImage: "url(/camera.png)",
           height: 30,
           width: 30,
-          backgroundRepeat: "no-repeat",
           position: "left",
           left: -10,
           bottom: -4,
-          justifyContent: "center",
-          alignItems: "center",
-          backgroundPosition: "center"
+          resizeMode: "center"
         }}
+        source={require("../../public/camera.png")}
       />
       <TextInput
         style={{
@@ -45,19 +42,18 @@ const MsgInput = ({ text }) => {
         value={value}
         placeholder="Message here..."
       />
-      <View
+      <Image
         style={{
-          backgroundImage: "url(/send.png)",
           height: 45,
           width: 45,
-          backgroundRepeat: "no-repeat",
           position: "right",
           right: -22,
           bottom: 3,
           justifyContent: "center",
           alignItems: "center",
-          backgroundPosition: "center"
+          resizeMode: "center"
         }}
+        source={require("../../public/send.png")}
       />
     </View>
   );

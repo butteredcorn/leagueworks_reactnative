@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet, TextInput } from "react-native";
+import { View, StyleSheet, TextInput, Image } from "react-native";
 
 const styles = StyleSheet.create({
   container: {
@@ -11,19 +11,22 @@ const styles = StyleSheet.create({
     marginBottom: 10
   },
   icon: {
-    backgroundImage: "url(/search.png)",
-    width: 16,
+    width: 17,
     height: 17,
     marginLeft: 20,
     position: "relative",
-    bottom: -19
+    bottom: -17,
+    resizeMode: "center"
   }
 });
 
 const SearchInput = () => {
   return (
     <View style={styles.container}>
-      <View style={styles.icon}></View>
+      <Image
+        style={styles.icon}
+        source={require("/../../public/search.png")}
+      />
       <TextInput
         style={{
           backgroundColor: "#FFF",
