@@ -8,6 +8,7 @@ const App = () => {
     <View>
       <MyAvatar img="url(/girl.jpg)" />
       <MySwitch />
+      
     </View>
   );
 };
