@@ -22,7 +22,7 @@ const MsgInput = ({ text }) => {
         style={{
           height: 30,
           width: 30,
-          position: "left",
+          position: "relative",
           left: -10,
           bottom: -4,
           resizeMode: "center"
@@ -46,7 +46,7 @@ const MsgInput = ({ text }) => {
         style={{
           height: 45,
           width: 45,
-          position: "right",
+          position: "relative",
           right: -22,
           bottom: 3,
           justifyContent: "center",
