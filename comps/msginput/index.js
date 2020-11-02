@@ -32,7 +32,7 @@ const MsgInput = ({ text }) => {
       <TextInput
         style={{
           height: 37,
-          width: 271,
+          width: 150,
           borderColor: "#FFF",
           borderWidth: 0,
           padding: 2,
