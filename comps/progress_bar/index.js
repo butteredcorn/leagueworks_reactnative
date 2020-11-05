@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, Image } from "react-native";
 
 const styles = StyleSheet.create({
   container: {
@@ -14,8 +14,9 @@ const styles = StyleSheet.create({
   line: {
     width: 143,
     height: 3,
-    backgroundImage:
-      "linear-gradient(to right, rgba(241,135,1,1), rgba(243,91,4,1))"
+    backgroundColor: "#F35B04"
+    // backgroundImage:
+    //   "linear-gradient(to right, rgba(241,135,1,1), rgba(243,91,4,1))"
     // F18701 is rgba(241, 135, 1, 1)
     // F35B04 is rgba(243, 91, 4, 1)
     // linear-gradient(to right, rgba(255,0,0,0), rgba(255,0,0,1))
@@ -23,7 +24,6 @@ const styles = StyleSheet.create({
   check: {
     width: 10,
     height: 8,
-    backgroundImage: "url(/check.svg)",
     position: "absolute"
   },
   // Left
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     width: 16,
     height: 16,
     backgroundColor: "#F18701",
-    borderRadius: "50%",
+    borderRadius: 50,
     position: "absolute",
     left: 0
   },
@@ -45,9 +45,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     width: 16,
     height: 16,
-    backgroundImage:
-      "linear-gradient(to right, rgba(241,135,1,1), rgba(243,91,4,1))",
-    borderRadius: "50%",
+    backgroundColor: "#F35B04",
+    // backgroundImage:
+    //   "linear-gradient(to right, rgba(241,135,1,1), rgba(243,91,4,1))",
+    borderRadius: 50,
     position: "absolute"
   },
   // Right
@@ -58,7 +59,7 @@ const styles = StyleSheet.create({
     width: 16,
     height: 16,
     backgroundColor: "#F35B04",
-    borderRadius: "50%",
+    borderRadius: 50,
     position: "absolute",
     right: 0
   }
@@ -71,15 +72,15 @@ const MyProgressBar = ({ middle }) => {
       <View style={styles.line} />
 
       <View style={styles.circle1}>
-        <View style={styles.check} />
+        <Image style={styles.check} source={require("./images/check.png")} />
       </View>
 
       <View style={[styles.circle2, middlestyles]}>
-        <View style={styles.check} />
+        <Image style={styles.check} source={require("./images/check.png")} />
       </View>
 
       <View style={styles.circle3}>
-        <View style={styles.check} />
+        <Image style={styles.check} source={require("./images/check.png")} />
       </View>
     </View>
   );

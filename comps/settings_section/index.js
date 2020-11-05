@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 
 const styles = StyleSheet.create({
   container: {
@@ -9,12 +9,11 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     width: 325,
     height: 50,
-
-    margin: 50
+    margin: 5
   },
   text: {
     fontWeight: "bold",
-    fontSize: "16",
+    fontSize: 16,
     paddingBottom: 5
   },
   line: {
@@ -25,33 +24,67 @@ const styles = StyleSheet.create({
     bottom: 0
   },
   icon: {
+    resizeMode: "contain",
     width: 18,
     height: 18,
     position: "absolute",
-    left: 25
+    left: 0
   },
   arrow: {
-    backgroundImage: "url(/arrow.svg)",
-    backgroundRepeat: "no-repeat",
-    backgroundSize: "contain",
+    resizeMode: "contain",
     width: 18,
     height: 18,
     position: "absolute",
-    right: 25
+    right: 0
   }
 });
-const MySection = ({ text, icon }) => {
-  const iconstyles = { backgroundImage: icon ? icon : "url(/)" };
+
+const MySection = () => {
 
   return (
-    <View style={styles.container}>
-      <View style={[styles.icon, iconstyles]} />
+    <View>
+      {/* Notifications */}
 
-      <Text style={styles.text}>{text}</Text>
+      <TouchableOpacity>
+        <View style={styles.container}>
+          <Image style={[styles.icon]} source={require("./images/bell.png")} />
 
-      <View style={styles.arrow} />
+          <Text style={styles.text}>Notifications</Text>
 
-      <View style={styles.line}></View>
+          <Image style={styles.arrow} source={require("./images/arrow.png")} />
+
+          <View style={styles.line}></View>
+        </View>
+      </TouchableOpacity>
+
+      {/* Password */}
+
+      <TouchableOpacity>
+        <View style={styles.container}>
+          <Image
+            style={[styles.icon]}
+            source={require("./images/password.png")}
+          />
+
+          <Text style={styles.text}>Password</Text>
+
+          <Image style={styles.arrow} source={require("./images/arrow.png")} />
+
+          <View style={styles.line}></View>
+        </View>
+      </TouchableOpacity>
+
+      {/* Help */}
+
+      <TouchableOpacity>
+        <View style={styles.container}>
+          <Image style={[styles.icon]} source={require("./images/help.png")} />
+
+          <Text style={styles.text}>Help</Text>
+
+          <Image style={styles.arrow} source={require("./images/arrow.png")} />
+        </View>
+      </TouchableOpacity>
     </View>
   );
 };

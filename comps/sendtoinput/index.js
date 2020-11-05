@@ -14,9 +14,9 @@ const SendToInput = () => {
       <TextInput
         placeholder="Search..."
         style={{
-          backgroundColor: "#FFF",
+          backgroundColor: "#F8F9FA",
           width: 288,
-          height: 44,
+          height: 50,
           paddingLeft: 20,
           marginLeft: 10,
           borderRadius: 100

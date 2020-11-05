@@ -7,51 +7,44 @@ const MsgInput = ({ text }) => {
   return (
     <View
       style={{
-        width: 271,
-        height: 41,
+        position:"relative",
+        width: 325,
+        height: 50,
         flexDirection: "row",
-        borderRadius: 33,
-        borderColor: "white",
+        borderRadius: 100,
+        borderColor: "#ECECEC",
         borderWidth: 0.1,
-        paddingLeft: 20,
-        paddingRight: 20,
-        backgroundColor: "#FFF"
+        backgroundColor: "#F8F9FA",
+        alignItems: "center",
+        justifyContent: "center"
       }}
     >
       <Image
         style={{
-          height: 30,
-          width: 30,
-          position: "relative",
-          left: -10,
-          bottom: -4,
-          resizeMode: "center"
+          height: 20,
+          width: 20,
+          resizeMode: "contain"
         }}
         source={require("../../public/camera.png")}
       />
       <TextInput
         style={{
           height: 37,
-          width: 271,
+          width: 230,
           borderColor: "#FFF",
           borderWidth: 0,
-          padding: 2,
-          outline: "none"
+          marginLeft: 10,
+          marginRight: 10
         }}
         onChangeText={(text) => onChangeText(text)}
         value={value}
         placeholder="Message here..."
-      />
+      />  
       <Image
         style={{
-          height: 45,
-          width: 45,
-          position: "relative",
-          right: -22,
-          bottom: 3,
-          justifyContent: "center",
-          alignItems: "center",
-          resizeMode: "center"
+          height: 20,
+          width: 20,
+          resizeMode: "contain"
         }}
         source={require("../../public/send.png")}
       />

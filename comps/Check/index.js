@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { View, StyleSheet, TouchableHighlight, Image } from "react-native";
 
 const styles = StyleSheet.create({

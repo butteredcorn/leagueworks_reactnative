@@ -11,7 +11,7 @@ const MySwitch = () => {
         style={styles.switch}
         trackColor={{ false: "#EAEAEA", true: "#FD8700" }}
         thumbColor="#FD8700"
-        ios_backgroundColor="#3e3e3e"
+        // ios_backgroundColor="#3e3e3e"
         onValueChange={toggleSwitch}
         value={isEnabled}
       ></Switch>
