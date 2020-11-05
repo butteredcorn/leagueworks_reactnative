@@ -1,10 +1,11 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
-const MyAvatar = ({ img }) => {
-  const avatarIcon = { backgroundImage: img ? img : "url(/girl.jpg)" };
+import "../../../public/girl2.png";
+const Avatar = ({ img }) => {
+  // const avatarIcon = { backgroundImage: img ? img : "url(/girl.jpg)" };
   return (
     <View style={styles.container}>
-      <View style={[styles.avatar, avatarIcon]}></View>
+      <View style={styles.avatar} img={img}></View>
     </View>
   );
 };
@@ -24,4 +25,9 @@ const styles = StyleSheet.create({
   }
 });
 
-export default MyAvatar;
+Avatar.defaultProps = {
+  img: "url(/girl.jpg)",
+  width: 50,
+  height: 50
+};
+export default Avatar;
