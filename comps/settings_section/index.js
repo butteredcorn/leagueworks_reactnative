@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontWeight: "bold",
-    fontSize: "16",
+    fontSize: 16,
     paddingBottom: 5
   },
   line: {
@@ -40,7 +40,6 @@ const styles = StyleSheet.create({
 });
 
 const MySection = () => {
-  // const iconstyles = { backgroundImage: icon ? icon : "url(/)" };
 
   return (
     <View>
