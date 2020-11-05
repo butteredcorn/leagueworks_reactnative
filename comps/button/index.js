@@ -5,14 +5,13 @@ const styles = StyleSheet.create({
   container: {
     justifyContent: "center",
     textAlign: "center",
-    height: "30px",
-    width: "108px",
-    padding: "10px",
-    borderRadius: "5px",
-    margin:10
+    height: 30,
+    width: 108,
+    padding: 10,
+    margin:10,
+    borderRadius:5
   },
   firstText: {
-    fontSize: "12px",
     fontWeight: "bold",
     color: "#FFF"
   }
