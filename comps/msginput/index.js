@@ -1,6 +1,5 @@
-
 import React from "react";
-import { View, TextInput, Image } from "react-native";
+import { View, Text, TextInput, Stylesheet, Image } from "react-native";
 
 const MsgInput = ({ text }) => {
   const [value, onChangeText] = React.useState();
@@ -40,8 +39,7 @@ const MsgInput = ({ text }) => {
         onChangeText={(text) => onChangeText(text)}
         value={value}
         placeholder="Message here..."
-      />
-  
+      />  
       <Image
         style={{
           height: 20,
