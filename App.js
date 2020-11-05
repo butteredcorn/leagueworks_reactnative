@@ -8,7 +8,14 @@ import EventSection from "./comps/EventSection";
 const App = () => {
   return (
     <View>
-      <Avatar img="url(/girl.jpg)" />
+      <Avatar img={require("../public/girl.jpg")} />
+
+      {/* code below is how to import a url picture*/}
+
+      {/* <Avatar
+        img={{ uri: "https://cdn.eso.org/images/thumb300y/eso1907a.jpg" }}
+      /> */}
+
       <View>
         <br />
         <br />
@@ -18,10 +25,15 @@ const App = () => {
         <br />
         <br />
       </View>
-      <MessageSection name="Test" />
+      <MessageSection name="Test" messageContent="Hello, this is a message" />
       <br />
       <br />
-      <EventSection />
+      <EventSection
+        eventName="Event name"
+        eventTime="00:00"
+        eventLocation="Burnaby"
+        eventDesc="this is a description"
+      />
       <br />
       <br />
     </View>

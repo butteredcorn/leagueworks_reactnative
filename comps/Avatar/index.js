@@ -1,11 +1,11 @@
 import React from "react";
-import { View, StyleSheet } from "react-native";
-import "../../../public/girl2.png";
+import { View, StyleSheet, Image } from "react-native";
 const Avatar = ({ img }) => {
-  // const avatarIcon = { backgroundImage: img ? img : "url(/girl.jpg)" };
   return (
     <View style={styles.container}>
-      <View style={styles.avatar} img={img}></View>
+      <View>
+        <Image source={img} style={styles.avatar} resizeMode="cover" />
+      </View>
     </View>
   );
 };
@@ -17,16 +17,12 @@ const styles = StyleSheet.create({
   avatar: {
     width: 50,
     height: 50,
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-    backgroundImage: "url(/girl.jpg)",
-    backgroundRepeat: "no-repeat",
     borderRadius: "50%"
   }
 });
 
 Avatar.defaultProps = {
-  img: "url(/girl.jpg)",
+  img: require("../../../public/girl.jpg"),
   width: 50,
   height: 50
 };
