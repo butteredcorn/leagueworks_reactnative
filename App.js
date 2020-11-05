@@ -1,9 +1,7 @@
 import React from "react";
 import { Button, Image, StyleSheet, Text, View } from "react-native";
-// import MySwitch from "./comps/Switch";
-// import MyAvatar from "./comps/Avatar";
-// import PostNew from "./comps/postnew";
-import Post from "./comps/post";
+import MySwitch from "./comps/Switch";
+import MyAvatar from "./comps/Avatar";
 
 const App = () => {
   return (
@@ -12,10 +10,8 @@ const App = () => {
       justifyContent:"center",
       alignItems:"center"
     }}>
-      {/* <PostNew /> */}
-      {/* <MyAvatar img="url(/girl.jpg)" /> */}
-      {/* <MySwitch /> */}
-      <Post />
+      <MyAvatar img="url(/girl.jpg)" />
+      <MySwitch />
     </View>
   );
 };
