@@ -1,6 +1,8 @@
 import React from "react";
 import { View, StyleSheet, Text, TextInput } from "react-native";
 
+import MyButton from "../button";
+
 const styles = StyleSheet.create({
     container: {
       position: "relative",
@@ -59,7 +61,7 @@ const PollPopUp = () => {
                 <TextInput style={{width: "100%", backgroundColor: "#f8f9fa", height: 50, borderRadius: 50, padding: 20}} >Option 3...</TextInput>
             </View>
             {/* Buttons */}
-
+                <MyButton text="Create" cancel="true" />
         </View>
     </View>
 }

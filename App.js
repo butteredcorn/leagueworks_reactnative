@@ -6,7 +6,7 @@ import PlayerAdminInput from "./comps/playeradmininput"
 import MsgInput from "./comps/msginput";
 import MyProgressBar from "./comps/progress_bar";
 import MySection from "./comps/settings_section"
-import PollPopUp from "./comps/pollupmenu";
+import PollPopUp from "./comps/pollpopupmenu";
 // import MyAvatar from "./comps/Avatar";
 
 const styles = StyleSheet.create({

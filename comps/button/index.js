@@ -1,35 +1,37 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 
 const styles = StyleSheet.create({
   container: {
     display: "flex",
     justifyContent: "center",
-    textAlign: "center",
+    alignItems: "center",
     backgroundColor: "#FD8700",
-    height: "30px",
-    width: "108px",
-    padding: "10px",
-    borderRadius: "5px"
+    height: 30,
+    width: 108,
+    borderRadius: 5
   },
   firstText: {
-    fontSize: "12px",
+    fontSize: 12,
     fontWeight: "bold",
-    color: "#FFF"
+    color: "#f8f9fa"
   }
 });
 
-const MyButton = ({ text }) => {
+const MyButton = ({ text, cancel }) => {
   // No <div> in react-native
+  // Need to figure out how to prop the color... because we need to change the color for the cancel button
+  // const cancelStyles = {backgroundColor: cancel === "true" === "#333333"};
   return (
-    <View style={styles.container}>
+    <TouchableOpacity style={styles.container}>
       <Text style={styles.firstText}>{text}</Text>
-    </View>
+    </TouchableOpacity>
   );
 };
 
 MyButton.defaultProps = {
-  text: "Button"
+  text: "Button",
+  cancel: "#fd8700"
 };
 
 export default MyButton;
