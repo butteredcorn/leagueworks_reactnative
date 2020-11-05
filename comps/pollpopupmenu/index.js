@@ -42,6 +42,12 @@ const styles = StyleSheet.create({
         height: 250,
         justifyContent: "space-evenly"
 
+    },
+
+    btnCont: {
+        flexDirection: "row",
+        width: 230,
+        justifyContent: "space-between"
     }
 
   })
@@ -61,7 +67,10 @@ const PollPopUp = () => {
                 <TextInput style={{width: "100%", backgroundColor: "#f8f9fa", height: 50, borderRadius: 50, padding: 20}} >Option 3...</TextInput>
             </View>
             {/* Buttons */}
-                <MyButton text="Create" cancel="true" />
+            <View style={styles.btnCont}>
+                <MyButton text="Cancel" cancel="true" />
+                <MyButton text="Create" />
+            </View>
         </View>
     </View>
 }
