@@ -1,12 +1,10 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 
 const styles = StyleSheet.create({
   container: {
-    display: "flex",
     justifyContent: "center",
     textAlign: "center",
-    backgroundColor: "#FD8700",
     height: "30px",
     width: "108px",
     padding: "10px",
@@ -19,12 +17,12 @@ const styles = StyleSheet.create({
   }
 });
 
-const MyButton = ({ text }) => {
-  // No <div> in react-native
+const MyButton = ({ text, bgcolor }) => {
+  const newstyles = {backgroundColor: bgcolor ? bgcolor:"#FD8700"}
   return (
-    <View style={styles.container}>
+    <TouchableOpacity style={[styles.container, newstyles]}>
       <Text style={styles.firstText}>{text}</Text>
-    </View>
+    </TouchableOpacity>
   );
 };
 
