@@ -12,6 +12,8 @@ const styles = StyleSheet.create({
     borderRadius:5
   },
   firstText: {
+    textAlign:"center",
+    fontSize:11,
     fontWeight: "bold",
     color: "#FFF"
   }
