@@ -8,7 +8,8 @@ const styles = StyleSheet.create({
     height: "30px",
     width: "108px",
     padding: "10px",
-    borderRadius: "5px"
+    borderRadius: "5px",
+    margin:10
   },
   firstText: {
     fontSize: "12px",
