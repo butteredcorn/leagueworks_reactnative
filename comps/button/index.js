@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 
 const styles = StyleSheet.create({
@@ -22,8 +22,14 @@ const MyButton = ({ text, cancel }) => {
   // No <div> in react-native
   // Need to figure out how to prop the color... because we need to change the color for the cancel button
   // const cancelStyles = {backgroundColor: cancel === "true" === "#333333"};
+
+  // const [bgColor, setBgColor] = useState(null);
+  // const btncont = {backgroundColor:bgColor?bgColor:"none"}
+
+
+
   return (
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity style={[styles.container]}>
       <Text style={styles.firstText}>{text}</Text>
     </TouchableOpacity>
   );
@@ -31,7 +37,6 @@ const MyButton = ({ text, cancel }) => {
 
 MyButton.defaultProps = {
   text: "Button",
-  cancel: "#fd8700"
 };
 
 export default MyButton;
