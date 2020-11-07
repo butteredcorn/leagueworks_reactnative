@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import {View, Text, StyleSheet, Image, TouchableHighlight, TouchableOpacity} from "react-native";
-
+import Avatar from "../Avatar";
 
 const styles = StyleSheet.create({
     container:{
@@ -18,11 +18,27 @@ const Post = ()=> {
 
     return(
         <View style={styles.container}>
-            <View>
+            <View style={{
+                margin:20,
+                maxWidth:350,
+                flexDirection:"row",
+                justifyContent:"center"
+            }}>
+                <Avatar/>
+                <Text style={{
+                    position:"relative",
+                    left:-170,
+                    bottom:-15,
+                    fontWeight:"bold",
+                    color:"#F35B04"
+                }}>username</Text>
             </View>
-            <View>
-                {/* <Text>Title</Text>
-                <Text>Description</Text> */}
+            <View style={{
+                margin:20,
+                maxWidth:350,
+            }}>
+                <Text>Title</Text>
+                <Text>Description</Text> 
             </View>
             <View>
                 {/* image here */}
@@ -31,9 +47,10 @@ const Post = ()=> {
             style={{
                 flexDirection:"row",
                 position:"relative",
-                bottom:-343,
+                maxWidth:350,
+                bottom:-180,
                 right:-32,
-                maxWidth:350
+                maxWidth:300
             }}
             >
                 <TouchableOpacity>
