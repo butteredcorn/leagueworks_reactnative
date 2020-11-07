@@ -17,12 +17,12 @@ const styles = StyleSheet.create({
   avatar: {
     width: 50,
     height: 50,
-    borderRadius: "50%"
+    borderRadius: 50
   }
 });
 
 Avatar.defaultProps = {
-  img: require("../../../public/girl.jpg"),
+  img: require("../../public/girl.jpg"),
   width: 50,
   height: 50
 };
