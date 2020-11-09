@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 
 const styles = StyleSheet.create({
@@ -21,12 +21,14 @@ const MyButton = ({ text, bgcolor }) => {
   const newstyles = {backgroundColor: bgcolor ? bgcolor:"#FD8700"}
   return (
     <TouchableOpacity style={[styles.container, newstyles]}>
+
       <Text style={styles.firstText}>{text}</Text>
     </TouchableOpacity>
   );
 };
 
 MyButton.defaultProps = {
+
   text: "Button"
 };
 
