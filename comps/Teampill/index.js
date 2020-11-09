@@ -6,9 +6,11 @@ import {
   TouchableHighlight,
   Image
 } from "react-native";
-import MyAvatar from "../Avatar";
+import Avatar from "../Avatar";
 import MyTab from "../Tab";
 import SearchInput from "../searchinput";
+import MyCheck from "../Check";
+import MyButton from "../button";
 
 const styles = StyleSheet.create({
   container: {
@@ -25,7 +27,7 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
-    paddingLeft: 12
+    paddingLeft: 15
   },
   infocont: {
     width: 145,
@@ -34,12 +36,6 @@ const styles = StyleSheet.create({
     alignItems: "left",
     justifyContent: "space-between",
     marginLeft: 12
-  },
-  circle: {
-    width: 75,
-    height: 75,
-    backgroundColor: "grey",
-    borderRadius: 100
   },
   teamtabs: {
     width: 150,
@@ -61,8 +57,7 @@ const styles = StyleSheet.create({
     position: "relative",
     display: "flex",
     alignItems: "center",
-    top: 30,
-    backgroundColor: "white"
+    top: 30
   },
   homeawaycont: {
     display: "flex",
@@ -74,7 +69,8 @@ const styles = StyleSheet.create({
   },
   standingstatscont: {
     display: "flex",
-    flexDirection: "row"
+    flexDirection: "row",
+    alignItems: "center"
   },
   statsindiv: {
     display: "flex",
@@ -82,7 +78,7 @@ const styles = StyleSheet.create({
   },
   rostercont: {
     width: 325,
-    height: 270,
+    height: 400,
     backgroundColor: "#ECECEC",
     borderRadius: 50,
     boxShadow: "4px 4px 8px rgba(0, 0, 0, 0.2)",
@@ -94,11 +90,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
     top: 30,
     height: 90,
-    backgroundColor: "white"
+    backgroundColor: "#fad"
   },
   editcont: {
     width: 325,
-    height: 270,
+    height: 400,
     backgroundColor: "#ECECEC",
     borderRadius: 50,
     boxShadow: "4px 4px 8px rgba(0, 0, 0, 0.2)",
@@ -107,7 +103,7 @@ const styles = StyleSheet.create({
   },
   addcont: {
     width: 325,
-    height: 360,
+    height: 390,
     backgroundColor: "#ECECEC",
     borderRadius: 50,
     boxShadow: "4px 4px 8px rgba(0, 0, 0, 0.2)",
@@ -118,26 +114,90 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     top: 30,
-    backgroundColor: "white",
+    textAlign: "center",
     justifyContent: "center",
     alignItems: "center"
+  },
+  playercont: {
+    display: "flex",
+    top: 50,
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  indivplayercont: {
+    width: 250,
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginTop: 10
   },
   searchplayercont: {
     width: 325,
     display: "flex",
     flexDirection: "row",
-    top: 30,
-    backgroundColor: "green",
+    top: 10,
     justifyContent: "space-between",
-    alignItems: "center"
+    alignItems: "center",
+    paddingBottom: 10
+  },
+  admincont: {
+    width: 230,
+    display: "flex",
+    alignItems: "center",
+    backgroundColor: "beige"
+  },
+  indivadmincont: {
+    width: 175,
+    height: 50,
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    marginTop: 10
+  },
+  savebtn: {
+    display: "flex",
+    alignItems: "center",
+    marginTop: 10
   },
   backicon: {
     width: 13,
     height: 30
   },
+  addicon: {
+    width: 30,
+    height: 30
+  },
+  trashicon: {
+    width: 14,
+    height: 18
+  },
+  title: {
+    fontWeight: "bold",
+    fontSize: "16"
+  },
   text: {
     fontWeight: "normal",
     fontSize: 9,
+    paddingBottom: 5,
+    color: "#111111"
+  },
+  textbold: {
+    fontWeight: "bold",
+    fontSize: 9,
+    paddingBottom: 5,
+    color: "#111111"
+  },
+  winnumber: {
+    fontWeight: "bold",
+    fontSize: 36,
+    paddingBottom: 5,
+    color: "#111111"
+  },
+  losenumber: {
+    fontWeight: "light",
+    fontSize: 16,
     paddingBottom: 5,
     color: "#111111"
   },
@@ -146,6 +206,18 @@ const styles = StyleSheet.create({
     fontSize: 9,
     paddingBottom: 5,
     color: "#F35B04"
+  },
+  addmembertext: {
+    fontWeight: "bold",
+    fontSize: 12,
+    paddingBottom: 5,
+    color: "#111111"
+  },
+  membertext: {
+    fontWeight: "bold",
+    fontSize: 18,
+    paddingBottom: 5,
+    color: "#111111"
   },
   none: {
     display: "none"
@@ -161,7 +233,10 @@ const MyPill = ({
   Awaywins,
   Awaylosses,
   Homewins,
-  Homelosses
+  Homelosses,
+  admin,
+  playername,
+  membername
 }) => {
   const [selected, setSelected] = useState(0);
 
@@ -172,13 +247,13 @@ const MyPill = ({
           <View style={[selected === 4 ? styles.addcont : styles.no]}>
             <View style={styles.container}>
               <View style={styles.teamcont}>
-                <View style={styles.circle}>
-                  <MyAvatar />
+                <View>
+                  <Avatar width={75} height={75} />
                 </View>
 
                 <View style={styles.infocont}>
                   <View>
-                    <Text>{TeamName}</Text>
+                    <Text style={styles.title}>{TeamName}</Text>
                   </View>
 
                   <View style={styles.teamtabs}>
@@ -237,57 +312,87 @@ const MyPill = ({
             </View>
             {/* Roster info start */}
             <View style={[selected === 1 ? styles.rosterinfo : styles.none]}>
-              <View>
-                <MyTab tab1="Admins" tab2="Coaches" tab3="Players" />
+              <View
+                style={[selected === 1 ? styles.roster : styles.none]}
+              ></View>
+              <MyTab
+                tab1="Admins"
+                tab2="Coaches"
+                tab3="Players"
+                onPress={(tab) => {
+                  setSelected(1);
+                }}
+              />
+
+              {/* ADMIN CONTAINER START */}
+              <View style={[selected === 1 ? styles.admincont : styles.no]}>
+                <View
+                  style={[selected === 1 ? styles.indivadmincont : styles.no]}
+                >
+                  <Avatar />
+                  <Text style={styles.membertext}>{admin}</Text>
+                </View>
+                <View
+                  style={[selected === 1 ? styles.indivadmincont : styles.no]}
+                >
+                  <Avatar />
+                  <Text style={styles.membertext}>{admin}</Text>
+                </View>
+                <View
+                  style={[selected === 1 ? styles.indivadmincont : styles.no]}
+                >
+                  <Avatar />
+                  <Text style={styles.membertext}>{admin}</Text>
+                </View>
               </View>
             </View>
             {/* Standings card info */}
             <View style={[selected === 2 ? styles.standingsinfo : styles.none]}>
               <View>
-                <Text>Standings</Text>
+                <Text style={styles.title}>Standings</Text>
               </View>
               <View
                 style={[selected === 2 ? styles.homeawaycont : styles.none]}
               >
                 {/* Home container start */}
                 <View style={styles.statsindiv}>
-                  <Text>Home</Text>
+                  <Text style={styles.textbold}>Home</Text>
                   <View
                     style={[
                       selected === 2 ? styles.standingstatscont : styles.none
                     ]}
                   >
-                    <Text>{Homewins}</Text>
-                    <Text>Wins</Text>
+                    <Text style={styles.winnumber}>{Homewins}</Text>
+                    <Text style={styles.textbold}>Wins</Text>
                   </View>
                   <View
                     style={[
                       selected === 2 ? styles.standingstatscont : styles.none
                     ]}
                   >
-                    <Text>{Homelosses}</Text>
-                    <Text>Losses</Text>
+                    <Text style={styles.losenumber}>{Homelosses}</Text>
+                    <Text style={styles.text}>Losses</Text>
                   </View>
                 </View>
 
                 {/* away container start */}
                 <View style={styles.statsindiv}>
-                  <Text>Away</Text>
+                  <Text style={styles.textbold}>Away</Text>
                   <View
                     style={[
                       selected === 2 ? styles.standingstatscont : styles.none
                     ]}
                   >
-                    <Text>{Awaywins}</Text>
-                    <Text>Wins</Text>
+                    <Text style={styles.winnumber}>{Awaywins}</Text>
+                    <Text style={styles.textbold}>Wins</Text>
                   </View>
                   <View
                     style={[
                       selected === 2 ? styles.standingstatscont : styles.none
                     ]}
                   >
-                    <Text>{Awaylosses}</Text>
-                    <Text>Losses</Text>
+                    <Text style={styles.losenumber}>{Awaylosses}</Text>
+                    <Text style={styles.text}>Losses</Text>
                   </View>
                 </View>
               </View>
@@ -302,10 +407,62 @@ const MyPill = ({
               <View
                 style={[selected === 3 ? styles.addplayercont : styles.none]}
               >
-                <Image></Image>
-                <Text>Add Admin/Coach/Player</Text>
+                <Image
+                  style={[selected === 3 ? styles.addicon : styles.none]}
+                  source={require("../../public/Add.png")}
+                />
+
+                <Text style={styles.addmembertext}>Add Admin/Coach/Player</Text>
               </View>
             </TouchableHighlight>
+            <View style={[selected === 3 ? styles.playercont : styles.none]}>
+              {/* INDIVIDUAL MEMBER CONTAINERS  */}
+              <View
+                style={[selected === 3 ? styles.indivplayercont : styles.none]}
+              >
+                <View>
+                  <Avatar />
+                </View>
+                <View>
+                  <Text style={styles.membertext}>{membername}</Text>
+                </View>
+                <Image
+                  style={[selected === 3 ? styles.trashicon : styles.none]}
+                  source={require("../../public/trash.png")}
+                />
+              </View>
+              {/* INDIVIDUAL MEMBER CONTAINERS  */}
+              <View
+                style={[selected === 3 ? styles.indivplayercont : styles.none]}
+              >
+                <View>
+                  <Avatar />
+                </View>
+                <View>
+                  <Text style={styles.membertext}>{membername}</Text>
+                </View>
+                <Image
+                  style={[selected === 3 ? styles.trashicon : styles.none]}
+                  source={require("../../public/trash.png")}
+                />
+              </View>
+              {/* INDIVIDUAL MEMBER CONTAINERS  */}
+              <View
+                style={[selected === 3 ? styles.indivplayercont : styles.none]}
+              >
+                <View>
+                  <Avatar />
+                </View>
+                <View>
+                  <Text style={styles.membertext}>{membername}</Text>
+                </View>
+                <Image
+                  style={[selected === 3 ? styles.trashicon : styles.none]}
+                  source={require("../../public/trash.png")}
+                />
+              </View>
+            </View>
+
             <View
               style={[selected === 4 ? styles.searchplayercont : styles.none]}
             >
@@ -321,6 +478,45 @@ const MyPill = ({
               </TouchableHighlight>
               <SearchInput />
             </View>
+            {/* INDIVIDUAL MEMBER CONTAINERS ADD SECTION */}
+            <View
+              style={[selected === 4 ? styles.indivplayercont : styles.none]}
+            >
+              <View>
+                <Avatar />
+              </View>
+              <View>
+                <Text style={styles.membertext}>{membername}</Text>
+              </View>
+              <MyCheck />
+            </View>
+            {/* INDIVIDUAL MEMBER CONTAINERS ADD SECTION */}
+            <View
+              style={[selected === 4 ? styles.indivplayercont : styles.none]}
+            >
+              <View>
+                <Avatar />
+              </View>
+              <View>
+                <Text style={styles.membertext}>{membername}</Text>
+              </View>
+              <MyCheck />
+            </View>
+            {/* INDIVIDUAL MEMBER CONTAINERS ADD SECTION */}
+            <View
+              style={[selected === 4 ? styles.indivplayercont : styles.none]}
+            >
+              <View>
+                <Avatar />
+              </View>
+              <View>
+                <Text style={styles.membertext}>{membername}</Text>
+              </View>
+              <MyCheck />
+            </View>
+            <View style={[selected === 4 ? styles.savebtn : styles.none]}>
+              <MyButton text="Save" />
+            </View>
           </View>
         </View>
       </View>
@@ -333,7 +529,10 @@ MyPill.defaultProps = {
   Homewins: "1",
   Homelosses: "1",
   Awaywins: "1",
-  Awaylosses: "1"
+  Awaylosses: "1",
+  admin: " Admin Name",
+  playername: "Player Name",
+  membername: "Member Name"
 };
 
 export default MyPill;

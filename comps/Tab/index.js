@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet, TouchableHighlight } from "react-native";
 
 const styles = StyleSheet.create({
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     opacity: 0
   }
 });
-const MyTab = ({ text }) => {
+const MyTab = ({ tab1, tab2, tab3, onPress }) => {
   const [selected, setSelected] = useState(1);
 
   return (
@@ -44,7 +44,7 @@ const MyTab = ({ text }) => {
         }}
       >
         <View style={styles.indivcont}>
-          <Text style={styles.text}>{text}</Text>
+          <Text style={styles.text}>{tab1}</Text>
           <View
             style={[selected === 1 ? styles.border : styles.noborder]}
           ></View>
@@ -57,7 +57,7 @@ const MyTab = ({ text }) => {
         }}
       >
         <View style={styles.indivcont}>
-          <Text style={styles.text}>{text}</Text>
+          <Text style={styles.text}>{tab2}</Text>
           <View
             style={[selected === 2 ? styles.border : styles.noborder]}
           ></View>
@@ -70,7 +70,7 @@ const MyTab = ({ text }) => {
         }}
       >
         <View style={styles.indivcont}>
-          <Text style={styles.text}>{text}</Text>
+          <Text style={styles.text}>{tab3}</Text>
           <View
             style={[selected === 3 ? styles.border : styles.noborder]}
           ></View>
@@ -81,7 +81,9 @@ const MyTab = ({ text }) => {
 };
 
 MyTab.defaultProps = {
-  text: "Default"
+  tab1: "Default",
+  tab2: "Default",
+  tab3: "Default"
 };
 
 export default MyTab;
