@@ -5,12 +5,14 @@ import {NativeRouter, Route, Link} from "react-router-native";
 import AdminReg from "./pages/adminreg";
 import PlayerReg from "./pages/playerreg";
 import FinishPlayerReg from "./pages/finishplayerreg";
+import PlayerWaiver from "./pages/playerwaiver";
 
 const App = () => {
   return<View>
     {/* <AdminReg/> */}
     {/* <PlayerReg></PlayerReg> */}
-    <FinishPlayerReg></FinishPlayerReg>
+    {/* <FinishPlayerReg></FinishPlayerReg> */}
+    <PlayerWaiver></PlayerWaiver>
 
   </View>
 }
