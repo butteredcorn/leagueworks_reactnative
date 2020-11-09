@@ -7,13 +7,13 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     textAlign: "center",
     backgroundColor: "#FD8700",
-    height: "50px",
-    width: "286px",
-    padding: "10px",
-    borderRadius: "50px"
+    height: 50,
+    width: 286,
+    padding: 10,
+    borderRadius: 50
   },
   firstText: {
-    fontSize: "16px",
+    fontSize: 16,
     fontWeight: "bold",
     color: "#FFF"
   }
