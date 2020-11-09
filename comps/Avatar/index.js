@@ -23,12 +23,12 @@ const styles = StyleSheet.create({
 });
 
 Avatar.defaultProps = {
-  img: require("../../../public/girl.jpg"),
+  img: require("../../public/girl.jpg"),
   width: 50,
   height: 50
 };
 export default Avatar;
-=======
+
 // import React from "react";
 // import { View, StyleSheet } from "react-native";
 // const MyAvatar = ({ img }) => {
@@ -56,4 +56,4 @@ export default Avatar;
 // });
 
 // export default MyAvatar;
->>>>>>> main
+
