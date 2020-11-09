@@ -5,7 +5,8 @@ const styles = StyleSheet.create({
   box: {
     flexDirection: "row",
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
+    margin:10
   }
 });
 
