@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 import React from "react";
 import { View, StyleSheet, Image } from "react-native";
 const Avatar = ({ img }) => {
@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
   avatar: {
     width: 50,
     height: 50,
-    borderRadius: "50%"
+    borderRadius: 50
   }
 });
 
