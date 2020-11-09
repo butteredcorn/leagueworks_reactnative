@@ -4,7 +4,7 @@ import { View, Text, StyleSheet } from "react-native";
 const styles = StyleSheet.create({
   firstText: {
     fontWeight: "bold",
-    fontSize: 36,
+    fontSize: 25,
     color: "black"
   }
 });

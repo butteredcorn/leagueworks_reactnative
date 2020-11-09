@@ -11,12 +11,8 @@ const Input = ({ text, placeholder }) => {
         style={{
           height: 37,
           width: 271,
-          borderColor: "#FFF",
-          borderWidth: 1,
           borderRadius: 33,
           padding: 15,
-          outline: "none",
-          marginBottom: 20,
           backgroundColor:"#FFF"
         }}
         onChangeText={(text) => onChangeText(text)}
