@@ -22,8 +22,9 @@ const styles = StyleSheet.create({
   },
   text: {
     fontWeight: "bold",
-    fontSize: "16",
-    paddingBottom: 5
+    fontSize: 16,
+    paddingBottom: 5,
+    color: "#333333"
   },
   noborder: {
     width: 80,
@@ -34,6 +35,7 @@ const styles = StyleSheet.create({
   }
 });
 const MyTab = ({ tab1, tab2, tab3, onPress }) => {
+
   const [selected, setSelected] = useState(1);
 
   return (
@@ -84,6 +86,7 @@ MyTab.defaultProps = {
   tab1: "Default",
   tab2: "Default",
   tab3: "Default"
+
 };
 
 export default MyTab;
