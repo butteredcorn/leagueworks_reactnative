@@ -33,7 +33,7 @@ return <View style={styles.container}>
         text="Last Name"
         placeholder="Name Name"
         />
-    </View>å
+    </View>
 
 </View>
 }
