@@ -11,7 +11,7 @@ import FinishPlayerReg from "./pages/finishplayerreg";
 // import AdminRegTeam from "./pages/adminregteam";
 // import AdminWaiver from "./pages/adminwaiver";
 import Schedule from "./pages/schedule";
-
+import Messages from "./pages/messages"
 
 const App = () => {
   return<View>
@@ -22,7 +22,8 @@ const App = () => {
     {/* <AdminReg /> */}
     {/* <AdminRegTeam /> */}
     {/* <AdminWaiver /> */}
-    <Schedule />
+    {/* <Schedule /> */}
+    <Messages />
   </View>
 
 }

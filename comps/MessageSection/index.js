@@ -8,13 +8,13 @@ const MessageSection = ({ name, messageContent, time }) => {
       <View style={styles.hr} />
       <View style={styles.messagecont}>
         <View style={styles.avatar}>
-          <Avatar img={require("../../../public/girl2.jpg")}></Avatar>
+          <Avatar />
         </View>
         <View>
           <Text style={styles.name}>{name}</Text>
           <Text style={styles.text}>{messageContent}</Text>
         </View>
-        <View style={styles.time}>{time}</View>
+        <Text style={styles.time}>{time}</Text>
       </View>
     </View>
   );
@@ -34,8 +34,9 @@ const styles = StyleSheet.create({
   messagecont: {
     flex: 1,
     flexDirection: "row",
-    width: 323.06,
-    height: 72
+    width: "90%",
+    minHeight: 80,
+    paddingBottom: 20
   },
   name: {
     width: 200,
