@@ -3,8 +3,8 @@ import { Text, View, StyleSheet, TextInput } from "react-native";
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: "row",
-    marginBottom:5
+    flex: 1,
+    flexDirection: "row"
   },
 
   number: {
@@ -21,29 +21,31 @@ const PlayerAdminInput = ({ text, number }) => {
         <Text>{text}</Text>
         <TextInput
           style={{
-            backgroundColor:"#F6F6F6",
+            backgroundColor: "#FFF",
             width: 118,
-            height: 43,
-            padding: 12,
+            height: 25,
+            padding: 20,
             borderRadius: 30,
             marginRight: 15,
+            outline: "none"
           }}
           placeholder="Name"
         />
       </View>
 
       <View>
-        <Text>Email</Text>
+        <Text>ID Number</Text>
         <TextInput
           style={{
-            backgroundColor:"#F6F6F6",
+            backgroundColor: "#FFF",
             width: 118,
-            height: 43,
-            padding: 12,
+            height: 25,
+            padding: 20,
             borderRadius: 30,
-            marginRight: 15
+            marginRight: 15,
+            outline: "none"
           }}
-          placeholder="Email"
+          placeholder="ID Number"
         />
       </View>
     </View>

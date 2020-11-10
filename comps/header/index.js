@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
   firstText: {
     fontWeight: "bold",
     fontSize: 25,
-    color: "#333333"
+    color: "black"
   }
 });
 

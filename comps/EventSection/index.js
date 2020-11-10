@@ -1,35 +1,34 @@
 import React from "react";
-import { View, StyleSheet, Image, Text} from "react-native";
+import { View, StyleSheet, Image } from "react-native";
 
 const EventSection = ({ eventName, eventTime, eventDesc, eventLocation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.bigBox}>
         <View style={styles.eventCont}>
-          <View style={styles.eventName}><Text style={styles.eventheader}>{eventName}</Text></View>
-
+          <View style={styles.eventName}>{eventName}</View>
           <View style={styles.timeCont}>
             <Image
               style={styles.timeIcon}
-              source={require("../../public/time.png")}
+              source={require("../../../public/time.png")}
             ></Image>
-            <View><Text>{eventTime}</Text></View>
+            <View>{eventTime}</View>
           </View>
 
           <View style={styles.locationCont}>
             <Image
               style={styles.locationIcon}
-              source={require("../../public/location.png")}
+              source={require("../../../public/location.png")}
             ></Image>
-            <View><Text>{eventLocation}</Text></View>
+            <View>{eventLocation}</View>
           </View>
 
           <View style={styles.descriptionCont}>
             <Image
               style={styles.locationIcon}
-              source={require("../../public/description.png")}
+              source={require("../../../public/description.png")}
             ></Image>
-            <View><Text>{eventDesc}</Text></View>
+            <View>{eventDesc}</View>
           </View>
         </View>
       </View>
@@ -90,10 +89,10 @@ const styles = StyleSheet.create({
 });
 
 EventSection.defaultProps = {
-  eventName: "Event name goes here",
-  eventTime: "Event time goes here",
-  eventLocation: "Event location goes here",
-  eventDesc: "Event description goes here"
+  eventName: "event name goes here",
+  eventTime: "event time goes here",
+  eventLocation: "event location goes here",
+  eventDesc: "event description goes here"
 };
 
 export default EventSection;
