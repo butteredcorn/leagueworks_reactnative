@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> 7c6061f4d6d315af55689e0313f9981ee789900b
 import React from "react";
 import { View, StyleSheet, Image } from "react-native";
 const Avatar = ({img}) => {
