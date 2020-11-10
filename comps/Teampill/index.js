@@ -18,7 +18,10 @@ const styles = StyleSheet.create({
     height: 95,
     backgroundColor: "#ECECEC",
     borderRadius: 100,
-    boxShadow: "4px 4px 8px rgba(0, 0, 0, 0.2)"
+    shadowOffset: { width: 0, height: 4 },
+    shadowColor: "black",
+    shadowOpacity: 0.2,
+    shadowRadius: 10
   },
   teamcont: {
     width: 325,
@@ -33,7 +36,7 @@ const styles = StyleSheet.create({
     width: 145,
     height: 50,
     display: "flex",
-    alignItems: "left",
+
     justifyContent: "space-between",
     marginLeft: 12
   },
@@ -49,7 +52,10 @@ const styles = StyleSheet.create({
     height: 270,
     backgroundColor: "#ECECEC",
     borderRadius: 50,
-    boxShadow: "4px 4px 8px rgba(0, 0, 0, 0.2)",
+    shadowOffset: { width: 0, height: 4 },
+    shadowColor: "black",
+    shadowOpacity: 0.2,
+    shadowRadius: 10,
     display: "flex",
     alignItems: "center"
   },
@@ -81,7 +87,10 @@ const styles = StyleSheet.create({
     height: 400,
     backgroundColor: "#ECECEC",
     borderRadius: 50,
-    boxShadow: "4px 4px 8px rgba(0, 0, 0, 0.2)",
+    shadowOffset: { width: 0, height: 4 },
+    shadowColor: "black",
+    shadowOpacity: 0.2,
+    shadowRadius: 10,
     display: "flex",
     alignItems: "center"
   },
@@ -97,7 +106,10 @@ const styles = StyleSheet.create({
     height: 400,
     backgroundColor: "#ECECEC",
     borderRadius: 50,
-    boxShadow: "4px 4px 8px rgba(0, 0, 0, 0.2)",
+    shadowOffset: { width: 0, height: 4 },
+    shadowColor: "black",
+    shadowOpacity: 0.2,
+    shadowRadius: 10,
     display: "flex",
     alignItems: "center"
   },
@@ -106,7 +118,10 @@ const styles = StyleSheet.create({
     height: 390,
     backgroundColor: "#ECECEC",
     borderRadius: 50,
-    boxShadow: "4px 4px 8px rgba(0, 0, 0, 0.2)",
+    shadowOffset: { width: 0, height: 4 },
+    shadowColor: "black",
+    shadowOpacity: 0.2,
+    shadowRadius: 10,
     display: "flex",
     alignItems: "center"
   },
@@ -175,7 +190,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontWeight: "bold",
-    fontSize: "16"
+    fontSize: 16
   },
   text: {
     fontWeight: "normal",
@@ -196,7 +211,7 @@ const styles = StyleSheet.create({
     color: "#111111"
   },
   losenumber: {
-    fontWeight: "light",
+    fontWeight: "200",
     fontSize: 16,
     paddingBottom: 5,
     color: "#111111"
@@ -223,7 +238,7 @@ const styles = StyleSheet.create({
     display: "none"
   },
   show: {
-    display: "inline"
+    display: "flex"
   }
 });
 
@@ -409,7 +424,7 @@ const MyPill = ({
               >
                 <Image
                   style={[selected === 3 ? styles.addicon : styles.none]}
-                  source={require("../../public/Add.png")}
+                  source={require("../../public/add.png")}
                 />
 
                 <Text style={styles.addmembertext}>Add Admin/Coach/Player</Text>

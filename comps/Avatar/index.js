@@ -7,7 +7,7 @@ const Avatar = ({img}) => {
   return (
     <View style={styles.container}>
       <View>
-        <Image source={img} style={styles.avatar, width} resizeMode="cover"/>
+        <Image source={img} style={styles.avatar} resizeMode="cover"/>
       </View>
     </View>
   );

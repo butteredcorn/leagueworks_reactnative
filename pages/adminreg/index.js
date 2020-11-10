@@ -1,99 +1,38 @@
 import React from "react";
-import {View, StyleSheet, Image, TouchableOpacity} from "react-native";
+import {View, StyleSheet} from "react-native";
 import MyProgressBar from "../../comps/progress_bar";
 import MyHeader from "../../comps/header";
 import Avatar from "../../comps/Avatar";
 import Input from "../../comps/input";
 import MyLargeButton from "../../comps/buttonlarge";
-import {Link} from "react-router-native";
 
 const styles = StyleSheet.create({
     container:{
-        alignItems:"center"
+        alignItems:"center",
     }
 })
 
 
 export default function AdminReg(){
 return <View style={styles.container}>
-
-    <View style={{
-        flexDirection:"row",
-    }}> 
+    <View>
         {/* Top */}
-        <TouchableOpacity>
-        <Image style={{
-            height:22,
-            width:13,
-            position:"absolute",
-            top:45,
-            left:-25
-        }}
-        source={require ("../../public/backarrow.png")}/>
-        </TouchableOpacity>
         <MyProgressBar/>
     </View>
-
-    <View style={[{
-        position:"absolute",
-        top:78
-    },styles.container]}>
-        {/* Header */}
+    <View style={styles.container}>
+        {/* Header and Avatar */}
         <MyHeader 
         head="Admin Registration"
         />
+        <Avatar />
     </View>
 
-    <Avatar />
-
-    <View style={{
-        position:"relative",
-        bottom:-55,
-        flexDirection:"row"
-    }}>
+    <View>
         {/* First and Last Name */}
         <Input 
         text="Last Name"
-        placeholder="Last Name"
-        width={130}
+        placeholder="Name Name"
         />
-        <Input 
-        text="First Name"
-        placeholder="First Name"
-        width={130}
-        />
-    </View>
-    
-    <View style={{
-        position:"relative",
-        bottom:-70,
-        }}>
-        <Input 
-        text="Email"
-        placeholder="Email"
-        />
-        <Input 
-        text="Phone"
-        placeholder="Phone"
-        />
-        <Input 
-        text="ID"
-        placeholder="ID"
-        />
-        <Input 
-        text="Password"
-        placeholder="Password"
-        />
-    </View>
-    <View style={{
-        position:"absolute",
-        bottom:-170
-    }}>
-        <Link to="/adminregteam">
-        <MyLargeButton 
-        text="Next"
-        />
-        </Link>
     </View>
 
 </View>
