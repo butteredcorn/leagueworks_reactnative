@@ -22,8 +22,9 @@ const styles = StyleSheet.create({
   },
   text: {
     fontWeight: "bold",
-    fontSize: "16",
-    paddingBottom: 5
+    fontSize: 16,
+    paddingBottom: 5,
+    color: "#333333"
   },
   noborder: {
     width: 80,
@@ -33,7 +34,7 @@ const styles = StyleSheet.create({
     opacity: 0
   }
 });
-const MyTab = ({ text }) => {
+const MyTab = ({ tab1, tab2, tab3 }) => {
   const [selected, setSelected] = useState(1);
 
   return (
@@ -44,7 +45,7 @@ const MyTab = ({ text }) => {
         }}
       >
         <View style={styles.indivcont}>
-          <Text style={styles.text}>{text}</Text>
+          <Text style={styles.text}>{tab1}</Text>
           <View
             style={[selected === 1 ? styles.border : styles.noborder]}
           ></View>
@@ -57,7 +58,7 @@ const MyTab = ({ text }) => {
         }}
       >
         <View style={styles.indivcont}>
-          <Text style={styles.text}>{text}</Text>
+          <Text style={styles.text}>{tab2}</Text>
           <View
             style={[selected === 2 ? styles.border : styles.noborder]}
           ></View>
@@ -70,7 +71,7 @@ const MyTab = ({ text }) => {
         }}
       >
         <View style={styles.indivcont}>
-          <Text style={styles.text}>{text}</Text>
+          <Text style={styles.text}>{tab3}</Text>
           <View
             style={[selected === 3 ? styles.border : styles.noborder]}
           ></View>
@@ -81,7 +82,9 @@ const MyTab = ({ text }) => {
 };
 
 MyTab.defaultProps = {
-  text: "Default"
+  tab1: "Default",
+  tab2: "Default",
+  tab3: "Default",
 };
 
 export default MyTab;
