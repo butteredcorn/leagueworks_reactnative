@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     opacity: 0
   }
 });
-const MyTab = ({ tab1, tab2, tab3, onPress }) => {
+const MyTab = ({ tab1, tab2, tab3, onPress, text }) => {
 
   const [selected, setSelected] = useState(1);
 

@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     width: 145,
     height: 50,
     display: "flex",
-    alignItems: "left",
+
     justifyContent: "space-between",
     marginLeft: 12
   },
@@ -211,7 +211,7 @@ const styles = StyleSheet.create({
     color: "#111111"
   },
   losenumber: {
-    fontWeight: "light",
+    fontWeight: "200",
     fontSize: 16,
     paddingBottom: 5,
     color: "#111111"
@@ -238,7 +238,7 @@ const styles = StyleSheet.create({
     display: "none"
   },
   show: {
-    display: "inline"
+    display: "flex"
   }
 });
 
