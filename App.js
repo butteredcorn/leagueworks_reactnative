@@ -7,17 +7,22 @@ import PlayerReg from "./pages/PlayerReg";
 import FinishPlayerReg from "./pages/finishplayerreg";
 import PlayerWaiver from "./pages/playerwaiver";
 import Teams from "./pages/teams";
-
+import Account from './pages/account';
+import NavBar from './comps/navbar';
+import Schedule from './pages/schedule';
 const App = () => {
-  return<View>
-    {/* <AdminReg/> */}
-    {/* <PlayerReg></PlayerReg> */}
-    {/* <FinishPlayerReg></FinishPlayerReg> */}
-    {/* <PlayerWaiver></PlayerWaiver> */}
-    <Teams></Teams>
+  return ( <View>
+    
+    <NativeRouter>
+<Route path ="/teams" component={Teams}></Route>
+<Route path ="/account" component={Account}></Route>
+<Route path ="/schedule" component={Schedule}></Route>
 
+
+    </NativeRouter>
   </View>
-}
+  )
+};
 
 
 export default App;
