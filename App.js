@@ -11,8 +11,8 @@ const App = () => {
   return<View>
     {/* <AdminReg/> */}
     {/* <PlayerReg></PlayerReg> */}
-    {/* <FinishPlayerReg></FinishPlayerReg> */}
-    <PlayerWaiver></PlayerWaiver>
+    <FinishPlayerReg></FinishPlayerReg>
+    {/* <PlayerWaiver></PlayerWaiver> */}
 
   </View>
 }

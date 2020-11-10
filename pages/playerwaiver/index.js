@@ -23,11 +23,18 @@ const styles = StyleSheet.create({
         margin:20
     },
     waiverBox: {
-        width: 291,
-        height: 309,
+        width: "75%",
+        height: "55%",
         borderRadius: 25,
         backgroundColor: "#F6F6F6",
-        marginTop: 20
+        marginTop: 20,
+
+    },
+    waiverText: {
+        maxWidth:"80%",
+        maxHeight: "80%",
+        marginLeft: 10,
+        marginTop: 10
     }
 });
 
@@ -61,7 +68,7 @@ return<View style={styles.container}>
         />
     </View>
 
-    <View style={styles.waiverBox}></View>
+    <View style={styles.waiverBox}><Text style={styles.waiverText}>Waiver that is written by admin goes here.</Text></View>
 
     <View style={styles.agree}>
         <MyCheck />
@@ -76,7 +83,7 @@ return<View style={styles.container}>
 
     <View style={{
         position:"absolute",
-        bottom:-120
+        bottom:"-15%"
     }}>
         <MyLargeButton 
         text="Finish Registration"

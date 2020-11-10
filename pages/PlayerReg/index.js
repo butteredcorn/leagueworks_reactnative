@@ -14,10 +14,13 @@ const styles = StyleSheet.create({
     },
     bottomCont: {
         alignItems: "center",
-        marginTop: 80
+        marginTop: 130
     },
     inputMargin: {
-        marginBottom: 30
+        marginBottom: 20
+    },
+    buttonMargin: {
+        marginTop: 20
     }
 })
 
@@ -26,7 +29,7 @@ export default function PlayerReg () {
         <View style={styles.topCont}>
             <MyProgressBar></MyProgressBar>
             <MyHeader head="Player Registration"></MyHeader>
-            <Avatar img={require("../../public/girl2.png")} width={70} height={70}></Avatar>
+            <Avatar img={require("../../public/girl2.png")}></Avatar>
         </View>
         <View style={styles.bottomCont}>
             <View style={styles.inputMargin}>
@@ -38,8 +41,10 @@ export default function PlayerReg () {
             <View style={styles.inputMargin}>
                 <Input text="Password"></Input>
             </View>
-            <MyLargeButton text="Next"></MyLargeButton>
+            <View style={styles.buttonMargin}>
+                <MyLargeButton text="Next"></MyLargeButton>
+            </View>
+
         </View>
     </View>
 }
-
