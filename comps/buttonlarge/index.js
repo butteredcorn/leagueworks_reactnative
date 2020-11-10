@@ -1,11 +1,10 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 
 const styles = StyleSheet.create({
   container: {
     display: "flex",
     justifyContent: "center",
-    textAlign: "center",
     backgroundColor: "#FD8700",
     height: 50,
     width: 286,
@@ -15,17 +14,17 @@ const styles = StyleSheet.create({
   firstText: {
     fontSize: 16,
     fontWeight: "bold",
-    color: "#FFF",
-    textAlign: "center"
+    textAlign: "center",
+    color: "#FFF"
   }
 });
 
 const MyLargeButton = ({ text }) => {
   // No <div> in react-native
   return (
-    <View style={styles.container}>
+    <TouchableOpacity style={styles.container}>
       <Text style={styles.firstText}>{text}</Text>
-    </View>
+    </TouchableOpacity>
   );
 };
 

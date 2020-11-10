@@ -2,10 +2,10 @@ import React from "react";
 import {View, StyleSheet, Image, TouchableOpacity} from "react-native";
 import MyProgressBar from "../../comps/progress_bar";
 import MyHeader from "../../comps/header";
-import Avatar from "../../comps/Avatar";
-import Input from "../../comps/input";
 import MyLargeButton from "../../comps/buttonlarge";
-import {Link} from "react-router-native";
+import Input from "../../comps/input";
+import PlayerAdminInput from "../../comps/playeradmininput";
+import Addbutton from "../../comps/addbutton";
 
 const styles = StyleSheet.create({
     container:{
@@ -13,9 +13,8 @@ const styles = StyleSheet.create({
     }
 })
 
-
-export default function AdminReg(){
-return <View style={styles.container}>
+export default function AdminRegTeam(){
+return<View style={styles.container}>
 
     <View style={{
         flexDirection:"row",
@@ -40,61 +39,49 @@ return <View style={styles.container}>
     },styles.container]}>
         {/* Header */}
         <MyHeader 
-        head="Admin Registration"
+        head="Team Registration"
         />
     </View>
 
-    <Avatar />
+    <View style={{ marginBottom:15}}>
+        <Input 
+        text="Team Name"
+        placeholder="Team Name"
+        />
 
-    <View style={{
-        position:"relative",
-        bottom:-55,
-        flexDirection:"row"
-    }}>
-        {/* First and Last Name */}
-        <Input 
-        text="Last Name"
-        placeholder="Last Name"
-        width={130}
-        />
-        <Input 
-        text="First Name"
-        placeholder="First Name"
-        width={130}
-        />
     </View>
-    
-    <View style={{
-        position:"relative",
-        bottom:-70,
-        }}>
-        <Input 
-        text="Email"
-        placeholder="Email"
-        />
-        <Input 
-        text="Phone"
-        placeholder="Phone"
-        />
-        <Input 
-        text="ID"
-        placeholder="ID"
-        />
-        <Input 
-        text="Password"
-        placeholder="Password"
-        />
+
+    <View>
+        {/* Switches */}
     </View>
+
+    <View>
+        <PlayerAdminInput text="Admin" number="1.   "/>
+        <PlayerAdminInput text="Coach" number="2.   "/>
+        <PlayerAdminInput text="Player #" number="3.   "/>
+    </View>
+
+    <View style={{justifyContent:"center"}}>
+        <TouchableOpacity>
+        <Addbutton />
+        </TouchableOpacity>
+        <TouchableOpacity>
+        <Addbutton text="Add Coach"/>
+        </TouchableOpacity>
+        <TouchableOpacity>
+        <Addbutton text="Add Player"/>
+        </TouchableOpacity>
+    </View>
+
     <View style={{
         position:"absolute",
-        bottom:-170
+        bottom:-87
     }}>
-        <Link to="/adminregteam">
         <MyLargeButton 
         text="Next"
         />
-        </Link>
-    </View>
+    </View>    
+
 
 </View>
 }
