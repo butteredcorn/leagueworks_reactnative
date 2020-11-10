@@ -175,7 +175,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontWeight: "bold",
-    fontSize: "16"
+    fontSize: 16
   },
   text: {
     fontWeight: "normal",
@@ -409,7 +409,7 @@ const MyPill = ({
               >
                 <Image
                   style={[selected === 3 ? styles.addicon : styles.none]}
-                  source={require("../../public/Add.png")}
+                  source={require("../../public/add.png")}
                 />
 
                 <Text style={styles.addmembertext}>Add Admin/Coach/Player</Text>

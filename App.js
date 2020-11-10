@@ -13,8 +13,8 @@ const App = () => {
     {/* <AdminReg/> */}
     {/* <PlayerReg></PlayerReg> */}
     {/* <FinishPlayerReg></FinishPlayerReg> */}
-    <PlayerWaiver></PlayerWaiver>
-    {/* <Teams></Teams> */}
+    {/* <PlayerWaiver></PlayerWaiver> */}
+    <Teams></Teams>
 
   </View>
 }
