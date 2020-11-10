@@ -20,7 +20,8 @@ const styles = StyleSheet.create({
     agree:{
         flexDirection:"row",
         justifyContent:"center",
-        margin:20
+        margin:20,
+        marginTop:20
     }
 });
 

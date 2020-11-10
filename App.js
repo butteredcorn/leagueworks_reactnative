@@ -4,14 +4,16 @@ import {NativeRouter, Route, Link} from "react-router-native";
 
 // import AdminReg from "./pages/adminreg";
 // import AdminRegTeam from "./pages/adminregteam";
-import AdminWaiver from "./pages/adminwaiver";
+// import AdminWaiver from "./pages/adminwaiver";
 
 const App = () => {
   return<View>
-    {/* <AdminReg/> */}
+    {/* <AdminReg /> */}
     {/* <AdminRegTeam /> */}
-    <AdminWaiver />
+    {/* <AdminWaiver /> */}
+
   </View>
+
 }
 
 

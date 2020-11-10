@@ -5,6 +5,7 @@ import MyHeader from "../../comps/header";
 import Avatar from "../../comps/Avatar";
 import Input from "../../comps/input";
 import MyLargeButton from "../../comps/buttonlarge";
+import {Link} from "react-router-native";
 
 const styles = StyleSheet.create({
     container:{
@@ -88,9 +89,11 @@ return <View style={styles.container}>
         position:"absolute",
         bottom:-170
     }}>
+        <Link to="/adminregteam">
         <MyLargeButton 
         text="Next"
         />
+        </Link>
     </View>
 
 </View>
