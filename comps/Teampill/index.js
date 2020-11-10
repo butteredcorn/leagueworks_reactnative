@@ -18,7 +18,10 @@ const styles = StyleSheet.create({
     height: 95,
     backgroundColor: "#ECECEC",
     borderRadius: 100,
-    boxShadow: "4px 4px 8px rgba(0, 0, 0, 0.2)"
+    shadowOffset: { width: 0, height: 4 },
+    shadowColor: "black",
+    shadowOpacity: 0.2,
+    shadowRadius: 10
   },
   teamcont: {
     width: 325,
@@ -49,7 +52,10 @@ const styles = StyleSheet.create({
     height: 270,
     backgroundColor: "#ECECEC",
     borderRadius: 50,
-    boxShadow: "4px 4px 8px rgba(0, 0, 0, 0.2)",
+    shadowOffset: { width: 0, height: 4 },
+    shadowColor: "black",
+    shadowOpacity: 0.2,
+    shadowRadius: 10,
     display: "flex",
     alignItems: "center"
   },
@@ -81,7 +87,10 @@ const styles = StyleSheet.create({
     height: 400,
     backgroundColor: "#ECECEC",
     borderRadius: 50,
-    boxShadow: "4px 4px 8px rgba(0, 0, 0, 0.2)",
+    shadowOffset: { width: 0, height: 4 },
+    shadowColor: "black",
+    shadowOpacity: 0.2,
+    shadowRadius: 10,
     display: "flex",
     alignItems: "center"
   },
@@ -97,7 +106,10 @@ const styles = StyleSheet.create({
     height: 400,
     backgroundColor: "#ECECEC",
     borderRadius: 50,
-    boxShadow: "4px 4px 8px rgba(0, 0, 0, 0.2)",
+    shadowOffset: { width: 0, height: 4 },
+    shadowColor: "black",
+    shadowOpacity: 0.2,
+    shadowRadius: 10,
     display: "flex",
     alignItems: "center"
   },
@@ -106,7 +118,10 @@ const styles = StyleSheet.create({
     height: 390,
     backgroundColor: "#ECECEC",
     borderRadius: 50,
-    boxShadow: "4px 4px 8px rgba(0, 0, 0, 0.2)",
+    shadowOffset: { width: 0, height: 4 },
+    shadowColor: "black",
+    shadowOpacity: 0.2,
+    shadowRadius: 10,
     display: "flex",
     alignItems: "center"
   },
