@@ -4,18 +4,15 @@ import { View, StyleSheet, TextInput, Image } from "react-native";
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
-    width: 324,
+    width: "90%",
     height: 50,
-    backgroundColor: "#FFF",
+    backgroundColor: "#ECECEC",
     borderRadius: 30
   },
   icon: {
-    width: 17,
-    height: 17,
     marginLeft: 20,
     position: "relative",
     bottom: -17,
-    resizeMode: "center"
   }
 });
 
@@ -25,13 +22,12 @@ const SearchInput = () => {
       <Image style={styles.icon} source={require("../../public/search.png")} />
       <TextInput
         style={{
-          backgroundColor: "#FFF",
+          backgroundColor: "#ECECEC",
           width: 250,
           height: 50,
-          borderColor: "white",
-          position: "relative",
+          // borderColor: "white",
+          // position: "relative",
           right: -20,
-          outline: "none"
         }}
         placeholder="Search..."
       />

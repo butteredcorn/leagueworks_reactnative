@@ -10,6 +10,7 @@ import PlayerReg from "./pages/PlayerReg";
 import FinishPlayerReg from "./pages/finishplayerreg";
 import PlayerWaiver from "./pages/playerwaiver";
 import Teams from "./pages/teams";
+import Messages from "./pages/messages"
 
 const App = () => {
   return<View>
@@ -17,8 +18,8 @@ const App = () => {
     {/* <PlayerReg></PlayerReg> */}
     {/* <FinishPlayerReg></FinishPlayerReg> */}
     {/* <PlayerWaiver></PlayerWaiver> */}
-    <Teams></Teams>
-
+    {/* <Teams /> */}
+    <Messages />
 
   </View>
 }
