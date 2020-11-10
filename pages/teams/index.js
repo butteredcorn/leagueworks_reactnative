@@ -5,6 +5,10 @@ import NavBar from "../../comps/navbar";
 import MyPill from "../../comps/Teampill";
 
 const styles = StyleSheet.create({
+    container: {
+        position: "relative",
+        height: "100%"
+    },
     
     header: {
             fontSize: 36,
@@ -16,7 +20,8 @@ const styles = StyleSheet.create({
             marginBottom: 15
     },
     navbar: {
-
+        position: "absolute",
+        bottom: 0
     }, 
     pillcont: {
         alignItems: "center"
@@ -27,7 +32,8 @@ const styles = StyleSheet.create({
 });
 
 export default function Teams(){
-return<ScrollView contentContainerStyles={styles.container}>
+return<View>
+    <ScrollView contentContainerStyles={styles.container}>
     <View style={styles.header}>
         <MyHeader head="Teams"></MyHeader>
     </View>
@@ -48,8 +54,10 @@ return<ScrollView contentContainerStyles={styles.container}>
             <MyPill img={require("../../public/girl.jpg")}></MyPill>
         </View>
     </View>
-    <View style={styles.navbar}>
+    </ScrollView>
+    <View  style={styles.navbar}>
         <NavBar></NavBar>
     </View>
-</ScrollView>
+</View>
+
 }
