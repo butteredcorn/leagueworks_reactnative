@@ -6,13 +6,15 @@ import AdminReg from "./pages/adminreg";
 import PlayerReg from "./pages/playerreg";
 import FinishPlayerReg from "./pages/finishplayerreg";
 import PlayerWaiver from "./pages/playerwaiver";
+import Teams from "./pages/teams";
 
 const App = () => {
   return<View>
     {/* <AdminReg/> */}
     {/* <PlayerReg></PlayerReg> */}
-    <FinishPlayerReg></FinishPlayerReg>
+    {/* <FinishPlayerReg></FinishPlayerReg> */}
     {/* <PlayerWaiver></PlayerWaiver> */}
+    <Teams></Teams>
 
   </View>
 }
