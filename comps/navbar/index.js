@@ -1,12 +1,6 @@
 import React, { useState } from "react";
-import { View, StyleSheet, TouchableOpacity } from "react-native";
-import {
-  MdHome,
-  MdPeople,
-  MdEventNote,
-  MdChatBubble,
-  MdPerson
-} from "react-icons/md";
+import { View, StyleSheet, TouchableOpacity, Image } from "react-native";
+
 
 const styles = StyleSheet.create({
   container: {
@@ -27,6 +21,15 @@ const styles = StyleSheet.create({
     width: "100%",
     backgroundColor: "#F35B04",
     marginBottom: 15
+  },
+  icon:{
+    height: 85,
+    width: "20%",
+    alignItems: "center"
+  },
+  iconImg:{
+    height: 50,
+    width: 50
   }
 });
 
@@ -35,42 +38,59 @@ const NavBar = () => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.iconCont}>
-        <TouchableOpacity
-          style={{ height: "85", width: "20%", alignItems: "center" }}
+
+        {/* Home */}
+        <View style={styles.iconCont}>
+        <TouchableOpacity style={styles.icon}
+          // style={{ height: "85pt", width: "20%", alignItems: "center" }}
         >
           <View style={[styles.active]} />
-          <MdHome size="50" color="#F35B04" />
+          <Image source={require('../../public/home.png')} style={styles.iconImg} />
+          {/* <MdHome size="50" color="#F35B04" /> */}
         </TouchableOpacity>
 
-        <TouchableOpacity
-          style={{ height: "85", width: "20%", alignItems: "center" }}
+
+        {/* Teams */}
+        <TouchableOpacity style={styles.icon}
+          // style={{ height: "85pt", width: "20%", alignItems: "center" }}
         >
           <View style={styles.active} />
-          <MdPeople size="50" color="#F35B04" />
+          <Image source={require('../../public/team.png')} style={styles.iconImg} />
+          {/* <MdPeople size="50" color="#F35B04" /> */}
         </TouchableOpacity>
 
-        <TouchableOpacity
-          style={{ height: "85", width: "20%", alignItems: "center" }}
+
+        {/* Schedule */}
+        <TouchableOpacity style={styles.icon}
+          // style={{ height: "85pt", width: "20%", alignItems: "center" }}
         >
           <View style={styles.active} />
-          <MdEventNote size="50" color="#F35B04" />
+          <Image source={require('../../public/schedule.png')} style={styles.iconImg} />
+          {/* <MdEventNote size="50" color="#F35B04" /> */}
         </TouchableOpacity>
 
-        <TouchableOpacity
-          style={{ height: "85", width: "20%", alignItems: "center" }}
+
+        {/* Messages */}
+        <TouchableOpacity style={styles.icon}
+          // style={{ height: "85pt", width: "20%", alignItems: "center" }}
         >
           <View style={styles.active} />
-          <MdChatBubble size="50" color="#F35B04" />
+          <Image source={require('../../public/messages.png')} style={styles.iconImg} />
+          {/* <MdChatBubble size="50" color="#F35B04" /> */}
         </TouchableOpacity>
 
-        <TouchableOpacity
-          style={{ height: "85", width: "20%", alignItems: "center" }}
+
+        {/* Account */}
+        <TouchableOpacity style={styles.icon}
+          // style={{ height: "85pt", width: "20%", alignItems: "center" }}
         >
           <View style={styles.active} />
-          <MdPerson size="50" color="#F35B04" />
+          <Image source={require('../../public/account.png')} style={styles.iconImg}  />
+          {/* <MdPerson size="50" color="#F35B04" /> */}
         </TouchableOpacity>
       </View>
+
+
     </View>
   );
 };
