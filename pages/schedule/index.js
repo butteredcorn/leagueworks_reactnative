@@ -1,12 +1,13 @@
 import React from "react";
-import {View, StyleSheet, Image, TouchableOpacity} from "react-native";
+import {View, ScrollView, StyleSheet, Image, TouchableOpacity} from "react-native";
 import {CalendarList} from 'react-native-calendars';
 import EventSection from "../../comps/EventSection";
 import MyHeader from "../../comps/header";
 
 const styles = StyleSheet.create({
     container:{
-        alignItems:"center"
+        alignItems:"center",
+        height:650
     },
     header:{
         position:"relative",
@@ -38,7 +39,7 @@ const styles = StyleSheet.create({
 })
 
 export default function Schedule(){
-    return<View style={styles.container}>
+    return<ScrollView contentContainerStyle={styles.container}>
         
         {/* Header */}
         <View style={styles.header}>
@@ -80,7 +81,13 @@ export default function Schedule(){
             <EventSection />
         </View>
 
+        <View>
+
+        </View>
+
+        
 
 
-    </View>
+
+    </ScrollView>
 }

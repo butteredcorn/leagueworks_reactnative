@@ -6,7 +6,7 @@ const EventSection = ({ eventName, eventTime, eventDesc, eventLocation }) => {
     <View style={styles.container}>
       <View style={styles.bigBox}>
         <View style={styles.eventCont}>
-          <View style={styles.eventName}><Text>{eventName}</Text></View>
+          <View style={styles.eventName}><Text style={styles.eventheader}>{eventName}</Text></View>
 
           <View style={styles.timeCont}>
             <Image
@@ -83,6 +83,9 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "row",
     fontSize: 14
+  },
+  eventheader:{
+    fontWeight:"bold"
   }
 });
 
