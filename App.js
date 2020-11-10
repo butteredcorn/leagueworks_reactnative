@@ -3,7 +3,7 @@ import {StyleSheet, Text, View } from "react-native";
 import {NativeRouter, Route, Link} from "react-router-native";
 
 import AdminReg from "./pages/adminreg";
-import PlayerReg from "./pages/playerreg";
+import PlayerReg from "./pages/PlayerReg";
 import FinishPlayerReg from "./pages/finishplayerreg";
 import PlayerWaiver from "./pages/playerwaiver";
 import Teams from "./pages/teams";
@@ -13,8 +13,8 @@ const App = () => {
     {/* <AdminReg/> */}
     {/* <PlayerReg></PlayerReg> */}
     {/* <FinishPlayerReg></FinishPlayerReg> */}
-    {/* <PlayerWaiver></PlayerWaiver> */}
-    <Teams></Teams>
+    <PlayerWaiver></PlayerWaiver>
+    {/* <Teams></Teams> */}
 
   </View>
 }

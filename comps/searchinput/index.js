@@ -7,8 +7,7 @@ const styles = StyleSheet.create({
     width: 324,
     height: 50,
     backgroundColor: "#FFF",
-    borderRadius: 30,
-    marginBottom: 10
+    borderRadius: 30
   },
   icon: {
     width: 17,
@@ -23,10 +22,7 @@ const styles = StyleSheet.create({
 const SearchInput = () => {
   return (
     <View style={styles.container}>
-      <Image
-        style={styles.icon}
-        source={require("/../../public/search.png")}
-      />
+      <Image style={styles.icon} source={require("../../public/search.png")} />
       <TextInput
         style={{
           backgroundColor: "#FFF",

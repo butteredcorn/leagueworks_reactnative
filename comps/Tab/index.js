@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet, TouchableHighlight } from "react-native";
 
 const styles = StyleSheet.create({
@@ -33,7 +33,8 @@ const styles = StyleSheet.create({
     opacity: 0
   }
 });
-const MyTab = ({ text }) => {
+const MyTab = ({ tab1, tab2, tab3, onPress }) => {
+
   const [selected, setSelected] = useState(1);
 
   return (
@@ -81,7 +82,10 @@ const MyTab = ({ text }) => {
 };
 
 MyTab.defaultProps = {
-  text: "Default"
+  tab1: "Default",
+  tab2: "Default",
+  tab3: "Default"
+
 };
 
 export default MyTab;
