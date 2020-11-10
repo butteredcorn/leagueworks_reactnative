@@ -17,12 +17,12 @@ const App = () => {
   return<View>
     {/* <AdminReg/> */}
     {/* <PlayerReg></PlayerReg> */}
-    {/* <Account /> */}
+    <Account />
     {/* <FinishPlayerReg /></FinishPlayerReg> */}
     {/* <AdminReg /> */}
     {/* <AdminRegTeam /> */}
     {/* <AdminWaiver /> */}
-    <Schedule />
+    {/* <Schedule /> */}
   </View>
 
 }

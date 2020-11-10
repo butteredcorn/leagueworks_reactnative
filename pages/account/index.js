@@ -21,10 +21,6 @@ const styles = StyleSheet.create({
         marginTop: 50,
         marginBottom: 15
     },
-    profile:{
-        width: 85,
-        height: 85
-    },
     test:{
         height: 300,
         width: "100%"
@@ -37,7 +33,7 @@ return <View style={styles.container}>
     
     
     <Text style={styles.pageName}>Account</Text>
-    <Avatar style={styles.profile} />
+    <Avatar />
     <MyHeader head="Amanda Austins" />
     <MyTab tab1="Posts" tab2="Profile" tab3="Settings" />
     {/* This is just filler space until figure out how switch between the tabs */}
