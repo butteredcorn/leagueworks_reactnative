@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, StyleSheet, TouchableHighlight, Image } from "react-native";
 
 const styles = StyleSheet.create({
@@ -62,7 +62,7 @@ const MyCheck = () => {
       >
         <Image
           style={[styles.none, isSelected ? styles.none : styles.checkmark]}
-          source={require("./checkmark.png")}
+          source={require("../../public/checkmark.png")}
         />
       </TouchableHighlight>
     </View>
