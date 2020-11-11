@@ -17,7 +17,8 @@ const App = () => {
     {/* <PlayerReg></PlayerReg> */}
     {/* <FinishPlayerReg></FinishPlayerReg> */}
     {/* <PlayerWaiver></PlayerWaiver> */}
-    <Teams></Teams>
+    {/* <Teams></Teams> */}
+    <CreateEvent />
 
 
   </View>
