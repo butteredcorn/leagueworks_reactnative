@@ -1,7 +1,8 @@
 import React from "react";
-import {View, StyleSheet} from "react-native";
+import {View, StyleSheet, TextInput} from "react-native";
 import MyHeader from "../../comps/header";
 import NavBar from "../../comps/navbar";
+import Input from "../../comps/input";
 
 const styles = StyleSheet.create({
     container:{
@@ -19,6 +20,9 @@ const styles = StyleSheet.create({
         position:"relative",
         left:-85
     },
+    timerange:{
+
+    },
     navbar:{
         position:"absolute",
         bottom: 0
@@ -33,6 +37,13 @@ export default function CreateEvent(){
                 <MyHeader  head="Create Event"/>
             </View>
         </View>
+
+        {/* Inputs */}
+        <View style={styles.timerange}>
+
+        </View>
+
+
 
 
         {/* Nav Bar */}
