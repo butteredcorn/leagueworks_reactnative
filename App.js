@@ -11,6 +11,7 @@ import FinishPlayerReg from "./pages/finishplayerreg";
 import PlayerWaiver from "./pages/playerwaiver";
 import Teams from "./pages/teams";
 import Messages from "./pages/messages"
+import NewMsg from "./pages/messages/newmsg"
 
 const App = () => {
   return<View>
@@ -19,7 +20,8 @@ const App = () => {
     {/* <FinishPlayerReg></FinishPlayerReg> */}
     {/* <PlayerWaiver></PlayerWaiver> */}
     {/* <Teams /> */}
-    <Messages />
+    {/* <Messages /> */}
+    <NewMsg />
 
   </View>
 }
