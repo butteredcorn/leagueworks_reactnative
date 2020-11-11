@@ -12,7 +12,18 @@ import PlayerWaiver from "./pages/playerwaiver";
 import Teams from "./pages/teams";
 import Messages from "./pages/messages"
 import NewMsg from "./pages/messages/newmsg"
-import Chat from "./pages/messages/chat"
+import Chat from "./pages/messages/chat"import Account from './pages/account';
+import NavBar from './comps/navbar';
+import Schedule from './pages/schedule';
+const App = () => {
+  return ( <View>
+    
+    <NativeRouter>
+<Route path ="/teams" component={Teams}></Route>
+<Route path ="/account" component={Account}></Route>
+<Route path ="/schedule" component={Schedule}></Route>
+<Route path ="/" component={Teams}></Route>
+    < /NativeRouter>
 
 const App = () => {
   return<View>
@@ -24,12 +35,12 @@ const App = () => {
     {/* <Messages /> */}
     {/* <NewMsg /> */}
     {/* <Chat /> */}
-    {/* <Teams></Teams> */}
+    {/* <Teams /> */}
     <CreateEvent />
 
-
   </View>
-}
+  )
+};
 
 
 export default App;

@@ -1,34 +1,34 @@
 import React from "react";
-import { View, StyleSheet, Image } from "react-native";
-
+import { View, StyleSheet, Image, Text } from "react-native";
 const EventSection = ({ eventName, eventTime, eventDesc, eventLocation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.bigBox}>
         <View style={styles.eventCont}>
-          <View style={styles.eventName}>{eventName}</View>
+          <View style={styles.eventName}><Text>{eventName}</Text></View>
+
           <View style={styles.timeCont}>
             <Image
               style={styles.timeIcon}
-              source={require("../../../public/time.png")}
+              source={require('../../public/time.png')}
             ></Image>
-            <View>{eventTime}</View>
+            <View><Text>{eventTime}</Text></View>
           </View>
 
           <View style={styles.locationCont}>
             <Image
               style={styles.locationIcon}
-              source={require("../../../public/location.png")}
+              source={require('../../public/location.png')}
             ></Image>
-            <View>{eventLocation}</View>
+            <View><Text>{eventLocation}</Text></View>
           </View>
 
           <View style={styles.descriptionCont}>
             <Image
               style={styles.locationIcon}
-              source={require("../../../public/description.png")}
+              source={require('../../public/location.png')}
             ></Image>
-            <View>{eventDesc}</View>
+            <View><Text>{eventDesc}</Text></View>
           </View>
         </View>
       </View>

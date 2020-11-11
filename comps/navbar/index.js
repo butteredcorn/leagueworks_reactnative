@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { View, StyleSheet, TouchableOpacity, Image } from "react-native";
-
+import {Link} from 'react-router-native';
 
 const styles = StyleSheet.create({
   container: {
@@ -41,26 +41,33 @@ const NavBar = () => {
 
         {/* Home */}
         <View style={styles.iconCont}>
+  
         <TouchableOpacity style={styles.icon}
           // style={{ height: "85pt", width: "20%", alignItems: "center" }}
         >
+
           <View style={[styles.active]} />
+         
           <Image source={require('../../public/home.png')} style={styles.iconImg} />
           {/* <MdHome size="50" color="#F35B04" /> */}
-        </TouchableOpacity>
-
+          </TouchableOpacity>
+       
 
         {/* Teams */}
+        <Link to="/teams">
         <TouchableOpacity style={styles.icon}
           // style={{ height: "85pt", width: "20%", alignItems: "center" }}
         >
+          
           <View style={styles.active} />
           <Image source={require('../../public/team.png')} style={styles.iconImg} />
           {/* <MdPeople size="50" color="#F35B04" /> */}
         </TouchableOpacity>
+        </Link>
 
 
         {/* Schedule */}
+        <Link to='/schedule'>
         <TouchableOpacity style={styles.icon}
           // style={{ height: "85pt", width: "20%", alignItems: "center" }}
         >
@@ -68,6 +75,7 @@ const NavBar = () => {
           <Image source={require('../../public/schedule.png')} style={styles.iconImg} />
           {/* <MdEventNote size="50" color="#F35B04" /> */}
         </TouchableOpacity>
+        </Link>
 
 
         {/* Messages */}
@@ -81,6 +89,7 @@ const NavBar = () => {
 
 
         {/* Account */}
+        <Link to="/account">
         <TouchableOpacity style={styles.icon}
           // style={{ height: "85pt", width: "20%", alignItems: "center" }}
         >
@@ -88,6 +97,7 @@ const NavBar = () => {
           <Image source={require('../../public/account.png')} style={styles.iconImg}  />
           {/* <MdPerson size="50" color="#F35B04" /> */}
         </TouchableOpacity>
+        </Link>
       </View>
 
 
