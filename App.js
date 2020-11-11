@@ -10,6 +10,9 @@ import PlayerReg from "./pages/PlayerReg";
 import FinishPlayerReg from "./pages/finishplayerreg";
 import PlayerWaiver from "./pages/playerwaiver";
 import Teams from "./pages/teams";
+import Messages from "./pages/messages"
+import NewMsg from "./pages/messages/newmsg"
+import Chat from "./pages/messages/chat"
 
 const App = () => {
   return<View>
@@ -17,8 +20,12 @@ const App = () => {
     {/* <PlayerReg></PlayerReg> */}
     {/* <FinishPlayerReg></FinishPlayerReg> */}
     {/* <PlayerWaiver></PlayerWaiver> */}
+    {/* <Teams /> */}
+    {/* <Messages /> */}
+    {/* <NewMsg /> */}
+    <Chat />
     {/* <Teams></Teams> */}
-    <CreateEvent />
+    {/*<CreateEvent />*/}
 
 
   </View>
