@@ -10,7 +10,9 @@ import PlayerReg from "./pages/PlayerReg";
 import FinishPlayerReg from "./pages/finishplayerreg";
 import PlayerWaiver from "./pages/playerwaiver";
 import Teams from "./pages/teams";
-import Account from './pages/account';
+import Messages from "./pages/messages"
+import NewMsg from "./pages/messages/newmsg"
+import Chat from "./pages/messages/chat"import Account from './pages/account';
 import NavBar from './comps/navbar';
 import Schedule from './pages/schedule';
 const App = () => {
@@ -21,8 +23,21 @@ const App = () => {
 <Route path ="/account" component={Account}></Route>
 <Route path ="/schedule" component={Schedule}></Route>
 <Route path ="/" component={Teams}></Route>
+    < /NativeRouter>
 
-    </NativeRouter>
+const App = () => {
+  return<View>
+    {/* <AdminReg/> */}
+    {/* <PlayerReg></PlayerReg> */}
+    {/* <FinishPlayerReg></FinishPlayerReg> */}
+    {/* <PlayerWaiver></PlayerWaiver> */}
+    {/* <Teams /> */}
+    {/* <Messages /> */}
+    {/* <NewMsg /> */}
+    {/* <Chat /> */}
+    {/* <Teams /> */}
+    <CreateEvent />
+
   </View>
   )
 };

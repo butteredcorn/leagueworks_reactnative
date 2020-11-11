@@ -4,8 +4,8 @@ import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 const styles = StyleSheet.create({
   container: {
     justifyContent: "center",
-    textAlign: "center",
-    height: 30,
+    alignItems: "center",
+    height: 35,
     width: 108,
     padding: 10,
     margin:10,
