@@ -20,7 +20,7 @@ const App = () => {
 <Route path ="/teams" component={Teams}></Route>
 <Route path ="/account" component={Account}></Route>
 <Route path ="/schedule" component={Schedule}></Route>
-
+<Route path ="/" component={Teams}></Route>
 
     </NativeRouter>
   </View>
