@@ -23,9 +23,9 @@ const App = () => {
     {/* <Teams /> */}
     {/* <Messages /> */}
     {/* <NewMsg /> */}
-    <Chat />
+    {/* <Chat /> */}
     {/* <Teams></Teams> */}
-    {/*<CreateEvent />*/}
+    <CreateEvent />
 
 
   </View>

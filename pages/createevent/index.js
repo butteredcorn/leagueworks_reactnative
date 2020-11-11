@@ -1,8 +1,9 @@
 import React from "react";
-import {View, StyleSheet, TextInput} from "react-native";
+import {View, StyleSheet, Image, TouchableOpacity} from "react-native";
 import MyHeader from "../../comps/header";
 import NavBar from "../../comps/navbar";
 import Input from "../../comps/input";
+import MyButton from "../../comps/button";
 
 const styles = StyleSheet.create({
     container:{
@@ -20,12 +21,37 @@ const styles = StyleSheet.create({
         position:"relative",
         left:-85
     },
+    date:{
+        position:"absolute",
+        bottom:450,
+        backgroundColor:"#F8F8F8",
+        width:325,
+        padding:7,
+        borderRadius:30,
+        flexDirection:"row",
+        justifyContent:"center"
+    },
+    drop:{
+        position:"relative",
+        bottom:-20
+    },
+    info:{
+        position:"absolute",
+        bottom:170,
+        alignItems:"center",
+        justifyContent:"center"
+    },
     timerange:{
-
+        flexDirection:"row"
+    },
+    button:{
+        position:"absolute",
+        bottom:100,
+        right:45
     },
     navbar:{
         position:"absolute",
-        bottom: 0
+        bottom:0
     }
 })
 
@@ -39,11 +65,30 @@ export default function CreateEvent(){
         </View>
 
         {/* Inputs */}
-        <View style={styles.timerange}>
+        <View style={styles.date}>
+            <Input text="Pick a Date"placeholder="00/00/0000" width={200}/>
+            <TouchableOpacity>
+            <Image style={styles.drop} source={require("../../public/drop.png")}/>
+            </TouchableOpacity>
+        </View>
+
+        <View style={styles.info}>
+            <View style={styles.timerange}>
+                <Input width={150} text="Start Time" placeholder="Enter Start Time"/>
+                <Input width={150} text="End Time" placeholder="Enter End Time"/>
+            </View>
+            <Input text="Pick a Place" placeholder="Enter Location"/>
+            <Input text="Event Title" placeholder="Enter Event Name"/>
+            <Input text="Event Description" placeholder="Enter Description"/>
+
 
         </View>
 
+        {/* Button */}
 
+        <TouchableOpacity style={styles.button}>
+            <MyButton text="Create"/>
+        </TouchableOpacity>
 
 
         {/* Nav Bar */}
