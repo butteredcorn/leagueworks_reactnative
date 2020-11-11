@@ -45,10 +45,13 @@ return <View style={styles.container}>
     </View>
 
     <ScrollView>
-        <MyBubble bgcolor="#ECECEC" textcolor="#333333" />
-        <MyBubble />
-        <MyBubble bgcolor="#ECECEC" />
-        <MyBubble />
+        <MyBubble bgcolor="#ECECEC" textcolor="#333333" text="Hello" />
+        <MyBubble text="Hi." />
+        <MyBubble bgcolor="#ECECEC" textcolor="#333333" text="What are you up to on this fine evening Monsieur? 😝" />
+        <MyBubble text="ça ne vous concerne pas!! 😤😤😤" />
+        <MyBubble bgcolor="#ECECEC" textcolor="#333333" text="Bruh... y u speaking french bro??" />
+        <MyBubble bgcolor="#ECECEC" textcolor="#333333" text="Makin me google translate all this" />
+        <MyBubble text="🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃" />
     </ScrollView>
 
     <View style={styles.bottomCont}>
