@@ -15,15 +15,19 @@ const styles = StyleSheet.create({
         bottom: 0,
         width: "100%"
     }, 
+    header:{
+        flexDirection: "row",
+        width: "100%",
+        height: 45,
+        marginTop: 50,
+        marginBottom: 15,
+        justifyContent: "space-between",
+        paddingLeft: "5%"
+    },
     pageName:{
         fontSize: 36,
         fontWeight: "bold",
         color: "#333333",
-        width: "90%",
-        height: 45,
-        marginTop: 50,
-        marginBottom: 15,
-        paddingLeft: "5%"
     },
 });
 
@@ -31,8 +35,12 @@ const styles = StyleSheet.create({
 export default function Home(){
 return<View>
     <ScrollView contentContainerStyles={styles.container}>
+    
     <View style={styles.header}>
         <Text style={styles.pageName}>Home</Text>
+            <TouchableOpacity>
+                <Image source={require("../../public/edit.png")}/>
+            </TouchableOpacity>   
     </View>
     
     <View style={{alignItems:"center"}}>
@@ -40,8 +48,16 @@ return<View>
         Title="BC SR Volleyball Provincials" 
         Description="Bring your A-game this Saturday!"
         img={require("../../public/girl.jpg")} />
-        <Post />
-        <Post />
+
+        <Post Username="Ally Lee" 
+        Title="Just another post!!!" 
+        Description="And another description 😇"
+        img={require("../../public/girl2.png")} />
+
+        <Post Username="Ally Lee" 
+        Title="BC SR Volleyball Provincials" 
+        Description="Bring your A-game this Saturday!"
+        img={require("../../public/girl.jpg")} />
     </View>
 
     </ScrollView>

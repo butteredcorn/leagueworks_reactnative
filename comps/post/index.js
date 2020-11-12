@@ -15,19 +15,20 @@ const styles = StyleSheet.create({
     },
     imgCont:{
         width: "100%",
-        maxHeight: 100
+        minHeight: 100,
+        maxHeight: 175,
     },
     img:{
         width: "100%",
+        minHeight: 100,
         maxHeight: 175
     },
     buttonCont: {
         flexDirection: "row",
         justifyContent: "space-between",
-        height: 40,
         width: "80%",
         position: "absolute",
-        bottom: 10
+        bottom: 20
     }
 })
 

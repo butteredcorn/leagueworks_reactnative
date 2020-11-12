@@ -21,15 +21,15 @@ import Home from './pages/home'
 const App = () => {
   return ( <View>
     
-    {/* <NativeRouter>
-      <Route path ="/" component={Teams}></Route>
+    <NativeRouter>
+      <Route path ="/" component={Home}></Route>
       <Route path ="/teams" component={Teams}></Route>
       <Route path ="/schedule" component={Schedule}></Route>
       <Route path ="/messages" component={Messages}></Route>
       <Route path ="/account" component={Account}></Route>
-    </NativeRouter> */}
+    </NativeRouter>
 
-    <Home />
+    {/* <Home /> */}
     {/* <AdminReg /> */}
     {/* <PlayerReg /> */}
     {/* <FinishPlayerReg /> */}
