@@ -47,6 +47,11 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between"
   },
+   tabcont: {
+    position: "relative",
+    postition:"relative",
+    top:25
+  },
   standingscont: {
     width: 325,
     height: 270,
@@ -93,7 +98,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     top: 30,
     height: 90,
-    backgroundColor: "#fad"
+
   },
   editcont: {
     width: 325,
@@ -111,7 +116,7 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     boxShadow: "4px 4px 8px rgba(0, 0, 0, 0.2)",
     display: "flex",
-    alignItems: "center"
+    alignItems: "center",
   },
   addplayercont: {
 
@@ -126,8 +131,15 @@ const styles = StyleSheet.create({
     display: "flex",
     top: 50,
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
   },
+  playercontsearch: {
+    display: "flex",
+    top: 10,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  
   indivplayercont: {
     width: 225,
     display: "flex",
@@ -143,16 +155,17 @@ const styles = StyleSheet.create({
     top: 10,
     justifyContent: "space-between",
     alignItems: "center",
-    paddingBottom: 10
+    paddingBottom: 10,
+    
   },
   admincont: {
     width: 230,
     display: "flex",
     alignItems: "center",
-    backgroundColor: "beige"
+
   },
   indivadmincont: {
-    width: 175,
+    width: 180,
     height: 50,
     display: "flex",
     flexDirection: "row",
@@ -163,7 +176,7 @@ const styles = StyleSheet.create({
   savebtn: {
     display: "flex",
     alignItems: "center",
-    marginTop: 10
+    marginTop: 20
   },
   backicon: {
     width: 13,
@@ -242,7 +255,9 @@ const MyPill = ({
   Homelosses,
   admin,
   playername,
-  membername
+  membername,
+  coach,
+  player
 }) => {
   const [selected, setSelected] = useState(0);
 
@@ -251,277 +266,519 @@ const MyPill = ({
       <View style={[selected === 2 ? styles.standingscont : styles.no]}>
         <View style={[selected === 3 ? styles.editcont : styles.no]}>
           <View style={[selected === 4 ? styles.addcont : styles.no]}>
-            <View style={styles.container}>
-              <View style={styles.teamcont}>
-                <View style={styles.avatarcont}>
-                  <Avatar />
+            <View style={[selected === 5 ? styles.rostercont : styles.no]}>
+              <View style={[selected === 6 ? styles.rostercont : styles.no]}>
+                <View style={styles.container}>
+                  <View style={styles.teamcont}>
+                    <View style={styles.avatarcont}>
+                      <Avatar/>
+                    </View>
+
+                    <View style={styles.infocont}>
+                      <View>
+                        <Text style={styles.title}>{TeamName}</Text>
+                      </View>
+
+                      <View style={styles.teamtabs}>
+                        <TouchableHighlight
+                          onPress={() => {
+                            setSelected(1);
+                          }}
+                        >
+                          <View style={styles.indivcont}>
+                            {/* ROSTER TEXT STATE START */}
+                            <Text
+                              style={[
+                                selected === 0 ? styles.text : styles.none
+                              ]}
+                            >
+                              Rosters
+                            </Text>
+                            <Text
+                              style={[
+                                selected === 1
+                                  ? styles.textselected
+                                  : styles.none
+                              ]}
+                            >
+                              Rosters
+                            </Text>
+                            <Text
+                              style={[
+                                selected === 2 ? styles.text : styles.none
+                              ]}
+                            >
+                              Rosters
+                            </Text>
+                            <Text
+                              style={[
+                                selected === 3 ? styles.text : styles.none
+                              ]}
+                            >
+                              Rosters
+                            </Text>
+                            <Text
+                              style={[
+                                selected === 4 ? styles.text : styles.none
+                              ]}
+                            >
+                              Rosters
+                            </Text>
+                            <Text
+                              style={[
+                                selected === 5
+                                  ? styles.textselected
+                                  : styles.none
+                              ]}
+                            >
+                              Rosters
+                            </Text>
+                            <Text
+                              style={[
+                                selected === 6
+                                  ? styles.textselected
+                                  : styles.none
+                              ]}
+                            >
+                              Rosters
+                            </Text>
+                            {/* ROSTER TEXT STATE END */}
+                            <View></View>
+                          </View>
+                        </TouchableHighlight>
+
+                        <TouchableHighlight
+                          onPress={() => {
+                            setSelected(2);
+                          }}
+                        >
+                          <View style={styles.indivcont}>
+                            <Text
+                              style={[
+                                selected === 2
+                                  ? styles.textselected
+                                  : styles.text
+                              ]}
+                            >
+                              Standings
+                            </Text>
+                          </View>
+                        </TouchableHighlight>
+
+                        <TouchableHighlight
+                          onPress={() => {
+                            setSelected(3);
+                          }}
+                        >
+                          <View style={styles.indivcont}>
+                            {/* EDIT TEXT STATE START */}
+                            <Text
+                              style={[
+                                selected === 3
+                                  ? styles.textselected
+                                  : styles.none
+                              ]}
+                            >
+                              Edit
+                            </Text>
+                            <Text
+                              style={[
+                                selected === 4
+                                  ? styles.textselected
+                                  : styles.none
+                              ]}
+                            >
+                              Edit
+                            </Text>
+                            <Text
+                              style={[
+                                selected === 2 ? styles.text : styles.none
+                              ]}
+                            >
+                              Edit
+                            </Text>
+                            <Text
+                              style={[
+                                selected === 1 ? styles.text : styles.none
+                              ]}
+                            >
+                              Edit
+                            </Text>
+                            <Text
+                              style={[
+                                selected === 0 ? styles.text : styles.none
+                              ]}
+                            >
+                              Edit
+                            </Text>
+                            <Text
+                              style={[
+                                selected === 5 ? styles.text : styles.none
+                              ]}
+                            >
+                              Edit
+                            </Text>
+                            <Text
+                              style={[
+                                selected === 6 ? styles.text : styles.none
+                              ]}
+                            >
+                              Edit
+                            </Text>
+                            {/* EDIT TEXT STATE END */}
+                            <View></View>
+                          </View>
+                        </TouchableHighlight>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+                {/* Roster info start */}
+                <View
+                  style={[
+                    selected === 0 ||
+                    selected === 2 ||
+                    selected === 3 ||
+                    selected === 4
+                      ? styles.none
+                      : styles.tabcont
+                  ]}
+                >
+                  <MyTab
+                    tab1="Admins"
+                    tab2="Coaches"
+                    tab3="Players"
+                    press1={(tab) => {
+                      setSelected(1);
+                      //alert(tab);
+                    }}
+                    press2={(tab) => {
+                      setSelected(5);
+                      //alert(tab);
+                    }}
+                    press3={(tab) => {
+                      setSelected(6);
+                      //alert(tab);
+                    }}
+                  />
+                </View>
+                <View
+                  style={[selected === 1 ? styles.rosterinfo : styles.none]}
+                >
+                  <View
+                    style={[selected === 1 ? styles.roster : styles.no]}
+                  ></View>
+
+                  {/* ADMIN CONTAINER START */}
+                  <View style={[selected === 1 ? styles.admincont : styles.no]}>
+                    <View
+                      style={[
+                        selected === 1 ? styles.indivadmincont : styles.no
+                      ]}
+                    >
+                      <Avatar />
+                      <Text style={styles.membertext}>{admin}</Text>
+                    </View>
+                    <View
+                      style={[
+                        selected === 1 ? styles.indivadmincont : styles.no
+                      ]}
+                    >
+                      <Avatar />
+                      <Text style={styles.membertext}>{admin}</Text>
+                    </View>
+                    <View
+                      style={[
+                        selected === 1 ? styles.indivadmincont : styles.no
+                      ]}
+                    >
+                      <Avatar />
+                      <Text style={styles.membertext}>{admin}</Text>
+                    </View>
+                  </View>
+                </View>
+                {/* COACH CONTAINER START */}
+                <View
+                  style={[selected === 5 ? styles.rosterinfo : styles.none]}
+                >
+                  <View
+                    style={[selected === 5 ? styles.roster : styles.none]}
+                  ></View>
+
+                  {/* COACH CONTAINER START */}
+                  <View
+                    style={[selected === 5 ? styles.admincont : styles.none]}
+                  >
+                    <View
+                      style={[
+                        selected === 5 ? styles.indivadmincont : styles.none
+                      ]}
+                    >
+                      <Avatar />
+                      <Text style={styles.membertext}>{coach}</Text>
+                    </View>
+                    <View
+                      style={[
+                        selected === 5 ? styles.indivadmincont : styles.none
+                      ]}
+                    >
+                      <Avatar />
+                      <Text style={styles.membertext}>{coach}</Text>
+                    </View>
+                    <View
+                      style={[
+                        selected === 5 ? styles.indivadmincont : styles.none
+                      ]}
+                    >
+                      <Avatar />
+                      <Text style={styles.membertext}>{coach}</Text>
+                    </View>
+                  </View>
+                </View>
+                {/* Players CONTAINER START */}
+                <View
+                  style={[selected === 6 ? styles.rosterinfo : styles.none]}
+                >
+                  <View
+                    style={[selected === 6 ? styles.roster : styles.none]}
+                  ></View>
+                  {/* COACH CONTAINER START */}
+                  <View
+                    style={[selected === 6 ? styles.admincont : styles.none]}
+                  >
+                    <View
+                      style={[
+                        selected === 6 ? styles.indivadmincont : styles.none
+                      ]}
+                    >
+                      <Avatar />
+                      <Text style={styles.membertext}>{player}</Text>
+                    </View>
+                    <View
+                      style={[
+                        selected === 6 ? styles.indivadmincont : styles.none
+                      ]}
+                    >
+                      <Avatar />
+                      <Text style={styles.membertext}>{player}</Text>
+                    </View>
+                    <View
+                      style={[
+                        selected === 6 ? styles.indivadmincont : styles.none
+                      ]}
+                    >
+                      <Avatar />
+                      <Text style={styles.membertext}>{player}</Text>
+                    </View>
+                  </View>
                 </View>
 
-                <View style={styles.infocont}>
+                {/* Standings card info */}
+                <View
+                  style={[selected === 2 ? styles.standingsinfo : styles.none]}
+                >
                   <View>
-                    <Text style={styles.title}>{TeamName}</Text>
+                    <Text style={styles.title}>Standings</Text>
                   </View>
-
-                  <View style={styles.teamtabs}>
-                    <TouchableHighlight
-                      onPress={() => {
-                        setSelected(1);
-                      }}
-                    >
-                      <View style={styles.indivcont}>
-                        <Text
-                          style={[
-                            selected === 1 ? styles.textselected : styles.text
-                          ]}
-                        >
-                          Rosters
-                        </Text>
-                        <View></View>
+                  <View
+                    style={[selected === 2 ? styles.homeawaycont : styles.none]}
+                  >
+                    {/* Home container start */}
+                    <View style={styles.statsindiv}>
+                      <Text style={styles.textbold}>Home</Text>
+                      <View
+                        style={[
+                          selected === 2
+                            ? styles.standingstatscont
+                            : styles.none
+                        ]}
+                      >
+                        <Text style={styles.winnumber}>{Homewins}</Text>
+                        <Text style={styles.textbold}>Wins</Text>
                       </View>
-                    </TouchableHighlight>
-
-                    <TouchableHighlight
-                      onPress={() => {
-                        setSelected(2);
-                      }}
-                    >
-                      <View style={styles.indivcont}>
-                        <Text
-                          style={[
-                            selected === 2 ? styles.textselected : styles.text
-                          ]}
-                        >
-                          Standings
-                        </Text>
+                      <View
+                        style={[
+                          selected === 2
+                            ? styles.standingstatscont
+                            : styles.none
+                        ]}
+                      >
+                        <Text style={styles.losenumber}>{Homelosses}</Text>
+                        <Text style={styles.text}>Losses</Text>
                       </View>
-                    </TouchableHighlight>
+                    </View>
 
-                    <TouchableHighlight
-                      onPress={() => {
-                        setSelected(3);
-                      }}
-                    >
-                      <View style={styles.indivcont}>
-                        <Text
-                          style={[
-                            selected === 3 ? styles.textselected : styles.text
-                          ]}
-                        >
-                          Edit
-                        </Text>
-                        <View></View>
+                    {/* away container start */}
+                    <View style={styles.statsindiv}>
+                      <Text style={styles.textbold}>Away</Text>
+                      <View
+                        style={[
+                          selected === 2
+                            ? styles.standingstatscont
+                            : styles.none
+                        ]}
+                      >
+                        <Text style={styles.winnumber}>{Awaywins}</Text>
+                        <Text style={styles.textbold}>Wins</Text>
                       </View>
-                    </TouchableHighlight>
+                      <View
+                        style={[
+                          selected === 2
+                            ? styles.standingstatscont
+                            : styles.none
+                        ]}
+                      >
+                        <Text style={styles.losenumber}>{Awaylosses}</Text>
+                        <Text style={styles.text}>Losses</Text>
+                      </View>
+                    </View>
                   </View>
                 </View>
-              </View>
-            </View>
-            {/* Roster info start */}
-            <View style={[selected === 1 ? styles.rosterinfo : styles.none]}>
-              <View
-                style={[selected === 1 ? styles.roster : styles.none]}
-              ></View>
-              <MyTab
-                tab1="Admins"
-                tab2="Coaches"
-                tab3="Players"
-                onPress={(tab) => {
-                  setSelected(1);
-                }}
-              />
 
-              {/* ADMIN CONTAINER START */}
-              <View style={[selected === 1 ? styles.admincont : styles.no]}>
-                <View
-                  style={[selected === 1 ? styles.indivadmincont : styles.no]}
+                {/*edit start*/}
+                <TouchableHighlight
+                  onPress={() => {
+                    setSelected(4);
+                  }}
                 >
-                  <Avatar />
-                  <Text style={styles.membertext}>{admin}</Text>
-                </View>
+                  <View
+                    style={[
+                      selected === 3 ? styles.addplayercont : styles.none
+                    ]}
+                  >
+                    <Image
+                      style={[selected === 3 ? styles.addicon : styles.none]}
+                      source={require("../../public/add.png")}
+                    />
+
+                    <Text style={styles.addmembertext}>
+                      Add Admin/Coach/Player
+                    </Text>
+                  </View>
+                </TouchableHighlight>
                 <View
-                  style={[selected === 1 ? styles.indivadmincont : styles.no]}
+                  style={[selected === 3 ? styles.playercont : styles.none]}
                 >
-                  <Avatar />
-                  <Text style={styles.membertext}>{admin}</Text>
+                  {/* INDIVIDUAL MEMBER CONTAINERS  */}
+                  <View
+                    style={[
+                      selected === 3 ? styles.indivplayercont : styles.none
+                    ]}
+                  >
+                    <View style={styles.avatarcont}>
+                      <Avatar />
+                    </View>
+                    <View>
+                      <Text style={styles.membertext}>{membername}</Text>
+                    </View>
+                    <Image
+                      style={[selected === 3 ? styles.trashicon : styles.none]}
+                      source={require("../../public/trash.png")}
+                    />
+                  </View>
+                  {/* INDIVIDUAL MEMBER CONTAINERS  */}
+                  <View
+                    style={[
+                      selected === 3 ? styles.indivplayercont : styles.none
+                    ]}
+                  >
+                    <View style={styles.avatarcont}>
+                      <Avatar />
+                    </View>
+                    <View>
+                      <Text style={styles.membertext}>{membername}</Text>
+                    </View>
+                    <Image
+                      style={[selected === 3 ? styles.trashicon : styles.none]}
+                      source={require("../../public/trash.png")}
+                    />
+                  </View>
+                  {/* INDIVIDUAL MEMBER CONTAINERS  */}
+                  <View
+                    style={[
+                      selected === 3 ? styles.indivplayercont : styles.none
+                    ]}
+                  >
+                    <View style={styles.avatarcont}>
+                      <Avatar />
+                    </View>
+                    <View>
+                      <Text style={styles.membertext}>{membername}</Text>
+                    </View>
+                    <Image
+                      style={[selected === 3 ? styles.trashicon : styles.none]}
+                      source={require("../../public/trash.png")}
+                    />
+                  </View>
                 </View>
+
                 <View
-                  style={[selected === 1 ? styles.indivadmincont : styles.no]}
+                  style={[
+                    selected === 4 ? styles.searchplayercont : styles.none
+                  ]}
                 >
-                  <Avatar />
-                  <Text style={styles.membertext}>{admin}</Text>
-                </View>
-              </View>
-            </View>
-            {/* Standings card info */}
-            <View style={[selected === 2 ? styles.standingsinfo : styles.none]}>
-              <View>
-                <Text style={styles.title}>Standings</Text>
-              </View>
-              <View
-                style={[selected === 2 ? styles.homeawaycont : styles.none]}
-              >
-                {/* Home container start */}
-                <View style={styles.statsindiv}>
-                  <Text style={styles.textbold}>Home</Text>
-                  <View
-                    style={[
-                      selected === 2 ? styles.standingstatscont : styles.none
-                    ]}
+                  <TouchableHighlight
+                    onPress={() => {
+                      setSelected(3);
+                    }}
                   >
-                    <Text style={styles.winnumber}>{Homewins}</Text>
-                    <Text style={styles.textbold}>Wins</Text>
+                    <Image
+                      style={[selected === 4 ? styles.backicon : styles.none]}
+                      source={require("../../public/backarrow.png")}
+                    />
+                  </TouchableHighlight>
+                  <SearchInput />
+                </View>
+                 <View
+                  style={[selected === 4 ? styles.playercontsearch : styles.none]}
+                >
+                {/* INDIVIDUAL MEMBER CONTAINERS ADD SECTION */}
+                <View
+                  style={[
+                    selected === 4 ? styles.indivplayercont : styles.none
+                  ]}
+                >
+                  <View style={styles.avatarcont}>
+                    <Avatar />
                   </View>
-                  <View
-                    style={[
-                      selected === 2 ? styles.standingstatscont : styles.none
-                    ]}
-                  >
-                    <Text style={styles.losenumber}>{Homelosses}</Text>
-                    <Text style={styles.text}>Losses</Text>
+                  <View>
+                    <Text style={styles.membertext}>{membername}</Text>
                   </View>
+                  <MyCheck />
                 </View>
-
-                {/* away container start */}
-                <View style={styles.statsindiv}>
-                  <Text style={styles.textbold}>Away</Text>
-                  <View
-                    style={[
-                      selected === 2 ? styles.standingstatscont : styles.none
-                    ]}
-                  >
-                    <Text style={styles.winnumber}>{Awaywins}</Text>
-                    <Text style={styles.textbold}>Wins</Text>
+                {/* INDIVIDUAL MEMBER CONTAINERS ADD SECTION */}
+                <View
+                  style={[
+                    selected === 4 ? styles.indivplayercont : styles.none
+                  ]}
+                >
+                  <View style={styles.avatarcont}>
+                    <Avatar />
                   </View>
-                  <View
-                    style={[
-                      selected === 2 ? styles.standingstatscont : styles.none
-                    ]}
-                  >
-                    <Text style={styles.losenumber}>{Awaylosses}</Text>
-                    <Text style={styles.text}>Losses</Text>
+                  <View>
+                    <Text style={styles.membertext}>{membername}</Text>
                   </View>
+                  <MyCheck />
+                </View>
+                {/* INDIVIDUAL MEMBER CONTAINERS ADD SECTION */}
+                <View
+                  style={[
+                    selected === 4 ? styles.indivplayercont : styles.none
+                  ]}
+                >
+                  <View style={styles.avatarcont}>
+                    <Avatar />
+                  </View>
+                  <View>
+                    <Text style={styles.membertext}>{membername}</Text>
+                  </View>
+                  <MyCheck />
+                </View>
+                </View>
+                <View style={[selected === 4 ? styles.savebtn : styles.none]}>
+                  <MyButton text="Save" />
                 </View>
               </View>
-            </View>
-
-            {/*edit start*/}
-            <TouchableHighlight
-              onPress={() => {
-                setSelected(4);
-              }}
-            >
-              <View
-                style={[selected === 3 ? styles.addplayercont : styles.none]}
-              >
-                <Image
-                  style={[selected === 3 ? styles.addicon : styles.none]}
-                  source={require("../../public/add.png")}
-                />
-
-                <Text style={styles.addmembertext}>Add Admin/Coach/Player</Text>
-              </View>
-            </TouchableHighlight>
-            <View style={[selected === 3 ? styles.playercont : styles.none]}>
-              {/* INDIVIDUAL MEMBER CONTAINERS  */}
-              <View
-                style={[selected === 3 ? styles.indivplayercont : styles.none]}
-              >
-                <View style={styles.avatarcont}>
-                  <Avatar />
-                </View>
-                <View>
-                  <Text style={styles.membertext}>{membername}</Text>
-                </View>
-                <Image
-                  style={[selected === 3 ? styles.trashicon : styles.none]}
-                  source={require("../../public/trash.png")}
-                />
-              </View>
-              {/* INDIVIDUAL MEMBER CONTAINERS  */}
-              <View
-                style={[selected === 3 ? styles.indivplayercont : styles.none]}
-              >
-                <View style={styles.avatarcont}>
-                  <Avatar />
-                </View>
-                <View>
-                  <Text style={styles.membertext}>{membername}</Text>
-                </View>
-                <Image
-                  style={[selected === 3 ? styles.trashicon : styles.none]}
-                  source={require("../../public/trash.png")}
-                />
-              </View>
-              {/* INDIVIDUAL MEMBER CONTAINERS  */}
-              <View
-                style={[selected === 3 ? styles.indivplayercont : styles.none]}
-              >
-                <View style={styles.avatarcont}>
-                  <Avatar />
-                </View>
-                <View>
-                  <Text style={styles.membertext}>{membername}</Text>
-                </View>
-                <Image
-                  style={[selected === 3 ? styles.trashicon : styles.none]}
-                  source={require("../../public/trash.png")}
-                />
-              </View>
-            </View>
-
-            <View
-              style={[selected === 4 ? styles.searchplayercont : styles.none]}
-            >
-              <TouchableHighlight
-                onPress={() => {
-                  setSelected(3);
-                }}
-              >
-                <Image
-                  style={[selected === 4 ? styles.backicon : styles.none]}
-                  source={require("../../public/backarrow.png")}
-                />
-              </TouchableHighlight>
-              <SearchInput />
-            </View>
-            {/* INDIVIDUAL MEMBER CONTAINERS ADD SECTION */}
-            <View
-              style={[selected === 4 ? styles.indivplayercont : styles.none]}
-            >
-              <View style={styles.avatarcont}>
-                <Avatar />
-              </View>
-              <View>
-                <Text style={styles.membertext}>{membername}</Text>
-              </View>
-              <MyCheck />
-            </View>
-            {/* INDIVIDUAL MEMBER CONTAINERS ADD SECTION */}
-            <View
-              style={[selected === 4 ? styles.indivplayercont : styles.none]}
-            >
-              <View style={styles.avatarcont}>
-                <Avatar />
-              </View>
-              <View>
-                <Text style={styles.membertext}>{membername}</Text>
-              </View>
-              <MyCheck />
-            </View>
-            {/* INDIVIDUAL MEMBER CONTAINERS ADD SECTION */}
-            <View
-              style={[selected === 4 ? styles.indivplayercont : styles.none]}
-            >
-              <View style={styles.avatarcont}>
-                <Avatar />
-              </View>
-              <View>
-                <Text style={styles.membertext}>{membername}</Text>
-              </View>
-              <MyCheck />
-            </View>
-            <View style={[selected === 4 ? styles.savebtn : styles.none]}>
-              <MyButton text="Save" />
             </View>
           </View>
         </View>
@@ -538,7 +795,9 @@ MyPill.defaultProps = {
   Awaylosses: "1",
   admin: " Admin Name",
   playername: "Player Name",
-  membername: "Member Name"
+  membername: "Member Name",
+  coach: "Coach Name",
+  player: "Player Name"
 };
 
 export default MyPill;
