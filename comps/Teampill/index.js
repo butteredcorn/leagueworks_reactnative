@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     width: 145,
     height: 50,
     display: "flex",
-    alignItems: "left",
+    // alignItems: "left",
     justifyContent: "space-between",
     marginLeft: 12
   },
@@ -49,7 +49,6 @@ const styles = StyleSheet.create({
   },
    tabcont: {
     position: "relative",
-    postition:"relative",
     top:25
   },
   standingscont: {
@@ -57,7 +56,7 @@ const styles = StyleSheet.create({
     height: 270,
     backgroundColor: "#ECECEC",
     borderRadius: 50,
-    boxShadow: "4px 4px 8px rgba(0, 0, 0, 0.2)",
+    // boxShadow: "4px 4px 8px rgba(0, 0, 0, 0.2)",
     display: "flex",
     alignItems: "center"
   },
@@ -89,7 +88,7 @@ const styles = StyleSheet.create({
     height: 400,
     backgroundColor: "#ECECEC",
     borderRadius: 50,
-    boxShadow: "4px 4px 8px rgba(0, 0, 0, 0.2)",
+    // boxShadow: "4px 4px 8px rgba(0, 0, 0, 0.2)",
     display: "flex",
     alignItems: "center"
   },
@@ -105,7 +104,7 @@ const styles = StyleSheet.create({
     height: 400,
     backgroundColor: "#ECECEC",
     borderRadius: 50,
-    boxShadow: "4px 4px 8px rgba(0, 0, 0, 0.2)",
+    // boxShadow: "4px 4px 8px rgba(0, 0, 0, 0.2)",
     display: "flex",
     alignItems: "center"
   },
@@ -114,7 +113,7 @@ const styles = StyleSheet.create({
     height: 440,
     backgroundColor: "#ECECEC",
     borderRadius: 50,
-    boxShadow: "4px 4px 8px rgba(0, 0, 0, 0.2)",
+    // boxShadow: "4px 4px 8px rgba(0, 0, 0, 0.2)",
     display: "flex",
     alignItems: "center",
   },
@@ -213,7 +212,7 @@ const styles = StyleSheet.create({
     color: "#111111"
   },
   losenumber: {
-    fontWeight: "light",
+    fontWeight: "100",
     fontSize: 16,
     paddingBottom: 5,
     color: "#111111"
@@ -242,7 +241,7 @@ const styles = StyleSheet.create({
     display: "none"
   },
   show: {
-    display: "inline"
+    display: "flex"
   }
 });
 
