@@ -7,35 +7,37 @@ import MyPill from "../../comps/Teampill";
 const styles = StyleSheet.create({
     container: {
         position: "relative",
-        height: "100%"
-    },
-    
-    header: {
-            fontSize: 36,
-            fontWeight: "bold",
-            color: "#333333",
-            width: "90%",
-            height: 40,
-            marginTop: 50,
-            marginBottom: 15
+        height: "100%",
+        alignItems: "center"
     },
     navbar: {
         position: "absolute",
-        bottom: 0
+        bottom: 0,
+        width: "100%"
     }, 
     pillcont: {
         alignItems: "center"
     },
     pillMargin: {
         marginBottom: 30
-    }
+    },
+    pageName:{
+        fontSize: 36,
+        fontWeight: "bold",
+        color: "#333333",
+        width: "90%",
+        height: 45,
+        marginTop: 50,
+        marginBottom: 15,
+        paddingLeft: "5%"
+    },
 });
 
 export default function Teams(){
 return<View>
     <ScrollView contentContainerStyles={styles.container}>
     <View style={styles.header}>
-        <MyHeader head="Teams"></MyHeader>
+        <Text style={styles.pageName}>Teams</Text>
     </View>
     <View style={styles.pillcont}>
         <View style={styles.pillMargin}>
@@ -55,8 +57,9 @@ return<View>
         </View>
     </View>
     </ScrollView>
+
     <View  style={styles.navbar}>
-        <NavBar></NavBar>
+        <NavBar />
     </View>
 </View>
 

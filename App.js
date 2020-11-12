@@ -22,23 +22,26 @@ import Schedule from './pages/schedule';
 const App = () => {
   return ( <View>
     
-    {/* <NativeRouter>
-      <Route path ="/teams" component={Teams}></Route>
-      <Route path ="/account" component={Account}></Route>
-      <Route path ="/schedule" component={Schedule}></Route>
+    <NativeRouter>
       <Route path ="/" component={Teams}></Route>
-    </NativeRouter> */}
+      <Route path ="/teams" component={Teams}></Route>
+      <Route path ="/schedule" component={Schedule}></Route>
+      <Route path ="/messages" component={Messages}></Route>
+      <Route path ="/account" component={Account}></Route>
+    </NativeRouter>
 
     {/* <AdminReg /> */}
     {/* <PlayerReg /> */}
-    <FinishPlayerReg />
-    <PlayerWaiver/>
-    <Teams />
-    <Messages />
-    <NewMsg />
-    <Chat />
-    <Teams />
-    <CreateEvent />
+    {/* <FinishPlayerReg /> */}
+    {/* <PlayerWaiver/> */}
+    {/* <Teams /> */}
+    {/* <Messages /> */}
+    {/* <NewMsg /> */}
+    {/* <Chat /> */}
+    {/* <Teams /> */}
+    {/* <CreateEvent /> */}
+    {/* <Account /> */}
+
 
   </View>
   )
