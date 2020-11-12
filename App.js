@@ -12,30 +12,32 @@ import PlayerWaiver from "./pages/playerwaiver";
 import Teams from "./pages/teams";
 import Messages from "./pages/messages"
 import NewMsg from "./pages/messages/newmsg"
-import Chat from "./pages/messages/chat"import Account from './pages/account';
+import Chat from "./pages/messages/chat"
+import Account from './pages/account';
 import NavBar from './comps/navbar';
 import Schedule from './pages/schedule';
+
+
+
 const App = () => {
   return ( <View>
     
-    <NativeRouter>
-<Route path ="/teams" component={Teams}></Route>
-<Route path ="/account" component={Account}></Route>
-<Route path ="/schedule" component={Schedule}></Route>
-<Route path ="/" component={Teams}></Route>
-    < /NativeRouter>
+    {/* <NativeRouter>
+      <Route path ="/teams" component={Teams}></Route>
+      <Route path ="/account" component={Account}></Route>
+      <Route path ="/schedule" component={Schedule}></Route>
+      <Route path ="/" component={Teams}></Route>
+    </NativeRouter> */}
 
-const App = () => {
-  return<View>
-    {/* <AdminReg/> */}
-    {/* <PlayerReg></PlayerReg> */}
-    {/* <FinishPlayerReg></FinishPlayerReg> */}
-    {/* <PlayerWaiver></PlayerWaiver> */}
-    {/* <Teams /> */}
-    {/* <Messages /> */}
-    {/* <NewMsg /> */}
-    {/* <Chat /> */}
-    {/* <Teams /> */}
+    {/* <AdminReg /> */}
+    {/* <PlayerReg /> */}
+    <FinishPlayerReg />
+    <PlayerWaiver/>
+    <Teams />
+    <Messages />
+    <NewMsg />
+    <Chat />
+    <Teams />
     <CreateEvent />
 
   </View>
