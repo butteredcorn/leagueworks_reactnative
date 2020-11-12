@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {View, StyleSheet, Text} from "react-native";
 import MyHeader from "../../comps/header";
 import Avatar from "../../comps/Avatar";
 import NavBar from "../../comps/navbar"
 import MyTab from "../../comps/Tab";
-
+import Profilepost from "../../comps/profilepost";
 
 const styles = StyleSheet.create({
     container:{
@@ -12,39 +12,79 @@ const styles = StyleSheet.create({
         position: "relative",
         height: "100%",
     },
-    pageName:{
-        fontSize: 36,
-        fontWeight: "bold",
-        color: "#333333",
-        width: "90%",
-        height: 40,
-        marginTop: 50,
-        marginBottom: 15
+    navbar:{
+      position:"absolute",
+      bottom:0,
     },
-    profile:{
-        width: 85,
-        height: 85
+    headercont:{
+      marginTop:50,
+      width:300,
+      height:50
     },
-    test:{
-        height: 400,
-        width: "100%",
-        backgroundColor: "pink"
+    profilecont:{
+      width:325,
+      height:200,
+      display:"flex",
+      alignItems:"center",
+      justifyContent:"space-around",
+      // backgroundColor:"green"
+    },
+    avatarcont:{
+      // backgroundColor:"blue",
+      height:50
+    },
+    postcont:{
+      marginBottom:15
+    },
+    none:{
+      display:"none"
     }
 })
 
 
 export default function Account(){
+const [selected, setSelected] = useState(0);
 return <View style={styles.container}>
+
+<View style={styles.headercont}>
+<MyHeader  head="Account"/>
+</View>
     
-    
-    <Text style={styles.pageName}>Account</Text>
-    <Avatar style={styles.profile} />
-    <MyHeader head="Amanda Austins" />
-    <MyTab tab1="Posts" tab2="Profile" tab3="Settings" />
-    {/* This is just filler space until figure out how switch between the tabs */}
-    <View style={styles.test} />
+<View style={styles.profilecont}>
+
+<View style={styles.avatarcont}>
+<Avatar/>
+</View>
+
+<View>
+<MyHeader  head="Profile"/>
+</View>
+
+<View>
+<MyTab tab1="Posts" tab2="Profile" tab3="Settings" 
+onPress={(tab) => {
+  setSelected(0)
+   }}/>
+</View>
+</View>
+
+<View>
+<View style={[selected === 0 ? styles.postcont : styles.none]}>
+<Profilepost />
+</View>
+<View style={[selected === 0 ? styles.postcont : styles.none]}>
+<Profilepost />
+</View><View style={[selected === 0 ? styles.postcont : styles.none]}>
+<Profilepost />
+</View>
+</View>
+
+
+
+  
+  <View style={styles.navbar}>
     <NavBar />
-    
+    </View>
     
     </View>
 }
