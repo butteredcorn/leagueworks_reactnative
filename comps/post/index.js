@@ -9,11 +9,29 @@ const styles = StyleSheet.create({
         minHeight:400,
         maxHeight:600,
         borderRadius:25,
-        margin: 10
+        margin: 10,
+        position: "relative",
+        alignItems: "center"
+    },
+    imgCont:{
+        width: "100%",
+        maxHeight: 100
+    },
+    img:{
+        width: "100%",
+        maxHeight: 175
+    },
+    buttonCont: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        height: 40,
+        width: "80%",
+        position: "absolute",
+        bottom: 10
     }
 })
 
-const Post = ({Username, Title, Description})=> {
+const Post = ({Username, Title, Description, img})=> {
 
     
 
@@ -39,6 +57,7 @@ const Post = ({Username, Title, Description})=> {
                 maxWidth:350,
             }}>
 
+
                 {/* Title */}
                 <Text style={{
                     fontWeight:"bold",
@@ -50,22 +69,18 @@ const Post = ({Username, Title, Description})=> {
                     color:"#333333"
                 }}>{Description}</Text> 
             </View>
-            <View>
-                {/* image here */}
+
+
+            {/* Image */}
+            <View style={styles.imgCont}>
+                <Image source={img} style={styles.img} resizeMode="cover"/>
             </View>
-            <View 
-            style={{
-                flexDirection:"row",
-                position:"relative",
-                maxWidth:350,
-                bottom:-180,
-                right:-32,
-                maxWidth:300
-            }}
-            >
 
 
-                <View style={{flexDirection:"row", justifyContent:"space-between", width:"90%"}}>
+
+
+
+                <View style={styles.buttonCont}>
                     <TouchableOpacity>
                     <Image 
                     source={require("../../public/heart.png")}
@@ -73,7 +88,6 @@ const Post = ({Username, Title, Description})=> {
                         width:30,
                         height:30,
                         resizeMode:"contain",
-                        marginRight:10
                     }}
                     />
                     </TouchableOpacity>
@@ -88,7 +102,6 @@ const Post = ({Username, Title, Description})=> {
                         />
                     </TouchableOpacity>
                 </View>
-            </View>
 
         </View>
     )

@@ -27,6 +27,7 @@ const styles = StyleSheet.create({
     },
 });
 
+
 export default function Home(){
 return<View>
     <ScrollView contentContainerStyles={styles.container}>
@@ -37,7 +38,8 @@ return<View>
     <View style={{alignItems:"center"}}>
         <Post Username="Ally Lee" 
         Title="BC SR Volleyball Provincials" 
-        Description="Bring your A-game this Saturday!" />
+        Description="Bring your A-game this Saturday!"
+        img={require("../../public/girl.jpg")} />
         <Post />
         <Post />
     </View>
