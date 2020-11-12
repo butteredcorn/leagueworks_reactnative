@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontWeight: "bold",
-    fontSize: "16",
+    fontSize: 16,
     paddingBottom: 5
   },
   noborder: {
