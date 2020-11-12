@@ -5,7 +5,8 @@ import MyLargeButton from "../../comps/buttonlarge";
 
 const styles = StyleSheet.create({
     bigCont: {
-        alignItems: "center"
+        alignItems: "center",
+        height: "100%"
     },
     logo: {
         marginTop: 100,
