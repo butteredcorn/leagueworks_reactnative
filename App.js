@@ -14,22 +14,22 @@ import Messages from "./pages/messages"
 import NewMsg from "./pages/messages/newmsg"
 import Chat from "./pages/messages/chat"
 import Account from './pages/account';
-import NavBar from './comps/navbar';
 import Schedule from './pages/schedule';
-
+import Home from './pages/home'
 
 
 const App = () => {
   return ( <View>
     
-    <NativeRouter>
+    {/* <NativeRouter>
       <Route path ="/" component={Teams}></Route>
       <Route path ="/teams" component={Teams}></Route>
       <Route path ="/schedule" component={Schedule}></Route>
       <Route path ="/messages" component={Messages}></Route>
       <Route path ="/account" component={Account}></Route>
-    </NativeRouter>
+    </NativeRouter> */}
 
+    <Home />
     {/* <AdminReg /> */}
     {/* <PlayerReg /> */}
     {/* <FinishPlayerReg /> */}

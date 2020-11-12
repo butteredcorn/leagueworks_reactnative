@@ -5,14 +5,15 @@ import Avatar from "../Avatar";
 const styles = StyleSheet.create({
     container:{
         backgroundColor:"#ECECEC",
-        width:350,
+        width:"90%",
         minHeight:400,
         maxHeight:600,
-        borderRadius:25
+        borderRadius:25,
+        margin: 10
     }
 })
 
-const Post = ()=> {
+const Post = ({Username, Title, Description})=> {
 
     
 
@@ -31,14 +32,23 @@ const Post = ()=> {
                     bottom:-15,
                     fontWeight:"bold",
                     color:"#F35B04"
-                }}>username</Text>
+                }}>{Username}</Text>
             </View>
             <View style={{
                 margin:20,
                 maxWidth:350,
             }}>
-                <Text>Title</Text>
-                <Text>Description</Text> 
+
+                {/* Title */}
+                <Text style={{
+                    fontWeight:"bold",
+                    color:"#333333"
+                }}>{Title}</Text>
+
+                {/* Description */}
+                <Text style={{
+                    color:"#333333"
+                }}>{Description}</Text> 
             </View>
             <View>
                 {/* image here */}
@@ -53,27 +63,31 @@ const Post = ()=> {
                 maxWidth:300
             }}
             >
-                <TouchableOpacity>
-                <Image 
-                source={require("../../public/heart.png")}
-                style={{
-                    width:30,
-                    height:30,
-                    resizeMode:"center",
-                    marginRight:10
-                }}
-                />
-                </TouchableOpacity>
-                <TouchableOpacity>
+
+
+                <View style={{flexDirection:"row", justifyContent:"space-between", width:"90%"}}>
+                    <TouchableOpacity>
                     <Image 
-                    source={require("../../public/trash.png")}
+                    source={require("../../public/heart.png")}
                     style={{
                         width:30,
                         height:30,
-                        resizeMode:"center"
+                        resizeMode:"contain",
+                        marginRight:10
                     }}
                     />
-                </TouchableOpacity>
+                    </TouchableOpacity>
+                    <TouchableOpacity>
+                        <Image 
+                        source={require("../../public/trash.png")}
+                        style={{
+                            width:30,
+                            height:30,
+                            resizeMode:"contain"
+                        }}
+                        />
+                    </TouchableOpacity>
+                </View>
             </View>
 
         </View>
