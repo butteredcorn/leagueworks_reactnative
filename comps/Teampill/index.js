@@ -30,13 +30,13 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
-    paddingLeft: 15
+    paddingLeft: 15,
   },
   infocont: {
     width: 145,
     height: 50,
     display: "flex",
-
+    alignItems: "left",
     justifyContent: "space-between",
     marginLeft: 12
   },
@@ -52,10 +52,7 @@ const styles = StyleSheet.create({
     height: 270,
     backgroundColor: "#ECECEC",
     borderRadius: 50,
-    shadowOffset: { width: 0, height: 4 },
-    shadowColor: "black",
-    shadowOpacity: 0.2,
-    shadowRadius: 10,
+    boxShadow: "4px 4px 8px rgba(0, 0, 0, 0.2)",
     display: "flex",
     alignItems: "center"
   },
@@ -87,10 +84,7 @@ const styles = StyleSheet.create({
     height: 400,
     backgroundColor: "#ECECEC",
     borderRadius: 50,
-    shadowOffset: { width: 0, height: 4 },
-    shadowColor: "black",
-    shadowOpacity: 0.2,
-    shadowRadius: 10,
+    boxShadow: "4px 4px 8px rgba(0, 0, 0, 0.2)",
     display: "flex",
     alignItems: "center"
   },
@@ -106,26 +100,21 @@ const styles = StyleSheet.create({
     height: 400,
     backgroundColor: "#ECECEC",
     borderRadius: 50,
-    shadowOffset: { width: 0, height: 4 },
-    shadowColor: "black",
-    shadowOpacity: 0.2,
-    shadowRadius: 10,
+    boxShadow: "4px 4px 8px rgba(0, 0, 0, 0.2)",
     display: "flex",
     alignItems: "center"
   },
   addcont: {
     width: 325,
-    height: 390,
+    height: 440,
     backgroundColor: "#ECECEC",
     borderRadius: 50,
-    shadowOffset: { width: 0, height: 4 },
-    shadowColor: "black",
-    shadowOpacity: 0.2,
-    shadowRadius: 10,
+    boxShadow: "4px 4px 8px rgba(0, 0, 0, 0.2)",
     display: "flex",
     alignItems: "center"
   },
   addplayercont: {
+
     display: "flex",
     flexDirection: "row",
     top: 30,
@@ -140,12 +129,12 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   indivplayercont: {
-    width: 250,
+    width: 225,
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    marginTop: 10
+    marginTop:15
   },
   searchplayercont: {
     width: 325,
@@ -211,7 +200,7 @@ const styles = StyleSheet.create({
     color: "#111111"
   },
   losenumber: {
-    fontWeight: "200",
+    fontWeight: "light",
     fontSize: 16,
     paddingBottom: 5,
     color: "#111111"
@@ -225,20 +214,22 @@ const styles = StyleSheet.create({
   addmembertext: {
     fontWeight: "bold",
     fontSize: 12,
-    paddingBottom: 5,
-    color: "#111111"
+    color: "#111111",
+    paddingLeft:10
   },
   membertext: {
     fontWeight: "bold",
     fontSize: 18,
-    paddingBottom: 5,
     color: "#111111"
+  },
+  avatarcont: {
+    height:50
   },
   none: {
     display: "none"
   },
   show: {
-    display: "flex"
+    display: "inline"
   }
 });
 
@@ -262,8 +253,8 @@ const MyPill = ({
           <View style={[selected === 4 ? styles.addcont : styles.no]}>
             <View style={styles.container}>
               <View style={styles.teamcont}>
-                <View>
-                  <Avatar width={75} height={75} />
+                <View style={styles.avatarcont}>
+                  <Avatar />
                 </View>
 
                 <View style={styles.infocont}>
@@ -435,7 +426,7 @@ const MyPill = ({
               <View
                 style={[selected === 3 ? styles.indivplayercont : styles.none]}
               >
-                <View>
+                <View style={styles.avatarcont}>
                   <Avatar />
                 </View>
                 <View>
@@ -450,7 +441,7 @@ const MyPill = ({
               <View
                 style={[selected === 3 ? styles.indivplayercont : styles.none]}
               >
-                <View>
+                <View style={styles.avatarcont}>
                   <Avatar />
                 </View>
                 <View>
@@ -465,7 +456,7 @@ const MyPill = ({
               <View
                 style={[selected === 3 ? styles.indivplayercont : styles.none]}
               >
-                <View>
+                <View style={styles.avatarcont}>
                   <Avatar />
                 </View>
                 <View>
@@ -497,7 +488,7 @@ const MyPill = ({
             <View
               style={[selected === 4 ? styles.indivplayercont : styles.none]}
             >
-              <View>
+              <View style={styles.avatarcont}>
                 <Avatar />
               </View>
               <View>
@@ -509,7 +500,7 @@ const MyPill = ({
             <View
               style={[selected === 4 ? styles.indivplayercont : styles.none]}
             >
-              <View>
+              <View style={styles.avatarcont}>
                 <Avatar />
               </View>
               <View>
@@ -521,7 +512,7 @@ const MyPill = ({
             <View
               style={[selected === 4 ? styles.indivplayercont : styles.none]}
             >
-              <View>
+              <View style={styles.avatarcont}>
                 <Avatar />
               </View>
               <View>
