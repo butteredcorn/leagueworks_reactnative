@@ -26,8 +26,9 @@ const styles = StyleSheet.create({
         height: 85
     },
     test:{
-        height: 300,
-        width: "100%"
+        height: 400,
+        width: "100%",
+        backgroundColor: "pink"
     }
 })
 

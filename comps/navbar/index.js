@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
   },
   active: {
     height: 6,
-    width: "100%",
+    // width: "100%",
     backgroundColor: "#F35B04",
     marginBottom: 15
   },
@@ -45,9 +45,7 @@ const NavBar = () => {
         <TouchableOpacity style={styles.icon}
           // style={{ height: "85pt", width: "20%", alignItems: "center" }}
         >
-
           <View style={[styles.active]} />
-         
           <Image source={require('../../public/home.png')} style={styles.iconImg} />
           {/* <MdHome size="50" color="#F35B04" /> */}
           </TouchableOpacity>
@@ -58,7 +56,6 @@ const NavBar = () => {
         <TouchableOpacity style={styles.icon}
           // style={{ height: "85pt", width: "20%", alignItems: "center" }}
         >
-          
           <View style={styles.active} />
           <Image source={require('../../public/team.png')} style={styles.iconImg} />
           {/* <MdPeople size="50" color="#F35B04" /> */}
@@ -79,6 +76,7 @@ const NavBar = () => {
 
 
         {/* Messages */}
+        <Link to='/messages'>
         <TouchableOpacity style={styles.icon}
           // style={{ height: "85pt", width: "20%", alignItems: "center" }}
         >
@@ -86,6 +84,7 @@ const NavBar = () => {
           <Image source={require('../../public/messages.png')} style={styles.iconImg} />
           {/* <MdChatBubble size="50" color="#F35B04" /> */}
         </TouchableOpacity>
+        </Link>
 
 
         {/* Account */}

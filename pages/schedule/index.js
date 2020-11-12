@@ -1,5 +1,5 @@
 import React from "react";
-import {View, ScrollView, StyleSheet, Image, TouchableOpacity} from "react-native";
+import {View, ScrollView, StyleSheet, Image, TouchableOpacity, Text} from "react-native";
 import {CalendarList} from 'react-native-calendars';
 import EventSection from "../../comps/EventSection";
 import MyHeader from "../../comps/header";
@@ -15,15 +15,17 @@ const styles = StyleSheet.create({
         top:50,
         flexDirection:"row",
         alignItems:"center",
-        justifyContent:"center"
+        justifyContent:"space-between",
+        width: "90%"
     },
-    pagetitle:{
-        position:"relative",
-        left:-78
+    pageName:{
+        fontSize: 36,
+        fontWeight: "bold",
+        color: "#333333",
+        height: 45,
     },
     edit:{
         position:"relative",
-        right:-90
     },
     calendar:{
         position:"relative",
@@ -39,7 +41,8 @@ const styles = StyleSheet.create({
     },
     navbar:{
         position:"absolute",
-        bottom: 0
+        bottom: 0,
+        width: "100%"
     }
 })
 
@@ -50,7 +53,7 @@ export default function Schedule(){
         {/* Header */}
         <View style={styles.header}>
             <View style={styles.pagetitle}>
-                <MyHeader  head="Schedule"/>
+                <Text style={styles.pageName}>Teams</Text>
             </View>
             <TouchableOpacity style={styles.edit}>
                 <Image source={require("../../public/edit.png")}/>
@@ -69,16 +72,16 @@ export default function Schedule(){
             textMonthFontWeight:"bold",
             textDayHeaderFontWeight:"bold"
         }}
-  // Callback which gets executed when visible months change in scroll view. Default = undefined
-  onVisibleMonthsChange={(months) => {console.log('now these months are visible', months);}}
-  // Max amount of months allowed to scroll to the past. Default = 50
-  pastScrollRange={50}
-  // Max amount of months allowed to scroll to the future. Default = 50
-  futureScrollRange={50}
-  // Enable or disable scrolling of calendar list
-  scrollEnabled={true}
-  // Enable or disable vertical scroll indicator. Default = false
-  showScrollIndicator={true}/>
+        // Callback which gets executed when visible months change in scroll view. Default = undefined
+        onVisibleMonthsChange={(months) => {console.log('now these months are visible', months);}}
+        // Max amount of months allowed to scroll to the past. Default = 50
+        pastScrollRange={50}
+        // Max amount of months allowed to scroll to the future. Default = 50
+        futureScrollRange={50}
+        // Enable or disable scrolling of calendar list
+        scrollEnabled={true}
+        // Enable or disable vertical scroll indicator. Default = false
+        showScrollIndicator={true}/>
         </View>
 
         {/* Event List */}
