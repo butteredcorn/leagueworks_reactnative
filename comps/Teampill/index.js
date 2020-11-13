@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     width: 145,
     height: 50,
     display: "flex",
-    // alignItems: "left",
+    alignItems: "flex-start",
     justifyContent: "space-between",
     marginLeft: 12
   },
@@ -56,7 +56,9 @@ const styles = StyleSheet.create({
     height: 270,
     backgroundColor: "#ECECEC",
     borderRadius: 50,
-    // boxShadow: "4px 4px 8px rgba(0, 0, 0, 0.2)",
+    shadowOffset: { width: 0, height: 4 },
+    shadowColor: "black",
+    shadowOpacity: 0.2,
     display: "flex",
     alignItems: "center"
   },
@@ -88,7 +90,9 @@ const styles = StyleSheet.create({
     height: 400,
     backgroundColor: "#ECECEC",
     borderRadius: 50,
-    // boxShadow: "4px 4px 8px rgba(0, 0, 0, 0.2)",
+    shadowOffset: { width: 0, height: 4 },
+    shadowColor: "black",
+    shadowOpacity: 0.2,
     display: "flex",
     alignItems: "center"
   },
@@ -104,7 +108,9 @@ const styles = StyleSheet.create({
     height: 400,
     backgroundColor: "#ECECEC",
     borderRadius: 50,
-    // boxShadow: "4px 4px 8px rgba(0, 0, 0, 0.2)",
+    shadowOffset: { width: 0, height: 4 },
+    shadowColor: "black",
+    shadowOpacity: 0.2,
     display: "flex",
     alignItems: "center"
   },
@@ -113,7 +119,9 @@ const styles = StyleSheet.create({
     height: 440,
     backgroundColor: "#ECECEC",
     borderRadius: 50,
-    // boxShadow: "4px 4px 8px rgba(0, 0, 0, 0.2)",
+    shadowOffset: { width: 0, height: 4 },
+    shadowColor: "black",
+    shadowOpacity: 0.2,
     display: "flex",
     alignItems: "center",
   },
@@ -241,7 +249,7 @@ const styles = StyleSheet.create({
     display: "none"
   },
   show: {
-    display: "flex"
+    display:"flex"
   }
 });
 
