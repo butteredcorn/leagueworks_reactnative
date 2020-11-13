@@ -9,7 +9,7 @@ import Addbutton from "../../comps/addbutton";
 
 const styles = StyleSheet.create({
     container:{
-        alignItems:"center"
+        alignItems:"center",
     }
 })
 
@@ -77,9 +77,11 @@ return<View style={styles.container}>
         position:"absolute",
         bottom:-87
     }}>
+        <TouchableOpacity>
         <MyLargeButton 
         text="Next"
         />
+        </TouchableOpacity>
     </View>    
 
 
