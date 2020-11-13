@@ -2,8 +2,6 @@ import React from "react";
 import {StyleSheet, Text, View } from "react-native";
 import {NativeRouter, Route, Link} from "react-router-native";
 
-
-
 import CreateEvent from "./pages/createevent";
 import AdminReg from "./pages/adminreg";
 import PlayerReg from "./pages/PlayerReg";
@@ -13,19 +11,29 @@ import Teams from "./pages/teams";
 import Account from './pages/account';
 import NavBar from './comps/navbar';
 import Schedule from './pages/schedule';
+import Avatar from "./comps/Avatar";
+
 const App = () => {
-  return ( <View>
+  return ( <View style={styles.cont}>
+    <Avatar dim={200} />  {/* this is how to resize avatar with dim prop*/}
     
-    <NativeRouter>
+    {/* <NativeRouter>
 <Route path ="/teams" component={Teams}></Route>
 <Route path ="/account" component={Account}></Route>
 <Route path ="/schedule" component={Schedule}></Route>
 <Route path ="/" component={Teams}></Route>
 
-    </NativeRouter>
+    </NativeRouter> */}
   </View>
   )
 };
 
+const styles = StyleSheet.create({
+  cont:{
+    flex:1,
+    justifyContent:"center",
+    alignItems:"center"
+  }
+})
 
 export default App;
