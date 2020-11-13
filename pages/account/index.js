@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import {View, StyleSheet, Text} from "react-native";
+import {View, StyleSheet, Text, Image} from "react-native";
 import MyHeader from "../../comps/header";
 import Avatar from "../../comps/Avatar";
 import NavBar from "../../comps/navbar"
 import MyTab from "../../comps/Tab";
 import Profilepost from "../../comps/profilepost";
+import Input from "../../comps/input";
 
 const styles = StyleSheet.create({
     container:{
@@ -29,12 +30,68 @@ const styles = StyleSheet.create({
       justifyContent:"space-around",
       // backgroundColor:"green"
     },
+    profiletabcont: {
+      width:275,
+      height:230,
+      display:"flex",
+      alignItems:"center",
+      justifyContent:"space-between",
+      position:"relative",
+      top:30
+    },
     avatarcont:{
       // backgroundColor:"blue",
       height:50
     },
+    arrowcont:{
+      height:20,
+      width:13
+    },
+    bellcont:{
+      height:18,
+      width:18
+    },
     postcont:{
       marginBottom:15
+    },
+    settingscont:{
+      width:275,
+      height:160,
+      display:"flex",
+      alignItems:"center",
+      justifyContent:"space-between",
+      position:"relative",
+      top:40
+    },
+    indivsettingscont:{
+      width:275,
+      height:10,
+      display:"flex",
+      flexDirection:"row",
+      alignItems:"center",
+      justifyContent:"space-between",
+
+    },
+    infosettingscont:{
+      width:135,
+      height:21,
+      display:"flex",
+      flexDirection:"row",
+      alignContent:"center",
+      justifyContent:"space-between",
+    },
+    borderline: {
+      width:330,
+      borderWidth:3,
+      borderColor:"#ECECEC"
+    },
+    textstyle:{
+      fontSize:16,
+      fontWeight:"bold",
+    },
+    textcont:{
+      width:100,
+      height:20
     },
     none:{
       display:"none"
@@ -62,13 +119,20 @@ return <View style={styles.container}>
 
 <View>
 <MyTab tab1="Posts" tab2="Profile" tab3="Settings" 
-onPress={(tab) => {
-  setSelected(0)
-   }}/>
+press1={(tab) => {
+  setSelected(0);
+        }}
+  press2={(tab) => {
+  setSelected(1);
+  }}
+  press3={(tab) => {
+  setSelected(2);
+  }}/>
 </View>
 </View>
 
 <View>
+{/* POSTS START */}
 <View style={[selected === 0 ? styles.postcont : styles.none]}>
 <Profilepost />
 </View>
@@ -77,7 +141,73 @@ onPress={(tab) => {
 </View><View style={[selected === 0 ? styles.postcont : styles.none]}>
 <Profilepost />
 </View>
+{/* POSTS END */}
+{/* Profile Start */}
+<View style={[selected === 1 ? styles.profiletabcont : styles.none]}>
+<View style={[selected === 1 ? styles.postcont : styles.none]}>
+<Input text="Name" />
 </View>
+<View style={[selected === 1 ? styles.postcont : styles.none]}>
+<Input text="Email" />
+</View>
+<View style={[selected === 1 ? styles.postcont : styles.none]}>
+<Input text="ID Number" />
+</View>
+</View>
+{/* Profile End */}
+{/* SETTINGS START */}
+<View style={[selected === 2 ? styles.settingscont : styles.none]}>
+
+<View style={[selected === 2 ? styles.indivsettingscont : styles.none]}>
+<View style={[selected === 2 ? styles.infosettingscont : styles.none]}>
+<Image source={require("../../public/bell.png")} style={styles.bellcont}></Image>
+<View style={styles.textcont}>
+<Text style={styles.textstyle}>Notifications</Text>
+</View>
+</View>
+<View style={styles.iconcont}>
+<Image source={require("../../public/farrow.png")} style={styles.arrowcont}>
+</Image>
+</View>
+</View>
+
+<View style={[selected === 2 ? styles.borderline : styles.none]}>
+</View>
+
+<View style={[selected === 2 ? styles.indivsettingscont : styles.none]}>
+<View style={[selected === 2 ? styles.infosettingscont : styles.none]}>
+<Image source={require("../../public/lock.png")} style={styles.bellcont}></Image>
+<View style={styles.textcont}>
+<Text style={styles.textstyle}>Password</Text>
+</View>
+</View>
+<View style={styles.iconcont}>
+<Image source={require("../../public/farrow.png")} style={styles.arrowcont}>
+</Image>
+</View>
+</View>
+
+<View style={[selected === 2 ? styles.borderline : styles.none]}>
+</View>
+
+<View style={[selected === 2 ? styles.indivsettingscont : styles.none]}>
+<View style={[selected === 2 ? styles.infosettingscont : styles.none]}>
+<Image source={require("../../public/question.png")} style={styles.bellcont}></Image>
+<View style={styles.textcont}>
+<Text style={styles.textstyle}>Help</Text>
+</View>
+</View>
+<View style={styles.iconcont}>
+<Image source={require("../../public/farrow.png")} style={styles.arrowcont}>
+</Image>
+</View>
+</View>
+
+</View>
+{/* SETTINGS End */}
+</View>
+
+
 
 
 
