@@ -61,10 +61,10 @@ return<View>
     </View>
 
     </ScrollView>
-
+{/* 
     <View  style={styles.navbar}>
         <NavBar />
-    </View>
+    </View> */}
 </View>
 
 }

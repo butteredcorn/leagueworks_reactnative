@@ -16,13 +16,19 @@ import Chat from "./pages/messages/chat"
 import Account from './pages/account';
 import Schedule from './pages/schedule';
 import Home from './pages/home'
+import NavBar from "./comps/navbar";
+
+
 
 
 const App = () => {
   return ( <View>
-    
+
     <NativeRouter>
-      <Route path ="/" component={Home}></Route>
+
+
+    <NavBar />
+      <Route exact path ="/" component={Home}></Route>
       <Route path ="/teams" component={Teams}></Route>
       <Route path ="/schedule" component={Schedule}></Route>
       <Route path ="/messages" component={Messages}></Route>
@@ -38,7 +44,6 @@ const App = () => {
     {/* <Messages /> */}
     {/* <NewMsg /> */}
     {/* <Chat /> */}
-    {/* <Teams /> */}
     {/* <CreateEvent /> */}
     {/* <Account /> */}
 

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { View, StyleSheet, TouchableOpacity, Image } from "react-native";
-import { Link } from "react-router-native";
+import { Link, useHistory } from "react-router-native";
 
 const styles = StyleSheet.create({
   container: {
@@ -38,36 +38,39 @@ const styles = StyleSheet.create({
 
 const NavBar = () => {
   const [selected, setSelected] = useState(0);
-
+  const history = useHistory();
   return (
     <View style={styles.container}>
       {/* Home */}
-      <View style={styles.iconCont}>
-        <TouchableOpacity
-          style={styles.icon}
-          onPress={() => {
-            setSelected(0);
-          }}
-          // style={{ height: "85pt", width: "20%", alignItems: "center" }}
-        >
-          <View style={[styles.active]} />
-          <Image
-            source={require("../../public/home.png")}
-            style={[selected === 0 ? styles.iconImg : styles.none]}
-          />
-          <Image
-            source={require("../../public/home2.png")}
-            style={styles.iconImg}
-          />
-          {/* <MdHome size="50" color="#F35B04" /> */}
-        </TouchableOpacity>
+        <View style={styles.iconCont}>
+          <TouchableOpacity
+            style={styles.icon}
+            onPress={() => {
+              setSelected(0);
+              history.push("/");
 
+            }}
+            // style={{ height: "85pt", width: "20%", alignItems: "center" }}
+          >
+            <View style={[styles.active]} />
+            <Image
+              source={require("../../public/home.png")}
+              style={[selected === 0 ? styles.iconImg : styles.none]}
+            />
+            <Image
+              source={require("../../public/home2.png")}
+              style={styles.iconImg}
+            />
+            {/* <MdHome size="50" color="#F35B04" /> */}
+          </TouchableOpacity>
+        
         {/* Teams */}
-        <Link to="/teams">
+        {/* <Link to="/teams"> */}
           <TouchableOpacity
             style={styles.icon}
             onPress={() => {
               setSelected(1);
+              history.push("/teams");
             }}
             // style={{ height: "85pt", width: "20%", alignItems: "center" }}
           >
@@ -83,14 +86,15 @@ const NavBar = () => {
             />
             {/* <MdPeople size="50" color="#F35B04" /> */}
           </TouchableOpacity>
-        </Link>
+        {/* </Link> */}
 
         {/* Schedule */}
-        <Link to="/schedule">
+        {/* <Link to="/schedule"> */}
           <TouchableOpacity
             style={styles.icon}
             onPress={() => {
               setSelected(2);
+              history.push("/schedule");
             }}
             // style={{ height: "85pt", width: "20%", alignItems: "center" }}
           >
@@ -105,14 +109,15 @@ const NavBar = () => {
             />
             {/* <MdEventNote size="50" color="#F35B04" /> */}
           </TouchableOpacity>
-        </Link>
+        {/* </Link> */}
 
         {/* Messages */}
-        <Link to="/messages">
+        {/* <Link to="/messages"> */}
           <TouchableOpacity
             style={styles.icon}
             onPress={() => {
               setSelected(3);
+              history.push("/messages");
             }}
             // style={{ height: "85pt", width: "20%", alignItems: "center" }}
           >
@@ -127,14 +132,15 @@ const NavBar = () => {
             />
             {/* <MdChatBubble size="50" color="#F35B04" /> */}
           </TouchableOpacity>
-        </Link>
+        {/* </Link> */}
 
         {/* Account */}
-        <Link to="/account">
+        {/* <Link to="/account"> */}
           <TouchableOpacity
             style={styles.icon}
             onPress={() => {
               setSelected(4);
+              history.push("/account");
             }}
             // style={{ height: "85pt", width: "20%", alignItems: "center" }}
           >
@@ -149,7 +155,7 @@ const NavBar = () => {
             />
             {/* <MdPerson size="50" color="#F35B04" /> */}
           </TouchableOpacity>
-        </Link>
+        {/* </Link> */}
       </View>
     </View>
   );
