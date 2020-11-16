@@ -15,7 +15,7 @@ import NewMsg from "./pages/messages/newmsg"
 import Chat from "./pages/messages/chat"
 import Account from './pages/account';
 import Schedule from './pages/schedule';
-import Home from './pages/home'
+import Home from './pages/home';
 
 
 const App = () => {
