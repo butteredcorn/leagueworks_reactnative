@@ -122,7 +122,7 @@ const NavBar = () => {
               style={[selected === 3 ? styles.iconImg : styles.none]}
             />
             <Image
-              source={require("../../public/message2.png")}
+              source={require("../../public/messages2.png")}
               style={styles.iconImg}
             />
             {/* <MdChatBubble size="50" color="#F35B04" /> */}
