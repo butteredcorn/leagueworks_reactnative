@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, Text } from "react-native";
 // import styled from "styled-components/native";
 
 const styles = StyleSheet.create({
@@ -17,7 +17,9 @@ const styles = StyleSheet.create({
   },
   textbox: {
     width: 205,
-    minHeight: 16
+    minHeight: 16,
+    paddingTop: 15,
+    paddingBottom: 15
   }
 });
 
@@ -27,9 +29,10 @@ const MyBubble = ({ text, bgcolor, textcolor }) => {
 
   return (
     <View style={[styles.container, bgstyles]}>
-      <View style={[styles.textbox, textstyles]}>{text}</View>
+      <Text style={[styles.textbox, textstyles]}>{text}</Text>
     </View>
   );
 };
+
 
 export default MyBubble;

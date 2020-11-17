@@ -32,23 +32,26 @@ const styles = StyleSheet.create({
         color: "#F35B04",
         paddingTop: 10,
         paddingBottom: 10,
-    }
+    },
+        navbar: {
+        position: "absolute",
+        bottom: 0,
+        width: "100%"
+    }, 
 })
 
 
 export default function Messages(){
 return <View style={styles.container}>
     
-    
-    <Text style={styles.pageName}>Messages</Text>
 
-    <SearchInput />
-    <TouchableOpacity style={styles.newGroupCont}>
-        <Text style={styles.newGroup}>New Group</Text>
-    </TouchableOpacity>
-
-    {/* This is just filler space until figure out how switch between the tabs */}
     <ScrollView>
+            <Text style={styles.pageName}>Messages</Text>
+
+        <SearchInput />
+        <TouchableOpacity style={styles.newGroupCont}>
+            <Text style={styles.newGroup}>New Group</Text>
+        </TouchableOpacity>
         <MessageSection 
         name="James Harden" 
         messageContent="Yo bro, when's the game?" 
@@ -69,9 +72,17 @@ return <View style={styles.container}>
         name="P.J. Tucker" 
         messageContent="Who you calling a grandpa 😤" 
         time="3:01" />
+        <MessageSection 
+        name="Mike D'Antoni" 
+        messageContent="Keep an eye out for Rob..." 
+        time="2:51" />
     </ScrollView>
-    <NavBar />
-    
-    
+
+        
+        <View  style={styles.navbar}>
+            <NavBar />
+        </View>
+
+
     </View>
 }

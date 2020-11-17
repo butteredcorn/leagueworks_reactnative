@@ -1,10 +1,11 @@
-import React from "react";
-import {View, StyleSheet, Text} from "react-native";
+import React, { useState, useEffect } from "react";
+import {View, StyleSheet, Text, Image} from "react-native";
 import MyHeader from "../../comps/header";
 import Avatar from "../../comps/Avatar";
 import NavBar from "../../comps/navbar"
 import MyTab from "../../comps/Tab";
-
+import Profilepost from "../../comps/profilepost";
+import Input from "../../comps/input";
 
 const styles = StyleSheet.create({
     container:{
@@ -12,38 +13,208 @@ const styles = StyleSheet.create({
         position: "relative",
         height: "100%",
     },
-    pageName:{
-        fontSize: 36,
-        fontWeight: "bold",
-        color: "#333333",
-        width: "90%",
-        height: 40,
-        marginTop: 50,
-        marginBottom: 15
+    navbar:{
+      position:"absolute",
+      bottom:0,
     },
-    profile:{
-        width: 85,
-        height: 85
+    headercont:{
+      marginTop:50,
+      width:300,
+      height:50
     },
-    test:{
-        height: 300,
-        width: "100%"
+    profilecont:{
+      width:325,
+      height:200,
+      display:"flex",
+      alignItems:"center",
+      justifyContent:"space-around",
+      // backgroundColor:"green"
+    },
+    profiletabcont: {
+      width:275,
+      height:230,
+      display:"flex",
+      alignItems:"center",
+      justifyContent:"space-between",
+      position:"relative",
+      top:30
+    },
+    avatarcont:{
+      // backgroundColor:"blue",
+      height:50
+    },
+    arrowcont:{
+      height:20,
+      width:13
+    },
+    bellcont:{
+      height:18,
+      width:18
+    },
+    postcont:{
+      marginBottom:15
+    },
+    settingscont:{
+      width:275,
+      height:160,
+      display:"flex",
+      alignItems:"center",
+      justifyContent:"space-between",
+      position:"relative",
+      top:40
+    },
+    indivsettingscont:{
+      width:275,
+      height:10,
+      display:"flex",
+      flexDirection:"row",
+      alignItems:"center",
+      justifyContent:"space-between",
+
+    },
+    infosettingscont:{
+      width:135,
+      height:21,
+      display:"flex",
+      flexDirection:"row",
+      alignContent:"center",
+      justifyContent:"space-between",
+    },
+    borderline: {
+      width:330,
+      borderWidth:3,
+      borderColor:"#ECECEC"
+    },
+    textstyle:{
+      fontSize:16,
+      fontWeight:"bold",
+    },
+    textcont:{
+      width:100,
+      height:20
+    },
+    none:{
+      display:"none"
     }
 })
 
 
 export default function Account(){
+const [selected, setSelected] = useState(0);
 return <View style={styles.container}>
+
+<View style={styles.headercont}>
+<MyHeader  head="Account"/>
+</View>
     
-    
-    <Text style={styles.pageName}>Account</Text>
-    <Avatar style={styles.profile} />
-    <MyHeader head="Amanda Austins" />
-    <MyTab tab1="Posts" tab2="Profile" tab3="Settings" />
-    {/* This is just filler space until figure out how switch between the tabs */}
-    <View style={styles.test} />
+<View style={styles.profilecont}>
+
+<View style={styles.avatarcont}>
+<Avatar/>
+</View>
+
+<View>
+<MyHeader  head="Profile"/>
+</View>
+
+<View>
+<MyTab tab1="Posts" tab2="Profile" tab3="Settings" 
+press1={(tab) => {
+  setSelected(0);
+        }}
+  press2={(tab) => {
+  setSelected(1);
+  }}
+  press3={(tab) => {
+  setSelected(2);
+  }}/>
+</View>
+</View>
+
+<View>
+{/* POSTS START */}
+<View style={[selected === 0 ? styles.postcont : styles.none]}>
+<Profilepost />
+</View>
+<View style={[selected === 0 ? styles.postcont : styles.none]}>
+<Profilepost />
+</View><View style={[selected === 0 ? styles.postcont : styles.none]}>
+<Profilepost />
+</View>
+{/* POSTS END */}
+{/* Profile Start */}
+<View style={[selected === 1 ? styles.profiletabcont : styles.none]}>
+<View style={[selected === 1 ? styles.postcont : styles.none]}>
+<Input text="Name" />
+</View>
+<View style={[selected === 1 ? styles.postcont : styles.none]}>
+<Input text="Email" />
+</View>
+<View style={[selected === 1 ? styles.postcont : styles.none]}>
+<Input text="ID Number" />
+</View>
+</View>
+{/* Profile End */}
+{/* SETTINGS START */}
+<View style={[selected === 2 ? styles.settingscont : styles.none]}>
+
+<View style={[selected === 2 ? styles.indivsettingscont : styles.none]}>
+<View style={[selected === 2 ? styles.infosettingscont : styles.none]}>
+<Image source={require("../../public/bell.png")} style={styles.bellcont}></Image>
+<View style={styles.textcont}>
+<Text style={styles.textstyle}>Notifications</Text>
+</View>
+</View>
+<View style={styles.iconcont}>
+<Image source={require("../../public/farrow.png")} style={styles.arrowcont}>
+</Image>
+</View>
+</View>
+
+<View style={[selected === 2 ? styles.borderline : styles.none]}>
+</View>
+
+<View style={[selected === 2 ? styles.indivsettingscont : styles.none]}>
+<View style={[selected === 2 ? styles.infosettingscont : styles.none]}>
+<Image source={require("../../public/lock.png")} style={styles.bellcont}></Image>
+<View style={styles.textcont}>
+<Text style={styles.textstyle}>Password</Text>
+</View>
+</View>
+<View style={styles.iconcont}>
+<Image source={require("../../public/farrow.png")} style={styles.arrowcont}>
+</Image>
+</View>
+</View>
+
+<View style={[selected === 2 ? styles.borderline : styles.none]}>
+</View>
+
+<View style={[selected === 2 ? styles.indivsettingscont : styles.none]}>
+<View style={[selected === 2 ? styles.infosettingscont : styles.none]}>
+<Image source={require("../../public/question.png")} style={styles.bellcont}></Image>
+<View style={styles.textcont}>
+<Text style={styles.textstyle}>Help</Text>
+</View>
+</View>
+<View style={styles.iconcont}>
+<Image source={require("../../public/farrow.png")} style={styles.arrowcont}>
+</Image>
+</View>
+</View>
+
+</View>
+{/* SETTINGS End */}
+</View>
+
+
+
+
+
+  
+  <View style={styles.navbar}>
     <NavBar />
-    
+    </View>
     
     </View>
 }

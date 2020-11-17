@@ -7,12 +7,13 @@ import MyLargeButton from "../../comps/buttonlarge";
 
 const styles = StyleSheet.create({
     container:{
-        alignItems:"center"
+        alignItems:"center",
+        height: "100%"
     },
     form:{
         backgroundColor:"#F6F6F6",
-        width:291,
-        height:309,
+        width:290,
+        minHeight:200,
         padding:30,
         paddingTop:20,
         borderRadius:25
@@ -32,7 +33,7 @@ const styles = StyleSheet.create({
     },
     waiverText: {
         maxWidth:"80%",
-        maxHeight: "80%",
+        maxHeight: "50%",
         marginLeft: 10,
         marginTop: 10
     }
