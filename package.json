@@ -13,9 +13,11 @@
     "build:ios": "react-native bundle --entry-file='index.js' --bundle-output='./ios/main.jsbundle' --dev=false --platform='ios'"
   },
   "dependencies": {
+    "@react-native-async-storage/async-storage": "^1.13.2",
     "react": "16.13.1",
     "react-lottie": "^1.2.3",
     "react-native": "0.63.2",
+    "react-native-async-storage": "0.0.1",
     "react-native-calendars": "^1.403.0",
     "react-router-native": "^5.2.0"
   },
