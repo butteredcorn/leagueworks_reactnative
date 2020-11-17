@@ -16,7 +16,7 @@ import NavBar from './comps/navbar';
 import Schedule from './pages/schedule';
 import Avatar from "./comps/Avatar";
 import Schedule from './pages/schedule';
-import Home from './pages/home'
+import Home from './pages/home';
 
 
 

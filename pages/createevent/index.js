@@ -1,9 +1,10 @@
-import React from "react";
+import React, {useState} from "react";
 import {View, StyleSheet, Image, TouchableOpacity} from "react-native";
 import MyHeader from "../../comps/header";
 import NavBar from "../../comps/navbar";
 import Input from "../../comps/input";
 import MyButton from "../../comps/button";
+import {CalendarList} from 'react-native-calendars';
 
 const styles = StyleSheet.create({
     container:{
@@ -51,11 +52,23 @@ const styles = StyleSheet.create({
     },
     navbar:{
         position:"absolute",
+        width:"100%",
         bottom:0
+    },
+    calendar:{
+        position:"absolute",
+        bottom:150,
+        width:370,
+        height:294,
+        backgroundColor:"#ECECEC",
+        borderRadius:31,
+        zIndex:1
     }
 })
 
 export default function CreateEvent(){
+    const [selected, setSelected] = useState(true)
+
     return<View style={styles.container}>
         {/* Header */}
         <View style={styles.header}>
@@ -67,10 +80,34 @@ export default function CreateEvent(){
         {/* Inputs */}
         <View style={styles.date}>
             <Input text="Pick a Date"placeholder="00/00/0000" width={200}/>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={()=> setSelected(!selected)}>
             <Image style={styles.drop} source={require("../../public/drop.png")}/>
             </TouchableOpacity>
         </View>
+
+        {selected ? (
+        <View style={styles.calendar}>
+        <CalendarList 
+
+            theme={{
+                calendarBackground: '#F8F8F8',
+                textDayFontWeight:"bold",
+                todayTextColor:"#F35B04",
+                textMonthFontWeight:"bold",
+                textDayHeaderFontWeight:"bold"
+            }}
+            // Callback which gets executed when visible months change in scroll view. Default = undefined
+            onVisibleMonthsChange={(months) => {console.log('now these months are visible', months);}}
+            // Max amount of months allowed to scroll to the past. Default = 50
+            pastScrollRange={50}
+            // Max amount of months allowed to scroll to the future. Default = 50
+            futureScrollRange={50}
+            // Enable or disable scrolling of calendar list
+            scrollEnabled={true}
+            // Enable or disable vertical scroll indicator. Default = false
+            showScrollIndicator={true}/>
+        </View>
+        ) : null}
 
         <View style={styles.info}>
             <View style={styles.timerange}>
