@@ -16,6 +16,7 @@ const styles = StyleSheet.create({
     navbar:{
       position:"absolute",
       bottom:0,
+      width:"100%"
     },
     headercont:{
       marginTop:50,
