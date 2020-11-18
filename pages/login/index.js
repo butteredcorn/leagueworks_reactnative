@@ -1,9 +1,16 @@
-import React, { Component } from "react";
-import { Button, Image, StyleSheet, Text, View } from "react-native";
+import React, { Component, useState } from "react";
+import { Button, Image, StyleSheet, Text, TextInput, View, AsyncStorage } from "react-native";
 
 import MyHeader from "../../comps/header";
 import MyLargeButton from "../../comps/buttonlarge";
 import Input from "../../comps/input";
+
+import { globals } from '../../globals'
+//const { webserverURL } = globals
+import * as axios from 'react-native-axios'
+
+
+import Logo from "../../public/Logo1.png";
 
 const styles = StyleSheet.create({
     container:{
@@ -15,22 +22,58 @@ const styles = StyleSheet.create({
 
 })
 
-export default function Login(){
-return <View style={styles.container}>
+export default function Login(props){
 
-    <Image source={require("../../public/Logo1.png")}></Image>
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
 
-    <View>
-    <Input text="Email or ID Number" />
+    //test@test.com, //best_password
+    async function login() {
+        try {
+            const result = await axios.post(`${globals.webserverURL}/auth/login`, {
+                user: {
+                    email: email,
+                    password: password
+                }
+            })
+            if (result.data.error) {
+                console.log(result.data.error)
+                alert("Incorrect email/password combination.")
+            } else {
+                //take _id, access_token, expiry and save it somewhere useful
+                console.log(result.data)
+                await AsyncStorage.setItem("user_id", result.data._id, (err) => {
+                    if(err) console.log(err)
+                })
+                await AsyncStorage.setItem("access_token", result.data.access_token, (err) => {
+                    if(err) console.log(err)
+                })
+                await AsyncStorage.setItem("access_token_expiry", result.data.expiry, (err) => {
+                    if(err) console.log(err)
+                })
+                this.forceUpdate()
+            }
+        } catch (err) {
+            console.log(JSON.stringify(err.message))
+        }
+    }
+
+
+    return <View style={styles.container}>
+
+        <Image source={Logo}></Image>
+
+        <View>
+        <Input text="Email" value={email} setValue={setEmail}/>
+        </View>
+
+
+        <View>
+        <Input text="Password" value={password} setValue={setPassword}/>
+        </View>
+
+
+        <MyLargeButton text="Login" onPress={login}/>
+
     </View>
-
-
-    <View>
-    <Input text="Password" />
-    </View>
-
-
-    <MyLargeButton text="Login" />
-
-</View>
 }
