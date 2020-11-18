@@ -10,11 +10,6 @@ const styles = StyleSheet.create({
         height: "100%",
         alignItems: "center"
     },
-    navbar: {
-        position: "absolute",
-        bottom: 0,
-        width: "100%"
-    }, 
     pillcont: {
         alignItems: "center"
     },
@@ -57,10 +52,6 @@ return<View>
         </View>
     </View>
     </ScrollView>
-
-    <View  style={styles.navbar}>
-        <NavBar />
-    </View>
 </View>
 
 }

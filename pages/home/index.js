@@ -8,38 +8,37 @@ const styles = StyleSheet.create({
     container: {
         position: "relative",
         height: "100%",
-        alignItems: "center",
+        justifyContent:"center"
     },
-    navbar: {
-        position: "absolute",
-        bottom: 0,
-        width: "100%"
-    }, 
+    // navbar: {
+    //     position: "absolute",
+    //     bottom: 0,
+    //     width: "100%"
+    // }, 
     header:{
         flexDirection: "row",
         width: "100%",
         height: 45,
         marginTop: 50,
         marginBottom: 15,
-        justifyContent: "space-between",
+        // justifyContent: "space-between",
         paddingLeft: "5%"
     },
     pageName:{
         fontSize: 36,
         fontWeight: "bold",
         color: "#333333",
-    },
+    }
 });
 
 
 export default function Home(){
-return<View>
-    <ScrollView contentContainerStyles={styles.container}>
+return<ScrollView contentContainerStyles={styles.container}>
     
     <View style={styles.header}>
         <Text style={styles.pageName}>Home</Text>
             <TouchableOpacity>
-                <Image source={require("../../public/edit.png")}/>
+                <Image  source={require("../../public/edit.png")}/>
             </TouchableOpacity>   
     </View>
     
@@ -65,6 +64,6 @@ return<View>
     <View  style={styles.navbar}>
         <NavBar />
     </View> */}
-</View>
+
 
 }

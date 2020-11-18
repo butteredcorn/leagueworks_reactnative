@@ -38,11 +38,6 @@ const styles = StyleSheet.create({
     event:{
         position:"relative",
         bottom:-107
-    },
-    navbar:{
-        position:"absolute",
-        bottom: 0,
-        width: "100%"
     }
 })
 
@@ -53,7 +48,7 @@ export default function Schedule(){
         {/* Header */}
         <View style={styles.header}>
             <View style={styles.pagetitle}>
-                <Text style={styles.pageName}>Teams</Text>
+                <Text style={styles.pageName}>Schedule</Text>
             </View>
             <TouchableOpacity style={styles.edit}>
                 <Image source={require("../../public/edit.png")}/>
@@ -90,10 +85,6 @@ export default function Schedule(){
             <EventSection />
         </View>
     </ScrollView>
-
-        <View style={styles.navbar}>
-            <NavBar />
-        </View>
 </View>
         
 

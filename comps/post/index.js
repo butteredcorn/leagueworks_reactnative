@@ -5,7 +5,7 @@ import Avatar from "../Avatar";
 const styles = StyleSheet.create({
     container:{
         backgroundColor:"#ECECEC",
-        width:"90%",
+        width:319,
         minHeight:400,
         maxHeight:600,
         borderRadius:25,
