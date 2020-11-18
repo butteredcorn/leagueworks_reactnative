@@ -15,8 +15,10 @@ import Chat from "./pages/messages/chat"
 import Account from './pages/account';
 import NavBar from './comps/navbar';
 import Schedule from './pages/schedule';
+
 import Avatar from "./comps/Avatar";
 import Home from './pages/home';
+
 
 const styles = StyleSheet.create({
   cont:{
@@ -56,6 +58,9 @@ const App = () => {
       <Avatar dim={200} /> 
   
       <NativeRouter>
+          
+        <NavBar />
+          
         <Route path ="/" component={Home}></Route>
         <Route path ="/teams" component={Teams}></Route>
         <Route path ="/schedule" component={Schedule}></Route>
