@@ -20,11 +20,11 @@ const styles = StyleSheet.create({
   }
 });
 
-const MyLargeButton = ({ text }) => {
+const MyLargeButton = (props) => {
   // No <div> in react-native
   return (
     <View style={styles.container}>
-      <Text style={styles.firstText}>{text}</Text>
+      <Text style={styles.firstText} onPress={props.onPress}>{props.text}</Text>
     </View>
   );
 };
