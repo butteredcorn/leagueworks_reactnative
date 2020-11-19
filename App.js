@@ -26,10 +26,19 @@ import Login from './pages/login';
 
 const styles = StyleSheet.create({
   cont:{
-    flex:1,
+    flex:1
+  },
+  pages:{
+    flex:5,
     justifyContent:"center",
     alignItems:"center"
+  },
+  navigation:{
+    zIndex:1,
+    position:"absolute",
+    bottom:0
   }
+
 })
 
 const App = () => {
@@ -74,20 +83,21 @@ const App = () => {
             <Login />
           </View>)
   } else {
-    return ( <View style={styles.cont}> 
+    return ( <NativeRouter style={styles.cont}> 
       {/* this is how to resize avatar with dim prop*/}
-      <Avatar dim={200} /> 
+      {/* <Avatar dim={200} />  */}
   
-      <NativeRouter>
-          
-        <NavBar />
-          
+      <View style={styles.pages}>
         <Route path ="/" component={Home}></Route>
         <Route path ="/teams" component={Teams}></Route>
         <Route path ="/schedule" component={Schedule}></Route>
         <Route path ="/messages" component={Messages}></Route>
         <Route path ="/account" component={Account}></Route>
-      </NativeRouter>
+      </View>
+      
+      <View style={styles.navigation}> 
+      <NavBar />
+      </View>
   
       {/* <Home /> */}
       {/* <AdminReg /> */}
@@ -103,7 +113,7 @@ const App = () => {
       {/* <Account /> */}
   
   
-    </View>
+    </NativeRouter>
     )
   }
   
