@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/myapp.iml" filepath="$PROJECT_DIR$/.idea/modules/myapp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/2034605717/myapp.@react-native-async-storage_async-storage.iml" filepath="$PROJECT_DIR$/.idea/modules/2034605717/myapp.@react-native-async-storage_async-storage.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/myapp.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/myapp.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/2034605717/myapp.react-native-async-storage_async-storage.iml" filepath="$PROJECT_DIR$/.idea/modules/2034605717/myapp.react-native-async-storage_async-storage.iml" />
     </modules>
   </component>
 </project>
