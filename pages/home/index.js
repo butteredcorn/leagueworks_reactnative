@@ -28,6 +28,10 @@ const styles = StyleSheet.create({
         fontSize: 36,
         fontWeight: "bold",
         color: "#333333",
+    },
+    editIcon: {
+        position: "relative",
+        left: 170
     }
 });
 
@@ -37,8 +41,8 @@ return<ScrollView contentContainerStyles={styles.container}>
     
     <View style={styles.header}>
         <Text style={styles.pageName}>Home</Text>
-            <TouchableOpacity>
-                <Image  source={require("../../public/edit.png")}/>
+            <TouchableOpacity >
+                <Image  source={require("../../public/edit.png")} style={styles.editIcon}/>
             </TouchableOpacity>   
     </View>
     
