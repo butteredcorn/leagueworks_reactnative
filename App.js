@@ -8,7 +8,7 @@ import { globals } from "./globals"
 
 import CreateEvent from "./pages/createevent";
 import AdminReg from "./pages/adminreg";
-import PlayerReg from "./pages/PlayerReg";
+import UserReg from "./pages/UserReg";
 import FinishPlayerReg from "./pages/finishplayerreg";
 import PlayerWaiver from "./pages/playerwaiver";
 import Teams from "./pages/teams";
@@ -18,10 +18,12 @@ import Chat from "./pages/messages/chat"
 import Account from './pages/account';
 import NavBar from './comps/navbar';
 import Schedule from './pages/schedule';
+import Password from './pages/password';
 
 import Avatar from "./comps/Avatar";
 import Home from './pages/home';
 import Login from './pages/login';
+import GettingStarted from './pages/gettingstarted';
 
 
 const styles = StyleSheet.create({
@@ -76,19 +78,23 @@ const App = () => {
 
 
   //currently check true, change to check false to enable authentication
-  // if(!token.loggedin) {
-  //       return (
-  //         <View style={styles.cont}>
-  //           {/* registration page here */}
-  //           <Login />
-  //         </View>)
-  // } else {
+  if(token.loggedin) {
+        return (
+          <NativeRouter>
+          <View style={styles.cont}>
+            {/* registration page here */}
+            <Route exact path ="/" component={GettingStarted}/>
+            <Route path ="/login" component={Login}/>
+            <Route path ="/signup" component={UserReg}/>
+          </View>
+          </NativeRouter>)
+  } else {
     return ( <NativeRouter style={styles.cont}> 
       {/* this is how to resize avatar with dim prop*/}
       {/* <Avatar dim={200} />  */}
   
       <View style={styles.pages}>
-        <Route path ="/" component={Home}></Route>
+        <Route exact path ="/" component={Home}></Route>
         <Route path ="/teams" component={Teams}></Route>
         <Route path ="/schedule" component={Schedule}></Route>
         <Route path ="/messages" component={Messages}></Route>
@@ -115,7 +121,7 @@ const App = () => {
   
     </NativeRouter>
     )
-  // }
+  }
   
 };
 
