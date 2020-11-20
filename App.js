@@ -93,6 +93,7 @@ const App = () => {
         <Route path ="/schedule" component={Schedule}></Route>
         <Route path ="/messages" component={Messages}></Route>
         <Route path ="/account" component={Account}></Route>
+        <Route exact path= "/createevent" component={CreateEvent}></Route>
       </View>
       
       <View style={styles.navigation}> 
