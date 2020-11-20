@@ -42,13 +42,16 @@ const Post = ({Username, Title, Description, img})=> {
                 margin:20,
                 maxWidth:350,
                 flexDirection:"row",
-                justifyContent:"center"
+                justifyContent:"center",
+                position: "relative",
+                left: -80
             }}>
-                <Avatar/>
+                <Avatar dim={45} style={styles.topCont}/>
                 <Text style={{
                     position:"relative",
-                    left:-170,
+                    left:0,
                     bottom:-15,
+                    marginLeft: 20,
                     fontWeight:"bold",
                     color:"#F35B04"
                 }}>{Username}</Text>
@@ -56,13 +59,16 @@ const Post = ({Username, Title, Description, img})=> {
             <View style={{
                 margin:20,
                 maxWidth:350,
+                position: "relative",
+                left: -38
             }}>
 
 
                 {/* Title */}
                 <Text style={{
                     fontWeight:"bold",
-                    color:"#333333"
+                    color:"#333333",
+                    marginTop: -10
                 }}>{Title}</Text>
 
                 {/* Description */}

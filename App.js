@@ -76,13 +76,13 @@ const App = () => {
 
 
   //currently check true, change to check false to enable authentication
-  if(!token.loggedin) {
-        return (
-          <View style={styles.cont}>
-            {/* registration page here */}
-            <Login />
-          </View>)
-  } else {
+  // if(!token.loggedin) {
+  //       return (
+  //         <View style={styles.cont}>
+  //           {/* registration page here */}
+  //           <Login />
+  //         </View>)
+  // } else {
     return ( <NativeRouter style={styles.cont}> 
       {/* this is how to resize avatar with dim prop*/}
       {/* <Avatar dim={200} />  */}
@@ -115,7 +115,7 @@ const App = () => {
   
     </NativeRouter>
     )
-  }
+  // }
   
 };
 
