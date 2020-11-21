@@ -6,6 +6,7 @@ import {NativeRouter, Route, Link} from "react-router-native";
 import * as axios from 'react-native-axios'
 import { globals } from "./globals"
 
+import ProtectedRoute from './comps/protectedRoute'
 import CreateEvent from "./pages/createevent";
 import AdminReg from "./pages/adminreg";
 import UserReg from "./pages/UserReg";
@@ -46,19 +47,19 @@ const styles = StyleSheet.create({
 const App = () => {
 
   //load the heroku web server
-  useEffect(()=> {
-    async function loadWebServer() {
-      try {
-        //console.log(JSON.stringify(globals.webserverURL))
-        const result = await axios.get(`${globals.webserverURL}/database`)
-        console.log(result.data.error)
-        //setState({loading: false})
-      } catch (err) {
-        console.log(err.message)
-      } 
-    }
-    loadWebServer()
-  }, [])
+  // useEffect(()=> {
+  //   async function loadWebServer() {
+  //     try {
+  //       //console.log(JSON.stringify(globals.webserverURL))
+  //       const result = await axios.get(`${globals.webserverURL}/database`)
+  //       console.log(result.data.error)
+  //       //setState({loading: false})
+  //     } catch (err) {
+  //       console.log(err.message)
+  //     } 
+  //   }
+  //   loadWebServer()
+  // }, [])
 
   //check for JWT
   const [token, setToken] = useState({token: null, loggedin: false})
@@ -78,32 +79,45 @@ const App = () => {
 
 
   //currently check true, change to check false to enable authentication
-  if(token.loggedin) {
-        return (
-          <NativeRouter>
-          <View style={styles.cont}>
-            {/* registration page here */}
-            <Route exact path ="/" component={GettingStarted}/>
-            <Route path ="/login" component={Login}/>
-            <Route path ="/signup" component={UserReg}/>
-          </View>
-          </NativeRouter>)
-  } else {
+  // if(!token.loggedin) {
+  //       return (
+  //         <NativeRouter>
+  //         <View style={styles.cont}>
+  //           {/* registration page here */}
+  //           <Route exact path ="/" component={GettingStarted}/>
+  //           <Route path="/login" render={
+  //             () => <Login setToken={setToken}></Login>
+  //           }/>
+  //           <Route path="/signup" render={
+  //             () => <UserReg setToken={setToken}></UserReg>
+  //           }/>
+  //         </View>
+  //         </NativeRouter>)
+  // } else {
     return ( <NativeRouter style={styles.cont}> 
       {/* this is how to resize avatar with dim prop*/}
       {/* <Avatar dim={200} />  */}
   
       <View style={styles.pages}>
-        <Route exact path ="/" component={Home}></Route>
-        <Route path ="/teams" component={Teams}></Route>
-        <Route path ="/schedule" component={Schedule}></Route>
-        <Route path ="/messages" component={Messages}></Route>
-        <Route path ="/account" component={Account}></Route>
+        <Route path="/gettingstarted" component={GettingStarted}/>
+        <Route path="/login" render={
+          () => <Login setToken={setToken}></Login>
+        }/>
+        <Route path="/signup" render={
+          () => <UserReg setToken={setToken}></UserReg>
+        }/>
+
+        <ProtectedRoute exact={true} path ="/" component={Home}/>
+        <ProtectedRoute path ="/teams" component={Teams}/>
+        <ProtectedRoute path ="/schedule" component={Schedule}/>
+        <ProtectedRoute path ="/messages" component={Messages}/>
+        <ProtectedRoute path ="/account" render={
+          () => <Account setToken={setToken}/>
+        }></ProtectedRoute>
       </View>
       
-      <View style={styles.navigation}> 
-      <NavBar />
-      </View>
+      <View style={styles.navigation}><NavBar /></View>
+
   
       {/* <Home /> */}
       {/* <AdminReg /> */}
@@ -123,6 +137,6 @@ const App = () => {
     )
   }
   
-};
+//};
 
 export default App;

@@ -75,7 +75,7 @@ export default function UserReg (props) {
 
     async function signup() {
         try {
-            console.log('attempting to connect...')
+            // console.log('attempting to connect...')
             const result = await axios.post(`${globals.webserverURL}/auth/signup`, {
                 user: user
             })
@@ -93,10 +93,8 @@ export default function UserReg (props) {
                 await AsyncStorage.setItem("access_token_expiry", result.data.expiry, (err) => {
                     if(err) console.log(err)
                 })
-
-                //loses the reference... can't use useState here either?
-                //invalid hook call, can only be called inside the body of function component
-                this.forceUpdate() //need to reload to rout properly
+                //update state and rerender
+                setToken({token: result.data.access_token, loggedin: true})
             }
         } catch (err) {
             console.log(err)

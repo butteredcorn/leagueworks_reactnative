@@ -1,4 +1,5 @@
 import React, { Component, useState } from "react";
+import {Redirect} from 'react-router-native';
 import { Button, Image, StyleSheet, Text, TextInput, View, AsyncStorage } from "react-native";
 
 import MyHeader from "../../comps/header";
@@ -22,7 +23,7 @@ const styles = StyleSheet.create({
 
 })
 
-export default function Login(props){
+export default function Login({setToken}){
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -51,7 +52,9 @@ export default function Login(props){
                 await AsyncStorage.setItem("access_token_expiry", result.data.expiry, (err) => {
                     if(err) console.log(err)
                 })
-                this.forceUpdate()
+                //console.log(setToken)
+                //update state and rerender
+                setToken({token: result.data.access_token, loggedin: true})
             }
         } catch (err) {
             console.log(JSON.stringify(err.message))
