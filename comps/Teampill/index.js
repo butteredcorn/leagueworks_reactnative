@@ -796,10 +796,10 @@ const MyPill = ({
 
 MyPill.defaultProps = {
   TeamName: "Team",
-  Homewins: "1",
-  Homelosses: "1",
-  Awaywins: "1",
-  Awaylosses: "1",
+  Homewins: "0",
+  Homelosses: "0",
+  Awaywins: "0",
+  Awaylosses: "0",
   admin: " Admin Name",
   playername: "Player Name",
   membername: "Member Name",
