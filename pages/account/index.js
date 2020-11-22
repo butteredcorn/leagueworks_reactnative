@@ -115,6 +115,7 @@ async function logout() {
     await AsyncStorage.removeItem('access_token')
     await AsyncStorage.removeItem('access_token_expiry')
     await AsyncStorage.removeItem('user_id')
+    await AsyncStorage.removeItem('user_type')
     console.log('logged out')
     setToken({token: null, loggedin: false})
   } catch(err) {

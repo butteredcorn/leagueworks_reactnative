@@ -52,6 +52,9 @@ export default function Login({token, setToken}){
                 await AsyncStorage.setItem("access_token_expiry", result.data.expiry, (err) => {
                     if(err) console.log(err)
                 })
+                await AsyncStorage.setItem("user_type", result.data.user_type, (err) => {
+                    if(err) console.log(err)
+                })
                 //console.log(setToken)
                 //update state and rerender
                 setToken({token: result.data.access_token, loggedin: true})

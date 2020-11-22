@@ -45,22 +45,29 @@ const styles = StyleSheet.create({
 
 export default function Leagues(){
     const [page, update] = useState({redirect: false})
+
     const redirectTeams = () => {
-        update({redirect: !page.redirect})
+        update({redirect: !page.redirect, path: "/teams"})
     }
 
-return page.redirect ? <Redirect to="/teams"></Redirect> : <View>
+    const redirectLeagueReg = () => {
+        update({redirect: !page.redirect, path: "/league-registration"})
+    }
+
+return page.redirect ? <Redirect to={page.path}></Redirect> : <View>
     <ScrollView contentContainerStyles={styles.container}>
     <View style={styles.header}>
         <Text style={styles.pageName}>Leagues</Text>
-        <TouchableOpacity onPress={redirectTeams}>
-                <Image  source={require("../../public/edit.png")} style={styles.editIcon}/>
-        </TouchableOpacity>   
+        <TouchableOpacity onPress={redirectLeagueReg}>
+            <Image  source={require("../../public/edit.png")} style={styles.editIcon}/>
+        </TouchableOpacity>
     </View>
     <View style={styles.pillcont}>
-        
+
         <View style={styles.pillMargin}>
+        <TouchableOpacity onPress={redirectTeams}>
             <MyPill img={require("../../public/girl.jpg")}></MyPill>
+        </TouchableOpacity>   
         </View>
         
     </View>

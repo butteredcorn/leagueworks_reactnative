@@ -53,19 +53,19 @@ return<View>
     </View>
     <View style={styles.pillcont}>
         <View style={styles.pillMargin}>
+            <TouchableOpacity>
             <MyPill img={require("../../public/girl.jpg")}></MyPill>
+            </TouchableOpacity>
         </View>
         <View style={styles.pillMargin}>
+            <TouchableOpacity>
             <MyPill img={require("../../public/girl.jpg")}></MyPill>
+            </TouchableOpacity>
         </View>
         <View style={styles.pillMargin}>
+            <TouchableOpacity>
             <MyPill img={require("../../public/girl.jpg")}></MyPill>
-        </View>
-        <View style={styles.pillMargin}>
-            <MyPill img={require("../../public/girl.jpg")}></MyPill>
-        </View>
-        <View style={styles.pillMargin}>
-            <MyPill img={require("../../public/girl.jpg")}></MyPill>
+            </TouchableOpacity>
         </View>
     </View>
     </ScrollView>

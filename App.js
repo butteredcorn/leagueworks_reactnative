@@ -26,6 +26,7 @@ import Home from './pages/home';
 import Login from './pages/login';
 import GettingStarted from './pages/gettingstarted';
 import Leagues from "./pages/leagues/Leagues";
+import LeagueReg from "./pages/leagueregistration/LeagueRegistration"
 
 
 const styles = StyleSheet.create({
@@ -111,6 +112,7 @@ const App = () => {
         {/*protected routes need to use <ProtectedRoute>*/}
         <ProtectedRoute token={token} exact={true} path ={"/"} component={Home}/>
         <ProtectedRoute token={token} path={"/leagues"} component={Leagues}/>
+        <ProtectedRoute token={token} path={"/league-registration"} component={LeagueReg}/>
         <ProtectedRoute token={token} path={"/teams"} component={Teams}/>
         <ProtectedRoute token={token} path={"/schedule"} component={Schedule}/>
         <ProtectedRoute token={token} path={"/messages"} component={Messages}/>
