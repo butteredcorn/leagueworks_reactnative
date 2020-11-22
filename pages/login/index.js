@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
 
 })
 
-export default function Login({setToken}){
+export default function Login({token, setToken}){
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -61,8 +61,7 @@ export default function Login({setToken}){
         }
     }
 
-
-    return <View style={styles.container}>
+    return token && token.token && token.loggedin ? <Redirect to="/"/> : <View style={styles.container}>
 
         <Image source={Logo}></Image>
 

@@ -26,6 +26,11 @@ const styles = StyleSheet.create({
         marginBottom: 15,
         paddingLeft: "5%"
     },
+    navigation:{
+        zIndex:1,
+        position:"absolute",
+        bottom:0
+      }
 });
 
 export default function Teams(){
@@ -52,6 +57,7 @@ return<View>
         </View>
     </View>
     </ScrollView>
+    <View style={styles.navigation}><NavBar /></View>
 </View>
 
 }

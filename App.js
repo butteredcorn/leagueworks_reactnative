@@ -6,7 +6,7 @@ import {NativeRouter, Route, Link} from "react-router-native";
 import * as axios from 'react-native-axios'
 import { globals } from "./globals"
 
-import ProtectedRoute from './comps/protectedRoute'
+import ProtectedRoute from './comps/protectedRoute/ProtectedRoute'
 import CreateEvent from "./pages/createevent";
 import AdminReg from "./pages/adminreg";
 import UserReg from "./pages/UserReg";
@@ -101,23 +101,20 @@ const App = () => {
       <View style={styles.pages}>
         <Route path="/gettingstarted" component={GettingStarted}/>
         <Route path="/login" render={
-          () => <Login setToken={setToken}></Login>
+          () => <Login token={token} setToken={setToken}></Login>
         }/>
         <Route path="/signup" render={
-          () => <UserReg setToken={setToken}></UserReg>
+          () => <UserReg token={token} setToken={setToken}></UserReg>
         }/>
 
-        <ProtectedRoute exact={true} path ="/" component={Home}/>
-        <ProtectedRoute path ="/teams" component={Teams}/>
-        <ProtectedRoute path ="/schedule" component={Schedule}/>
-        <ProtectedRoute path ="/messages" component={Messages}/>
-        <ProtectedRoute path ="/account" render={
+        <ProtectedRoute token={token} exact={true} path ={"/"} component={Home}/>
+        <ProtectedRoute token={token} path={"/teams"} component={Teams}/>
+        <ProtectedRoute token={token} path={"/schedule"} component={Schedule}/>
+        <ProtectedRoute token={token} path={"/messages"} component={Messages}/>
+        <ProtectedRoute token={token} path={"/account"} render={
           () => <Account setToken={setToken}/>
-        }></ProtectedRoute>
+        }/>
       </View>
-      
-      <View style={styles.navigation}><NavBar /></View>
-
   
       {/* <Home /> */}
       {/* <AdminReg /> */}

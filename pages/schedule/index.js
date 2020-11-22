@@ -38,7 +38,12 @@ const styles = StyleSheet.create({
     event:{
         position:"relative",
         bottom:-107
-    }
+    },
+    navigation:{
+        zIndex:1,
+        position:"absolute",
+        bottom:0
+      }
 })
 
 export default function Schedule(){
@@ -85,6 +90,7 @@ export default function Schedule(){
             <EventSection />
         </View>
     </ScrollView>
+    <View style={styles.navigation}><NavBar /></View>
 </View>
         
 

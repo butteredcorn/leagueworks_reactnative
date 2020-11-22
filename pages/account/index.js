@@ -97,6 +97,11 @@ const styles = StyleSheet.create({
     },
     none:{
       display:"none"
+    },
+    navigation:{
+      zIndex:1,
+      position:"absolute",
+      bottom:0
     }
 })
 
@@ -228,9 +233,8 @@ press1={(tab) => {
 
 
   
-  <View style={styles.navbar}>
-    <NavBar />
-    </View>
+<View style={styles.navigation}><NavBar /></View>
+
     
     </View>
 }

@@ -1,6 +1,6 @@
 import React, { useState, useReducer } from "react";
 import {View, StyleSheet, Image, AsyncStorage} from "react-native";
-import { useLocation } from 'react-router-native'
+import { Redirect, useLocation } from 'react-router-native'
 import * as axios from 'react-native-axios'
 
 import { globals } from '../../globals'
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     }
 })
 
-export default function UserReg (props) {
+export default function UserReg ({token, setToken}) {
 
     const data = useLocation()
     //data.state holds player/admin context
@@ -101,7 +101,7 @@ export default function UserReg (props) {
         }
     }
 
-    return <View>
+    return token && token.token && token.loggedin ? <Redirect to="/"/> : <View>
         <View style={styles.topCont}>
             <MyProgressBar></MyProgressBar>
             <MyHeader head={`${data.state == "admin" ? "Admin" : "Player"} Registration`}></MyHeader>
