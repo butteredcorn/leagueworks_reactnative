@@ -45,7 +45,8 @@ export default function UserReg ({token, setToken}) {
         birth_date: "",
         phone_number: "",
         email: "",
-        password: ""
+        password: "",
+        user_type: data.state
     }
 
     function reducer(user, action) {

@@ -8,7 +8,7 @@ import { globals } from "./globals"
 
 import ProtectedRoute from './comps/protectedRoute/ProtectedRoute'
 import CreateEvent from "./pages/createevent";
-import AdminReg from "./pages/adminreg";
+import TeamRegistration from './pages/adminregteam'
 import UserReg from "./pages/UserReg";
 import FinishPlayerReg from "./pages/finishplayerreg";
 import PlayerWaiver from "./pages/playerwaiver";
@@ -25,6 +25,7 @@ import Avatar from "./comps/Avatar";
 import Home from './pages/home';
 import Login from './pages/login';
 import GettingStarted from './pages/gettingstarted';
+import Leagues from "./pages/leagues/Leagues";
 
 
 const styles = StyleSheet.create({
@@ -107,15 +108,19 @@ const App = () => {
           () => <UserReg token={token} setToken={setToken}></UserReg>
         }/>
 
+        {/*protected routes need to use <ProtectedRoute>*/}
         <ProtectedRoute token={token} exact={true} path ={"/"} component={Home}/>
+        <ProtectedRoute token={token} path={"/leagues"} component={Leagues}/>
         <ProtectedRoute token={token} path={"/teams"} component={Teams}/>
         <ProtectedRoute token={token} path={"/schedule"} component={Schedule}/>
         <ProtectedRoute token={token} path={"/messages"} component={Messages}/>
         <ProtectedRoute token={token} path={"/account"} render={
           () => <Account setToken={setToken}/>
         }/>
-      </View>
+      </View> 
+       
   
+      {/* <TeamRegistration/> */}
       {/* <Home /> */}
       {/* <AdminReg /> */}
       {/* <PlayerReg /> */}

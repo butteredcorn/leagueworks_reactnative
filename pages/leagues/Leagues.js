@@ -1,4 +1,5 @@
 import React,{ useState, useEffect } from "react";
+import {Redirect} from 'react-router-native'
 import {View, StyleSheet, TouchableOpacity, Image, Text, ScrollView} from "react-native";
 import MyHeader from "../../comps/header";
 import NavBar from "../../comps/navbar";
@@ -42,31 +43,26 @@ const styles = StyleSheet.create({
       }
 });
 
-export default function Teams(){
-return<View>
+export default function Leagues(){
+    const [page, update] = useState({redirect: false})
+    const redirectTeams = () => {
+        update({redirect: !page.redirect})
+    }
+
+return page.redirect ? <Redirect to="/teams"></Redirect> : <View>
     <ScrollView contentContainerStyles={styles.container}>
     <View style={styles.header}>
-        <Text style={styles.pageName}>Teams</Text>
-        <TouchableOpacity >
+        <Text style={styles.pageName}>Leagues</Text>
+        <TouchableOpacity onPress={redirectTeams}>
                 <Image  source={require("../../public/edit.png")} style={styles.editIcon}/>
         </TouchableOpacity>   
     </View>
     <View style={styles.pillcont}>
+        
         <View style={styles.pillMargin}>
             <MyPill img={require("../../public/girl.jpg")}></MyPill>
         </View>
-        <View style={styles.pillMargin}>
-            <MyPill img={require("../../public/girl.jpg")}></MyPill>
-        </View>
-        <View style={styles.pillMargin}>
-            <MyPill img={require("../../public/girl.jpg")}></MyPill>
-        </View>
-        <View style={styles.pillMargin}>
-            <MyPill img={require("../../public/girl.jpg")}></MyPill>
-        </View>
-        <View style={styles.pillMargin}>
-            <MyPill img={require("../../public/girl.jpg")}></MyPill>
-        </View>
+        
     </View>
     </ScrollView>
     <View style={styles.navigation}><NavBar /></View>

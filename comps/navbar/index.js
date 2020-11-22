@@ -70,7 +70,7 @@ const NavBar = () => {
             style={styles.icon}
             onPress={() => {
               setSelected(1);
-              history.push("/teams");
+              history.push("/leagues");
             }}
             // style={{ height: "85pt", width: "20%", alignItems: "center" }}
           >
