@@ -1,5 +1,6 @@
 import React,{ useState, useEffect } from "react";
 import {View, StyleSheet, TouchableOpacity, Image, Text, ScrollView} from "react-native";
+import {Redirect, useLocation} from 'react-router-native'
 import MyHeader from "../../comps/header";
 import NavBar from "../../comps/navbar";
 import MyPill from "../../comps/Teampill";
@@ -42,12 +43,25 @@ const styles = StyleSheet.create({
       }
 });
 
+
+
 export default function Teams(){
-return<View>
+
+    const data = useLocation()
+    //console.log(data.state) //league_id
+
+    const [page, reload] = useState({redirect: false})
+
+    const redirectTeamReg = () => {
+        //pass on the league_id to the team registration view
+        reload({redirect: !page.redirect, path: "/team-registration", leagueID: data.state})
+    }
+
+return page.redirect ? <Redirect to={{pathname: page.path, state: page.leagueID}}></Redirect> : <View>
     <ScrollView contentContainerStyles={styles.container}>
     <View style={styles.header}>
         <Text style={styles.pageName}>Teams</Text>
-        <TouchableOpacity >
+        <TouchableOpacity onPress={redirectTeamReg} >
                 <Image  source={require("../../public/edit.png")} style={styles.editIcon}/>
         </TouchableOpacity>   
     </View>

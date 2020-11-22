@@ -95,15 +95,15 @@ export default function Leagues(){
     }, [])
 
 
-    const redirectTeams = () => {
-        update({redirect: !page.redirect, path: "/teams"})
+    const redirectTeams = (league) => {
+        update({redirect: !page.redirect, path: "/teams", leagueID: league})
     }
 
     const redirectLeagueReg = () => {
         update({redirect: !page.redirect, path: "/league-registration"})
     }
 
-return page.redirect ? <Redirect to={page.path}></Redirect> : <View>
+return page.redirect ? <Redirect to={{pathname: page.path, state: page.leagueID}}></Redirect> : <View>
     <ScrollView contentContainerStyles={styles.container}>
     <View style={styles.header}>
         <Text style={styles.pageName}>Your Leagues</Text>
@@ -118,7 +118,7 @@ return page.redirect ? <Redirect to={page.path}></Redirect> : <View>
         // <Text>{JSON.stringify(userLeagues.data)}</Text>
         userLeagues.data.map(league => 
             <View style={styles.pillMargin}>
-            <TouchableOpacity onPress={redirectTeams}>
+            <TouchableOpacity onPress={() => redirectTeams(league._id)}>
                 <MyPill leagueID={league._id} leagueName={league.league_name} email={league.email} phoneNumber={league.phone_number} sportType={league.sport_type} img={require("../../public/girl.jpg")}></MyPill>
             </TouchableOpacity>
             </View>   

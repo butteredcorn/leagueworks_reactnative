@@ -114,6 +114,7 @@ const App = () => {
         <ProtectedRoute token={token} path={"/leagues"} component={Leagues}/>
         <ProtectedRoute token={token} path={"/league-registration"} component={LeagueReg}/>
         <ProtectedRoute token={token} path={"/teams"} component={Teams}/>
+        <ProtectedRoute token={token} path={"/team-registration"} component={TeamRegistration}/>
         <ProtectedRoute token={token} path={"/schedule"} component={Schedule}/>
         <ProtectedRoute token={token} path={"/messages"} component={Messages}/>
         <ProtectedRoute token={token} path={"/account"} render={
