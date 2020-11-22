@@ -1,9 +1,13 @@
 import React,{ useState, useEffect } from "react";
 import {Redirect} from 'react-router-native'
-import {View, StyleSheet, TouchableOpacity, Image, Text, ScrollView} from "react-native";
+import {View, StyleSheet, TouchableOpacity, Image, Text, ScrollView, AsyncStorage} from "react-native";
+import * as axios from 'react-native-axios'
+import { globals } from '../../globals'
+
+
 import MyHeader from "../../comps/header";
 import NavBar from "../../comps/navbar";
-import MyPill from "../../comps/Teampill";
+import MyPill from "../../comps/leaguePill";
 
 const styles = StyleSheet.create({
     container: {
@@ -45,6 +49,51 @@ const styles = StyleSheet.create({
 
 export default function Leagues(){
     const [page, update] = useState({redirect: false})
+    const [user, updateUser] = useState("")
+    const [userLeagues, updateUserLeagues] = useState({loading: true, data: []})
+
+    const getUser = async () => {
+        const rawToken = await AsyncStorage.getItem('access_token')  
+        const rawID = await AsyncStorage.getItem('user_id')
+        return {access_token: rawToken, user_id: rawID}
+    }
+
+    async function getUserLeagues(user) {
+        const result = await axios.post(`${globals.webserverURL}/database/read/userleagues`, {
+            user: {
+                user_id: user.user_id
+            },
+            access_token: user.access_token
+        })
+        return result.data
+
+        // [
+        // {"_id": "5fb9cf9965f84d0017928887", "email": "best league", "league_name": null, "phone_number": "best league", "sport_type": "basketball"},
+        // {"_id": "5fb9db257bfc86001752d031", "email": "league2@email.com", "league_name": null, "phone_number": "1", "sport_type": "basketball"}
+        // ]
+    }
+
+    async function loadPage() {
+        try {
+            const user = await getUser()
+            updateUser(user)
+            console.log(user)
+            const userLeagues = await getUserLeagues(user)
+            console.log(userLeagues)
+            updateUserLeagues({loading: false, data: userLeagues})
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
+    useEffect(() => {
+        try {
+            loadPage()
+        } catch (err) {
+            console.log(err)
+        }
+    }, [])
+
 
     const redirectTeams = () => {
         update({redirect: !page.redirect, path: "/teams"})
@@ -57,18 +106,24 @@ export default function Leagues(){
 return page.redirect ? <Redirect to={page.path}></Redirect> : <View>
     <ScrollView contentContainerStyles={styles.container}>
     <View style={styles.header}>
-        <Text style={styles.pageName}>Leagues</Text>
+        <Text style={styles.pageName}>Your Leagues</Text>
         <TouchableOpacity onPress={redirectLeagueReg}>
             <Image  source={require("../../public/edit.png")} style={styles.editIcon}/>
         </TouchableOpacity>
     </View>
     <View style={styles.pillcont}>
 
-        <View style={styles.pillMargin}>
-        <TouchableOpacity onPress={redirectTeams}>
-            <MyPill img={require("../../public/girl.jpg")}></MyPill>
-        </TouchableOpacity>   
-        </View>
+        
+        {!userLeagues.loading && Array.isArray(userLeagues.data) ? 
+        // <Text>{JSON.stringify(userLeagues.data)}</Text>
+        userLeagues.data.map(league => 
+            <View style={styles.pillMargin}>
+            <TouchableOpacity onPress={redirectTeams}>
+                <MyPill leagueID={league._id} leagueName={league.league_name} email={league.email} phoneNumber={league.phone_number} sportType={league.sport_type} img={require("../../public/girl.jpg")}></MyPill>
+            </TouchableOpacity>
+            </View>   
+        ) 
+        : <Text>Loading</Text>}
         
     </View>
     </ScrollView>

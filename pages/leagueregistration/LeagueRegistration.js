@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     },
     bottomCont: {
         alignItems: "center",
-        marginTop: 130
+        marginTop: 30
     },
     inputMargin: {
         marginBottom: 20
@@ -78,6 +78,9 @@ export default function LeagueReg ({}) {
                 return league
             case 'email':
                 league.email = action.value
+                return league
+            case 'headline':
+                league.headline = action.value
                 return league
             default:
                 throw new Error('Issue with reducer in league registration.')
@@ -152,6 +155,11 @@ export default function LeagueReg ({}) {
             <View style={styles.inputMargin}>
                 <Input text="Sport Type"
                     setValue={(text) => dispatch({type: "sport_type", value: text})}
+                ></Input>
+            </View>
+            <View style={styles.inputMargin}>
+                <Input text="Headline"
+                    setValue={(text) => dispatch({type: "headline", value: text})}
                 ></Input>
             </View>
             <View style={styles.buttonMargin}>
