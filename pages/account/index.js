@@ -237,6 +237,7 @@ press1={(tab) => {
 
 
 
+
 </View>
 {/* SETTINGS End */}
 </View>
