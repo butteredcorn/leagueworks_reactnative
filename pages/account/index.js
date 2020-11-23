@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {View, StyleSheet, Text, Image, AsyncStorage} from "react-native";
+import {View, StyleSheet, Text, Image, AsyncStorage, TouchableOpacity} from "react-native";
 import {Redirect} from 'react-router-native'
 import MyHeader from "../../comps/header";
 import Avatar from "../../comps/Avatar";
@@ -7,6 +7,7 @@ import NavBar from "../../comps/navbar"
 import MyTab from "../../comps/Tab";
 import Profilepost from "../../comps/profilepost";
 import Input from "../../comps/input";
+import MyLargeButton from "../../comps/buttonlarge";
 
 const styles = StyleSheet.create({
     container:{
@@ -80,7 +81,7 @@ const styles = StyleSheet.create({
       display:"flex",
       flexDirection:"row",
       alignContent:"center",
-      justifyContent:"space-between",
+      justifyContent:"space-between"
     },
     borderline: {
       width:330,
@@ -94,6 +95,9 @@ const styles = StyleSheet.create({
     textcont:{
       width:100,
       height:20
+    },
+    logout:{
+      
     },
     none:{
       display:"none"
@@ -132,7 +136,7 @@ return <View style={styles.container}>
 <View style={styles.profilecont}>
 
 <View style={styles.avatarcont}>
-  <Avatar logout={logout}/>
+  <Avatar />
 </View>
 
 <View>
@@ -224,6 +228,14 @@ press1={(tab) => {
 </Image>
 </View>
 </View>
+
+<View style={[selected === 2 ? styles.borderline : styles.none]}></View>
+
+<View style={styles.logout}>
+  <MyLargeButton text="Log out" onPress={logout}/>
+</View>
+
+
 
 </View>
 {/* SETTINGS End */}
