@@ -8,7 +8,7 @@ const MessageSection = ({ name, messageContent, time }) => {
       <View style={styles.hr} />
       <View style={styles.messagecont}>
         <View style={styles.avatar}>
-          <Avatar />
+          <Avatar dim={38}/>
         </View>
         <View>
           <Text style={styles.name}>{name}</Text>
@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     height: 37
   },
   avatar: {
-    marginTop: 20
+    marginTop: 15
   },
   messagecont: {
     flex: 1,

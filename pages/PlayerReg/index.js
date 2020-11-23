@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
     },
     bottomCont: {
         alignItems: "center",
-        marginTop: 130
+        marginTop: 30
     },
     inputMargin: {
         marginBottom: 20
