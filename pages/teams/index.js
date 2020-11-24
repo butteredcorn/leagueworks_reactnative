@@ -62,6 +62,34 @@ export default function Teams(){
         reload({redirect: !page.redirect, path: "/team-registration", leagueID: data.state})
     }
 
+    //need to add jerseyNumber functionality
+    async function joinTeam(teamID, players, jerseyNumber) {
+        try {
+            const updatedPlayers = [...players, {captain: false, jersey_number: null, user_id: user.user_id}]
+            const result = await axios.post(`${globals.webserverURL}/database/update/team`, {
+                team: {
+                    team_id: teamID,
+                    updates: {
+                        players: updatedPlayers
+                    }
+                },
+                access_token: user.access_token
+            })
+
+            if(result.data.error) {
+                console.log(result.data.error)
+                alert(result.data.error)
+            } else {
+                console.log(result)
+                alert("Team Joined!")
+            }
+        } catch (err) {
+            console.log(err)
+        } finally {
+            loadPage()
+        }
+    }
+
     const getUser = async () => {
         const rawToken = await AsyncStorage.getItem('access_token')  
         const rawID = await AsyncStorage.getItem('user_id')
@@ -118,6 +146,8 @@ export default function Teams(){
         const user = await getUser()
         updateUser(user)
         const leagueTeams = await getTeamsByLeague(user)
+        const roster = leagueTeams[0].players
+        console.log(roster)
         updateTeams({loading: false, data: leagueTeams})
     }
 
@@ -143,7 +173,7 @@ return page.redirect ? <Redirect to={{pathname: page.path, state: page.leagueID}
         //<Text>{JSON.stringify(teams.data)}</Text>
         teams.data.map(team => 
             <View style={styles.pillMargin}>
-                <MyPill teamID={team._id} TeamName={team.team_name} email={team.email} phoneNumber={team.phone_number} team_captain={team.team_captain} players={team.players} userTeam={team.user_team} img={require("../../public/girl.jpg")}></MyPill>
+                <MyPill onPress={joinTeam} joined={team.user_team} teamID={team._id} TeamName={team.team_name} email={team.email} phoneNumber={team.phone_number} team_captain={team.team_captain} players={team.players} userTeam={team.user_team} img={require("../../public/girl.jpg")}></MyPill>
             </View>   
         ) 
         : <Text>Loading</Text>}
