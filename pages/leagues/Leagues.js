@@ -56,6 +56,7 @@ const styles = StyleSheet.create({
 export default function Leagues(){
     const [page, update] = useState({redirect: false})
     const [user, updateUser] = useState("")
+    const [fullUser, updateFullUser] = useState("")
     const [userLeaguesOnly, updateSettings] = useState({setting: false, filter: true})
     const [allLeagues, updateAllLeagues] = useState({loading: true, data: []})
 
@@ -67,8 +68,33 @@ export default function Leagues(){
         return {access_token: rawToken, user_id: rawID}
     }
 
-    async function joinLeague(user) {
-
+    async function joinLeague(leagueID) {
+        try {
+            const currentUserLeagues = fullUser.leagues
+            const newUserLeagues = [...currentUserLeagues, leagueID]
+            const result = await axios.post(`${globals.webserverURL}/database/update/user`, {
+                user: {
+                    user_id: user.user_id,
+                    updates: {
+                        leagues: newUserLeagues
+                    }
+                },
+                access_token: user.access_token
+            })
+    
+            if(result.data.error) {
+                console.log(result.data.error)
+                alert(result.data.error)
+            } else {
+                console.log(result)
+                alert("League Joined!")
+            }
+        } catch (err) {
+            console.log(err)
+        } finally {
+            //reload after joining
+            loadPage()
+        }
     }
 
     async function getAllLeagues(user) {
@@ -78,7 +104,7 @@ export default function Leagues(){
             },
             access_token: user.access_token
         })
-
+        updateFullUser(fullUser.data)
         const result = await axios.post(`${globals.webserverURL}/database/read/leagues`, {
             access_token: user.access_token
         })

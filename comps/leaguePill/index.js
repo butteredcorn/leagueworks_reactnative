@@ -304,7 +304,7 @@ const MyPill = ({
                       <View style={styles.namecont}>
                         <Text style={styles.title}>{leagueName}</Text>
 
-                      {!joined && <TouchableOpacity style={styles.joinbtn} onPress={onPress}>
+                      {!joined && <TouchableOpacity style={styles.joinbtn} onPress={() => onPress(leagueID)}>
                           <Text style={styles.joinbtntext}>Join</Text>
                         </TouchableOpacity>}
                       </View>
