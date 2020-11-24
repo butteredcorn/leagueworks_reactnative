@@ -23,12 +23,14 @@ const styles = StyleSheet.create({
   }
 });
 
-const MyBubble = ({ text, bgcolor, textcolor }) => {
+const MyBubble = ({ text, bgcolor, textcolor, leftposition, rightposition}) => {
   const bgstyles = { backgroundColor: bgcolor ? bgcolor : "#F18701" };
   const textstyles = { color: textcolor ? textcolor : "#E8E8E8" };
+  const graybox = { left: leftposition ? leftposition : null }; //this is a prop for graychatbox
+  const oragebox = {right: rightposition ? rightposition: null}; //this is a prop for orangechatbox
 
   return (
-    <View style={[styles.container, bgstyles]}>
+    <View style={[styles.container, bgstyles, graybox, oragebox]}>
       <Text style={[styles.textbox, textstyles]}>{text}</Text>
     </View>
   );

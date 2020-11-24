@@ -1,6 +1,7 @@
 import React from "react";
 import {View, ScrollView, StyleSheet, Image, TouchableOpacity, Text} from "react-native";
 import {CalendarList} from 'react-native-calendars';
+import { Link } from "react-router-native";
 import EventSection from "../../comps/EventSection";
 import MyHeader from "../../comps/header";
 import NavBar from "../../comps/navbar";
@@ -8,7 +9,7 @@ import NavBar from "../../comps/navbar";
 const styles = StyleSheet.create({
     container:{
         alignItems:"center",
-        height:"110%"
+        height:"120%"
     },
     header:{
         position:"relative",
@@ -55,9 +56,14 @@ export default function Schedule(){
             <View style={styles.pagetitle}>
                 <Text style={styles.pageName}>Schedule</Text>
             </View>
-            <TouchableOpacity style={styles.edit}>
+            
+            
+            <Link to="/createevent" style={styles.edit} component={TouchableOpacity}>
                 <Image source={require("../../public/edit.png")}/>
-            </TouchableOpacity>   
+            </Link>
+
+
+        
         </View>
 
         {/* Calendar */}
@@ -87,7 +93,7 @@ export default function Schedule(){
         {/* Event List */}
 
         <View style={styles.event}>
-            <EventSection />
+            <EventSection eventName="Game at BCIT" eventTime="9:00AM - 11:00AM" eventLocation="Burnaby, BC" eventDesc="Don't forget the ID!"/>
         </View>
     </ScrollView>
     <View style={styles.navigation}><NavBar /></View>

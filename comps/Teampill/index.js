@@ -170,6 +170,8 @@ const styles = StyleSheet.create({
     width: 230,
     display: "flex",
     alignItems: "center",
+    position: "relative",
+    left:-40
 
   },
   indivadmincont: {
@@ -179,7 +181,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    marginTop: 10
+    marginTop: 15
   },
   savebtn: {
     display: "flex",
@@ -244,7 +246,7 @@ const styles = StyleSheet.create({
     color: "#111111"
   },
   avatarcont: {
-    height:50
+    height:60
   },
   none: {
     display: "none"
@@ -300,8 +302,8 @@ const MyPill = ({
                 <View style={styles.container}>
                   <View style={styles.teamcont}>
                     <View style={styles.avatarcont}>
+                      <Avatar dim={60}/>
                       {/* Team/League Icon */}
-                      <Avatar dim={50} />
                     </View>
 
                     <View style={styles.infocont}>
@@ -520,7 +522,7 @@ const MyPill = ({
                         selected === 1 ? styles.indivadmincont : styles.no
                       ]}
                     >
-                      <Avatar dim={50} />
+                      <Avatar dim={50}/>
                       <Text style={styles.membertext}>{admin}</Text>
                     </View>
                     <View
@@ -528,7 +530,7 @@ const MyPill = ({
                         selected === 1 ? styles.indivadmincont : styles.no
                       ]}
                     >
-                      <Avatar dim={50} />
+                      <Avatar dim={50}/>
                       <Text style={styles.membertext}>{admin}</Text>
                     </View>
                     <View
@@ -536,7 +538,7 @@ const MyPill = ({
                         selected === 1 ? styles.indivadmincont : styles.no
                       ]}
                     >
-                      <Avatar dim={50} />
+                      <Avatar dim={50}/>
                       <Text style={styles.membertext}>{admin}</Text>
                     </View>
                   </View>
@@ -558,7 +560,7 @@ const MyPill = ({
                         selected === 5 ? styles.indivadmincont : styles.none
                       ]}
                     >
-                      <Avatar dim={50} />
+                      <Avatar dim={50}/>
                       <Text style={styles.membertext}>{coach}</Text>
                     </View>
                     <View
@@ -566,7 +568,7 @@ const MyPill = ({
                         selected === 5 ? styles.indivadmincont : styles.none
                       ]}
                     >
-                      <Avatar dim={50} />
+                      <Avatar dim={50}/>
                       <Text style={styles.membertext}>{coach}</Text>
                     </View>
                     <View
@@ -574,7 +576,7 @@ const MyPill = ({
                         selected === 5 ? styles.indivadmincont : styles.none
                       ]}
                     >
-                      <Avatar dim={50} />
+                      <Avatar dim={50}/>
                       <Text style={styles.membertext}>{coach}</Text>
                     </View>
                   </View>
@@ -586,7 +588,7 @@ const MyPill = ({
                   <View
                     style={[selected === 6 ? styles.roster : styles.none]}
                   ></View>
-                  {/* COACH CONTAINER START */}
+                  {/* Players CONTAINER START */}
                   <View
                     style={[selected === 6 ? styles.admincont : styles.none]}
                   >
@@ -595,7 +597,7 @@ const MyPill = ({
                         selected === 6 ? styles.indivadmincont : styles.none
                       ]}
                     >
-                      <Avatar dim={50} />
+                      <Avatar dim={50}/>
                       <Text style={styles.membertext}>{player}</Text>
                     </View>
                     <View
@@ -603,7 +605,7 @@ const MyPill = ({
                         selected === 6 ? styles.indivadmincont : styles.none
                       ]}
                     >
-                      <Avatar dim={50} />
+                      <Avatar dim={50}/>
                       <Text style={styles.membertext}>{player}</Text>
                     </View>
                     <View
@@ -611,7 +613,7 @@ const MyPill = ({
                         selected === 6 ? styles.indivadmincont : styles.none
                       ]}
                     >
-                      <Avatar dim={50} />
+                      <Avatar dim={50}/>
                       <Text style={styles.membertext}>{player}</Text>
                     </View>
                   </View>
@@ -710,7 +712,7 @@ const MyPill = ({
                     ]}
                   >
                     <View style={styles.avatarcont}>
-                      <Avatar dim={50} />
+                      <Avatar dim={50}/>
                     </View>
                     <View>
                       <Text style={styles.membertext}>{membername}</Text>
@@ -727,7 +729,7 @@ const MyPill = ({
                     ]}
                   >
                     <View style={styles.avatarcont}>
-                      <Avatar dim={50} />
+                      <Avatar dim={50}/>
                     </View>
                     <View>
                       <Text style={styles.membertext}>{membername}</Text>
@@ -744,7 +746,7 @@ const MyPill = ({
                     ]}
                   >
                     <View style={styles.avatarcont}>
-                      <Avatar dim={50} />
+                      <Avatar dim={50}/>
                     </View>
                     <View>
                       <Text style={styles.membertext}>{membername}</Text>
