@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {View, StyleSheet, Text, Image} from "react-native";
+import {View, StyleSheet, Text, Image, TouchableOpacity} from "react-native";
 import MyHeader from "../../comps/header";
 import Avatar from "../../comps/Avatar";
 import NavBar from "../../comps/navbar"
@@ -8,6 +8,8 @@ import Profilepost from "../../comps/profilepost";
 import MySwitch from "../../comps/MySwitch";
 import MyButton from "../../comps/button";
 import Input from "../../comps/input";
+import { useHistory } from "react-router-native";
+
 
 const styles = StyleSheet.create({
     container:{
@@ -54,11 +56,17 @@ const styles = StyleSheet.create({
 
 
 export default function Password(){
+const history = useHistory();
 return <View style={styles.container}>
 
 <View style={styles.headercont}>
-<Image source={require("../../public/backarrow.png")} style={styles.headerspace}>
-</Image>
+<TouchableOpacity 
+        onPress={() => {
+          history.push("/account");
+          }}     
+  >
+    <Image source={require("../../public/backarrow.png")} style={styles.headerspace} />
+  </TouchableOpacity>
 <MyHeader head="Password"/>
 </View>
 
@@ -77,7 +85,7 @@ return <View style={styles.container}>
 </View>
 
 <View style={styles.buttoncont}>
-<MyButton text="Cancel" bgcolor="#333333"/>
+<MyButton text="Cancel" bgcolor="#333333" />
 <MyButton text="Confirm"/>
 </View>
 

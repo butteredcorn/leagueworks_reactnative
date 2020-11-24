@@ -9,6 +9,8 @@ import Profilepost from "../../comps/profilepost";
 import Input from "../../comps/input";
 import MyLargeButton from "../../comps/buttonlarge";
 import MySection from "../../comps/settings_section";
+import { Link, useHistory } from "react-router-native";
+
 
 const styles = StyleSheet.create({
     container:{
@@ -117,6 +119,8 @@ const styles = StyleSheet.create({
 export default function Account({setToken}){
 
 const [selected, setSelected] = useState(0);
+const history = useHistory();
+
 
 async function logout() {
   try {
