@@ -53,8 +53,10 @@ export default function Messages(){
     const [otherUser, updateOtherUser] = useState("")
     const [userMessages, updateUserMessages] = useState({loading: true, data: []})
 
-    const redirectChat = (league) => {
+    const redirectChat = () => {
+        console.log(page.redirect)
         update({redirect: !page.redirect, path: "/chat", otherUserID: ""})
+        console.log(page.redirect)
     }
 
 
@@ -75,13 +77,12 @@ return page.redirect ? <Redirect to={
             <Text style={styles.newGroup}>New Group</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => redirectChat()}>
         <MessageSection 
+        onPress={() => redirectChat()}
         name="James Harden" 
         otherUserID=""
         messageContent="Yo bro, when's the game?" 
         time="5:01 PM" />
-        </TouchableOpacity>
 
         {/* <MessageSection 
         name="Russell Westbrook" 

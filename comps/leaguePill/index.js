@@ -282,7 +282,8 @@ const MyPill = ({
     phoneNumber,
     leagueID,
     headline,
-    joined
+    joined,
+    onPress
 }) => {
   const [selected, setSelected] = useState(0);
 
@@ -303,7 +304,7 @@ const MyPill = ({
                       <View style={styles.namecont}>
                         <Text style={styles.title}>{leagueName}</Text>
 
-                      {!joined && <TouchableOpacity style={styles.joinbtn}>
+                      {!joined && <TouchableOpacity style={styles.joinbtn} onPress={onPress}>
                           <Text style={styles.joinbtntext}>Join</Text>
                         </TouchableOpacity>}
                       </View>

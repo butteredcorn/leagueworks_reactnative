@@ -57,9 +57,6 @@ export default function Leagues(){
     const [page, update] = useState({redirect: false})
     const [user, updateUser] = useState("")
     const [userLeaguesOnly, updateSettings] = useState({setting: false, filter: true})
-
-    // const [userLeagues, updateUserLeagues] = useState({loading: true, data: []})
-    //or
     const [allLeagues, updateAllLeagues] = useState({loading: true, data: []})
 
     const userLeagueFilter = userLeaguesOnly.setting ? (league) => league.user_league : () => true
@@ -70,19 +67,8 @@ export default function Leagues(){
         return {access_token: rawToken, user_id: rawID}
     }
 
-    async function getUserLeagues(user) {
-        const result = await axios.post(`${globals.webserverURL}/database/read/userleagues`, {
-            user: {
-                user_id: user.user_id
-            },
-            access_token: user.access_token
-        })
-        return result.data
+    async function joinLeague(user) {
 
-        // [
-        // {"_id": "5fb9cf9965f84d0017928887", "email": "best league", "league_name": null, "phone_number": "best league", "sport_type": "basketball"},
-        // {"_id": "5fb9db257bfc86001752d031", "email": "league2@email.com", "league_name": null, "phone_number": "1", "sport_type": "basketball"}
-        // ]
     }
 
     async function getAllLeagues(user) {
@@ -189,7 +175,7 @@ return page.redirect ? <Redirect to={{pathname: page.path, state: page.leagueID}
         allLeagues.data.filter(userLeagueFilter).map(league => 
             <View style={styles.pillMargin}>
             <TouchableOpacity onPress={() => redirectTeams(league._id)}>
-                <MyPill joined={league.user_league} leagueID={league._id} leagueName={league.league_name} email={league.email} phoneNumber={league.phone_number} sportType={league.sport_type} img={require("../../public/girl.jpg")}></MyPill>
+                <MyPill onPress={joinLeague} joined={league.user_league} leagueID={league._id} leagueName={league.league_name} email={league.email} phoneNumber={league.phone_number} sportType={league.sport_type} img={require("../../public/girl.jpg")}></MyPill>
             </TouchableOpacity>
             </View>   
         ) 
