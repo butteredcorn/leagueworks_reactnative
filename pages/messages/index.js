@@ -50,7 +50,8 @@ const styles = StyleSheet.create({
 export default function Messages(){
 
     const [page, update] = useState({redirect: false})
-    const [otherUser, updateOtherUser] = useState("")
+    //all other users in an array
+    const [otherUsers, updateOtherUsers] = useState("")
     const [userMessages, updateUserMessages] = useState({loading: true, data: []})
     const [user, updateUser] = useState("")
     
@@ -62,9 +63,9 @@ export default function Messages(){
         return {access_token: rawToken, user_id: rawID}
     }
 
-    const redirectChat = () => {
+    const redirectChat = (otherUserID) => {
         console.log(page.redirect)
-        update({redirect: !page.redirect, path: "/chat", user: user, otherUserID: otherUser})
+        update({redirect: !page.redirect, path: "/chat", user: user, otherUserID: otherUserID})
         console.log(page.redirect)
     }
 
@@ -81,7 +82,7 @@ return page.redirect ? <Redirect to={
     {pathname: page.path,
      state: {
         user: page.user,
-        otherUserID: page.otherUser
+        otherUserID: page.otherUserID
      }
      }}></Redirect>
 
@@ -95,10 +96,11 @@ return page.redirect ? <Redirect to={
             <Text style={styles.newGroup}>New Group</Text>
         </TouchableOpacity>
 
+        {/* map function here, get params from map function, so you will have param from that */}
         <MessageSection 
-        onPress={() => redirectChat()}
+        onPress={() => redirectChat("5fbc6140ad13df00172f6eca")}
         name="James Harden" 
-        otherUserID=""
+        otherUserID="5fbc6140ad13df00172f6eca" //for example
         messageContent="Yo bro, when's the game?" 
         time="5:01 PM" />
 
