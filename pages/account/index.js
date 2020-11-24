@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import {View, StyleSheet, Text, Image} from "react-native";
+import {View, StyleSheet, Text, Image, AsyncStorage} from "react-native";
+import {Redirect} from 'react-router-native'
 import MyHeader from "../../comps/header";
 import Avatar from "../../comps/Avatar";
 import NavBar from "../../comps/navbar"
@@ -96,12 +97,32 @@ const styles = StyleSheet.create({
     },
     none:{
       display:"none"
+    },
+    navigation:{
+      zIndex:1,
+      position:"absolute",
+      bottom:0
     }
 })
 
 
-export default function Account(){
+export default function Account({setToken}){
+
 const [selected, setSelected] = useState(0);
+
+async function logout() {
+  try {
+    await AsyncStorage.removeItem('access_token')
+    await AsyncStorage.removeItem('access_token_expiry')
+    await AsyncStorage.removeItem('user_id')
+    await AsyncStorage.removeItem('user_type')
+    console.log('logged out')
+    setToken({token: null, loggedin: false})
+  } catch(err) {
+    console.log(err)
+  }
+}
+
 return <View style={styles.container}>
 
 <View style={styles.headercont}>
@@ -111,7 +132,7 @@ return <View style={styles.container}>
 <View style={styles.profilecont}>
 
 <View style={styles.avatarcont}>
-<Avatar/>
+  <Avatar logout={logout}/>
 </View>
 
 <View>
@@ -213,9 +234,8 @@ press1={(tab) => {
 
 
   
-  <View style={styles.navbar}>
-    <NavBar />
-    </View>
+<View style={styles.navigation}><NavBar /></View>
+
     
     </View>
 }

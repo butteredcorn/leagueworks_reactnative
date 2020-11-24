@@ -38,6 +38,11 @@ const styles = StyleSheet.create({
         bottom: 0,
         width: "100%"
     }, 
+    navigation:{
+        zIndex:1,
+        position:"absolute",
+        bottom:0
+      }
 })
 
 
@@ -79,9 +84,7 @@ return <View style={styles.container}>
     </ScrollView>
 
         
-        <View  style={styles.navbar}>
-            <NavBar />
-        </View>
+    <View style={styles.navigation}><NavBar /></View>
 
 
     </View>

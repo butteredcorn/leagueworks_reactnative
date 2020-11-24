@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     leftCont:{
         width: "90%",
         flexDirection: "row",
-    }
+    },
 })
 
 
@@ -39,19 +39,19 @@ return <View style={styles.container}>
     
     <View style={styles.contactCont}>
         <View style={styles.contact}>
-            <Avatar />
+            <Avatar dim={40} style={styles.avatar}/>
             <Header head="James Harden" />
         </View>
     </View>
 
     <ScrollView>
-        <MyBubble bgcolor="#ECECEC" textcolor="#333333" text="Hello" />
-        <MyBubble text="Hi." />
-        <MyBubble bgcolor="#ECECEC" textcolor="#333333" text="What are you up to on this fine evening Monsieur? 😝" />
-        <MyBubble text="ça ne vous concerne pas!! 😤😤😤" />
-        <MyBubble bgcolor="#ECECEC" textcolor="#333333" text="Bruh... y u speaking french bro??" />
-        <MyBubble bgcolor="#ECECEC" textcolor="#333333" text="Makin me google translate all this" />
-        <MyBubble text="🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃" />
+        <MyBubble bgcolor="#ECECEC" textcolor="#333333" text="Hello" leftposition={-45}/>
+        <MyBubble text="Hi." rightposition={-45}/>
+        <MyBubble bgcolor="#ECECEC" textcolor="#333333" text="What are you up to on this fine evening Monsieur? 😝" leftposition={-40}/>
+        <MyBubble text="ça ne vous concerne pas!! 😤😤😤" rightposition={-45}/>
+        <MyBubble bgcolor="#ECECEC" textcolor="#333333" text="Bruh... y u speaking french bro??" leftposition={-45}/>
+        <MyBubble bgcolor="#ECECEC" textcolor="#333333" text="Makin me google translate all this" leftposition={-45}/>
+        <MyBubble text="🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃" rightposition={-45}/>
     </ScrollView>
 
     <View style={styles.bottomCont}>

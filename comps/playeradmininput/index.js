@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
 const PlayerAdminInput = ({ text, number }) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.number}>{number}</Text>
+      <Text style={styles.number}>{}</Text>
       <View>
         <Text>{text}</Text>
         <TextInput
@@ -32,18 +32,17 @@ const PlayerAdminInput = ({ text, number }) => {
       </View>
 
       <View>
-        <Text>ID Number</Text>
+        <Text>Email or User ID</Text>
         <TextInput
           style={{
-            backgroundColor: "#FFF",
+            backgroundColor: "#F8F8F8",
             width: 118,
-            height: 25,
-            padding: 20,
+            height: 43,
+            padding: 12,
             borderRadius: 30,
-            marginRight: 15,
-            outline: "none"
+            marginRight: 15
           }}
-          placeholder="ID Number"
+          placeholder="Email or User ID"
         />
       </View>
     </View>

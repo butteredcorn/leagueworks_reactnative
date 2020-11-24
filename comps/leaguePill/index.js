@@ -169,8 +169,6 @@ const styles = StyleSheet.create({
     width: 230,
     display: "flex",
     alignItems: "center",
-    position: "relative",
-    left:-40
 
   },
   indivadmincont: {
@@ -180,7 +178,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    marginTop: 15
+    marginTop: 10
   },
   savebtn: {
     display: "flex",
@@ -245,7 +243,7 @@ const styles = StyleSheet.create({
     color: "#111111"
   },
   avatarcont: {
-    height:60
+    height:50
   },
   none: {
     display: "none"
@@ -256,17 +254,12 @@ const styles = StyleSheet.create({
 });
 
 const MyPill = ({
-  text,
-  TeamName,
-  Awaywins,
-  Awaylosses,
-  Homewins,
-  Homelosses,
-  admin,
-  playername,
-  membername,
-  coach,
-  player
+    leagueName,
+    sportType,
+    email,
+    phoneNumber,
+    leagueID,
+    headline
 }) => {
   const [selected, setSelected] = useState(0);
 
@@ -280,12 +273,12 @@ const MyPill = ({
                 <View style={styles.container}>
                   <View style={styles.teamcont}>
                     <View style={styles.avatarcont}>
-                      <Avatar dim={60}/>
+                      <Avatar/>
                     </View>
 
                     <View style={styles.infocont}>
                       <View>
-                        <Text style={styles.title}>{TeamName}</Text>
+                        <Text style={styles.title}>{leagueName}</Text>
                       </View>
 
                       <View style={styles.teamtabs}>
@@ -295,149 +288,39 @@ const MyPill = ({
                           }}
                         >
                           <View style={styles.indivcont}>
-                            {/* ROSTER TEXT STATE START */}
+                            {/* Sport Type TEXT STATE START */}
                             <Text
                               style={[
                                 selected === 0 ? styles.text : styles.none
                               ]}
                             >
-                              Rosters
+                              {sportType}
                             </Text>
-                            <Text
-                              style={[
-                                selected === 1
-                                  ? styles.textselected
-                                  : styles.none
-                              ]}
-                            >
-                              Rosters
-                            </Text>
-                            <Text
-                              style={[
-                                selected === 2 ? styles.text : styles.none
-                              ]}
-                            >
-                              Rosters
-                            </Text>
-                            <Text
-                              style={[
-                                selected === 3 ? styles.text : styles.none
-                              ]}
-                            >
-                              Rosters
-                            </Text>
-                            <Text
-                              style={[
-                                selected === 4 ? styles.text : styles.none
-                              ]}
-                            >
-                              Rosters
-                            </Text>
-                            <Text
-                              style={[
-                                selected === 5
-                                  ? styles.textselected
-                                  : styles.none
-                              ]}
-                            >
-                              Rosters
-                            </Text>
-                            <Text
-                              style={[
-                                selected === 6
-                                  ? styles.textselected
-                                  : styles.none
-                              ]}
-                            >
-                              Rosters
-                            </Text>
-                            {/* ROSTER TEXT STATE END */}
+                            {/* sport type TEXT STATE END */}
                             <View></View>
                           </View>
                         </TouchableHighlight>
 
                         <TouchableHighlight
                           onPress={() => {
-                            setSelected(2);
+                            setSelected(1);
                           }}
                         >
                           <View style={styles.indivcont}>
-                            <Text
-                              style={[
-                                selected === 2
-                                  ? styles.textselected
-                                  : styles.text
-                              ]}
-                            >
-                              Standings
-                            </Text>
-                          </View>
-                        </TouchableHighlight>
-
-                        <TouchableHighlight
-                          onPress={() => {
-                            setSelected(3);
-                          }}
-                        >
-                          <View style={styles.indivcont}>
-                            {/* EDIT TEXT STATE START */}
-                            <Text
-                              style={[
-                                selected === 3
-                                  ? styles.textselected
-                                  : styles.none
-                              ]}
-                            >
-                              Edit
-                            </Text>
-                            <Text
-                              style={[
-                                selected === 4
-                                  ? styles.textselected
-                                  : styles.none
-                              ]}
-                            >
-                              Edit
-                            </Text>
-                            <Text
-                              style={[
-                                selected === 2 ? styles.text : styles.none
-                              ]}
-                            >
-                              Edit
-                            </Text>
-                            <Text
-                              style={[
-                                selected === 1 ? styles.text : styles.none
-                              ]}
-                            >
-                              Edit
-                            </Text>
+                            {/* Slogan */}
                             <Text
                               style={[
                                 selected === 0 ? styles.text : styles.none
                               ]}
                             >
-                              Edit
+                              {headline}
                             </Text>
-                            <Text
-                              style={[
-                                selected === 5 ? styles.text : styles.none
-                              ]}
-                            >
-                              Edit
-                            </Text>
-                            <Text
-                              style={[
-                                selected === 6 ? styles.text : styles.none
-                              ]}
-                            >
-                              Edit
-                            </Text>
-                            {/* EDIT TEXT STATE END */}
+                            {/* Slogan */}
                             <View></View>
                           </View>
                         </TouchableHighlight>
+
+                        
                       </View>
                     </View>
                   </View>
@@ -485,24 +368,24 @@ const MyPill = ({
                         selected === 1 ? styles.indivadmincont : styles.no
                       ]}
                     >
-                      <Avatar dim={50}/>
-                      <Text style={styles.membertext}>{admin}</Text>
+                      <Avatar />
+                    <Text style={styles.membertext}>{}</Text>
                     </View>
                     <View
                       style={[
                         selected === 1 ? styles.indivadmincont : styles.no
                       ]}
                     >
-                      <Avatar dim={50}/>
-                      <Text style={styles.membertext}>{admin}</Text>
+                      <Avatar />
+                      <Text style={styles.membertext}>{}</Text>
                     </View>
                     <View
                       style={[
                         selected === 1 ? styles.indivadmincont : styles.no
                       ]}
                     >
-                      <Avatar dim={50}/>
-                      <Text style={styles.membertext}>{admin}</Text>
+                      <Avatar />
+                      <Text style={styles.membertext}>{}</Text>
                     </View>
                   </View>
                 </View>
@@ -523,24 +406,24 @@ const MyPill = ({
                         selected === 5 ? styles.indivadmincont : styles.none
                       ]}
                     >
-                      <Avatar dim={50}/>
-                      <Text style={styles.membertext}>{coach}</Text>
+                      <Avatar />
+                      <Text style={styles.membertext}>{}</Text>
                     </View>
                     <View
                       style={[
                         selected === 5 ? styles.indivadmincont : styles.none
                       ]}
                     >
-                      <Avatar dim={50}/>
-                      <Text style={styles.membertext}>{coach}</Text>
+                      <Avatar />
+                      <Text style={styles.membertext}>{}</Text>
                     </View>
                     <View
                       style={[
                         selected === 5 ? styles.indivadmincont : styles.none
                       ]}
                     >
-                      <Avatar dim={50}/>
-                      <Text style={styles.membertext}>{coach}</Text>
+                      <Avatar />
+                      <Text style={styles.membertext}>{}</Text>
                     </View>
                   </View>
                 </View>
@@ -551,7 +434,7 @@ const MyPill = ({
                   <View
                     style={[selected === 6 ? styles.roster : styles.none]}
                   ></View>
-                  {/* Players CONTAINER START */}
+                  {/* COACH CONTAINER START */}
                   <View
                     style={[selected === 6 ? styles.admincont : styles.none]}
                   >
@@ -560,24 +443,24 @@ const MyPill = ({
                         selected === 6 ? styles.indivadmincont : styles.none
                       ]}
                     >
-                      <Avatar dim={50}/>
-                      <Text style={styles.membertext}>{player}</Text>
+                      <Avatar />
+                      <Text style={styles.membertext}>{}</Text>
                     </View>
                     <View
                       style={[
                         selected === 6 ? styles.indivadmincont : styles.none
                       ]}
                     >
-                      <Avatar dim={50}/>
-                      <Text style={styles.membertext}>{player}</Text>
+                      <Avatar />
+                      <Text style={styles.membertext}>{}</Text>
                     </View>
                     <View
                       style={[
                         selected === 6 ? styles.indivadmincont : styles.none
                       ]}
                     >
-                      <Avatar dim={50}/>
-                      <Text style={styles.membertext}>{player}</Text>
+                      <Avatar />
+                      <Text style={styles.membertext}>{}</Text>
                     </View>
                   </View>
                 </View>
@@ -602,8 +485,7 @@ const MyPill = ({
                             : styles.none
                         ]}
                       >
-                        <Text style={styles.winnumber}>{Homewins}</Text>
-                        <Text style={styles.textbold}>Wins</Text>
+
                       </View>
                       <View
                         style={[
@@ -612,8 +494,6 @@ const MyPill = ({
                             : styles.none
                         ]}
                       >
-                        <Text style={styles.losenumber}>{Homelosses}</Text>
-                        <Text style={styles.text}>Losses</Text>
                       </View>
                     </View>
 
@@ -627,7 +507,6 @@ const MyPill = ({
                             : styles.none
                         ]}
                       >
-                        <Text style={styles.winnumber}>{Awaywins}</Text>
                         <Text style={styles.textbold}>Wins</Text>
                       </View>
                       <View
@@ -637,8 +516,6 @@ const MyPill = ({
                             : styles.none
                         ]}
                       >
-                        <Text style={styles.losenumber}>{Awaylosses}</Text>
-                        <Text style={styles.text}>Losses</Text>
                       </View>
                     </View>
                   </View>
@@ -675,10 +552,10 @@ const MyPill = ({
                     ]}
                   >
                     <View style={styles.avatarcont}>
-                      <Avatar dim={50}/>
+                      <Avatar />
                     </View>
                     <View>
-                      <Text style={styles.membertext}>{membername}</Text>
+                      <Text style={styles.membertext}>{}</Text>
                     </View>
                     <Image
                       style={[selected === 3 ? styles.trashicon : styles.none]}
@@ -692,10 +569,10 @@ const MyPill = ({
                     ]}
                   >
                     <View style={styles.avatarcont}>
-                      <Avatar dim={50}/>
+                      <Avatar />
                     </View>
                     <View>
-                      <Text style={styles.membertext}>{membername}</Text>
+                      <Text style={styles.membertext}>{}</Text>
                     </View>
                     <Image
                       style={[selected === 3 ? styles.trashicon : styles.none]}
@@ -709,10 +586,10 @@ const MyPill = ({
                     ]}
                   >
                     <View style={styles.avatarcont}>
-                      <Avatar dim={50}/>
+                      <Avatar />
                     </View>
                     <View>
-                      <Text style={styles.membertext}>{membername}</Text>
+                      <Text style={styles.membertext}>{}</Text>
                     </View>
                     <Image
                       style={[selected === 3 ? styles.trashicon : styles.none]}
@@ -751,7 +628,7 @@ const MyPill = ({
                     <Avatar />
                   </View>
                   <View>
-                    <Text style={styles.membertext}>{membername}</Text>
+                    <Text style={styles.membertext}>{}</Text>
                   </View>
                   <MyCheck />
                 </View>
@@ -765,7 +642,7 @@ const MyPill = ({
                     <Avatar />
                   </View>
                   <View>
-                    <Text style={styles.membertext}>{membername}</Text>
+                    <Text style={styles.membertext}>{}</Text>
                   </View>
                   <MyCheck />
                 </View>
@@ -779,7 +656,7 @@ const MyPill = ({
                     <Avatar />
                   </View>
                   <View>
-                    <Text style={styles.membertext}>{membername}</Text>
+                    <Text style={styles.membertext}>{}</Text>
                   </View>
                   <MyCheck />
                 </View>
@@ -798,10 +675,10 @@ const MyPill = ({
 
 MyPill.defaultProps = {
   TeamName: "Team",
-  Homewins: "0",
-  Homelosses: "0",
-  Awaywins: "0",
-  Awaylosses: "0",
+  Homewins: "1",
+  Homelosses: "1",
+  Awaywins: "1",
+  Awaylosses: "1",
   admin: " Admin Name",
   playername: "Player Name",
   membername: "Member Name",

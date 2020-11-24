@@ -39,7 +39,12 @@ const styles = StyleSheet.create({
     event:{
         position:"relative",
         bottom:-107
-    }
+    },
+    navigation:{
+        zIndex:1,
+        position:"absolute",
+        bottom:0
+      }
 })
 
 export default function Schedule(){
@@ -91,6 +96,7 @@ export default function Schedule(){
             <EventSection eventName="Game at BCIT" eventTime="9:00AM - 11:00AM" eventLocation="Burnaby, BC" eventDesc="Don't forget the ID!"/>
         </View>
     </ScrollView>
+    <View style={styles.navigation}><NavBar /></View>
 </View>
         
 

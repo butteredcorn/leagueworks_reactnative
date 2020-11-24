@@ -32,12 +32,17 @@ const styles = StyleSheet.create({
     editIcon: {
         position: "relative",
         left: 170
-    }
+    },
+    navigation:{
+        zIndex:1,
+        position:"absolute",
+        bottom:0
+      }
 });
 
 
 export default function Home(){
-return<ScrollView contentContainerStyles={styles.container}>
+return<View><ScrollView contentContainerStyles={styles.container}>
     
     <View style={styles.header}>
         <Text style={styles.pageName}>Home</Text>
@@ -62,8 +67,9 @@ return<ScrollView contentContainerStyles={styles.container}>
         Description="Bring your A-game this Saturday!"
         img={require("../../public/girl.jpg")} />
     </View>
-
     </ScrollView>
+    <View style={styles.navigation}><NavBar /></View>
+    </View>
 {/* 
     <View  style={styles.navbar}>
         <NavBar />
