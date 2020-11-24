@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
         alignItems:"center",
         height:540,
         justifyContent:"space-between",
-        top:70
+        top:20
     },
 
 })
