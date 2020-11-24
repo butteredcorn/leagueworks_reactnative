@@ -20,6 +20,9 @@ import Account from './pages/account';
 import NavBar from './comps/navbar';
 import Schedule from './pages/schedule';
 import Password from './pages/password';
+import Notifications from "./pages/notifications";
+import Help from "./pages/help";
+
 
 import Avatar from "./comps/Avatar";
 import Home from './pages/home';
@@ -27,6 +30,7 @@ import Login from './pages/login';
 import GettingStarted from './pages/gettingstarted';
 import Leagues from "./pages/leagues/Leagues";
 import LeagueReg from "./pages/leagueregistration/LeagueRegistration"
+
 
 
 const styles = StyleSheet.create({
@@ -117,6 +121,9 @@ const App = () => {
         <ProtectedRoute token={token} path={"/team-registration"} component={TeamRegistration}/>
         <ProtectedRoute token={token} path={"/schedule"} component={Schedule}/>
         <ProtectedRoute token={token} path={"/messages"} component={Messages}/>
+        <ProtectedRoute token={token} path={"/notifications"} component={Notifications}/>
+        <ProtectedRoute token={token} path={"/password"} component={Password}/>
+        <ProtectedRoute token={token} path={"/help"} component={Help}/>
         <ProtectedRoute token={token} path={"/account"} render={
           () => <Account setToken={setToken}/>
         }/>
