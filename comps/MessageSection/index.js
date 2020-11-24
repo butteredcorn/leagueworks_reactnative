@@ -1,10 +1,10 @@
 import React from "react";
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
 import Avatar from "../Avatar";
 
 const MessageSection = ({ name, messageContent, time }) => {
   return (
-    <View style={styles.container}>
+    <TouchableOpacity style={styles.container}>
       <View style={styles.hr} />
       <View style={styles.messagecont}>
         <View style={styles.avatar}>
@@ -16,7 +16,7 @@ const MessageSection = ({ name, messageContent, time }) => {
         </View>
         <Text style={styles.time}>{time}</Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 

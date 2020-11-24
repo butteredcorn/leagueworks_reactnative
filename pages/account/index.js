@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {View, StyleSheet, Text, Image, AsyncStorage} from "react-native";
+import {View, StyleSheet, Text, Image, AsyncStorage, TouchableOpacity, ScrollView} from "react-native";
 import {Redirect} from 'react-router-native'
 import MyHeader from "../../comps/header";
 import Avatar from "../../comps/Avatar";
@@ -7,6 +7,10 @@ import NavBar from "../../comps/navbar"
 import MyTab from "../../comps/Tab";
 import Profilepost from "../../comps/profilepost";
 import Input from "../../comps/input";
+import MyLargeButton from "../../comps/buttonlarge";
+import MySection from "../../comps/settings_section";
+import { Link, useHistory } from "react-router-native";
+
 
 const styles = StyleSheet.create({
     container:{
@@ -14,32 +18,24 @@ const styles = StyleSheet.create({
         position: "relative",
         height: "100%",
     },
-    navbar:{
-      position:"absolute",
-      bottom:0,
-      width:"100%"
-    },
     headercont:{
       marginTop:50,
       width:300,
       height:50
     },
     profilecont:{
-      width:325,
-      height:200,
-      display:"flex",
+      height: 130,
       alignItems:"center",
-      justifyContent:"space-around",
+      justifyContent:"space-between",
+      marginBottom: 10
       // backgroundColor:"green"
     },
     profiletabcont: {
-      width:275,
+      // width:275,
       height:230,
-      display:"flex",
       alignItems:"center",
       justifyContent:"space-between",
-      position:"relative",
-      top:30
+      // position:"relative",
     },
     avatarcont:{
       // backgroundColor:"blue",
@@ -57,13 +53,10 @@ const styles = StyleSheet.create({
       marginBottom:15
     },
     settingscont:{
-      width:275,
       height:160,
-      display:"flex",
       alignItems:"center",
       justifyContent:"space-between",
       position:"relative",
-      top:40
     },
     indivsettingscont:{
       width:275,
@@ -80,7 +73,7 @@ const styles = StyleSheet.create({
       display:"flex",
       flexDirection:"row",
       alignContent:"center",
-      justifyContent:"space-between",
+      justifyContent:"space-between"
     },
     borderline: {
       width:330,
@@ -95,6 +88,9 @@ const styles = StyleSheet.create({
       width:100,
       height:20
     },
+    logout:{
+      margin: 20
+    },
     none:{
       display:"none"
     },
@@ -102,13 +98,29 @@ const styles = StyleSheet.create({
       zIndex:1,
       position:"absolute",
       bottom:0
-    }
+    },
+    header:{
+      flexDirection: "row",
+      width: "100%",
+      height: 45,
+      marginTop: 50,
+      marginBottom: 15,
+      // justifyContent: "space-between",
+      paddingLeft: "5%"
+  },
+    pageName:{
+      fontSize: 36,
+      fontWeight: "bold",
+      color: "#333333",
+  },
 })
 
 
 export default function Account({setToken}){
 
 const [selected, setSelected] = useState(0);
+const history = useHistory();
+
 
 async function logout() {
   try {
@@ -124,114 +136,125 @@ async function logout() {
 }
 
 return <View style={styles.container}>
+      <ScrollView contentContainerStyles={styles.container}>
 
-<View style={styles.headercont}>
-<MyHeader  head="Account"/>
-</View>
-    
-<View style={styles.profilecont}>
+      <View style={styles.header}>
+          <Text style={styles.pageName}>Account</Text>
+      </View>
+                
+            <View style={styles.profilecont}>
+              <View style={styles.avatarcont}>
+                <Avatar />
+              </View>
+              <View>
+              <MyHeader  head="Profile"/>
+              </View>
+            </View>
+              
+              <View>
+                <MyTab tab1="Posts" tab2="Profile" tab3="Settings" 
+                press1={(tab) => {
+                  setSelected(0);
+                        }}
+                  press2={(tab) => {
+                  setSelected(1);
+                  }}
+                  press3={(tab) => {
+                  setSelected(2);
+                  }}/>
+              </View>
 
-<View style={styles.avatarcont}>
-  <Avatar logout={logout}/>
-</View>
+            <View>
+            {/* POSTS START */}
+                <View style={[selected === 0 ? styles.postcont : styles.none]}>
+                  <Profilepost />
+                </View>
+                <View style={[selected === 0 ? styles.postcont : styles.none]}>
+                  <Profilepost />
+                </View>
+                <View style={[selected === 0 ? styles.postcont : styles.none]}>
+                  <Profilepost />
+                </View>
+            {/* POSTS END */}
+            {/* Profile Start */}
+                <View style={[selected === 1 ? styles.profiletabcont : styles.none]}>
+                  <View style={[selected === 1 ? styles.postcont : styles.none]}>
+                    <Input text="Name" />
+                  </View>
+                  <View style={[selected === 1 ? styles.postcont : styles.none]}>
+                    <Input text="Email" />
+                  </View>
+                  <View style={[selected === 1 ? styles.postcont : styles.none]}>
+                    <Input text="ID Number" />
+                  </View>
+                </View>
+            {/* Profile End */}
+            {/* SETTINGS START */}
 
-<View>
-<MyHeader  head="Profile"/>
-</View>
+                <View style={[selected === 2 ? styles.settingscont : styles.none]}>
+                  <MySection />
+                  <View style={styles.logout}>
+                    <MyLargeButton text="Log out" onPress={logout}/>
+                  </View>
 
-<View>
-<MyTab tab1="Posts" tab2="Profile" tab3="Settings" 
-press1={(tab) => {
-  setSelected(0);
-        }}
-  press2={(tab) => {
-  setSelected(1);
-  }}
-  press3={(tab) => {
-  setSelected(2);
-  }}/>
-</View>
-</View>
+                  {/* <View style={[selected === 2 ? styles.indivsettingscont : styles.none]}>
+                    <View style={[selected === 2 ? styles.infosettingscont : styles.none]}>
+                      <Image source={require("../../public/bell.png")} style={styles.bellcont} />
+                    <View style={styles.textcont}>
+                      <Text style={styles.textstyle}>Notifications</Text>
+                    </View>
+                    </View>
+                    <View style={styles.iconcont}>
+                    <Image source={require("../../public/farrow.png")} style={styles.arrowcont} />
+                  </View>
+                </View>
 
-<View>
-{/* POSTS START */}
-<View style={[selected === 0 ? styles.postcont : styles.none]}>
-<Profilepost />
-</View>
-<View style={[selected === 0 ? styles.postcont : styles.none]}>
-<Profilepost />
-</View><View style={[selected === 0 ? styles.postcont : styles.none]}>
-<Profilepost />
-</View>
-{/* POSTS END */}
-{/* Profile Start */}
-<View style={[selected === 1 ? styles.profiletabcont : styles.none]}>
-<View style={[selected === 1 ? styles.postcont : styles.none]}>
-<Input text="Name" />
-</View>
-<View style={[selected === 1 ? styles.postcont : styles.none]}>
-<Input text="Email" />
-</View>
-<View style={[selected === 1 ? styles.postcont : styles.none]}>
-<Input text="ID Number" />
-</View>
-</View>
-{/* Profile End */}
-{/* SETTINGS START */}
-<View style={[selected === 2 ? styles.settingscont : styles.none]}>
+            <View style={[selected === 2 ? styles.borderline : styles.none]}>
+            </View>
 
-<View style={[selected === 2 ? styles.indivsettingscont : styles.none]}>
-<View style={[selected === 2 ? styles.infosettingscont : styles.none]}>
-<Image source={require("../../public/bell.png")} style={styles.bellcont}></Image>
-<View style={styles.textcont}>
-<Text style={styles.textstyle}>Notifications</Text>
-</View>
-</View>
-<View style={styles.iconcont}>
-<Image source={require("../../public/farrow.png")} style={styles.arrowcont}>
-</Image>
-</View>
-</View>
+            <View style={[selected === 2 ? styles.indivsettingscont : styles.none]}>
+            <View style={[selected === 2 ? styles.infosettingscont : styles.none]}>
+            <Image source={require("../../public/lock.png")} style={styles.bellcont}></Image>
+            <View style={styles.textcont}>
+            <Text style={styles.textstyle}>Password</Text>
+            </View>
+            </View>
+            <View style={styles.iconcont}>
+            <Image source={require("../../public/farrow.png")} style={styles.arrowcont}>
+            </Image>
+            </View>
+            </View>
 
-<View style={[selected === 2 ? styles.borderline : styles.none]}>
-</View>
+            <View style={[selected === 2 ? styles.borderline : styles.none]}>
+            </View>
 
-<View style={[selected === 2 ? styles.indivsettingscont : styles.none]}>
-<View style={[selected === 2 ? styles.infosettingscont : styles.none]}>
-<Image source={require("../../public/lock.png")} style={styles.bellcont}></Image>
-<View style={styles.textcont}>
-<Text style={styles.textstyle}>Password</Text>
-</View>
-</View>
-<View style={styles.iconcont}>
-<Image source={require("../../public/farrow.png")} style={styles.arrowcont}>
-</Image>
-</View>
-</View>
+            <View style={[selected === 2 ? styles.indivsettingscont : styles.none]}>
+            <View style={[selected === 2 ? styles.infosettingscont : styles.none]}>
+            <Image source={require("../../public/question.png")} style={styles.bellcont}></Image>
+            <View style={styles.textcont}>
+            <Text style={styles.textstyle}>Help</Text>
+            </View>
+            </View>
+            <View style={styles.iconcont}>
+            <Image source={require("../../public/farrow.png")} style={styles.arrowcont}>
+            </Image>
+            </View>
+            </View>
 
-<View style={[selected === 2 ? styles.borderline : styles.none]}>
-</View>
-
-<View style={[selected === 2 ? styles.indivsettingscont : styles.none]}>
-<View style={[selected === 2 ? styles.infosettingscont : styles.none]}>
-<Image source={require("../../public/question.png")} style={styles.bellcont}></Image>
-<View style={styles.textcont}>
-<Text style={styles.textstyle}>Help</Text>
-</View>
-</View>
-<View style={styles.iconcont}>
-<Image source={require("../../public/farrow.png")} style={styles.arrowcont}>
-</Image>
-</View>
-</View>
-
-</View>
-{/* SETTINGS End */}
-</View>
+            <View style={[selected === 2 ? styles.borderline : styles.none]}></View> */}
 
 
 
 
+
+
+            </View>
+            {/* SETTINGS End */}
+            </View>
+
+
+
+</ScrollView>
 
   
 <View style={styles.navigation}><NavBar /></View>

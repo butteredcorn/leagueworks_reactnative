@@ -1,5 +1,5 @@
 import React, { useState, useReducer } from "react";
-import {View, StyleSheet, Image, AsyncStorage} from "react-native";
+import {View, ScrollView, StyleSheet, Image, AsyncStorage} from "react-native";
 import { Redirect, useLocation } from 'react-router-native'
 import * as axios from 'react-native-axios'
 
@@ -14,19 +14,22 @@ import MyLargeButton from "../../comps/buttonlarge";
 
 
 const styles = StyleSheet.create({
+    Cont:{
+        height:"100%"
+    },
     topCont: {
         justifyContent: "center",
         alignItems: "center",
     },
     bottomCont: {
         alignItems: "center",
-        marginTop: 130
+        marginTop: 50
     },
     inputMargin: {
         marginBottom: 20
     },
     buttonMargin: {
-        marginTop: 20
+        margin:20
     },
     name: {
         marginBottom: 20,
@@ -105,7 +108,7 @@ export default function UserReg ({token, setToken}) {
         }
     }
 
-    return token && token.token && token.loggedin ? <Redirect to="/"/> : <View>
+    return token && token.token && token.loggedin ? <Redirect to="/"/> : <ScrollView>
         <View style={styles.topCont}>
             <MyProgressBar></MyProgressBar>
             <MyHeader head={`${data.state == "admin" ? "Admin" : "Player"} Registration`}></MyHeader>
@@ -153,5 +156,5 @@ export default function UserReg ({token, setToken}) {
             </View>
 
         </View>
-    </View>
+    </ScrollView>
 }
