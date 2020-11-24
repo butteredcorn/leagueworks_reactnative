@@ -1,9 +1,15 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
+import useSocket from 'use-socket.io-client'
 import {View, StyleSheet, Text, TouchableOpacity, ScrollView} from "react-native";
+import io from "socket.io-client";
+
+
 import Avatar from "../../../comps/Avatar";
 import Header from "../../../comps/header";
 import MsgInput from "../../../comps/msginput"
 import MyBubble from "../../../comps/msg_bubble";
+
+import NavBar from '../../../comps/navbar'
 
 const styles = StyleSheet.create({
     container:{
@@ -35,6 +41,61 @@ const styles = StyleSheet.create({
 
 
 export default function Chat(){
+
+    const [socket, updateSocket] = useState("http://localhost:5000")
+    //const [socket] = useSocket('http://localhost:5000')
+    const [message, updateMessage] = useState("")
+    const [messages, updateMessages] = useState({loading: true, data: []})
+
+
+    // socket.connect()
+    // console.log(`Socket connected: ${socket.connected}`)
+    // socket.on('connection', message => {
+    //     console.log(message)
+    // })
+    // socket.on('message', message => {
+    //     console.log(message)
+    // })
+
+    function socketInit(){
+        return new Promise(async (resolve, reject) => {
+            try {
+                const s = io("http://localhost:5000", { transports: ['websocket'], query: { token: "" } })
+                await updateSocket(s)
+                resolve(s)
+            } catch (err) {
+                reject(err)
+            }
+        })
+    }
+
+    function setupSocket(socket) {
+
+        console.log(socket)
+
+        socket.on('connect', () => {
+            socket.emit("message", "hello from react native.")
+        })
+
+        socket.on("connection message", (message) => {
+            console.log(message)
+        })
+
+    }
+
+    useEffect(() => {
+        try {
+            socketInit()
+            .then((socket) => {
+                console.log(`Socket connected: ${socket.connected}`)
+                setupSocket(socket)
+            })
+        } catch (err) {
+            console.log(err)
+        }
+    }, [])
+
+
 return <View style={styles.container}>
     
     <View style={styles.contactCont}>
@@ -49,14 +110,12 @@ return <View style={styles.container}>
         <MyBubble text="Hi." />
         <MyBubble bgcolor="#ECECEC" textcolor="#333333" text="What are you up to on this fine evening Monsieur? 😝" />
         <MyBubble text="ça ne vous concerne pas!! 😤😤😤" />
-        <MyBubble bgcolor="#ECECEC" textcolor="#333333" text="Bruh... y u speaking french bro??" />
-        <MyBubble bgcolor="#ECECEC" textcolor="#333333" text="Makin me google translate all this" />
-        <MyBubble text="🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃" />
+        
     </ScrollView>
 
     <View style={styles.bottomCont}>
     <MsgInput />
     </View>
-
+    <View style={styles.navigation}><NavBar socket={socket}/></View>
     </View>
 }

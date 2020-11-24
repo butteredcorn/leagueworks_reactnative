@@ -1,4 +1,5 @@
-import React from "react";
+import React, {useState} from "react";
+import { Redirect } from 'react-router-native'
 import {View, StyleSheet, Text, TouchableOpacity, ScrollView} from "react-native";
 import MyHeader from "../../comps/header";
 import Avatar from "../../comps/Avatar";
@@ -47,21 +48,42 @@ const styles = StyleSheet.create({
 
 
 export default function Messages(){
-return <View style={styles.container}>
-    
 
+    const [page, update] = useState({redirect: false})
+    const [otherUser, updateOtherUser] = useState("")
+    const [userMessages, updateUserMessages] = useState({loading: true, data: []})
+
+    const redirectChat = (league) => {
+        update({redirect: !page.redirect, path: "/chat", otherUserID: ""})
+    }
+
+
+return page.redirect ? <Redirect to={
+    {pathname: page.path,
+     state: {
+        otherUserID: otherUser
+     }
+     }}></Redirect>
+
+    : <View style={styles.container}>
     <ScrollView>
             <Text style={styles.pageName}>Messages</Text>
 
         <SearchInput />
+
         <TouchableOpacity style={styles.newGroupCont}>
             <Text style={styles.newGroup}>New Group</Text>
         </TouchableOpacity>
+
+        <TouchableOpacity onPress={() => redirectChat()}>
         <MessageSection 
         name="James Harden" 
+        otherUserID=""
         messageContent="Yo bro, when's the game?" 
         time="5:01 PM" />
-        <MessageSection 
+        </TouchableOpacity>
+
+        {/* <MessageSection 
         name="Russell Westbrook" 
         messageContent="Do you even wanna win??? >:(" 
         time="4:29 PM" />
@@ -80,7 +102,7 @@ return <View style={styles.container}>
         <MessageSection 
         name="Mike D'Antoni" 
         messageContent="Keep an eye out for Rob..." 
-        time="2:51" />
+        time="2:51" /> */}
     </ScrollView>
 
         

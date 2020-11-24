@@ -78,24 +78,6 @@ const App = () => {
     run()
   }, [])
 
-
-
-  //currently check true, change to check false to enable authentication
-  // if(!token.loggedin) {
-  //       return (
-  //         <NativeRouter>
-  //         <View style={styles.cont}>
-  //           {/* registration page here */}
-  //           <Route exact path ="/" component={GettingStarted}/>
-  //           <Route path="/login" render={
-  //             () => <Login setToken={setToken}></Login>
-  //           }/>
-  //           <Route path="/signup" render={
-  //             () => <UserReg setToken={setToken}></UserReg>
-  //           }/>
-  //         </View>
-  //         </NativeRouter>)
-  // } else {
     return ( <NativeRouter style={styles.cont}> 
       {/* this is how to resize avatar with dim prop*/}
       {/* <Avatar dim={200} />  */}
@@ -117,6 +99,7 @@ const App = () => {
         <ProtectedRoute token={token} path={"/team-registration"} component={TeamRegistration}/>
         <ProtectedRoute token={token} path={"/schedule"} component={Schedule}/>
         <ProtectedRoute token={token} path={"/messages"} component={Messages}/>
+        <ProtectedRoute token={token} path={"/chat"} component={Chat}/>
         <ProtectedRoute token={token} path={"/account"} render={
           () => <Account setToken={setToken}/>
         }/>
@@ -141,7 +124,6 @@ const App = () => {
     </NativeRouter>
     )
   }
-  
-//};
+
 
 export default App;
