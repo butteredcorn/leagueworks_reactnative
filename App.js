@@ -101,8 +101,7 @@ const App = () => {
       {/* <Avatar dim={200} />  */}
   
       <View style={styles.pages}>
-        <Route path="/gettingstarted" component={Leagues}/>
-        {/* <Route path="/gettingstarted" component={GettingStarted}/> */}
+        <Route path="/gettingstarted" component={GettingStarted}/>
         <Route path="/login" render={
           () => <Login token={token} setToken={setToken}></Login>
         }/>
