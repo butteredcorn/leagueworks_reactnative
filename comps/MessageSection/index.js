@@ -1,14 +1,14 @@
 import React from "react";
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
 import Avatar from "../Avatar";
 
-const MessageSection = ({ name, messageContent, time }) => {
+const MessageSection = ({ name, messageContent, time, onPress }) => {
   return (
-    <View style={styles.container}>
+    <TouchableOpacity style={styles.container} onPress={onPress}>
       <View style={styles.hr} />
       <View style={styles.messagecont}>
         <View style={styles.avatar}>
-          <Avatar />
+          <Avatar dim={38}/>
         </View>
         <View>
           <Text style={styles.name}>{name}</Text>
@@ -16,7 +16,7 @@ const MessageSection = ({ name, messageContent, time }) => {
         </View>
         <Text style={styles.time}>{time}</Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     height: 37
   },
   avatar: {
-    marginTop: 20
+    marginTop: 15
   },
   messagecont: {
     flex: 1,

@@ -6,9 +6,10 @@ import {NativeRouter, Route, Link} from "react-router-native";
 import * as axios from 'react-native-axios'
 import { globals } from "./globals"
 
+import ProtectedRoute from './comps/protectedRoute/ProtectedRoute'
 import CreateEvent from "./pages/createevent";
-import AdminReg from "./pages/adminreg";
-import PlayerReg from "./pages/PlayerReg";
+import TeamRegistration from './pages/adminregteam'
+import UserReg from "./pages/UserReg";
 import FinishPlayerReg from "./pages/finishplayerreg";
 import PlayerWaiver from "./pages/playerwaiver";
 import Teams from "./pages/teams";
@@ -18,36 +19,53 @@ import Chat from "./pages/messages/chat"
 import Account from './pages/account';
 import NavBar from './comps/navbar';
 import Schedule from './pages/schedule';
+import Password from './pages/password';
+import Notifications from "./pages/notifications";
+import Help from "./pages/help";
+
 
 import Avatar from "./comps/Avatar";
 import Home from './pages/home';
 import Login from './pages/login';
+import GettingStarted from './pages/gettingstarted';
+import Leagues from "./pages/leagues/Leagues";
+import LeagueReg from "./pages/leagueregistration/LeagueRegistration"
+
 
 
 const styles = StyleSheet.create({
   cont:{
-    flex:1,
+    flex:1
+  },
+  pages:{
+    flex:5,
     justifyContent:"center",
     alignItems:"center"
+  },
+  navigation:{
+    zIndex:1,
+    position:"absolute",
+    bottom:0
   }
+
 })
 
 const App = () => {
 
   //load the heroku web server
-  useEffect(()=> {
-    async function loadWebServer() {
-      try {
-        //console.log(JSON.stringify(globals.webserverURL))
-        const result = await axios.get(`${globals.webserverURL}/database`)
-        console.log(result.data.error)
-        //setState({loading: false})
-      } catch (err) {
-        console.log(err.message)
-      } 
-    }
-    loadWebServer()
-  }, [])
+  // useEffect(()=> {
+  //   async function loadWebServer() {
+  //     try {
+  //       //console.log(JSON.stringify(globals.webserverURL))
+  //       const result = await axios.get(`${globals.webserverURL}/database`)
+  //       console.log(result.data.error)
+  //       //setState({loading: false})
+  //     } catch (err) {
+  //       console.log(err.message)
+  //     } 
+  //   }
+  //   loadWebServer()
+  // }, [])
 
   //check for JWT
   const [token, setToken] = useState({token: null, loggedin: false})
@@ -64,31 +82,38 @@ const App = () => {
     run()
   }, [])
 
-
-
-  //currently check true, change to check false to enable authentication
-  if(!token.loggedin) {
-        return (
-          <View style={styles.cont}>
-            {/* registration page here */}
-            <Login />
-          </View>)
-  } else {
-    return ( <View style={styles.cont}> 
+    return ( <NativeRouter style={styles.cont}> 
       {/* this is how to resize avatar with dim prop*/}
-      <Avatar dim={200} /> 
+      {/* <Avatar dim={200} />  */}
   
-      <NativeRouter>
-          
-        <NavBar />
-          
-        <Route path ="/" component={Home}></Route>
-        <Route path ="/teams" component={Teams}></Route>
-        <Route path ="/schedule" component={Schedule}></Route>
-        <Route path ="/messages" component={Messages}></Route>
-        <Route path ="/account" component={Account}></Route>
-      </NativeRouter>
+      <View style={styles.pages}>
+        <Route path="/gettingstarted" component={GettingStarted}/>
+        <Route path="/login" render={
+          () => <Login token={token} setToken={setToken}></Login>
+        }/>
+        <Route path="/signup" render={
+          () => <UserReg token={token} setToken={setToken}></UserReg>
+        }/>
+
+        {/*protected routes need to use <ProtectedRoute>*/}
+        <ProtectedRoute token={token} exact={true} path ={"/"} component={Home}/>
+        <ProtectedRoute token={token} path={"/leagues"} component={Leagues}/>
+        <ProtectedRoute token={token} path={"/league-registration"} component={LeagueReg}/>
+        <ProtectedRoute token={token} path={"/teams"} component={Teams}/>
+        <ProtectedRoute token={token} path={"/team-registration"} component={TeamRegistration}/>
+        <ProtectedRoute token={token} path={"/schedule"} component={Schedule}/>
+        <ProtectedRoute token={token} path={"/messages"} component={Messages}/>
+        <ProtectedRoute token={token} path={"/chat"} component={Chat}/>
+        <ProtectedRoute token={token} path={"/notifications"} component={Notifications}/>
+        <ProtectedRoute token={token} path={"/password"} component={Password}/>
+        <ProtectedRoute token={token} path={"/help"} component={Help}/>
+        <ProtectedRoute token={token} path={"/account"} render={
+          () => <Account setToken={setToken}/>
+        }/>
+      </View> 
+       
   
+      {/* <TeamRegistration/> */}
       {/* <Home /> */}
       {/* <AdminReg /> */}
       {/* <PlayerReg /> */}
@@ -103,10 +128,9 @@ const App = () => {
       {/* <Account /> */}
   
   
-    </View>
+    </NativeRouter>
     )
   }
-  
-};
+
 
 export default App;

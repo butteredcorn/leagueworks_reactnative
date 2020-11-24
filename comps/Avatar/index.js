@@ -1,6 +1,8 @@
-import React from "react";
-import { View, StyleSheet, Image } from "react-native";
-const Avatar = ({img, dim}) => {
+import React, {useState} from "react";
+import { View, StyleSheet, Image, TouchableHighlight, TouchableOpacity } from "react-native";
+
+
+const Avatar = ({img, dim, logout}) => {
 
   const widthstyle = {
     width: dim ? dim : 90,
@@ -14,7 +16,9 @@ const Avatar = ({img, dim}) => {
   
   return (
     <View style={[styles.container, widthstyle]}>
-      <Image source={img} style={[styles.avatar, imagestyle]} resizeMode="cover"/>
+      <TouchableOpacity onPress={logout}>
+        <Image source={img} style={[styles.avatar, imagestyle]} resizeMode="cover"/>
+      </TouchableOpacity>
     </View>
   );
 };

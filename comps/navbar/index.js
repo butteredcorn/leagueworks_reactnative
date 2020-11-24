@@ -36,9 +36,10 @@ const styles = StyleSheet.create({
   }
 });
 
-const NavBar = () => {
+const NavBar = ({socket}) => {
   const [selected, setSelected] = useState(0);
   const history = useHistory();
+  
   return (
     <View style={styles.container}>
       {/* Home */}
@@ -47,6 +48,11 @@ const NavBar = () => {
             style={styles.icon}
             onPress={() => {
               setSelected(0);
+              if(socket) {
+                console.log("disconnecting socket")
+                socket.disconnect();
+                console.log("socket disconnected: " + !socket.connected)
+              }
               history.push("/");
 
             }}
@@ -70,7 +76,9 @@ const NavBar = () => {
             style={styles.icon}
             onPress={() => {
               setSelected(1);
-              history.push("/teams");
+              if(socket) {
+                socket.disconnect();
+              }              history.push("/leagues");
             }}
             // style={{ height: "85pt", width: "20%", alignItems: "center" }}
           >
@@ -94,7 +102,9 @@ const NavBar = () => {
             style={styles.icon}
             onPress={() => {
               setSelected(2);
-              history.push("/schedule");
+              if(socket) {
+                socket.disconnect();
+              }              history.push("/schedule");
             }}
             // style={{ height: "85pt", width: "20%", alignItems: "center" }}
           >
@@ -117,6 +127,9 @@ const NavBar = () => {
             style={styles.icon}
             onPress={() => {
               setSelected(3);
+              if(socket) {
+                socket.disconnect();
+              }              
               history.push("/messages");
             }}
             // style={{ height: "85pt", width: "20%", alignItems: "center" }}
@@ -140,7 +153,9 @@ const NavBar = () => {
             style={styles.icon}
             onPress={() => {
               setSelected(4);
-              history.push("/account");
+              if(socket) {
+                socket.disconnect();
+              }              history.push("/account");
             }}
             // style={{ height: "85pt", width: "20%", alignItems: "center" }}
           >

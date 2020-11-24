@@ -1,9 +1,16 @@
-import React from "react";
-import {View, StyleSheet, Text, TouchableOpacity, ScrollView} from "react-native";
+import React, {useState, useEffect, useRef} from "react";
+import { useLocation } from 'react-router-native'
+//import useSocket from 'use-socket.io-client'
+import {View, StyleSheet, Text, TouchableOpacity, ScrollView, AsyncStorage} from "react-native";
+import io from "socket.io-client";
+
+
 import Avatar from "../../../comps/Avatar";
 import Header from "../../../comps/header";
 import MsgInput from "../../../comps/msginput"
 import MyBubble from "../../../comps/msg_bubble";
+
+import NavBar from '../../../comps/navbar'
 
 const styles = StyleSheet.create({
     container:{
@@ -30,33 +37,73 @@ const styles = StyleSheet.create({
     leftCont:{
         width: "90%",
         flexDirection: "row",
-    }
+    },
 })
 
 
 export default function Chat(){
+    //useSocket Hook
+    const useSocket = (...args) => {
+        const { current: socket } = useRef(io(...args));
+        useEffect(() => {
+          return () => {
+            socket && socket.removeAllListeners();
+            socket && socket.close();
+          };
+        }, [socket]);
+        return [socket];
+      };
+      
+    const data = useLocation()
+    const user = data.state.user
+
+    const [socket] = useSocket('http://localhost:5000', { query: { token: user._W.access_token, user_id: user._W.user_id } }) //useSocket('http://localhost:5000', { query: { token: "" } }) //transports: ['websocket'], 
+    const [message, updateMessage] = useState("")
+    const [messages, updateMessages] = useState({loading: true, data: []})
+
+    //initialize web socket
+    function socketInit() {
+        socket.connect()
+        socket.on('connection', (message) => {
+            console.log(message)
+        })
+        socket.on('message', (message) => {
+            console.log("Standard message: " + message)
+        })
+        socket.emit("react message", "hello from react native")
+    }
+
+    function emitMessage(socket, message) {
+        socket.emit("react message", message)
+    }    
+
+    useEffect(() => {
+        try {
+            socketInit()
+        } catch (err) {
+            console.log(err)
+        }
+    },[])
+
 return <View style={styles.container}>
     
     <View style={styles.contactCont}>
         <View style={styles.contact}>
-            <Avatar />
+            <Avatar dim={40} style={styles.avatar}/>
             <Header head="James Harden" />
         </View>
     </View>
 
     <ScrollView>
-        <MyBubble bgcolor="#ECECEC" textcolor="#333333" text="Hello" />
-        <MyBubble text="Hi." />
-        <MyBubble bgcolor="#ECECEC" textcolor="#333333" text="What are you up to on this fine evening Monsieur? 😝" />
-        <MyBubble text="ça ne vous concerne pas!! 😤😤😤" />
-        <MyBubble bgcolor="#ECECEC" textcolor="#333333" text="Bruh... y u speaking french bro??" />
-        <MyBubble bgcolor="#ECECEC" textcolor="#333333" text="Makin me google translate all this" />
-        <MyBubble text="🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃🙃" />
+        <MyBubble bgcolor="#ECECEC" textcolor="#333333" text="Hello" leftposition={-45}/>
+        <MyBubble text="Hi." rightposition={-45}/>
+        <MyBubble bgcolor="#ECECEC" textcolor="#333333" text="What are you up to on this fine evening Monsieur? 😝" leftposition={-40}/>
+        <MyBubble text="ça ne vous concerne pas!! 😤😤😤" rightposition={-45}/>
     </ScrollView>
 
     <View style={styles.bottomCont}>
-    <MsgInput />
+    <MsgInput onPress={emitMessage} socket={socket}/>
     </View>
-
+    <View style={styles.navigation}><NavBar socket={socket}/></View>
     </View>
 }

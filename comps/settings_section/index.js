@@ -1,5 +1,6 @@
 import React from "react";
 import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
+import { useHistory } from "react-router-native";
 
 const styles = StyleSheet.create({
   container: {
@@ -40,12 +41,16 @@ const styles = StyleSheet.create({
 });
 
 const MySection = () => {
-
+  const history = useHistory();
   return (
     <View>
       {/* Notifications */}
 
-      <TouchableOpacity>
+      <TouchableOpacity
+          onPress={() => {
+          history.push("/notifications");
+          }}      
+      >
         <View style={styles.container}>
           <Image style={[styles.icon]} source={require("./images/bell.png")} />
 
@@ -59,7 +64,11 @@ const MySection = () => {
 
       {/* Password */}
 
-      <TouchableOpacity>
+      <TouchableOpacity
+          onPress={() => {
+          history.push("/password");
+          }}           
+      >
         <View style={styles.container}>
           <Image
             style={[styles.icon]}
@@ -76,7 +85,11 @@ const MySection = () => {
 
       {/* Help */}
 
-      <TouchableOpacity>
+      <TouchableOpacity
+          onPress={() => {
+          history.push("/help");
+          }}           
+      >
         <View style={styles.container}>
           <Image style={[styles.icon]} source={require("./images/help.png")} />
 

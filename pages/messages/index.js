@@ -1,5 +1,6 @@
-import React from "react";
-import {View, StyleSheet, Text, TouchableOpacity, ScrollView} from "react-native";
+import React, {useState, useEffect} from "react";
+import { Redirect } from 'react-router-native'
+import {View, StyleSheet, Text, TouchableOpacity, ScrollView, AsyncStorage} from "react-native";
 import MyHeader from "../../comps/header";
 import Avatar from "../../comps/Avatar";
 import NavBar from "../../comps/navbar"
@@ -38,25 +39,70 @@ const styles = StyleSheet.create({
         bottom: 0,
         width: "100%"
     }, 
+    navigation:{
+        zIndex:1,
+        position:"absolute",
+        bottom:0
+      }
 })
 
 
 export default function Messages(){
-return <View style={styles.container}>
-    
 
+    const [page, update] = useState({redirect: false})
+    const [otherUser, updateOtherUser] = useState("")
+    const [userMessages, updateUserMessages] = useState({loading: true, data: []})
+    const [user, updateUser] = useState("")
+    
+    //need to get reference to other user here
+
+    async function getUser() {
+        const rawToken = await AsyncStorage.getItem('access_token')  
+        const rawID = await AsyncStorage.getItem('user_id')
+        return {access_token: rawToken, user_id: rawID}
+    }
+
+    const redirectChat = () => {
+        console.log(page.redirect)
+        update({redirect: !page.redirect, path: "/chat", user: user, otherUserID: otherUser})
+        console.log(page.redirect)
+    }
+
+    useEffect(() => {
+        try {
+            const user = getUser()
+            updateUser(user)
+        } catch (err) {
+            console.log(err)
+        } 
+    },[])
+
+return page.redirect ? <Redirect to={
+    {pathname: page.path,
+     state: {
+        user: page.user,
+        otherUserID: page.otherUser
+     }
+     }}></Redirect>
+
+    : <View style={styles.container}>
     <ScrollView>
             <Text style={styles.pageName}>Messages</Text>
 
         <SearchInput />
+
         <TouchableOpacity style={styles.newGroupCont}>
             <Text style={styles.newGroup}>New Group</Text>
         </TouchableOpacity>
+
         <MessageSection 
+        onPress={() => redirectChat()}
         name="James Harden" 
+        otherUserID=""
         messageContent="Yo bro, when's the game?" 
         time="5:01 PM" />
-        <MessageSection 
+
+        {/* <MessageSection 
         name="Russell Westbrook" 
         messageContent="Do you even wanna win??? >:(" 
         time="4:29 PM" />
@@ -75,13 +121,11 @@ return <View style={styles.container}>
         <MessageSection 
         name="Mike D'Antoni" 
         messageContent="Keep an eye out for Rob..." 
-        time="2:51" />
+        time="2:51" /> */}
     </ScrollView>
 
         
-        <View  style={styles.navbar}>
-            <NavBar />
-        </View>
+    <View style={styles.navigation}><NavBar /></View>
 
 
     </View>

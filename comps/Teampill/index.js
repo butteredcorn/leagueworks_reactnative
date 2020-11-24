@@ -4,7 +4,8 @@ import {
   Text,
   StyleSheet,
   TouchableHighlight,
-  Image
+  Image,
+  TouchableOpacity
 } from "react-native";
 import Avatar from "../Avatar";
 import MyTab from "../Tab";
@@ -169,6 +170,8 @@ const styles = StyleSheet.create({
     width: 230,
     display: "flex",
     alignItems: "center",
+    position: "relative",
+    left:-40
 
   },
   indivadmincont: {
@@ -178,7 +181,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    marginTop: 10
+    marginTop: 15
   },
   savebtn: {
     display: "flex",
@@ -199,7 +202,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontWeight: "bold",
-    fontSize: 16
+    fontSize: 16,
   },
   text: {
     fontWeight: "normal",
@@ -243,17 +246,46 @@ const styles = StyleSheet.create({
     color: "#111111"
   },
   avatarcont: {
-    height:50
+    height:60
   },
   none: {
     display: "none"
   },
   show: {
     display:"flex"
+  },
+
+  namecont: {
+    flexDirection: "row",
+    width: "100%",
+    justifyContent: "space-between"
+  },
+
+  joinbtn: {
+    width: 60,
+    height: 20,
+    backgroundColor: "#F35B04",
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 50
+
+  },
+  joinbtntext: {
+    color: "#F8F9FA",
+    fontSize: 12,
+    fontWeight: "bold"
   }
 });
 
 const MyPill = ({
+  teamID,
+  email,
+  phoneNumber,
+  team_captain,
+  players,
+  userTeam,
+  onPress,
+
   text,
   TeamName,
   Awaywins,
@@ -264,7 +296,8 @@ const MyPill = ({
   playername,
   membername,
   coach,
-  player
+  player,
+  joined
 }) => {
   const [selected, setSelected] = useState(0);
 
@@ -278,13 +311,20 @@ const MyPill = ({
                 <View style={styles.container}>
                   <View style={styles.teamcont}>
                     <View style={styles.avatarcont}>
-                      <Avatar/>
+                      <Avatar dim={60}/>
+                      {/* Team/League Icon */}
                     </View>
 
                     <View style={styles.infocont}>
-                      <View>
+                      <View style={styles.namecont}>
                         <Text style={styles.title}>{TeamName}</Text>
+
+                        {!joined && <TouchableOpacity style={styles.joinbtn} onPress={() => onPress(teamID, players)}>
+                          <Text style={styles.joinbtntext}>Join</Text>
+                        </TouchableOpacity>}
                       </View>
+
+
 
                       <View style={styles.teamtabs}>
                         <TouchableHighlight
@@ -359,6 +399,11 @@ const MyPill = ({
                             setSelected(2);
                           }}
                         >
+                          
+                          
+                          {/* Standings */}
+                          
+                          
                           <View style={styles.indivcont}>
                             <Text
                               style={[
@@ -377,6 +422,9 @@ const MyPill = ({
                             setSelected(3);
                           }}
                         >
+                        
+                          
+                          
                           <View style={styles.indivcont}>
                             {/* EDIT TEXT STATE START */}
                             <Text
@@ -483,7 +531,7 @@ const MyPill = ({
                         selected === 1 ? styles.indivadmincont : styles.no
                       ]}
                     >
-                      <Avatar />
+                      <Avatar dim={50}/>
                       <Text style={styles.membertext}>{admin}</Text>
                     </View>
                     <View
@@ -491,7 +539,7 @@ const MyPill = ({
                         selected === 1 ? styles.indivadmincont : styles.no
                       ]}
                     >
-                      <Avatar />
+                      <Avatar dim={50}/>
                       <Text style={styles.membertext}>{admin}</Text>
                     </View>
                     <View
@@ -499,7 +547,7 @@ const MyPill = ({
                         selected === 1 ? styles.indivadmincont : styles.no
                       ]}
                     >
-                      <Avatar />
+                      <Avatar dim={50}/>
                       <Text style={styles.membertext}>{admin}</Text>
                     </View>
                   </View>
@@ -521,7 +569,7 @@ const MyPill = ({
                         selected === 5 ? styles.indivadmincont : styles.none
                       ]}
                     >
-                      <Avatar />
+                      <Avatar dim={50}/>
                       <Text style={styles.membertext}>{coach}</Text>
                     </View>
                     <View
@@ -529,7 +577,7 @@ const MyPill = ({
                         selected === 5 ? styles.indivadmincont : styles.none
                       ]}
                     >
-                      <Avatar />
+                      <Avatar dim={50}/>
                       <Text style={styles.membertext}>{coach}</Text>
                     </View>
                     <View
@@ -537,7 +585,7 @@ const MyPill = ({
                         selected === 5 ? styles.indivadmincont : styles.none
                       ]}
                     >
-                      <Avatar />
+                      <Avatar dim={50}/>
                       <Text style={styles.membertext}>{coach}</Text>
                     </View>
                   </View>
@@ -549,7 +597,7 @@ const MyPill = ({
                   <View
                     style={[selected === 6 ? styles.roster : styles.none]}
                   ></View>
-                  {/* COACH CONTAINER START */}
+                  {/* Players CONTAINER START */}
                   <View
                     style={[selected === 6 ? styles.admincont : styles.none]}
                   >
@@ -558,7 +606,7 @@ const MyPill = ({
                         selected === 6 ? styles.indivadmincont : styles.none
                       ]}
                     >
-                      <Avatar />
+                      <Avatar dim={50}/>
                       <Text style={styles.membertext}>{player}</Text>
                     </View>
                     <View
@@ -566,7 +614,7 @@ const MyPill = ({
                         selected === 6 ? styles.indivadmincont : styles.none
                       ]}
                     >
-                      <Avatar />
+                      <Avatar dim={50}/>
                       <Text style={styles.membertext}>{player}</Text>
                     </View>
                     <View
@@ -574,7 +622,7 @@ const MyPill = ({
                         selected === 6 ? styles.indivadmincont : styles.none
                       ]}
                     >
-                      <Avatar />
+                      <Avatar dim={50}/>
                       <Text style={styles.membertext}>{player}</Text>
                     </View>
                   </View>
@@ -673,7 +721,7 @@ const MyPill = ({
                     ]}
                   >
                     <View style={styles.avatarcont}>
-                      <Avatar />
+                      <Avatar dim={50}/>
                     </View>
                     <View>
                       <Text style={styles.membertext}>{membername}</Text>
@@ -690,7 +738,7 @@ const MyPill = ({
                     ]}
                   >
                     <View style={styles.avatarcont}>
-                      <Avatar />
+                      <Avatar dim={50}/>
                     </View>
                     <View>
                       <Text style={styles.membertext}>{membername}</Text>
@@ -707,7 +755,7 @@ const MyPill = ({
                     ]}
                   >
                     <View style={styles.avatarcont}>
-                      <Avatar />
+                      <Avatar dim={50}/>
                     </View>
                     <View>
                       <Text style={styles.membertext}>{membername}</Text>
@@ -746,7 +794,7 @@ const MyPill = ({
                   ]}
                 >
                   <View style={styles.avatarcont}>
-                    <Avatar />
+                    <Avatar dim={50} />
                   </View>
                   <View>
                     <Text style={styles.membertext}>{membername}</Text>
@@ -760,7 +808,7 @@ const MyPill = ({
                   ]}
                 >
                   <View style={styles.avatarcont}>
-                    <Avatar />
+                    <Avatar dim={50} />
                   </View>
                   <View>
                     <Text style={styles.membertext}>{membername}</Text>
@@ -774,7 +822,7 @@ const MyPill = ({
                   ]}
                 >
                   <View style={styles.avatarcont}>
-                    <Avatar />
+                    <Avatar dim={50} />
                   </View>
                   <View>
                     <Text style={styles.membertext}>{membername}</Text>
@@ -796,10 +844,10 @@ const MyPill = ({
 
 MyPill.defaultProps = {
   TeamName: "Team",
-  Homewins: "1",
-  Homelosses: "1",
-  Awaywins: "1",
-  Awaylosses: "1",
+  Homewins: "0",
+  Homelosses: "0",
+  Awaywins: "0",
+  Awaylosses: "0",
   admin: " Admin Name",
   playername: "Player Name",
   membername: "Member Name",

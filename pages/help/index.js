@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {View, StyleSheet, Text, Image} from "react-native";
+import {View, StyleSheet, Text, Image, TouchableOpacity} from "react-native";
 import MyHeader from "../../comps/header";
 import Avatar from "../../comps/Avatar";
 import NavBar from "../../comps/navbar"
@@ -7,6 +7,8 @@ import MyTab from "../../comps/Tab";
 import Profilepost from "../../comps/profilepost";
 import MySwitch from "../../comps/MySwitch";
 import MyButton from "../../comps/button";
+import { useHistory } from "react-router-native";
+
 
 const styles = StyleSheet.create({
     container:{
@@ -40,7 +42,6 @@ const styles = StyleSheet.create({
       height:40,
       marginBottom:30,
       marginLeft:20,
-      backgroundColor:"beige",
       display:"flex",
       flexDirection:"row",
       alignItems:"center",
@@ -52,7 +53,6 @@ const styles = StyleSheet.create({
       height:95,
       marginBottom:45,
       marginLeft:20,
-      backgroundColor:"beige",
       display:"flex",
       justifyContent:"space-around"
     },
@@ -61,7 +61,6 @@ const styles = StyleSheet.create({
       height:105,
       marginBottom:45,
       marginLeft:20,
-      backgroundColor:"beige",
       display:"flex",
       justifyContent:"space-between"
     },
@@ -77,11 +76,17 @@ const styles = StyleSheet.create({
 
 
 export default function Help(){
+const history = useHistory();
 return <View style={styles.container}>
 
 <View style={styles.headercont}>
-<Image source={require("../../public/backarrow.png")} style={styles.headerspace}>
-</Image>
+<TouchableOpacity 
+        onPress={() => {
+          history.push("/account");
+          }}     
+  >
+    <Image source={require("../../public/backarrow.png")} style={styles.headerspace} />
+  </TouchableOpacity>
 <MyHeader head="Help"/>
 </View>
 

@@ -8,20 +8,20 @@ const styles = StyleSheet.create({
     container: {
         position: "relative",
         height: "100%",
-        alignItems: "center",
+        justifyContent:"center"
     },
-    navbar: {
-        position: "absolute",
-        bottom: 0,
-        width: "100%"
-    }, 
+    // navbar: {
+    //     position: "absolute",
+    //     bottom: 0,
+    //     width: "100%"
+    // }, 
     header:{
         flexDirection: "row",
         width: "100%",
         height: 45,
         marginTop: 50,
         marginBottom: 15,
-        justifyContent: "space-between",
+        // justifyContent: "space-between",
         paddingLeft: "5%"
     },
     pageName:{
@@ -29,6 +29,16 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         color: "#333333",
     },
+    editIcon: {
+        position: "relative",
+        left: 170
+    },
+    navigation:{
+        zIndex:1,
+        // Not sure why but the position made everything on the page off-center
+        // position:"absolute",
+        bottom:0
+      }
 });
 
 
@@ -38,8 +48,8 @@ return<View>
     
     <View style={styles.header}>
         <Text style={styles.pageName}>Home</Text>
-            <TouchableOpacity>
-                <Image source={require("../../public/edit.png")}/>
+            <TouchableOpacity >
+                <Image  source={require("../../public/edit.png")} style={styles.editIcon}/>
             </TouchableOpacity>   
     </View>
     
@@ -59,12 +69,15 @@ return<View>
         Description="Bring your A-game this Saturday!"
         img={require("../../public/girl.jpg")} />
     </View>
-
     </ScrollView>
+    <View style={styles.navigation}>
+        <NavBar />
+    </View>
+    </View>
 {/* 
     <View  style={styles.navbar}>
         <NavBar />
     </View> */}
-</View>
+
 
 }

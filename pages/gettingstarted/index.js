@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Button, Image, StyleSheet, Text, View } from "react-native";
+import { Link, useHistory } from "react-router-native";
+
 
 import MyHeader from "../../comps/header";
 import MyLargeButton from "../../comps/buttonlarge";
@@ -9,7 +11,7 @@ const styles = StyleSheet.create({
         alignItems:"center",
         height:540,
         justifyContent:"space-between",
-        top:70
+        top:20
     },
 
 })
@@ -24,16 +26,16 @@ return <View style={styles.container}>
     <Text>Welcome back, we missed you!</Text>
     </View>
 
-    <MyLargeButton text="Login" />
+    <Link to={"./login"}><MyLargeButton text="Login"></MyLargeButton></Link>
 
     <View>
     <MyHeader head="New to the app?"/>
     <Text>Tell us who you are to register</Text>
     </View>
 
-    <MyLargeButton text="Admin / Coach" />
+    <Link to={{pathname: "./signup", state: "admin"}}><MyLargeButton text="Admin" /></Link>
 
-    <MyLargeButton text="Player" />
+    <Link to={{pathname: "./signup", state: "player"}}><MyLargeButton text="Player" /></Link>
 
 </View>
 }

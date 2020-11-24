@@ -26,7 +26,7 @@ const EventSection = ({ eventName, eventTime, eventDesc, eventLocation }) => {
           <View style={styles.descriptionCont}>
             <Image
               style={styles.locationIcon}
-              source={require('../../public/location.png')}
+              source={require('../../public/description.png')}
             ></Image>
             <View><Text>{eventDesc}</Text></View>
           </View>
