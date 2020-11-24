@@ -35,14 +35,16 @@ const styles = StyleSheet.create({
     },
     navigation:{
         zIndex:1,
-        position:"absolute",
+        // Not sure why but the position made everything on the page off-center
+        // position:"absolute",
         bottom:0
       }
 });
 
 
 export default function Home(){
-return<View><ScrollView contentContainerStyles={styles.container}>
+return<View>
+    <ScrollView contentContainerStyles={styles.container}>
     
     <View style={styles.header}>
         <Text style={styles.pageName}>Home</Text>
@@ -68,7 +70,9 @@ return<View><ScrollView contentContainerStyles={styles.container}>
         img={require("../../public/girl.jpg")} />
     </View>
     </ScrollView>
-    <View style={styles.navigation}><NavBar /></View>
+    <View style={styles.navigation}>
+        <NavBar />
+    </View>
     </View>
 {/* 
     <View  style={styles.navbar}>
