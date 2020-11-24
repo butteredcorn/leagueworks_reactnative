@@ -8,6 +8,7 @@ import { globals } from '../../globals'
 import MyHeader from "../../comps/header";
 import NavBar from "../../comps/navbar";
 import MyPill from "../../comps/leaguePill";
+import MyButton from "../../comps/button";
 
 const styles = StyleSheet.create({
     container: {
@@ -39,6 +40,11 @@ const styles = StyleSheet.create({
         color: "#333333",
         width: "90%",
         
+    },
+    leagueview:{
+        justifyContent:"center",
+        flexDirection:"row",
+        marginBottom:20
     },
     navigation:{
         zIndex:1,
@@ -110,6 +116,11 @@ return page.redirect ? <Redirect to={{pathname: page.path, state: page.leagueID}
         <TouchableOpacity onPress={redirectLeagueReg}>
             <Image  source={require("../../public/edit.png")} style={styles.editIcon}/>
         </TouchableOpacity>
+    </View>
+
+    <View style={styles.leagueview}>
+        <MyButton text="All Leagues" bgcolor="#F35B04"/>
+        <MyButton text="My Leagues"/>
     </View>
     <View style={styles.pillcont}>
 
