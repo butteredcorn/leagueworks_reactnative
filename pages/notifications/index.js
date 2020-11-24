@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {View, StyleSheet, Text, Image} from "react-native";
+import {View, StyleSheet, Text, Image, TouchableOpacity} from "react-native";
 import MyHeader from "../../comps/header";
 import Avatar from "../../comps/Avatar";
 import NavBar from "../../comps/navbar"
@@ -7,6 +7,8 @@ import MyTab from "../../comps/Tab";
 import Profilepost from "../../comps/profilepost";
 import MySwitch from "../../comps/MySwitch";
 import MyButton from "../../comps/button";
+import { useHistory } from "react-router-native";
+
 
 const styles = StyleSheet.create({
     container:{
@@ -39,7 +41,6 @@ const styles = StyleSheet.create({
       width:325,
       height:40,
       marginBottom:45,
-      backgroundColor:"beige",
       display:"flex",
       flexDirection:"row",
       alignItems:"center",
@@ -62,12 +63,18 @@ const styles = StyleSheet.create({
 
 
 export default function Notifications(){
+const history = useHistory();
 return <View style={styles.container}>
 
 <View style={styles.headercont}>
-<Image source={require("../../public/backarrow.png")} style={styles.headerspace}>
-</Image>
-<MyHeader head="Notifications"/>
+  <TouchableOpacity 
+        onPress={() => {
+          history.push("/account");
+          }}     
+  >
+    <Image source={require("../../public/backarrow.png")} style={styles.headerspace} />
+  </TouchableOpacity>
+  <MyHeader head="Notifications"/>
 </View>
 
 <View style={styles.contentcont}>
