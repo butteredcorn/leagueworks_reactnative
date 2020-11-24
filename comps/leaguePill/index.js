@@ -4,7 +4,8 @@ import {
   Text,
   StyleSheet,
   TouchableHighlight,
-  Image
+  Image,
+  TouchableOpacity
 } from "react-native";
 import Avatar from "../Avatar";
 import MyTab from "../Tab";
@@ -250,6 +251,27 @@ const styles = StyleSheet.create({
   },
   show: {
     display:"flex"
+  },
+
+  namecont: {
+    flexDirection: "row",
+    width: "100%",
+    justifyContent: "space-between"
+  },
+
+  joinbtn: {
+    width: 60,
+    height: 20,
+    backgroundColor: "#F35B04",
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 50
+
+  },
+  joinbtntext: {
+    color: "#F8F9FA",
+    fontSize: 12,
+    fontWeight: "bold"
   }
 });
 
@@ -273,12 +295,16 @@ const MyPill = ({
                 <View style={styles.container}>
                   <View style={styles.teamcont}>
                     <View style={styles.avatarcont}>
-                      <Avatar/>
+                      <Avatar dim={50} />
                     </View>
 
                     <View style={styles.infocont}>
-                      <View>
+                      <View style={styles.namecont}>
                         <Text style={styles.title}>{leagueName}</Text>
+
+                        <TouchableOpacity style={styles.joinbtn}>
+                          <Text style={styles.joinbtntext}>Join</Text>
+                        </TouchableOpacity>
                       </View>
 
                       <View style={styles.teamtabs}>
