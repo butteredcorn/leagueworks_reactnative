@@ -103,13 +103,10 @@ const App = () => {
         <ProtectedRoute token={token} path={"/team-registration"} component={TeamRegistration}/>
         <ProtectedRoute token={token} path={"/schedule"} component={Schedule}/>
         <ProtectedRoute token={token} path={"/messages"} component={Messages}/>
-<<<<<<< HEAD
         <ProtectedRoute token={token} path={"/chat"} component={Chat}/>
-=======
         <ProtectedRoute token={token} path={"/notifications"} component={Notifications}/>
         <ProtectedRoute token={token} path={"/password"} component={Password}/>
         <ProtectedRoute token={token} path={"/help"} component={Help}/>
->>>>>>> 759ec87a78fc21a715309d68cb4670c469ff95a5
         <ProtectedRoute token={token} path={"/account"} render={
           () => <Account setToken={setToken}/>
         }/>
