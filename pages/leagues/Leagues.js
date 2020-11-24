@@ -8,11 +8,7 @@ import { globals } from '../../globals'
 import MyHeader from "../../comps/header";
 import NavBar from "../../comps/navbar";
 import MyPill from "../../comps/leaguePill";
-<<<<<<< HEAD
 import Button from '../../comps/button'
-=======
-import MyButton from "../../comps/button";
->>>>>>> 10033138dd94cb0a842eec1d4e64027706264f37
 
 const styles = StyleSheet.create({
     container: {
@@ -185,15 +181,7 @@ return page.redirect ? <Redirect to={{pathname: page.path, state: page.leagueID}
             <Image  source={require("../../public/edit.png")} style={styles.editIcon}/>
         </TouchableOpacity>
     </View>
-<<<<<<< HEAD
     <Button text={`${userLeaguesOnly.setting ? "Your Leagues" : "All Leagues"}`} onPress={ () => updateSettings({setting: !userLeaguesOnly.setting, filter: !userLeaguesOnly.filter})}/>
-=======
-
-    <View style={styles.leagueview}>
-        <MyButton text="All Leagues" bgcolor="#F35B04"/>
-        <MyButton text="My Leagues"/>
-    </View>
->>>>>>> 10033138dd94cb0a842eec1d4e64027706264f37
     <View style={styles.pillcont}>
 
         {!allLeagues.loading && Array.isArray(allLeagues.data) ? 
