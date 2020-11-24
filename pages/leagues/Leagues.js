@@ -8,6 +8,7 @@ import { globals } from '../../globals'
 import MyHeader from "../../comps/header";
 import NavBar from "../../comps/navbar";
 import MyPill from "../../comps/leaguePill";
+import Button from '../../comps/button'
 
 const styles = StyleSheet.create({
     container: {
@@ -50,7 +51,13 @@ const styles = StyleSheet.create({
 export default function Leagues(){
     const [page, update] = useState({redirect: false})
     const [user, updateUser] = useState("")
-    const [userLeagues, updateUserLeagues] = useState({loading: true, data: []})
+    const [userLeaguesOnly, updateSettings] = useState({setting: false, filter: true})
+
+    // const [userLeagues, updateUserLeagues] = useState({loading: true, data: []})
+    //or
+    const [allLeagues, updateAllLeagues] = useState({loading: true, data: []})
+
+    const userLeagueFilter = userLeaguesOnly.setting ? (league) => league.user_league : () => true
 
     const getUser = async () => {
         const rawToken = await AsyncStorage.getItem('access_token')  
@@ -73,14 +80,72 @@ export default function Leagues(){
         // ]
     }
 
+    async function getAllLeagues(user) {
+        const fullUser = await axios.post(`${globals.webserverURL}/database/read/user`, {
+            user: {
+                user_id: user.user_id
+            },
+            access_token: user.access_token
+        })
+
+        const result = await axios.post(`${globals.webserverURL}/database/read/leagues`, {
+            access_token: user.access_token
+        })
+        //somehow sort so user joined leagues are at the top
+        if(result.data.error) {
+            console.log(result.data.error)
+            alert(result.data.error)
+        } else {
+            //sort the array so that the logged-in user's team is at top...
+            const leagues = result.data
+            const userData = fullUser.data
+            const userLeagueArray = userData.leagues
+            // console.log(leagues)
+            // console.log(fullUser.data)
+            // console.log(userLeagueArray)
+
+            const userLeagues = []
+            const otherLeagues = []
+
+            for(let league of leagues) {
+                let userLeague = false
+                for(let leagueID of userLeagueArray) {
+                    if(league._id == leagueID) {
+                        //signed in user's team
+                        league.user_league = true
+                        userLeagues.push(league)
+                        userLeague = true
+                        break;
+                    }
+                }
+                if(!userLeague) {
+                    league.user_league = false
+                    otherLeagues.push(league)
+                }
+
+            }
+
+            const sortedLeagues = userLeagues.concat(otherLeagues)
+
+            console.log(sortedLeagues)
+            return sortedLeagues
+        }
+    }
+
     async function loadPage() {
         try {
             const user = await getUser()
             updateUser(user)
-            console.log(user)
-            const userLeagues = await getUserLeagues(user)
-            console.log(userLeagues)
-            updateUserLeagues({loading: false, data: userLeagues})
+            // console.log(user)
+
+            if (userLeaguesOnly.setting) {
+                // const userLeagues = await getUserLeagues(user)
+                // // console.log(userLeagues)
+                // updateUserLeagues({loading: false, data: userLeagues})
+            } else {
+                const leagues = await getAllLeagues(user)
+                updateAllLeagues({loading: false, data: leagues})
+            }
         } catch (err) {
             console.log(err)
         }
@@ -106,25 +171,24 @@ export default function Leagues(){
 return page.redirect ? <Redirect to={{pathname: page.path, state: page.leagueID}}></Redirect> : <View>
     <ScrollView contentContainerStyles={styles.container}>
     <View style={styles.header}>
-        <Text style={styles.pageName}>Your Leagues</Text>
+        <Text style={styles.pageName}>{userLeaguesOnly.setting ? "All Leagues" : "Your Leagues"}</Text>
         <TouchableOpacity onPress={redirectLeagueReg}>
             <Image  source={require("../../public/edit.png")} style={styles.editIcon}/>
         </TouchableOpacity>
     </View>
+    <Button text={`${userLeaguesOnly.setting ? "Your Leagues" : "All Leagues"}`} onPress={ () => updateSettings({setting: !userLeaguesOnly.setting, filter: !userLeaguesOnly.filter})}/>
     <View style={styles.pillcont}>
 
-        
-        {!userLeagues.loading && Array.isArray(userLeagues.data) ? 
-        // <Text>{JSON.stringify(userLeagues.data)}</Text>
-        userLeagues.data.map(league => 
+        {!allLeagues.loading && Array.isArray(allLeagues.data) ? 
+        //these are already filtered for league joined by the user
+        allLeagues.data.filter(userLeagueFilter).map(league => 
             <View style={styles.pillMargin}>
             <TouchableOpacity onPress={() => redirectTeams(league._id)}>
-                <MyPill leagueID={league._id} leagueName={league.league_name} email={league.email} phoneNumber={league.phone_number} sportType={league.sport_type} img={require("../../public/girl.jpg")}></MyPill>
+                <MyPill joined={league.user_league} leagueID={league._id} leagueName={league.league_name} email={league.email} phoneNumber={league.phone_number} sportType={league.sport_type} img={require("../../public/girl.jpg")}></MyPill>
             </TouchableOpacity>
             </View>   
         ) 
         : <Text>Loading</Text>}
-        
     </View>
     </ScrollView>
     <View style={styles.navigation}><NavBar /></View>
