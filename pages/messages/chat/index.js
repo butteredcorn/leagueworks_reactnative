@@ -1,6 +1,7 @@
 import React, {useState, useEffect, useRef} from "react";
+import { useLocation } from 'react-router-native'
 //import useSocket from 'use-socket.io-client'
-import {View, StyleSheet, Text, TouchableOpacity, ScrollView} from "react-native";
+import {View, StyleSheet, Text, TouchableOpacity, ScrollView, AsyncStorage} from "react-native";
 import io from "socket.io-client";
 
 
@@ -41,7 +42,7 @@ const styles = StyleSheet.create({
 
 
 export default function Chat(){
-
+    //useSocket Hook
     const useSocket = (...args) => {
         const { current: socket } = useRef(io(...args));
         useEffect(() => {
@@ -52,14 +53,16 @@ export default function Chat(){
         }, [socket]);
         return [socket];
       };
+      
+    const data = useLocation()
+    const user = data.state.user
 
-    //const [socket, updateSocket] = useState("http://192.168.1.147:5000")
-    const [socket] = useSocket('http://localhost:5000', { query: { token: "" } }) //transports: ['websocket'], 
+    const [socket] = useSocket('http://localhost:5000', { query: { token: user._W.access_token, user_id: user._W.user_id } }) //useSocket('http://localhost:5000', { query: { token: "" } }) //transports: ['websocket'], 
     const [message, updateMessage] = useState("")
     const [messages, updateMessages] = useState({loading: true, data: []})
 
     //initialize web socket
-    useEffect(() => {
+    function socketInit() {
         socket.connect()
         socket.on('connection', (message) => {
             console.log(message)
@@ -68,11 +71,19 @@ export default function Chat(){
             console.log("Standard message: " + message)
         })
         socket.emit("react message", "hello from react native")
-    })
+    }
 
     function emitMessage(socket, message) {
         socket.emit("react message", message)
-    }
+    }    
+
+    useEffect(() => {
+        try {
+            socketInit()
+        } catch (err) {
+            console.log(err)
+        }
+    },[])
 
 return <View style={styles.container}>
     

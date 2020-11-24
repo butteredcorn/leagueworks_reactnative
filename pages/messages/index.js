@@ -1,6 +1,6 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import { Redirect } from 'react-router-native'
-import {View, StyleSheet, Text, TouchableOpacity, ScrollView} from "react-native";
+import {View, StyleSheet, Text, TouchableOpacity, ScrollView, AsyncStorage} from "react-native";
 import MyHeader from "../../comps/header";
 import Avatar from "../../comps/Avatar";
 import NavBar from "../../comps/navbar"
@@ -52,18 +52,36 @@ export default function Messages(){
     const [page, update] = useState({redirect: false})
     const [otherUser, updateOtherUser] = useState("")
     const [userMessages, updateUserMessages] = useState({loading: true, data: []})
+    const [user, updateUser] = useState("")
+    
+    //need to get reference to other user here
+
+    async function getUser() {
+        const rawToken = await AsyncStorage.getItem('access_token')  
+        const rawID = await AsyncStorage.getItem('user_id')
+        return {access_token: rawToken, user_id: rawID}
+    }
 
     const redirectChat = () => {
         console.log(page.redirect)
-        update({redirect: !page.redirect, path: "/chat", otherUserID: ""})
+        update({redirect: !page.redirect, path: "/chat", user: user, otherUserID: otherUser})
         console.log(page.redirect)
     }
 
+    useEffect(() => {
+        try {
+            const user = getUser()
+            updateUser(user)
+        } catch (err) {
+            console.log(err)
+        } 
+    },[])
 
 return page.redirect ? <Redirect to={
     {pathname: page.path,
      state: {
-        otherUserID: otherUser
+        user: page.user,
+        otherUserID: page.otherUser
      }
      }}></Redirect>
 
