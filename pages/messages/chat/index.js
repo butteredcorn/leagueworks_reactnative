@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from "react";
-import useSocket from 'use-socket.io-client'
+import React, {useState, useEffect, useRef} from "react";
+//import useSocket from 'use-socket.io-client'
 import {View, StyleSheet, Text, TouchableOpacity, ScrollView} from "react-native";
 import io from "socket.io-client";
 
@@ -42,59 +42,37 @@ const styles = StyleSheet.create({
 
 export default function Chat(){
 
-    const [socket, updateSocket] = useState("http://localhost:5000")
-    //const [socket] = useSocket('http://localhost:5000')
+    const useSocket = (...args) => {
+        const { current: socket } = useRef(io(...args));
+        useEffect(() => {
+          return () => {
+            socket && socket.removeAllListeners();
+            socket && socket.close();
+          };
+        }, [socket]);
+        return [socket];
+      };
+
+    //const [socket, updateSocket] = useState("http://192.168.1.147:5000")
+    const [socket] = useSocket('http://localhost:5000', { query: { token: "" } }) //transports: ['websocket'], 
     const [message, updateMessage] = useState("")
     const [messages, updateMessages] = useState({loading: true, data: []})
 
-
-    // socket.connect()
-    // console.log(`Socket connected: ${socket.connected}`)
-    // socket.on('connection', message => {
-    //     console.log(message)
-    // })
-    // socket.on('message', message => {
-    //     console.log(message)
-    // })
-
-    function socketInit(){
-        return new Promise(async (resolve, reject) => {
-            try {
-                const s = io("http://localhost:5000", { transports: ['websocket'], query: { token: "" } })
-                await updateSocket(s)
-                resolve(s)
-            } catch (err) {
-                reject(err)
-            }
-        })
-    }
-
-    function setupSocket(socket) {
-
-        console.log(socket)
-
-        socket.on('connect', () => {
-            socket.emit("message", "hello from react native.")
-        })
-
-        socket.on("connection message", (message) => {
+    //initialize web socket
+    useEffect(() => {
+        socket.connect()
+        socket.on('connection', (message) => {
             console.log(message)
         })
+        socket.on('message', (message) => {
+            console.log("Standard message: " + message)
+        })
+        socket.emit("react message", "hello from react native")
+    })
 
+    function emitMessage(socket, message) {
+        socket.emit("react message", message)
     }
-
-    useEffect(() => {
-        try {
-            socketInit()
-            .then((socket) => {
-                console.log(`Socket connected: ${socket.connected}`)
-                setupSocket(socket)
-            })
-        } catch (err) {
-            console.log(err)
-        }
-    }, [])
-
 
 return <View style={styles.container}>
     
@@ -113,7 +91,7 @@ return <View style={styles.container}>
     </ScrollView>
 
     <View style={styles.bottomCont}>
-    <MsgInput />
+    <MsgInput onPress={emitMessage} socket={socket}/>
     </View>
     <View style={styles.navigation}><NavBar socket={socket}/></View>
     </View>
