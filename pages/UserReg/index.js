@@ -1,5 +1,5 @@
 import React, { useState, useReducer } from "react";
-import {View, ScrollView, StyleSheet, Image, AsyncStorage} from "react-native";
+import {View, ScrollView, StyleSheet, Text, TextInput, Image, AsyncStorage} from "react-native";
 import { Redirect, useLocation } from 'react-router-native'
 import * as axios from 'react-native-axios'
 
@@ -34,6 +34,13 @@ const styles = StyleSheet.create({
     name: {
         marginBottom: 20,
         flexDirection: "row"
+    },
+    passwordInput:{
+        backgroundColor:"#F8F8F8",
+        height:37,
+        width:280,
+        padding:12,
+        borderRadius: 33
     }
 })
 
@@ -147,9 +154,11 @@ export default function UserReg ({token, setToken}) {
                 ></Input>
             </View>
             <View style={styles.inputMargin}>
-                <Input text="Password"
+                {/* <Input text="Password"
                     setValue={(text) => dispatch({type: "password", value: text})}
-                ></Input>
+                ></Input> */}
+                <Text style={{ fontWeight:"bold"}}>Password</Text>
+                <TextInput  secureTextEntry={true} placeholder="Password" style={styles.passwordInput}   setValue={(text) => dispatch({type: "password", value: text})}/>
             </View>
             <View style={styles.buttonMargin}>
                 <MyLargeButton text="Sign Up" onPress={signup}></MyLargeButton>
