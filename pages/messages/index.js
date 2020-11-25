@@ -11,6 +11,7 @@ import * as axios from 'react-native-axios'
 
 import { globals } from '../../globals'
 
+import Button from '../../comps/button'
 
 const styles = StyleSheet.create({
     container:{
@@ -121,6 +122,10 @@ export default function Messages(){
         update({redirect: !page.redirect, path: "/chat", user: user, otherUserID: otherUserID})
     }
 
+    const redirectUsers = () => {
+        update({redirect: !page.redirect, path: "/users", user: user})
+    }
+
     async function loadPage() {
         try {
             const user = await getUser()
@@ -152,6 +157,8 @@ return page.redirect ? <Redirect to={
             <Text style={styles.pageName}>Messages</Text>
 
         <SearchInput />
+
+        <Button text={"All Users"} onPress={redirectUsers}></Button>
 
         <TouchableOpacity style={styles.newGroupCont}>
             <Text style={styles.newGroup}>New Group</Text>
