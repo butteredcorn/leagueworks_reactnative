@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
   }
 });
 
-const NavBar = ({socket}) => {
+const NavBar = ({socket, active}) => {
   const [selected, setSelected] = useState(0);
   const history = useHistory();
   
@@ -77,6 +77,7 @@ const NavBar = ({socket}) => {
             style={styles.icon}
             onPress={() => {
               setSelected(1);
+
               if(socket) {
                 socket.disconnect();
               }              history.push("/leagues");
@@ -154,6 +155,9 @@ const NavBar = ({socket}) => {
             style={styles.icon}
             onPress={() => {
               setSelected(4);
+              // useEffect(()=>{
+              //   setSelected(active)
+              //   },[active]);
               if(socket) {
                 socket.disconnect();
               }              history.push("/account");
