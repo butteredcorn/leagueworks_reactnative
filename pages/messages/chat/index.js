@@ -78,9 +78,12 @@ export default function Chat(){
         })
         socket.on('old messages', (history) => {
             console.log(history)
-            updateMessages({loading: false, data: history})
+            if(history && history[0] && history[0].history == "no history") {
+                updateMessages({loading: false, data: []})
+            } else {
+                updateMessages({loading: false, data: history})
+            }
         })
-        socket.emit("new message", "hello from react native")
     }
 
     function emitMessage(socket, message) {
@@ -101,7 +104,7 @@ return <View style={styles.container}>
     <View style={styles.contactCont}>
         <View style={styles.contact}>
             <Avatar dim={40} style={styles.avatar}/>
-            <Header head="James Harden" />
+            <Header head={otherUserID} />
         </View>
     </View>
 
