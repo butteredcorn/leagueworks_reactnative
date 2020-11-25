@@ -20,6 +20,13 @@ const styles = StyleSheet.create({
         justifyContent:"space-between",
         top:70
     },
+    passwordInput:{
+        backgroundColor:"#F8F8F8",
+        height:37,
+        width:280,
+        padding:12,
+        borderRadius: 33
+    }
 
 })
 
@@ -74,7 +81,9 @@ export default function Login({token, setToken}){
 
 
         <View>
-        <Input text="Password" value={password} setValue={setPassword}/>
+        {/* <Input text="Password" value={password} setValue={setPassword}/> */}
+        <Text style={{ fontWeight:"bold"}}>Password</Text>
+        <TextInput  secureTextEntry={true} placeholder="Password" style={styles.passwordInput} value={password} setValue={setPassword}/>
         </View>
 
 

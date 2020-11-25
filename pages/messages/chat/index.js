@@ -4,6 +4,7 @@ import { useLocation } from 'react-router-native'
 import {View, StyleSheet, Text, TouchableOpacity, ScrollView, AsyncStorage} from "react-native";
 import io from "socket.io-client";
 
+import { globals } from '../../../globals'
 
 import Avatar from "../../../comps/Avatar";
 import Header from "../../../comps/header";
@@ -56,9 +57,14 @@ export default function Chat(){
       
     const data = useLocation()
     const user = data.state.user
+    console.log(user)
+    const access_token = user.access_token
+    const user_id = user.user_id
+    const otherUserID = data.state.otherUserID
 
-    const [socket] = useSocket('http://localhost:5000', { query: { token: user._W.access_token, user_id: user._W.user_id } }) //useSocket('http://localhost:5000', { query: { token: "" } }) //transports: ['websocket'], 
-    const [message, updateMessage] = useState("")
+    //`${globals.webserverURL}` //'http://localhost:5000'
+    const [socket] = useSocket(`${globals.webserverURL}`, { query: { token: access_token, user_id: user_id, other_user_id: otherUserID } }) //useSocket('http://localhost:5000', { query: { token: "" } }) //transports: ['websocket'], 
+    const [message, updateMessage] = useState(null)
     const [messages, updateMessages] = useState({loading: true, data: []})
 
     //initialize web socket
@@ -70,11 +76,19 @@ export default function Chat(){
         socket.on('message', (message) => {
             console.log("Standard message: " + message)
         })
-        socket.emit("react message", "hello from react native")
+        socket.on('old messages', (history) => {
+            console.log(history)
+            if(history && history[0] && history[0].history == "no history") {
+                updateMessages({loading: false, data: []})
+            } else {
+                updateMessages({loading: false, data: history})
+            }
+        })
     }
 
     function emitMessage(socket, message) {
-        socket.emit("react message", message)
+        updateMessages({loading: false, data: [...messages.data, {sender_id: user_id, receivers: [otherUserID], message: message}]})
+        socket.emit("new message", {sender_id: user_id, receivers: [otherUserID], message: message})
     }    
 
     useEffect(() => {
@@ -90,15 +104,20 @@ return <View style={styles.container}>
     <View style={styles.contactCont}>
         <View style={styles.contact}>
             <Avatar dim={40} style={styles.avatar}/>
-            <Header head="James Harden" />
+            <Header head={otherUserID} />
         </View>
     </View>
 
     <ScrollView>
-        <MyBubble bgcolor="#ECECEC" textcolor="#333333" text="Hello" leftposition={-45}/>
+        {!messages.loading && Array.isArray(messages.data) && messages.data.map(message =>
+            //textcolor and position need to be dynamically determined within MyBubble
+            <MyBubble messageID={message._id} userID={user_id} senderID={message.sender_id} receivers={message.receivers} text={message.message}/>
+        )}
+        {/* <MyBubble bgcolor="#ECECEC" textcolor="#333333" text="Hello" leftposition={-45}/>
         <MyBubble text="Hi." rightposition={-45}/>
         <MyBubble bgcolor="#ECECEC" textcolor="#333333" text="What are you up to on this fine evening Monsieur? 😝" leftposition={-40}/>
-        <MyBubble text="ça ne vous concerne pas!! 😤😤😤" rightposition={-45}/>
+        <MyBubble text="ça ne vous concerne pas!! 😤😤😤" rightposition={-45}/> */}
+        
     </ScrollView>
 
     <View style={styles.bottomCont}>
