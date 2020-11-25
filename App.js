@@ -107,6 +107,7 @@ const App = () => {
         <ProtectedRoute token={token} path={"/notifications"} component={Notifications}/>
         <ProtectedRoute token={token} path={"/password"} component={Password}/>
         <ProtectedRoute token={token} path={"/help"} component={Help}/>
+        <ProtectedRoute token={token} path={"/createevent"} component={CreateEvent}/>
         <ProtectedRoute token={token} path={"/account"} render={
           () => <Account setToken={setToken}/>
         }/>

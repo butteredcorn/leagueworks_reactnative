@@ -1,7 +1,7 @@
 import React from "react";
 import {View, ScrollView, StyleSheet, Image, TouchableOpacity, Text} from "react-native";
 import {CalendarList} from 'react-native-calendars';
-import { Link } from "react-router-native";
+import { Link, useHistory } from "react-router-native";
 import EventSection from "../../comps/EventSection";
 import MyHeader from "../../comps/header";
 import NavBar from "../../comps/navbar";
@@ -48,6 +48,8 @@ const styles = StyleSheet.create({
 })
 
 export default function Schedule(){
+    const history = useHistory()
+
     return<View>
     <ScrollView contentContainerStyle={styles.container}>
         
@@ -58,9 +60,9 @@ export default function Schedule(){
             </View>
             
             
-            <Link to="/createevent" style={styles.edit} component={TouchableOpacity}>
+            <TouchableOpacity style={styles.edit}  onPress={() => {history.push("/createevent");}}>
                 <Image source={require("../../public/edit.png")}/>
-            </Link>
+            </TouchableOpacity>
 
 
         
