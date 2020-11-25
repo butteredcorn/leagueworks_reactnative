@@ -57,11 +57,13 @@ export default function Chat(){
       
     const data = useLocation()
     const user = data.state.user
-    const user_id = user._W.user_id
+    console.log(user)
+    const access_token = user.access_token
+    const user_id = user.user_id
     const otherUserID = data.state.otherUserID
 
     //`${globals.webserverURL}` //'http://localhost:5000'
-    const [socket] = useSocket(`${globals.webserverURL}`, { query: { token: user._W.access_token, user_id: user_id, other_user_id: otherUserID } }) //useSocket('http://localhost:5000', { query: { token: "" } }) //transports: ['websocket'], 
+    const [socket] = useSocket(`${globals.webserverURL}`, { query: { token: access_token, user_id: user_id, other_user_id: otherUserID } }) //useSocket('http://localhost:5000', { query: { token: "" } }) //transports: ['websocket'], 
     const [message, updateMessage] = useState(null)
     const [messages, updateMessages] = useState({loading: true, data: []})
 
