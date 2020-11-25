@@ -94,7 +94,7 @@ export default function Messages(){
         //for timestamp, larger date is newer
         for (let message of messages) {
             if(message.sender_id != user_id) {
-                if (!uniqueOtherUsers[message.sender_id]) {
+                if (!uniqueOtherUsers[message.sender_id] && message.timeStamp) {
                     uniqueOtherUsers[message.sender_id] = message
                 } else {
                     if (new Date(uniqueOtherUsers[message.sender_id].timeStamp) < new Date(message.timeStamp)) {
@@ -104,10 +104,10 @@ export default function Messages(){
                 }
             } else if (!message.receivers.includes(user_id)) {
                 //if private message, ignore broadcasts here
-                if(!uniqueOtherUsers[message.receivers[0]]) {
+                if(!uniqueOtherUsers[message.receivers[0]] && message.timeStamp) {
                     uniqueOtherUsers[message.receivers[0]] = message
                 } else {
-                    if(new Date(uniqueOtherUsers[message.receivers[0]].timeStamp) < new Date(message.timeStamp)) {
+                    if(message.timeStamp && new Date(uniqueOtherUsers[message.receivers[0]].timeStamp) < new Date(message.timeStamp)) {
                         uniqueOtherUsers[message.receivers[0]] = message
                     }
                 }
@@ -158,13 +158,14 @@ return page.redirect ? <Redirect to={
         </TouchableOpacity>
 
         {/* map function here, get params from map function, so you will have param from that */}
-        {!userMessages.loading && Array.isArray(Object.keys(userMessages.data)) && Object.keys(userMessages.data).map((otherUserID, message) => 
+        {!userMessages.loading && Array.isArray(Object.keys(userMessages.data)) && Object.keys(userMessages.data).map((otherUserID, index) => 
             <MessageSection
             onPress={() => redirectChat(otherUserID)}
             otherUserID={otherUserID}
             name={otherUserID}
-            messageContent={message.message}
-            time={message.timeStamp}
+            messageContent={userMessages.data[otherUserID].message}
+            time={new Date(userMessages.data[otherUserID].timeStamp).toTimeString()}
+            key={index}
             />
         )}
         {/* // <MessageSection 
