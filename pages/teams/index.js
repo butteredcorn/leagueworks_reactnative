@@ -54,6 +54,8 @@ export default function Teams(){
     const league_id = data.state
 
     const [teams, updateTeams] = useState({loading: true, data: []})
+    const [teamsRosters, updateTeamsRoster] = useState({loading: true, teams: {}})
+    const [teamsWithRosters, updateTWR] = useState({loading: true, data: []})
     const [user, updateUser] = useState("")
     const [page, reload] = useState({redirect: false})
 
@@ -142,13 +144,45 @@ export default function Teams(){
         }
     }
 
+    async function getTeamsRosters(user, teams){
+        const result = await axios.post(`${globals.webserverURL}/database/read/teamsplayers`, {
+            teams: {
+                teams: teams
+            },
+            access_token: user.access_token
+        })
+        if(result.data.error) {
+            console.log(result.data.error)
+            alert(result.data.error)
+        } else {
+            console.log(result.data)
+            return result.data
+        }
+    }
+
+    //one last thing, get roster for each team
     async function loadPage() {
         const user = await getUser()
         updateUser(user)
         const leagueTeams = await getTeamsByLeague(user)
-        const roster = leagueTeams[0].players
-        console.log(roster)
         updateTeams({loading: false, data: leagueTeams})
+
+        //example
+        // const rosterExample = leagueTeams[0].players
+        // console.log(rosterExample)
+
+        const teamsRosters = await getTeamsRosters(user, leagueTeams)
+        updateTeamsRoster({loading: false, teams: teamsRosters})
+        //console.log(teamsRosters)
+
+        for (let leagueTeam of leagueTeams) {
+            leagueTeam.players = teamsRosters[leagueTeam._id]
+        }
+        updateTWR({loading: false, data: leagueTeams})
+
+        //example
+        // console.log(leagueTeams)
+        // console.log(leagueTeams[0].players)
     }
 
     useEffect(()=> {
@@ -169,9 +203,9 @@ return page.redirect ? <Redirect to={{pathname: page.path, state: page.leagueID}
     </View>
     <View style={styles.pillcont}>
 
-    {!teams.loading && Array.isArray(teams.data) ? 
+    {!teamsWithRosters.loading && Array.isArray(teamsWithRosters.data) ? 
         //<Text>{JSON.stringify(teams.data)}</Text>
-        teams.data.map(team => 
+        teamsWithRosters.data.map(team => 
             <View style={styles.pillMargin}>
                 <MyPill onPress={joinTeam} joined={team.user_team} teamID={team._id} TeamName={team.team_name} email={team.email} phoneNumber={team.phone_number} team_captain={team.team_captain} players={team.players} userTeam={team.user_team} img={require("../../public/girl.jpg")}></MyPill>
             </View>   
