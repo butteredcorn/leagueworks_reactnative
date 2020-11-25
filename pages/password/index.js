@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {View, StyleSheet, Text, Image, TouchableOpacity} from "react-native";
+import {View, StyleSheet, Text, Image, TouchableOpacity, TextInput} from "react-native";
 import MyHeader from "../../comps/header";
 import Avatar from "../../comps/Avatar";
 import NavBar from "../../comps/navbar"
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
       width:325,
       height:85,
       marginBottom:10,
-      alignItems:"center",
+      alignItems:"center"
     },
     buttoncont:{
       position:"absolute",
@@ -52,6 +52,13 @@ const styles = StyleSheet.create({
       right:25,
       bottom:140
     },
+    passwordInput:{
+      backgroundColor:"#F8F8F8",
+      height:37,
+      width:280,
+      padding:12,
+      borderRadius: 33
+  }
 })
 
 
@@ -72,15 +79,18 @@ return <View style={styles.container}>
 
 <View style={styles.contentcont}>
 <View style={styles.indivcontentcont}>
-<Input text="Current Password"/>
+{/* <Input text="Current Password"/> */}
+<TextInput  secureTextEntry={true} placeholder="Current Password" style={styles.passwordInput}/>
 </View>
 
 <View style={styles.indivcontentcont}>
-<Input text="New Password"/>
+{/* <Input text="New Password"/> */}
+<TextInput  secureTextEntry={true} placeholder="New Password" style={styles.passwordInput}/>
 </View>
 
 <View style={styles.indivcontentcont}>
-<Input text="Confirm Password"/>
+{/* <Input text="Confirm Password"/> */}
+<TextInput  secureTextEntry={true} placeholder="Confirm Password" style={styles.passwordInput}/>
 </View>
 </View>
 
