@@ -9,6 +9,7 @@ MERGED from [com.facebook.flipper:flipper:0.37.0] C:\Users\Herma\.gradle\caches\
 MERGED from [com.facebook.flipper:flipper-network-plugin:0.37.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\22671fd8d8daedaa5ef4c10dd77e7f1e\jetified-flipper-network-plugin-0.37.0\AndroidManifest.xml:8:1-15:12
 MERGED from [com.facebook.flipper:flipper-fresco-plugin:0.37.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\ef03f481eb4bdba14c10bd07a8a98d15\jetified-flipper-fresco-plugin-0.37.0\AndroidManifest.xml:8:1-15:12
 MERGED from [:react-native-async-storage_async-storage] C:\Users\Herma\Desktop\leagueworks_reactnative\node_modules\@react-native-async-storage\async-storage\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-9:12
+MERGED from [:react-native-config] C:\Users\Herma\Desktop\leagueworks_reactnative\node_modules\react-native-config\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-11:12
 MERGED from [com.facebook.react:react-native:0.63.2] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\3a02e2e80caa68eaa2aaa97ae703e846\jetified-react-native-0.63.2\AndroidManifest.xml:2:1-13:12
 MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\20725fa20214e86eb8fa55394d5d409e\swiperefreshlayout-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [org.webkit:android-jsc:r245459] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\7909fc1527cbbfa5280fa34f69372979\jetified-android-jsc-r245459\AndroidManifest.xml:2:1-11:12
@@ -154,6 +155,8 @@ MERGED from [com.facebook.flipper:flipper-fresco-plugin:0.37.0] C:\Users\Herma\.
 MERGED from [com.facebook.flipper:flipper-fresco-plugin:0.37.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\ef03f481eb4bdba14c10bd07a8a98d15\jetified-flipper-fresco-plugin-0.37.0\AndroidManifest.xml:11:5-13:41
 MERGED from [:react-native-async-storage_async-storage] C:\Users\Herma\Desktop\leagueworks_reactnative\node_modules\@react-native-async-storage\async-storage\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-async-storage_async-storage] C:\Users\Herma\Desktop\leagueworks_reactnative\node_modules\@react-native-async-storage\async-storage\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-config] C:\Users\Herma\Desktop\leagueworks_reactnative\node_modules\react-native-config\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-config] C:\Users\Herma\Desktop\leagueworks_reactnative\node_modules\react-native-config\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-9:41
 MERGED from [com.facebook.react:react-native:0.63.2] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\3a02e2e80caa68eaa2aaa97ae703e846\jetified-react-native-0.63.2\AndroidManifest.xml:7:5-9:41
 MERGED from [com.facebook.react:react-native:0.63.2] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\3a02e2e80caa68eaa2aaa97ae703e846\jetified-react-native-0.63.2\AndroidManifest.xml:7:5-9:41
 MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\20725fa20214e86eb8fa55394d5d409e\swiperefreshlayout-1.0.0\AndroidManifest.xml:20:5-44

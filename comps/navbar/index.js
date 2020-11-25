@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, StyleSheet, TouchableOpacity, Image } from "react-native";
 import { Link, useHistory } from "react-router-native";
 
@@ -53,6 +53,7 @@ const NavBar = ({socket}) => {
                 socket.disconnect();
                 console.log("socket disconnected: " + !socket.connected)
               }
+           
               history.push("/");
 
             }}
