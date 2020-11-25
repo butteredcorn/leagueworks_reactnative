@@ -6,8 +6,12 @@ const MsgInput = ({ text, onPress, socket }) => {
 
 
   const handleOnPress = () => {
-    onPress(socket, value)
-    onChangeText("")
+    if(value) {
+      onPress(socket, value)
+      onChangeText("")
+    } else {
+      alert("Message can't be empty!")
+    }
   }
 
   return (
