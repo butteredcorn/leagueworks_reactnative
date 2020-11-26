@@ -13,36 +13,54 @@ import { globals } from '../../globals'
 
 const styles = StyleSheet.create({
     container:{
-        display: "flex",
-        flexDirection: "column",
+        // display: "flex",
+        // flexDirection: "column",
         // justifyContent: "space-around",
         alignItems:"center",
+        justifyContent:"center",
         height:"100%"
     },
     header:{
-        position:"relative",
-        top:50,
-        flexDirection:"row",
-        alignItems:"center",
-        justifyContent:"center"
+        // position:"relative",
+        // top:50,
+        // flexDirection:"row",
+        // alignItems:"center",
+        // justifyContent:"center"
+        flexDirection: "row",
+        width: "100%",
+        height: 45,
+        marginTop: 50,
+        marginBottom: 15,
     },
     pagetitle:{
         position:"relative",
-        left:-85
+        // left:-85
     },
     date:{
-        position:"absolute",
-        bottom:450,
+        // position:"absolute",
+        // width: "100%",
+        // bottom:450,
         backgroundColor:"#F8F8F8",
-        width:325,
-        padding:7,
+        // width:325,
+        // padding:7,
         borderRadius:30,
-        flexDirection:"row",
-        justifyContent:"center"
+        // flexDirection:"row",
+        justifyContent:"center",
+    },
+    selectdate_cont:{
+        justifyContent: "center",
+        alignItems: "center",
+        width: "100%"
+    },
+    datePicker: {
+        width: "50%",
+        margin: 30
+        // display: "flex",
+        // flexDirection: "row"
     },
     drop:{
         position:"relative",
-        bottom:-20
+        // bottom:-20
     },
     info:{
         position:"absolute",
@@ -54,9 +72,9 @@ const styles = StyleSheet.create({
         flexDirection:"row"
     },
     button:{
-        position:"absolute",
+        // position:"absolute",
         bottom:100,
-        right:45
+        // right:45
     },
     navbar:{
         position:"absolute",
@@ -72,14 +90,25 @@ const styles = StyleSheet.create({
         borderRadius:31,
         zIndex:1
     },
-    datePicker: {
-        width: 150,
-        // display: "flex",
-        // flexDirection: "row"
-    },
     bodycontainer: {
         position: "relative",
-        top: 100,
+        // top: 100,
+    },
+    day_check:{
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "space-between",
+        margin: 15
+    },
+    spacer: {
+        // Adds space to the bottom so you can see the content on the bottom of the scroll view without it being cutoff
+        height: 120
+    },
+    boldtext:{
+        fontWeight: "bold"
+    },
+    inputMargins:{
+        marginBottom: 20
     }
 })
 
@@ -172,6 +201,9 @@ export default function LeagueSchedule(){
     }, [])
 
     return<View style={styles.container}>
+
+        {/* Inputs */}
+        <ScrollView style={styles.bodycontainer}>
         {/* Header */}
         <View style={styles.header}>
             <View style={styles.pagetitle}>
@@ -180,29 +212,27 @@ export default function LeagueSchedule(){
             </View>
         </View>
 
-        {/* Inputs */}
-        <ScrollView style={styles.bodycontainer}>
-            <View>
+            <View style={styles.selectdate_cont}>
                 <DatePicker title={"Start Date"} style={styles.datePicker} setValue={(date) => dispatch({type: "season_start", value: date})}/>
             </View>
             {/* <View>
                 <DatePicker title={"End Date"} style={styles.datePicker} setValue={(date) => dispatch({type: "season_end", value: date})}/>
             </View> */}
-            <View>
+            <View style={styles.inputMargins}>
                 <Input 
                 text="Number of matches against each team"
                 setValue={(text) => dispatch({type: "match_number", value: text})}
                 /> 
             </View>
-            <View>
+            <View style={styles.inputMargins}>
                 <Input 
                 text="Number of match sets played each week"
                 setValue={(text) => dispatch({type: "match_sets_per_week", value: text})}
                 /> 
             </View>
             <View>
-                <View>
-                    <Text>Play on which days?</Text>
+            <Text style={styles.boldtext}>Play on which days?</Text>
+                <View style={styles.day_check}>
                     <Text>Monday</Text>
                     <CheckBox
                         disabled={false}
@@ -210,7 +240,7 @@ export default function LeagueSchedule(){
                         onValueChange={() => dispatch({type: "match_days", value: "monday"})}
                     />
                 </View>  
-                <View>
+                <View style={styles.day_check}>
                     <Text>Tuesday</Text>
                     <CheckBox
                         disabled={false}
@@ -218,7 +248,7 @@ export default function LeagueSchedule(){
                         onValueChange={() => dispatch({type: "match_days", value: "tuesday"})}
                     />
                 </View>
-                <View>
+                <View style={styles.day_check}>
                     <Text>Wednesday</Text>
                     <CheckBox
                         disabled={false}
@@ -226,7 +256,7 @@ export default function LeagueSchedule(){
                         onValueChange={() => dispatch({type: "match_days", value: "wednesday"})}
                     />
                 </View>
-                <View>
+                <View style={styles.day_check}>
                     <Text>Thursday</Text>
                     <CheckBox
                         disabled={false}
@@ -234,7 +264,7 @@ export default function LeagueSchedule(){
                         onValueChange={() => dispatch({type: "match_days", value: "thursday"})}
                     />
                 </View>    
-                <View>
+                <View style={styles.day_check}>
                     <Text>Friday</Text>
                     <CheckBox
                         disabled={false}
@@ -242,7 +272,7 @@ export default function LeagueSchedule(){
                         onValueChange={() => dispatch({type: "match_days", value: "friday"})}
                     />
                 </View>    
-                <View>
+                <View style={styles.day_check}>
                     <Text>Saturday</Text>
                     <CheckBox
                         disabled={false}
@@ -250,7 +280,7 @@ export default function LeagueSchedule(){
                         onValueChange={() => dispatch({type: "match_days", value: "saturday"})}
                     />
                 </View>  
-                <View>
+                <View style={styles.day_check}>
                     <Text>Sunday</Text>
                     <CheckBox
                         disabled={false}
@@ -259,8 +289,9 @@ export default function LeagueSchedule(){
                     />
                 </View>  
             </View>
+
             {/* weekdays end */}
-            <View>
+            <View style={styles.day_check}>
                 <Text>Play On Holidays?</Text>
                 <CheckBox
                     disabled={false}
@@ -268,6 +299,8 @@ export default function LeagueSchedule(){
                     onValueChange={() => dispatch({type: "skip_holidays", value: !season.skip_holidays})}
                 />
             </View>  
+
+            <View style={styles.spacer} />
 
         </ScrollView>
 
