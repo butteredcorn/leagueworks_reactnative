@@ -135,6 +135,7 @@ export default function LeagueSchedule(){
 
     async function createLeagueSchedule(user, season) {
         try {
+            console.log(season)
             //${globals.webserverURL}
             const access_token = user._W.access_token
             const result = await axios.post(`http://localhost:5000/database/create/schedule`, {

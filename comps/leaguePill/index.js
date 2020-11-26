@@ -284,7 +284,8 @@ const MyPill = ({
     headline,
     joined,
     onPress,
-    redirect
+    redirect,
+    league
 }) => {
   const [selected, setSelected] = useState(0);
 
@@ -311,7 +312,7 @@ const MyPill = ({
                         </TouchableOpacity>}
 
                       {/* edit season function */}
-                        {joined && <TouchableOpacity style={styles.joinbtn} onPress={() => redirect(leagueID)}>
+                        {joined && <TouchableOpacity style={styles.joinbtn} onPress={() => redirect(league)}>
                           <Text style={styles.joinbtntext}>Schedule</Text>
                         </TouchableOpacity>}
                       </View>
