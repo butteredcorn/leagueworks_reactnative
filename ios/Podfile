@@ -12,6 +12,23 @@ target 'myapp' do
 
   pod 'react-native-config', :path => '../node_modules/react-native-config'
 
+  #pod 'RNDateTimePicker', :path => '../node_modules/@react-native-community/datetimepicker/RNDateTimePicker.podspec'
+
+  # # React/React-Native specific pods
+  # pod 'React', :path => '../node_modules/react-native', :subspecs => [
+  #   'Core',
+  #   'CxxBridge',      # Include this for RN >= 0.47
+  #   'DevSupport',     # Include this to enable In-App Devmenu if RN >= 0.43
+  #   'RCTText',
+  #   'RCTNetwork',
+  #   'RCTWebSocket',   # Needed for debugging
+  # ]
+
+  # # Third party deps podspec link
+  # pod 'DoubleConversion', :podspec => '../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec'
+  # pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
+  # pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
+
   target 'myappTests' do
     inherit! :complete
     # Pods for testing
