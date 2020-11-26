@@ -16,6 +16,7 @@ const styles = StyleSheet.create({
         alignItems:"center",
         position: "relative",
         height: "100%",
+        width: "100%",
     },
     contactCont:{
         height: 130,
@@ -37,6 +38,9 @@ const styles = StyleSheet.create({
         width: "90%",
         flexDirection: "row",
     },
+    chat: {
+        width: "100%"
+    }
 })
 
 
@@ -105,12 +109,17 @@ return <View style={styles.container}>
         </View>
     </View>
 
-    <ScrollView>
-        <MyBubble bgcolor="#ECECEC" textcolor="#333333" text="Hello" leftposition={-45}/>
-        <MyBubble text="Hi." rightposition={-45}/>
-        <MyBubble bgcolor="#ECECEC" textcolor="#333333" text="What are you up to on this fine evening Monsieur? 😝" leftposition={-40}/>
-        <MyBubble text="ça ne vous concerne pas!! 😤😤😤" rightposition={-45}/>
+
+    <ScrollView style={styles.chat}>
+
+        <MyBubble bgcolor="#ECECEC" textcolor="#333333" text="Hello" leftposition={15}/>
+        <MyBubble text="Hi." rightposition={-105}/>
+        <MyBubble bgcolor="#ECECEC" textcolor="#333333" text="What are you up to on this fine evening Monsieur? 😝" leftposition={15}/>
+        <MyBubble text="ça ne vous concerne pas!! 😤😤😤" rightposition={-105}/>
+
     </ScrollView>
+
+
 
     <View style={styles.bottomCont}>
     <MsgInput />
