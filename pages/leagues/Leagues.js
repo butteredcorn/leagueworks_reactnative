@@ -212,7 +212,7 @@ return page.redirect ? <Redirect to={{pathname: page.path, state: page.leagueID}
         : <Text>Loading</Text>}
     </View>
     </ScrollView>
-    <View style={styles.navigation}><NavBar /></View>
+    <View style={styles.navigation}><NavBar active={1}/></View>
 </View>
 
 }
