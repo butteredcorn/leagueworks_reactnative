@@ -22,6 +22,7 @@
     "react-native-axios": "^0.17.1",
     "react-native-calendars": "^1.403.0",
     "react-native-config": "^1.4.1",
+    "react-native-datepicker": "^1.7.2",
     "react-router-native": "^5.2.0",
     "socket.io": "^3.0.3",
     "socket.io-client": "^3.0.3",
