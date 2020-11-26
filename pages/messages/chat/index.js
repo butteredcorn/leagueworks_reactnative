@@ -18,6 +18,7 @@ const styles = StyleSheet.create({
         alignItems:"center",
         position: "relative",
         height: "100%",
+        width: "100%",
     },
     contactCont:{
         height: 130,
@@ -39,6 +40,9 @@ const styles = StyleSheet.create({
         width: "90%",
         flexDirection: "row",
     },
+    chat: {
+        width: "100%"
+    }
 })
 
 
@@ -108,7 +112,16 @@ return <View style={styles.container}>
         </View>
     </View>
 
-    <ScrollView>
+
+
+    <ScrollView style={styles.chat}>
+
+        <MyBubble bgcolor="#ECECEC" textcolor="#333333" text="Hello" leftposition={15}/>
+        <MyBubble text="Hi." rightposition={-105}/>
+        <MyBubble bgcolor="#ECECEC" textcolor="#333333" text="What are you up to on this fine evening Monsieur? 😝" leftposition={15}/>
+        <MyBubble text="ça ne vous concerne pas!! 😤😤😤" rightposition={-105}/>
+
+          
         {!messages.loading && Array.isArray(messages.data) && messages.data.map(message =>
             //textcolor and position need to be dynamically determined within MyBubble
             <MyBubble messageID={message._id} userID={user_id} senderID={message.sender_id} receivers={message.receivers} text={message.message}/>
@@ -118,7 +131,10 @@ return <View style={styles.container}>
         <MyBubble bgcolor="#ECECEC" textcolor="#333333" text="What are you up to on this fine evening Monsieur? 😝" leftposition={-40}/>
         <MyBubble text="ça ne vous concerne pas!! 😤😤😤" rightposition={-45}/> */}
         
+
     </ScrollView>
+
+
 
     <View style={styles.bottomCont}>
     <MsgInput onPress={emitMessage} socket={socket}/>
