@@ -60,8 +60,7 @@ export default function Messages(){
     const [userMessages, updateUserMessages] = useState({loading: true, data: []})
     const [user, updateUser] = useState("")
     
-    //need to get reference to other user here
-    //get messages where either the senderID or receivers == user_id\   
+    //TODO, get otherUser names from current otherUserIDs  
 
 
     async function getUser() {
