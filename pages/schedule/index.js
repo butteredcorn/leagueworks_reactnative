@@ -106,7 +106,7 @@ export default function Schedule(){
             <EventSection eventName="Game at BCIT" eventTime="9:00AM - 11:00AM" eventLocation="Burnaby, BC" eventDesc="Don't forget the ID!"/>
         </View>
     </ScrollView>
-    <View style={styles.navigation}><NavBar /></View>
+    <View style={styles.navigation}><NavBar active={2}/></View>
 </View>
         
 
