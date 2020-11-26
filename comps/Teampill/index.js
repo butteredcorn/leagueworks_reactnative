@@ -278,6 +278,14 @@ const styles = StyleSheet.create({
 });
 
 const MyPill = ({
+  teamID,
+  email,
+  phoneNumber,
+  team_captain,
+  players,
+  userTeam,
+  onPress,
+
   text,
   TeamName,
   Awaywins,
@@ -288,9 +296,17 @@ const MyPill = ({
   playername,
   membername,
   coach,
-  player
+  player,
+  joined
 }) => {
   const [selected, setSelected] = useState(0);
+
+  //example
+  if(players) {
+    for (let player of players) {
+      console.log(`${player.first_name} ${player.last_name}`)
+    }
+  }
 
   return (
     <View style={[selected === 1 ? styles.rostercont : styles.no]}>
@@ -310,9 +326,9 @@ const MyPill = ({
                       <View style={styles.namecont}>
                         <Text style={styles.title}>{TeamName}</Text>
 
-                        <TouchableOpacity style={styles.joinbtn}>
+                        {!joined && <TouchableOpacity style={styles.joinbtn} onPress={() => onPress(teamID, players)}>
                           <Text style={styles.joinbtntext}>Join</Text>
-                        </TouchableOpacity>
+                        </TouchableOpacity>}
                       </View>
 
 

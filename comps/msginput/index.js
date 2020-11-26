@@ -1,8 +1,18 @@
 import React from "react";
-import { View, Text, TextInput, Stylesheet, Image } from "react-native";
+import { View, Text, TextInput, Stylesheet, Image, TouchableOpacity } from "react-native";
 
-const MsgInput = ({ text }) => {
+const MsgInput = ({ text, onPress, socket }) => {
   const [value, onChangeText] = React.useState();
+
+
+  const handleOnPress = () => {
+    if(value) {
+      onPress(socket, value)
+      onChangeText("")
+    } else {
+      alert("Message can't be empty!")
+    }
+  }
 
   return (
     <View
@@ -39,7 +49,9 @@ const MsgInput = ({ text }) => {
         onChangeText={(text) => onChangeText(text)}
         value={value}
         placeholder="Message here..."
-      />  
+      />
+
+      <TouchableOpacity onPress={() => handleOnPress()}>
       <Image
         style={{
           height: 20,
@@ -48,6 +60,8 @@ const MsgInput = ({ text }) => {
         }}
         source={require("../../public/send.png")}
       />
+      </TouchableOpacity>
+
     </View>
   );
 };

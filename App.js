@@ -22,6 +22,7 @@ import Schedule from './pages/schedule';
 import Password from './pages/password';
 import Notifications from "./pages/notifications";
 import Help from "./pages/help";
+import AllUsers from './pages/users/Users'
 
 
 import Avatar from "./comps/Avatar";
@@ -30,6 +31,7 @@ import Login from './pages/login';
 import GettingStarted from './pages/gettingstarted';
 import Leagues from "./pages/leagues/Leagues";
 import LeagueReg from "./pages/leagueregistration/LeagueRegistration"
+import LeagueSchedule from "./pages/leagueschedule/LeagueSchedule"
 
 
 
@@ -99,10 +101,12 @@ const App = () => {
         <ProtectedRoute token={token} exact={true} path ={"/"} component={Home}/>
         <ProtectedRoute token={token} path={"/leagues"} component={Leagues}/>
         <ProtectedRoute token={token} path={"/league-registration"} component={LeagueReg}/>
+        <ProtectedRoute token={token} path={"/league-schedule"} component={LeagueSchedule}/>
         <ProtectedRoute token={token} path={"/teams"} component={Teams}/>
         <ProtectedRoute token={token} path={"/team-registration"} component={TeamRegistration}/>
         <ProtectedRoute token={token} path={"/schedule"} component={Schedule}/>
         <ProtectedRoute token={token} path={"/messages"} component={Messages}/>
+        <ProtectedRoute token={token} path={"/users"} component={AllUsers}/>
         <ProtectedRoute token={token} path={"/chat"} component={Chat}/>
         <ProtectedRoute token={token} path={"/notifications"} component={Notifications}/>
         <ProtectedRoute token={token} path={"/password"} component={Password}/>

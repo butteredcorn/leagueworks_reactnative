@@ -56,10 +56,8 @@ const styles = StyleSheet.create({
 export default function Leagues(){
     const [page, update] = useState({redirect: false})
     const [user, updateUser] = useState("")
+    const [fullUser, updateFullUser] = useState("")
     const [userLeaguesOnly, updateSettings] = useState({setting: false, filter: true})
-
-    // const [userLeagues, updateUserLeagues] = useState({loading: true, data: []})
-    //or
     const [allLeagues, updateAllLeagues] = useState({loading: true, data: []})
 
     const userLeagueFilter = userLeaguesOnly.setting ? (league) => league.user_league : () => true
@@ -70,19 +68,33 @@ export default function Leagues(){
         return {access_token: rawToken, user_id: rawID}
     }
 
-    async function getUserLeagues(user) {
-        const result = await axios.post(`${globals.webserverURL}/database/read/userleagues`, {
-            user: {
-                user_id: user.user_id
-            },
-            access_token: user.access_token
-        })
-        return result.data
-
-        // [
-        // {"_id": "5fb9cf9965f84d0017928887", "email": "best league", "league_name": null, "phone_number": "best league", "sport_type": "basketball"},
-        // {"_id": "5fb9db257bfc86001752d031", "email": "league2@email.com", "league_name": null, "phone_number": "1", "sport_type": "basketball"}
-        // ]
+    async function joinLeague(leagueID) {
+        try {
+            const currentUserLeagues = fullUser.leagues
+            const newUserLeagues = [...currentUserLeagues, leagueID]
+            const result = await axios.post(`${globals.webserverURL}/database/update/user`, {
+                user: {
+                    user_id: user.user_id,
+                    updates: {
+                        leagues: newUserLeagues
+                    }
+                },
+                access_token: user.access_token
+            })
+    
+            if(result.data.error) {
+                console.log(result.data.error)
+                alert(result.data.error)
+            } else {
+                console.log(result)
+                alert("League Joined!")
+            }
+        } catch (err) {
+            console.log(err)
+        } finally {
+            //reload after joining
+            loadPage()
+        }
     }
 
     async function getAllLeagues(user) {
@@ -92,7 +104,7 @@ export default function Leagues(){
             },
             access_token: user.access_token
         })
-
+        updateFullUser(fullUser.data)
         const result = await axios.post(`${globals.webserverURL}/database/read/leagues`, {
             access_token: user.access_token
         })
@@ -173,23 +185,27 @@ export default function Leagues(){
         update({redirect: !page.redirect, path: "/league-registration"})
     }
 
+    const redirectSchedule = (league) => {
+        update({redirect: !page.redirect, path: "/league-schedule", leagueID: league})
+    }
+
 return page.redirect ? <Redirect to={{pathname: page.path, state: page.leagueID}}></Redirect> : <View>
     <ScrollView contentContainerStyles={styles.container}>
     <View style={styles.header}>
-        <Text style={styles.pageName}>{userLeaguesOnly.setting ? "All Leagues" : "Your Leagues"}</Text>
+        <Text style={styles.pageName}>{!userLeaguesOnly.setting ? "All Leagues" : "Your Leagues"}</Text>
         <TouchableOpacity onPress={redirectLeagueReg}>
             <Image  source={require("../../public/edit.png")} style={styles.editIcon}/>
         </TouchableOpacity>
     </View>
-    <Button text={`${userLeaguesOnly.setting ? "Your Leagues" : "All Leagues"}`} onPress={ () => updateSettings({setting: !userLeaguesOnly.setting, filter: !userLeaguesOnly.filter})}/>
+    <Button text={`${!userLeaguesOnly.setting ? "Your Leagues" : "All Leagues"}`} onPress={ () => updateSettings({setting: !userLeaguesOnly.setting, filter: !userLeaguesOnly.filter})}/>
     <View style={styles.pillcont}>
 
         {!allLeagues.loading && Array.isArray(allLeagues.data) ? 
         //these are already filtered for league joined by the user
         allLeagues.data.filter(userLeagueFilter).map(league => 
             <View style={styles.pillMargin}>
-            <TouchableOpacity onPress={() => redirectTeams(league._id)}>
-                <MyPill joined={league.user_league} leagueID={league._id} leagueName={league.league_name} email={league.email} phoneNumber={league.phone_number} sportType={league.sport_type} img={require("../../public/girl.jpg")}></MyPill>
+            <TouchableOpacity key={league._id} onPress={() => redirectTeams(league._id)}>
+                <MyPill onPress={joinLeague} joined={league.user_league} redirect={redirectSchedule}  leagueID={league._id} leagueName={league.league_name} email={league.email} phoneNumber={league.phone_number} sportType={league.sport_type} headline={league.headline} img={require("../../public/girl.jpg")}></MyPill>
             </TouchableOpacity>
             </View>   
         ) 
