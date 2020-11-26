@@ -1,5 +1,6 @@
-import React, {useState} from "react";
-import {Text, View, StyleSheet, Image, TouchableOpacity, ScrollView} from "react-native";
+import React, {useState, useReducer, useEffect} from "react";
+import {Redirect} from 'react-router-native'
+import {Text, View, StyleSheet, Image, TouchableOpacity, ScrollView, AsyncStorage} from "react-native";
 import MyHeader from "../../comps/header";
 import NavBar from "../../comps/navbar";
 import Input from "../../comps/input";
@@ -82,6 +83,28 @@ const styles = StyleSheet.create({
 
 export default function LeagueSchedule(){
 
+    //get the teams information on the server side*
+    const initialState = {
+        league_id: "",
+        season_start: "",
+        season_end: "",
+        match_number: 0,
+        season_arenas: []
+    }
+
+    function reducer(league, action) {
+        switch(action.type) {
+            case 'league_id':
+                season.league_id = action.value
+                // console.log(user.first_name)
+                return season
+            
+            default:
+                throw new Error('Issue with reducer in season creation.')
+        }
+    }
+
+    const [season, dispatch] = useReducer(reducer, initialState)
 
     return<View style={styles.container}>
         {/* Header */}
