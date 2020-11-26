@@ -39,6 +39,9 @@ const styles = StyleSheet.create({
 const NavBar = ({socket, active}) => {
   const [selected, setSelected] = useState(0);
   const history = useHistory();
+  useEffect(()=>{
+    setSelected(active)
+    },[active]);
   
   return (
     <View style={styles.container}>
@@ -155,9 +158,6 @@ const NavBar = ({socket, active}) => {
             style={styles.icon}
             onPress={() => {
               setSelected(4);
-              // useEffect(()=>{
-              //   setSelected(active)
-              //   },[active]);
               if(socket) {
                 socket.disconnect();
               }              history.push("/account");

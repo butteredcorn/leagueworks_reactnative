@@ -257,7 +257,7 @@ return <View style={styles.container}>
 </ScrollView>
 
   
-<View style={styles.navigation}><NavBar />
+<View style={styles.navigation}><NavBar active={4}/>
 
     
     </View>

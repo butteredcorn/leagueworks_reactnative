@@ -104,7 +104,7 @@ return <View style={styles.container}>
 
 
   <View style={styles.navbar}>
-    <NavBar />
+    <NavBar active={4} />
     </View>
     
     </View>
