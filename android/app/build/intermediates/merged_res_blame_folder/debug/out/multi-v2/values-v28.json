@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/kozytamai/Desktop/leagueworks_reactnative/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v28/values-v28.xml",
+            "outputFile": "C:\\Users\\Herma\\Desktop\\leagueworks_reactnative\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v28\\values-v28.xml",
             "map": [
                 {
-                    "source": "/Users/kozytamai/.gradle/caches/transforms-2/files-2.1/7575645f9d1a3af4256e47895613b6df/appcompat-1.1.0/res/values-v28/values-v28.xml",
+                    "source": "C:\\Users\\Herma\\.gradle\\caches\\transforms-2\\files-2.1\\780dca39713ff2fcf4eadcaf494ac982\\appcompat-1.1.0\\res\\values-v28\\values-v28.xml",
                     "from": {
                         "startLines": "2,3,4,8",
                         "startColumns": "4,4,4,4",

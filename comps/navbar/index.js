@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, StyleSheet, TouchableOpacity, Image } from "react-native";
 import { Link, useHistory } from "react-router-native";
 
@@ -36,9 +36,12 @@ const styles = StyleSheet.create({
   }
 });
 
-const NavBar = ({socket}) => {
+const NavBar = ({socket, active}) => {
   const [selected, setSelected] = useState(0);
   const history = useHistory();
+  useEffect(()=>{
+    setSelected(active)
+    },[active]);
   
   return (
     <View style={styles.container}>
@@ -53,6 +56,7 @@ const NavBar = ({socket}) => {
                 socket.disconnect();
                 console.log("socket disconnected: " + !socket.connected)
               }
+           
               history.push("/");
 
             }}
@@ -76,6 +80,7 @@ const NavBar = ({socket}) => {
             style={styles.icon}
             onPress={() => {
               setSelected(1);
+
               if(socket) {
                 socket.disconnect();
               }              history.push("/leagues");
