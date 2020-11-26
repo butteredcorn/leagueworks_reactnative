@@ -71,7 +71,7 @@ return<View>
     </View>
     </ScrollView>
     <View style={styles.navigation}>
-        <NavBar />
+        <NavBar active={0} />
     </View>
     </View>
 {/* 

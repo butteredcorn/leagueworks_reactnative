@@ -139,6 +139,6 @@ return <View style={styles.container}>
     <View style={styles.bottomCont}>
     <MsgInput onPress={emitMessage} socket={socket}/>
     </View>
-    <View style={styles.navigation}><NavBar socket={socket}/></View>
+    <View style={styles.navigation}><NavBar active={3} socket={socket}/></View>
     </View>
 }
