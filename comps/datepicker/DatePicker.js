@@ -2,8 +2,8 @@ import React, {useEffect, useState} from 'react';
 import {View, Button, Platform} from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 
-export default function DatePicker({style, title}) {
-  const [date, setDate] = useState(new Date(1598051730000));
+export default function DatePicker({style, title, setValue}) {
+  const [date, setDate] = useState(new Date(Date.now()));
   const [mode, setMode] = useState('date');
   const [show, setShow] = useState(false);
 
@@ -11,6 +11,7 @@ export default function DatePicker({style, title}) {
     const currentDate = selectedDate || date;
     setShow(Platform.OS === 'ios');
     setDate(currentDate);
+    setValue(currentDate)
   };
 
   const showMode = (currentMode) => {
@@ -33,7 +34,7 @@ export default function DatePicker({style, title}) {
   return (
     <View style={style}>
       <View>
-        <Button onPress={showDatepicker} title={title} />
+        <Button title={title} />
       </View>
       {/* <View>
         <Button onPress={showTimepicker} title="Show time picker!" />
