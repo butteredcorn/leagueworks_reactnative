@@ -185,23 +185,27 @@ export default function Leagues(){
         update({redirect: !page.redirect, path: "/league-registration"})
     }
 
+    const redirectSchedule = (league) => {
+        update({redirect: !page.redirect, path: "/league-schedule", leagueID: league})
+    }
+
 return page.redirect ? <Redirect to={{pathname: page.path, state: page.leagueID}}></Redirect> : <View>
     <ScrollView contentContainerStyles={styles.container}>
     <View style={styles.header}>
-        <Text style={styles.pageName}>{userLeaguesOnly.setting ? "All Leagues" : "Your Leagues"}</Text>
+        <Text style={styles.pageName}>{!userLeaguesOnly.setting ? "All Leagues" : "Your Leagues"}</Text>
         <TouchableOpacity onPress={redirectLeagueReg}>
             <Image  source={require("../../public/edit.png")} style={styles.editIcon}/>
         </TouchableOpacity>
     </View>
-    <Button text={`${userLeaguesOnly.setting ? "Your Leagues" : "All Leagues"}`} onPress={ () => updateSettings({setting: !userLeaguesOnly.setting, filter: !userLeaguesOnly.filter})}/>
+    <Button text={`${!userLeaguesOnly.setting ? "Your Leagues" : "All Leagues"}`} onPress={ () => updateSettings({setting: !userLeaguesOnly.setting, filter: !userLeaguesOnly.filter})}/>
     <View style={styles.pillcont}>
 
         {!allLeagues.loading && Array.isArray(allLeagues.data) ? 
         //these are already filtered for league joined by the user
         allLeagues.data.filter(userLeagueFilter).map(league => 
             <View style={styles.pillMargin}>
-            <TouchableOpacity onPress={() => redirectTeams(league._id)}>
-                <MyPill onPress={joinLeague} joined={league.user_league} leagueID={league._id} leagueName={league.league_name} email={league.email} phoneNumber={league.phone_number} sportType={league.sport_type} img={require("../../public/girl.jpg")}></MyPill>
+            <TouchableOpacity key={league._id} onPress={() => redirectTeams(league._id)}>
+                <MyPill onPress={joinLeague} joined={league.user_league} redirect={redirectSchedule}  leagueID={league._id} leagueName={league.league_name} email={league.email} phoneNumber={league.phone_number} sportType={league.sport_type} headline={league.headline} img={require("../../public/girl.jpg")}></MyPill>
             </TouchableOpacity>
             </View>   
         ) 

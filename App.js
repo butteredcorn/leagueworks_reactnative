@@ -31,6 +31,7 @@ import Login from './pages/login';
 import GettingStarted from './pages/gettingstarted';
 import Leagues from "./pages/leagues/Leagues";
 import LeagueReg from "./pages/leagueregistration/LeagueRegistration"
+import LeagueSchedule from "./pages/leagueschedule/LeagueSchedule"
 
 
 
@@ -100,6 +101,7 @@ const App = () => {
         <ProtectedRoute token={token} exact={true} path ={"/"} component={Home}/>
         <ProtectedRoute token={token} path={"/leagues"} component={Leagues}/>
         <ProtectedRoute token={token} path={"/league-registration"} component={LeagueReg}/>
+        <ProtectedRoute token={token} path={"/league-schedule"} component={LeagueSchedule}/>
         <ProtectedRoute token={token} path={"/teams"} component={Teams}/>
         <ProtectedRoute token={token} path={"/team-registration"} component={TeamRegistration}/>
         <ProtectedRoute token={token} path={"/schedule"} component={Schedule}/>

@@ -301,6 +301,13 @@ const MyPill = ({
 }) => {
   const [selected, setSelected] = useState(0);
 
+  //example
+  if(players) {
+    for (let player of players) {
+      console.log(`${player.first_name} ${player.last_name}`)
+    }
+  }
+
   return (
     <View style={[selected === 1 ? styles.rostercont : styles.no]}>
       <View style={[selected === 2 ? styles.standingscont : styles.no]}>
