@@ -8,6 +8,8 @@ import MyButton from "../../comps/button";
 import {CalendarList} from 'react-native-calendars';
 import DatePicker from '../../comps/datepicker/DatePicker'
 import CheckBox from '@react-native-community/checkbox'
+import * as axios from 'react-native-axios'
+import { globals } from '../../globals'
 
 const styles = StyleSheet.create({
     container:{
@@ -83,7 +85,11 @@ const styles = StyleSheet.create({
 
 export default function LeagueSchedule(){
 
+    //ToDO
+    //create a view/create template, based on whether data from server is null
+    
     const data = useLocation()
+    const [user, update] = useState("")
     const {_id, league_name, email, phone_number, sport_type, headline} = data.state
 
     //get the teams information on the server side*
@@ -127,8 +133,39 @@ export default function LeagueSchedule(){
         }
     }
 
+    async function createLeagueSchedule(user, season) {
+        try {
+            console.log(season)
+            //${globals.webserverURL}
+            const access_token = user._W.access_token
+            const result = await axios.post(`http://localhost:5000/database/create/schedule`, {
+                season: season,
+                access_token: access_token
+            })
+            if(result.data.error) {
+                console.log(result.data.error)
+                alert(result.data.error)
+            } else {
+                console.log(result.data)
+            }
+        } catch (err) {
+            console.log(err)
+        }
+    }
 
+    const getUser = async () => {
+        const rawToken = await AsyncStorage.getItem('access_token')  
+        const rawID = await AsyncStorage.getItem('user_id')
+        return {access_token: rawToken, user_id: rawID}
+    }
 
+    useEffect(() => {
+        try {
+            update(getUser)
+        } catch (err) {
+            console.log(err)
+        }
+    }, [])
 
     return<View style={styles.container}>
         {/* Header */}
@@ -226,7 +263,7 @@ export default function LeagueSchedule(){
 
         {/* Button */}
         <TouchableOpacity style={styles.button}>
-            <MyButton text="Create"/>
+            <MyButton text="Create" onPress={() => createLeagueSchedule(user, season)}/>
         </TouchableOpacity>
 
        
