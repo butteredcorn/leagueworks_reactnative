@@ -98,6 +98,7 @@ export default function LeagueSchedule(){
         season_start: new Date(Date.now()),
         //season_end: "", //optional hardstop
         match_number: 0,
+        match_sets_per_week: 1,
         match_days: {monday: false, tuesday: false, wednesday: false, thursday: false, friday: false, saturday: false, sunday: false},
         skip_holidays: true,
         season_arenas: []
@@ -117,6 +118,9 @@ export default function LeagueSchedule(){
             //     return season
             case 'match_number':
                 season.match_number = action.value
+                return season
+            case 'match_sets_per_week':
+                season.match_sets_per_week = action.value
                 return season
             case 'match_days': //ie. monday
                 season.match_days[action.value] = !season.match_days[action.value]
@@ -188,6 +192,12 @@ export default function LeagueSchedule(){
                 <Input 
                 text="Number of matches against each team"
                 setValue={(text) => dispatch({type: "match_number", value: text})}
+                /> 
+            </View>
+            <View>
+                <Input 
+                text="Number of match sets played each week"
+                setValue={(text) => dispatch({type: "match_sets_per_week", value: text})}
                 /> 
             </View>
             <View>
