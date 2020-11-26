@@ -5,6 +5,7 @@ import NavBar from "../../comps/navbar";
 import Input from "../../comps/input";
 import MyButton from "../../comps/button";
 import {CalendarList} from 'react-native-calendars';
+import {useHistory} from "react-router-native";
 
 const styles = StyleSheet.create({
     container:{
@@ -45,10 +46,10 @@ const styles = StyleSheet.create({
     timerange:{
         flexDirection:"row"
     },
-    button:{
+    buttons:{
         position:"absolute",
         bottom:100,
-        right:45
+        flexDirection:"row"
     },
     navbar:{
         position:"absolute",
@@ -67,7 +68,8 @@ const styles = StyleSheet.create({
 })
 
 export default function CreateEvent(){
-    const [selected, setSelected] = useState(true)
+    const [selected, setSelected] = useState(true);
+    const history = useHistory();
 
     return<View style={styles.container}>
         {/* Header */}
@@ -123,10 +125,18 @@ export default function CreateEvent(){
 
         {/* Button */}
 
-        <TouchableOpacity style={styles.button}>
+        <View style={styles.buttons}>
+        
+        <TouchableOpacity onPress={() => {history.push("/");}}>
+            <MyButton text="Cancel" bgcolor="#333"/>
+        </TouchableOpacity>
+        
+        <TouchableOpacity>
             <MyButton text="Create"/>
         </TouchableOpacity>
 
+
+        </View>
 
         {/* Nav Bar */}
 

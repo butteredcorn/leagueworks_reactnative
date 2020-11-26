@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {View, ScrollView, StyleSheet, Image, TouchableOpacity, Text, AsyncStorage} from "react-native";
 import {CalendarList} from 'react-native-calendars';
-import { Link, Redirect} from "react-router-native";
+import { Link, useHistory, Redirect } from "react-router-native";
 import EventSection from "../../comps/EventSection";
 import MyHeader from "../../comps/header";
 import NavBar from "../../comps/navbar";
@@ -48,10 +48,12 @@ const styles = StyleSheet.create({
 })
 
 export default function Schedule(){
+    const history = useHistory()
     const [page, update] = useState({redirect: false})
 
 
     return page.redirect ? <Redirect to={{pathname: page.path, state: page}}></Redirect> : <View>
+
     <ScrollView contentContainerStyle={styles.container}>
         
         {/* Header */}
@@ -59,12 +61,14 @@ export default function Schedule(){
             <View style={styles.pagetitle}>
                 <Text style={styles.pageName}>Schedule</Text>
             </View>
+
             
             
+
+            <TouchableOpacity style={styles.edit}  onPress={() => {history.push("/createevent");}}>
             {/* <Link to="/createevent" style={styles.edit} component={TouchableOpacity}>
                 <Image source={require("../../public/edit.png")}/>
             </Link> */}
-            <TouchableOpacity>
                 <Image source={require("../../public/edit.png")}/>
             </TouchableOpacity>
 
