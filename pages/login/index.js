@@ -41,7 +41,7 @@ export default function Login({token, setToken}){
             const result = await axios.post(`${globals.webserverURL}/auth/login`, {
                 user: {
                     email: email,
-                    password: password
+                   password: password
                 }
             })
             if (result.data.error) {

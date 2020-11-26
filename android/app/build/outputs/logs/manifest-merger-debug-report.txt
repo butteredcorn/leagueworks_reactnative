@@ -9,6 +9,7 @@ MERGED from [com.facebook.flipper:flipper:0.37.0] /Users/kozytamai/.gradle/cache
 MERGED from [com.facebook.flipper:flipper-network-plugin:0.37.0] /Users/kozytamai/.gradle/caches/transforms-2/files-2.1/6d0cf57ce54a172ae71f6b8988a172b9/jetified-flipper-network-plugin-0.37.0/AndroidManifest.xml:8:1-15:12
 MERGED from [com.facebook.flipper:flipper-fresco-plugin:0.37.0] /Users/kozytamai/.gradle/caches/transforms-2/files-2.1/786108dce92d0df429b9724eaf0a1a6f/jetified-flipper-fresco-plugin-0.37.0/AndroidManifest.xml:8:1-15:12
 MERGED from [:react-native-async-storage_async-storage] /Users/kozytamai/Desktop/leagueworks_reactnative/node_modules/@react-native-async-storage/async-storage/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-9:12
+MERGED from [:react-native-community_datetimepicker] /Users/kozytamai/Desktop/leagueworks_reactnative/node_modules/@react-native-community/datetimepicker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-13:12
 MERGED from [:react-native-config] /Users/kozytamai/Desktop/leagueworks_reactnative/node_modules/react-native-config/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
 MERGED from [com.facebook.react:react-native:0.63.2] /Users/kozytamai/.gradle/caches/transforms-2/files-2.1/9b27b294fd16bd3bbf59a5d952acff29/jetified-react-native-0.63.2/AndroidManifest.xml:2:1-13:12
 MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /Users/kozytamai/.gradle/caches/transforms-2/files-2.1/d38c28a7a4bd66deb92fbaacca82413e/swiperefreshlayout-1.0.0/AndroidManifest.xml:17:1-22:12
@@ -81,6 +82,8 @@ application
 ADDED from /Users/kozytamai/Desktop/leagueworks_reactnative/android/app/src/main/AndroidManifest.xml:6:5-25:19
 MERGED from /Users/kozytamai/Desktop/leagueworks_reactnative/android/app/src/main/AndroidManifest.xml:6:5-25:19
 MERGED from /Users/kozytamai/Desktop/leagueworks_reactnative/android/app/src/main/AndroidManifest.xml:6:5-25:19
+MERGED from [:react-native-community_datetimepicker] /Users/kozytamai/Desktop/leagueworks_reactnative/node_modules/@react-native-community/datetimepicker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:11:5-20
+MERGED from [:react-native-community_datetimepicker] /Users/kozytamai/Desktop/leagueworks_reactnative/node_modules/@react-native-community/datetimepicker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:11:5-20
 MERGED from [com.facebook.react:react-native:0.63.2] /Users/kozytamai/.gradle/caches/transforms-2/files-2.1/9b27b294fd16bd3bbf59a5d952acff29/jetified-react-native-0.63.2/AndroidManifest.xml:11:5-20
 MERGED from [com.facebook.react:react-native:0.63.2] /Users/kozytamai/.gradle/caches/transforms-2/files-2.1/9b27b294fd16bd3bbf59a5d952acff29/jetified-react-native-0.63.2/AndroidManifest.xml:11:5-20
 MERGED from [com.facebook.soloader:soloader:0.8.2] /Users/kozytamai/.gradle/caches/transforms-2/files-2.1/4402f3a8a728073783e1270c3d33ef7b/jetified-soloader-0.8.2/AndroidManifest.xml:11:5-20
@@ -155,6 +158,8 @@ MERGED from [com.facebook.flipper:flipper-fresco-plugin:0.37.0] /Users/kozytamai
 MERGED from [com.facebook.flipper:flipper-fresco-plugin:0.37.0] /Users/kozytamai/.gradle/caches/transforms-2/files-2.1/786108dce92d0df429b9724eaf0a1a6f/jetified-flipper-fresco-plugin-0.37.0/AndroidManifest.xml:11:5-13:41
 MERGED from [:react-native-async-storage_async-storage] /Users/kozytamai/Desktop/leagueworks_reactnative/node_modules/@react-native-async-storage/async-storage/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-async-storage_async-storage] /Users/kozytamai/Desktop/leagueworks_reactnative/node_modules/@react-native-async-storage/async-storage/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-community_datetimepicker] /Users/kozytamai/Desktop/leagueworks_reactnative/node_modules/@react-native-community/datetimepicker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-community_datetimepicker] /Users/kozytamai/Desktop/leagueworks_reactnative/node_modules/@react-native-community/datetimepicker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-config] /Users/kozytamai/Desktop/leagueworks_reactnative/node_modules/react-native-config/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-config] /Users/kozytamai/Desktop/leagueworks_reactnative/node_modules/react-native-config/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [com.facebook.react:react-native:0.63.2] /Users/kozytamai/.gradle/caches/transforms-2/files-2.1/9b27b294fd16bd3bbf59a5d952acff29/jetified-react-native-0.63.2/AndroidManifest.xml:7:5-9:41
