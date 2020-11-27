@@ -8,6 +8,9 @@ import MyButton from "../../comps/button";
 import {CalendarList} from 'react-native-calendars';
 import DatePicker from '../../comps/datepicker/DatePicker'
 import CheckBox from '@react-native-community/checkbox'
+import {Picker} from '@react-native-picker/picker';
+
+
 import * as axios from 'react-native-axios'
 import { globals } from '../../globals'
 
@@ -109,6 +112,13 @@ const styles = StyleSheet.create({
     },
     inputMargins:{
         marginBottom: 20
+    },
+    picker: {
+        // alignSelf: "center",
+        height: 50,
+        width: 120,
+        position: "relative",
+        top: -85
     }
 })
 
@@ -119,6 +129,9 @@ export default function LeagueSchedule(){
     
     const data = useLocation()
     const [user, update] = useState("")
+    const [arenas, updateArenas] = useState({loading: true, data: []})
+    //const [pickerValue, updatePicker] = useState('')
+    const [mondayArena, updateMonday] = useState('')
     const {_id, league_name, email, phone_number, sport_type, headline} = data.state
 
     //get the teams information on the server side*
@@ -130,7 +143,7 @@ export default function LeagueSchedule(){
         match_sets_per_week: 1,
         match_days: {monday: false, tuesday: false, wednesday: false, thursday: false, friday: false, saturday: false, sunday: false},
         skip_holidays: true,
-        season_arenas: []
+        match_day_arenas: {monday: "", tuesday: "", wednesday: "", thursday: "", friday: "", saturday: "", sunday: ""}
     }
 
     const [season, dispatch] = useReducer(reducer, initialState)
@@ -153,13 +166,14 @@ export default function LeagueSchedule(){
                 return season
             case 'match_days': //ie. monday
                 season.match_days[action.value] = !season.match_days[action.value]
-                //console.log(season.match_days)
+                console.log(season.match_days)
                 return season
             case 'skip_holidays':
                 season.skip_holidays = action.value
                 return season
-            case 'season_arenas':
-                season.season_arenas = action.value
+            case 'match_day_arenas':
+                season.match_day_arenas[action.value] = action.arena
+                action.callback(action.arena)
                 return season
             default:
                 throw new Error('Issue with reducer in season creation.')
@@ -169,8 +183,9 @@ export default function LeagueSchedule(){
     async function createLeagueSchedule(user, season) {
         try {
             console.log(season)
+            //console.log(user)
             //${globals.webserverURL}
-            const access_token = user._W.access_token
+            const access_token = user.access_token
             const result = await axios.post(`http://localhost:5000/database/create/schedule`, {
                 season: season,
                 access_token: access_token
@@ -186,15 +201,42 @@ export default function LeagueSchedule(){
         }
     }
 
+    async function getArenas(user) {
+        try {
+            //${globals.webserverURL}
+            const access_token = user.access_token
+            const result = await axios.post(`${globals.webserverURL}/database/read/arenas`, {
+                access_token: access_token
+            })
+            if(result.data.error) {
+                console.log(result.data.error)
+                alert(result.data.error)
+            } else {
+                return result.data
+            }
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
     const getUser = async () => {
         const rawToken = await AsyncStorage.getItem('access_token')  
         const rawID = await AsyncStorage.getItem('user_id')
         return {access_token: rawToken, user_id: rawID}
     }
 
+    const loadPage = async() => {
+        const user = await getUser()
+        update(user)
+        const arenas = await getArenas(user)
+        //console.log(arenas)
+        updateArenas({loading: false, data: arenas})
+    }
+
     useEffect(() => {
         try {
-            update(getUser)
+            loadPage()
+            
         } catch (err) {
             console.log(err)
         }
@@ -231,6 +273,7 @@ export default function LeagueSchedule(){
                 /> 
             </View>
             <View>
+
             <Text style={styles.boldtext}>Play on which days?</Text>
                 <View style={styles.day_check}>
                     <Text>Monday</Text>
@@ -240,6 +283,20 @@ export default function LeagueSchedule(){
                         onValueChange={() => dispatch({type: "match_days", value: "monday"})}
                     />
                 </View>  
+                <View>
+                    <Picker style={styles.picker}
+                        selectedValue={mondayArena}
+                        onValueChange={(arena, index) => dispatch({type: "match_day_arenas", value: "monday", callback: () => updateMonday(arena), index: index, arena: arena})}
+                        //onValueChange={(arena) => updateMonday(arena)}
+                    >
+                            <Picker.Item label="Pick Arena" value={""}></Picker.Item>
+                    {!arenas.loading && Array.isArray(arenas.data) && arenas.data.map(arena =>
+                            <Picker.Item key={arena._id} label={arena.name} value={arena.name} />
+                    )}
+
+                    </Picker>
+                </View>
+
                 <View style={styles.day_check}>
                     <Text>Tuesday</Text>
                     <CheckBox
@@ -247,6 +304,7 @@ export default function LeagueSchedule(){
                         value={season.match_days.tuesday}
                         onValueChange={() => dispatch({type: "match_days", value: "tuesday"})}
                     />
+                    
                 </View>
                 <View style={styles.day_check}>
                     <Text>Wednesday</Text>
@@ -255,6 +313,7 @@ export default function LeagueSchedule(){
                         value={season.match_days.wednesday}
                         onValueChange={() => dispatch({type: "match_days", value: "wednesday"})}
                     />
+                    
                 </View>
                 <View style={styles.day_check}>
                     <Text>Thursday</Text>
@@ -263,6 +322,7 @@ export default function LeagueSchedule(){
                         value={season.match_days.thursday}
                         onValueChange={() => dispatch({type: "match_days", value: "thursday"})}
                     />
+                    
                 </View>    
                 <View style={styles.day_check}>
                     <Text>Friday</Text>
@@ -271,6 +331,7 @@ export default function LeagueSchedule(){
                         value={season.match_days.friday}
                         onValueChange={() => dispatch({type: "match_days", value: "friday"})}
                     />
+                    
                 </View>    
                 <View style={styles.day_check}>
                     <Text>Saturday</Text>
@@ -279,6 +340,7 @@ export default function LeagueSchedule(){
                         value={season.match_days.saturday}
                         onValueChange={() => dispatch({type: "match_days", value: "saturday"})}
                     />
+                    
                 </View>  
                 <View style={styles.day_check}>
                     <Text>Sunday</Text>
@@ -287,6 +349,7 @@ export default function LeagueSchedule(){
                         value={season.match_days.sunday}
                         onValueChange={() => dispatch({type: "match_days", value: "sunday"})}
                     />
+                    
                 </View>  
             </View>
 
