@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
       width:18
     },
     postcont:{
-      marginBottom:15
+      marginBottom:10
     },
     settingscont:{
       height:160,

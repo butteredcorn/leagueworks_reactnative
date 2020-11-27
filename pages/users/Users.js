@@ -133,7 +133,7 @@ return page.redirect ? <Redirect to={
     </ScrollView>
 
         
-    <View style={styles.navigation}><NavBar /></View>
+    <View style={styles.navigation}><NavBar active={3}/></View>
 
 
     </View>
