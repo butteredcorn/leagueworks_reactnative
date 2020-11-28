@@ -92,6 +92,10 @@ export default function AllUsers(){
         const user = await getUser()
         updateUser(user)
         getOtherUsers(user)
+
+        // console.log(user)
+        // console.log(page)
+        // console.log(otherUsers)
     }
 
     useEffect(() => {
@@ -129,7 +133,7 @@ return page.redirect ? <Redirect to={
     </ScrollView>
 
         
-    <View style={styles.navigation}><NavBar /></View>
+    <View style={styles.navigation}><NavBar active={3}/></View>
 
 
     </View>

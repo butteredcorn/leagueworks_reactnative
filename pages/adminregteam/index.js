@@ -30,7 +30,7 @@ export default function TeamReg(){
     }
 
     const redirect = () => {
-        updatePage({redirect: !page.redirect, path: "/teams"})
+        updatePage({redirect: !page.redirect, path: "/teams", leagueID: leagueID})
     }
 
     useEffect(() => {
@@ -109,7 +109,7 @@ export default function TeamReg(){
         }
     }
 
-return page.redirect ? <Redirect to={page.path}></Redirect> : <View style={styles.container}>
+return page.redirect ? <Redirect to={{pathname: page.path, state: page.leagueID}}></Redirect> : <View style={styles.container}>
 
     <View style={{
         flexDirection:"row",
