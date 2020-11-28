@@ -1,6 +1,6 @@
 import React, { useState, useReducer, useEffect } from "react";
-import {View, ScrollView, StyleSheet, Text, TextInput, Image, AsyncStorage} from "react-native";
-import { Redirect, useLocation } from 'react-router-native'
+import {View, ScrollView, StyleSheet, TouchableOpacity, Text, TextInput, Image, AsyncStorage} from "react-native";
+import { Redirect, useLocation, useHistory } from 'react-router-native'
 import * as axios from 'react-native-axios'
 
 import { globals } from '../../globals'
@@ -12,6 +12,7 @@ import MyLargeButton from "../../comps/buttonlarge";
 
 
 const styles = StyleSheet.create({
+
     Cont:{
         height:"100%",
     },
@@ -19,12 +20,36 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         textAlign:"left",
         width:"100%", 
-        paddingTop:75
+        paddingTop:7
+    },
+    container:{
+        alignItems:"center",
+        position: "relative",
+        height: "100%",
+    },
+    topCont: {
+        alignItems: "center",
     },
     bottomCont: {
         alignItems: "center",
         marginTop: 10
     },
+    pageName:{
+        fontSize: 36,
+        fontWeight: "bold",
+        color: "#333333",
+        height: 45,
+    },
+    headercont:{
+        display:"flex",
+        flexDirection:"row",
+        alignItems:"center",
+        justifyContent: "space-evenly",
+        width: "90%",
+        height: 45,
+        marginTop: 50,
+        marginBottom: 15,
+      },
     inputMargin: {
         marginBottom: 20
     },
@@ -108,6 +133,9 @@ export default function CreatePost ({}) {
         console.log(user)
     }
 
+    const history = useHistory();
+
+
     useEffect(() => {
         try {
             loadPage()
@@ -116,9 +144,20 @@ export default function CreatePost ({}) {
         }
     }, [])
 
-    return page.redirect ? <Redirect to={'/'}></Redirect> : <ScrollView>
+    return page.redirect ? <Redirect to={'/'}></Redirect> : <View style={styles.container}>
+    <ScrollView>
+        <View style={styles.headercont}>
+            <TouchableOpacity 
+                onPress={() => {
+                history.push("/");
+                }}     
+        >
+            <Image source={require("../../public/backarrow.png")} />
+        </TouchableOpacity>
+        <Text style={styles.pageName}>Create Post</Text>
+    </View>
+
         <View style={styles.topCont}>
-            <MyHeader head={"Create Post"}></MyHeader>
             <Avatar img={require("../../public/girl2.png")}></Avatar>
         </View>
         <View style={styles.bottomCont}>
@@ -155,4 +194,5 @@ export default function CreatePost ({}) {
 
         </View>
     </ScrollView>
+    </View>
 }

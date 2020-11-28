@@ -117,10 +117,15 @@ const styles = StyleSheet.create({
     },
     picker: {
         // alignSelf: "center",
-        height: 50,
-        width: 120,
-        position: "relative",
-        top: -85
+        // height: 50,
+        width: "100%",
+        backgroundColor: "#ececec",
+        borderTopLeftRadius: 10,
+        borderTopRightRadius: 10,
+        borderBottomLeftRadius: 25,
+        borderBottomRightRadius: 25,
+        // position: "relative",
+        // top: -85
     }
 })
 
@@ -366,7 +371,7 @@ export default function LeagueSchedule(){
                 /> 
             </View>
             <View style={styles.day_check}>
-                <Text>Play On Holidays?</Text>
+                <Text style={styles.boldtext}>Play On Holidays?</Text>
                 <CheckBox
                     disabled={false}
                     value={!season.skip_holidays}
@@ -376,7 +381,10 @@ export default function LeagueSchedule(){
             </View>
 
             {<View>
-            <Text style={styles.boldtext}>Play on which days?</Text>
+
+            <View style={styles.day_check}>                
+                <Text style={styles.boldtext}>Play on which days?</Text>
+            </View>
                 
                 <View style={styles.day_check}>
                     <Text>Monday</Text>
@@ -534,7 +542,7 @@ export default function LeagueSchedule(){
 
         {/* Nav Bar */}
         <View style={styles.navbar}>
-            <NavBar />
+            <NavBar NavBar active={1} />
         </View>
 
     </View>
