@@ -130,8 +130,8 @@ export default function LeagueSchedule(){
     const data = useLocation()
     const [user, update] = useState("")
     const [arenas, updateArenas] = useState({loading: true, data: []})
-    const [numSetsPerweek, updateSetsPerWeek] = useState(0)
-    const [numSetsPerOpponent, updateSetsPerOpponent] = useState(0)
+    const [numSetsPerweek, updateSetsPerWeek] = useState(false)
+    const [numSetsPerOpponent, updateSetsPerOpponent] = useState(false)
     //if i didn't have to do the following, and could combine it into a reducer i would have. but after 4 hours of trying, i've determined it isn't possible.
     const [mondayArena, updateMonday] = useState('')
     const [mondayPicker, updateMondayPicker] = useState(false)
@@ -205,7 +205,7 @@ export default function LeagueSchedule(){
             //console.log(user)
             //${globals.webserverURL}
             const access_token = user.access_token
-            const result = await axios.post(`http://localhost:5000/database/create/schedule`, {
+            const result = await axios.post(`${globals.webserverURL}/database/create/schedule`, {
                 season: season,
                 access_token: access_token
             })
@@ -273,8 +273,9 @@ export default function LeagueSchedule(){
             </View>
         </View>
 
+            <View>
             <View style={styles.selectdate_cont}>
-                <DatePicker title={"Start Date"} style={styles.datePicker} setValue={(date) => dispatch({type: "season_start", value: date})}/>
+                <DatePicker title={"Season Start Date"} style={styles.datePicker} setValue={(date) => dispatch({type: "season_start", value: date})}/>
             </View>
             {/* <View>
                 <DatePicker title={"End Date"} style={styles.datePicker} setValue={(date) => dispatch({type: "season_end", value: date})}/>
@@ -291,7 +292,17 @@ export default function LeagueSchedule(){
                 setValue={(text) => dispatch({type: "match_sets_per_week", value: text})}
                 /> 
             </View>
-            <View>
+            <View style={styles.day_check}>
+                <Text>Play On Holidays?</Text>
+                <CheckBox
+                    disabled={false}
+                    value={!season.skip_holidays}
+                    onValueChange={() => dispatch({type: "skip_holidays", value: !season.skip_holidays})}
+                />
+            </View> 
+            </View>
+
+            {<View>
             <Text style={styles.boldtext}>Play on which days?</Text>
                 
                 <View style={styles.day_check}>
@@ -434,18 +445,8 @@ export default function LeagueSchedule(){
                     )}
                     </Picker>}
                 </View>
-            </View>
-
-            {/* weekdays end */}
-            <View style={styles.day_check}>
-                <Text>Play On Holidays?</Text>
-                <CheckBox
-                    disabled={false}
-                    value={!season.skip_holidays}
-                    onValueChange={() => dispatch({type: "skip_holidays", value: !season.skip_holidays})}
-                />
-            </View>  
-            
+                {/* weekdays end */}
+            </View>}
 
             <View style={styles.spacer} />
 
