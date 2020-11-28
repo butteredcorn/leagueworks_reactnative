@@ -92,11 +92,11 @@ const styles = StyleSheet.create({
 });
 
 EventSection.defaultProps = {
-  eventName: "event name goes here",
-  eventTime: "event time goes here",
-  eventEnd:"event time goes here",
-  eventLocation: "event location goes here",
-  eventDesc: "event description goes here"
+  eventName: "Add an Event",
+  eventTime: "",
+  eventEnd:"",
+  eventLocation: "",
+  eventDesc: ""
 };
 
 export default EventSection;

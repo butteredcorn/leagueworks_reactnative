@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {View, ScrollView, StyleSheet, Image, TouchableOpacity, Text, AsyncStorage} from "react-native";
-import {CalendarList} from 'react-native-calendars';
+import {Calendar} from 'react-native-calendars';
 import { Link, useHistory, Redirect } from "react-router-native";
 import EventSection from "../../comps/EventSection";
 import MyHeader from "../../comps/header";
@@ -33,10 +33,8 @@ const styles = StyleSheet.create({
     calendar:{
         position:"relative",
         bottom:-75,
-        width:370,
-        height:294,
-        backgroundColor:"#ECECEC",
-        borderRadius:31,
+        width:320,
+        height:320,
     },
     event:{
         position:"relative",
@@ -210,14 +208,16 @@ export default function Schedule(){
         {/* Calendar */}
 
         <View style={styles.calendar}>
-        <CalendarList 
-
+        <Calendar
+        
         theme={{
             calendarBackground: '#F8F8F8',
             textDayFontWeight:"bold",
             todayTextColor:"#F35B04",
             textMonthFontWeight:"bold",
-            textDayHeaderFontWeight:"bold"
+            textDayHeaderFontWeight:"bold",
+            selectedDayBackgroundColor:"#F35B04",
+            arrowColor:"#F35B04"
         }}
         // Callback which gets executed when visible months change in scroll view. Default = undefined
         onVisibleMonthsChange={(months) => {console.log('now these months are visible', months);}}
@@ -241,7 +241,6 @@ export default function Schedule(){
             eventLocation={o.season_arenas.monday}
             eventDesc="Fun times!!!"
             />
-                
         </View>
         })}
     </ScrollView>
