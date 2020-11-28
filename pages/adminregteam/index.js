@@ -51,7 +51,8 @@ export default function TeamReg(){
             user_id: "",
             jersey_number: "",
             captain: true
-        }]
+        }],
+        thumbnail_link: ""
     }
 
     function reducer(team, action) {
@@ -73,7 +74,9 @@ export default function TeamReg(){
                 team.captain_id = action.value
                 team.players[0].user_id = action.value
                 return team
-            
+            case 'thumbnail_link':
+                team.thumbnail_link = action.value
+                return team
             default:
                 throw new Error('Issue with reducer in team registration.')
         }
@@ -162,7 +165,14 @@ return page.redirect ? <Redirect to={{pathname: page.path, state: page.leagueID}
         placeholder="Phone Number"
         setValue={(text) => dispatch({type: "phone_number", value: text})}
         />
+    </View>
 
+    <View style={{ marginBottom:15}}>
+        <Input 
+        text="Photo Link"
+        placeholder="Photo Link"
+        setValue={(text) => dispatch({type: "thumbnail_link", value: text})}
+        />
     </View>
 
     <View>

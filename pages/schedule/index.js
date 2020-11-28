@@ -95,6 +95,18 @@ const styles = StyleSheet.create({
     skip_holidays: false
   }
 ]
+
+where each event looked like:
+{
+    summary: 'BC BBALL TEAM vs. BIG <DIV> ENERGY',
+    home_team: 5fbf3ca3d82e7600171a073e,
+    home_team_players: [ [Object] ],
+    away_team: 5fbf3d1ed82e7600171a0740,
+    away_team_players: [ [Object] ],
+    start_date: '2020-12-29',
+    arena: 'Hillcrest Community and Aquatics Centre',
+    match_id: 5fc210c1c322d0eb0e4b1d04
+  }
 */
 
 export default function Schedule(){
@@ -110,6 +122,9 @@ export default function Schedule(){
         return {access_token: rawToken, user_id: rawID}
     }
 
+    //TODO
+    //this currently returns whole league schedule for the user's leagues
+    //also add a filter to reduce to just teams that the user is in
     async function getUserSchedule(user) {
         try {
             //${globals.webserverURL}

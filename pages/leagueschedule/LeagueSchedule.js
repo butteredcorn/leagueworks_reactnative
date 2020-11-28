@@ -290,7 +290,9 @@ export default function LeagueSchedule(){
     useEffect(() => {
         try {
             loadPage()
-            
+            setTimeout(()=> {
+                console.log(seasonSchedule)
+            },2500)
         } catch (err) {
             console.log(err)
         }
@@ -313,6 +315,9 @@ export default function LeagueSchedule(){
             seasonSchedule.data.season_arenas */}
             <MyButton text={"change schedule"} onPress={() => updateView(!editTemplate)}></MyButton>
         </ScrollView>
+        <View style={styles.navbar}>
+            <NavBar NavBar active={1} />
+        </View>
     </View> 
     
     

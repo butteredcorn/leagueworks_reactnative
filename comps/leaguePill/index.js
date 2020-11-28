@@ -285,7 +285,8 @@ const MyPill = ({
     joined,
     onPress,
     redirect,
-    league
+    league,
+    thumbnail_link
 }) => {
   const [selected, setSelected] = useState(0);
 
@@ -299,7 +300,7 @@ const MyPill = ({
                 <View style={styles.container}>
                   <View style={styles.teamcont}>
                     <View style={styles.avatarcont}>
-                      <Avatar dim={50} />
+                      <Avatar dim={50} thumbnail_link={thumbnail_link} />
                     </View>
 
                     <View style={styles.infocont}>

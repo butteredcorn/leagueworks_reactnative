@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useEffect, useState } from "react";
 import {View, Text, StyleSheet, Image, TouchableHighlight, TouchableOpacity} from "react-native";
 import Avatar from "../Avatar";
 
@@ -32,9 +32,14 @@ const styles = StyleSheet.create({
     }
 })
 
-const Post = ({Username, Title, Description, img, delete_auth, onPress})=> {
-
+const Post = ({Username, Title, Description, img, delete_auth, calllike, calldelete, likes, user_id})=> {
+    const [userLikes, updateUserLikes] = useState(false)
     
+    useEffect(() => {
+        if(likes.includes(user_id)) {
+            updateUserLikes(true)
+        }
+    },[])
 
     return(
         <View style={styles.container}>
@@ -88,9 +93,9 @@ const Post = ({Username, Title, Description, img, delete_auth, onPress})=> {
 
 
                 <View style={styles.buttonCont}>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={calllike}>
                     <Image 
-                    source={require("../../public/heart.png")}
+                    source={userLikes ? require("../../public/redheart.png") : require("../../public/heart.png")}
                     style={{
                         width:30,
                         height:30,
@@ -99,7 +104,7 @@ const Post = ({Username, Title, Description, img, delete_auth, onPress})=> {
                     />
                     </TouchableOpacity>
 
-                    {delete_auth && <TouchableOpacity onPress={onPress}>
+                    {delete_auth && <TouchableOpacity onPress={calldelete}>
                         <Image 
                         source={require("../../public/trash.png")}
                         style={{

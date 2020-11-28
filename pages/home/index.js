@@ -90,6 +90,22 @@ export default function Home(){
         }
     }
 
+    async function likePost(user, post_id) {
+        const result = await axios.post(`${globals.webserverURL}/database/like/post`, {
+            post: {
+                user_id: user.user_id,
+                post_id: post_id
+            },
+            access_token: user.access_token
+        })
+        if(result.data.error) {
+            console.log(result.data.error)
+            alert(result.data.error)
+        } else {
+            return result.data
+        }
+    }
+
     const redirectCreatePost = (user) => {
         update({redirect: !page.redirect, path: "/create-post", user: user})
     }
@@ -129,6 +145,9 @@ return page.redirect ? <Redirect to={{pathname: page.path, state: {user: page.us
         <View style={{alignItems:"center"}}>
         <Post 
         key={post._id}
+        user_id={user.user_id}
+        calllike={() => likePost(user, post._id)}
+        likes={post.likes}
         delete_auth={post.delete_auth}
         Username={post.username}
         Title={post.title} 
