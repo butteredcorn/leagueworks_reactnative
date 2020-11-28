@@ -4,7 +4,7 @@ import MyHeader from "../../comps/header";
 import NavBar from "../../comps/navbar";
 import Input from "../../comps/input";
 import MyButton from "../../comps/button";
-import {CalendarList} from 'react-native-calendars';
+import {Calendar} from 'react-native-calendars';
 import {useHistory} from "react-router-native";
 
 const styles = StyleSheet.create({
@@ -59,10 +59,8 @@ const styles = StyleSheet.create({
     calendar:{
         position:"absolute",
         bottom:150,
-        width:370,
-        height:294,
-        backgroundColor:"#ECECEC",
-        borderRadius:31,
+        width:320,
+        height:320,
         zIndex:1
     }
 })
@@ -89,7 +87,7 @@ export default function CreateEvent(){
 
         {selected ? (
         <View style={styles.calendar}>
-        <CalendarList 
+        <Calendar 
 
             theme={{
                 calendarBackground: '#F8F8F8',
