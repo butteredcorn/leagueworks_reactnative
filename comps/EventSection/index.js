@@ -1,6 +1,6 @@
 import React from "react";
 import { View, StyleSheet, Image, Text } from "react-native";
-const EventSection = ({ eventName, eventTime, eventDesc, eventLocation }) => {
+const EventSection = ({ eventName, eventTime, eventEnd, eventDesc, eventLocation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.bigBox}>
@@ -12,7 +12,10 @@ const EventSection = ({ eventName, eventTime, eventDesc, eventLocation }) => {
               style={styles.timeIcon}
               source={require('../../public/time.png')}
             ></Image>
-            <View><Text>{eventTime}</Text></View>
+            <View>
+              <Text>{eventTime}</Text>
+              <Text>{eventEnd}</Text>
+            </View>
           </View>
 
           <View style={styles.locationCont}>
@@ -61,7 +64,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginBottom: 10,
     fontSize: 18,
-    fontWeight: "bold"
+    fontWeight:"900"
   },
   timeIcon: {
     width: 17.14,
@@ -89,9 +92,11 @@ const styles = StyleSheet.create({
 });
 
 EventSection.defaultProps = {
-  eventName: "event name goes here",
-  eventTime: "event time goes here",
-  eventLocation: "event location goes here",
+  eventName: "Add an Event",
+  eventTime: "",
+  eventEnd:"",
+  eventLocation: "",
+  eventDesc: ""
 };
 
 export default EventSection;

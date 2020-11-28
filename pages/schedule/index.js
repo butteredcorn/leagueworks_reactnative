@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {View, ScrollView, StyleSheet, Image, TouchableOpacity, Text, AsyncStorage} from "react-native";
-import {CalendarList} from 'react-native-calendars';
+import {Calendar} from 'react-native-calendars';
 import { Link, useHistory, Redirect } from "react-router-native";
 import EventSection from "../../comps/EventSection";
 import MyHeader from "../../comps/header";
@@ -33,10 +33,8 @@ const styles = StyleSheet.create({
     calendar:{
         position:"relative",
         bottom:-75,
-        width:370,
-        height:294,
-        backgroundColor:"#ECECEC",
-        borderRadius:31,
+        width:320,
+        height:320,
     },
     event:{
         position:"relative",
@@ -101,6 +99,49 @@ export default function Schedule(){
     const [userSchedule, updateUserSchedule] = useState({loading: true, data: []})
     const [unifiedEvents, updateUnifiedEvents] = useState({loading: true, data: []})
     const [page, update] = useState({redirect: false})
+    const arr = [
+    {
+    _id: '5fc19e8ac7c409d3f32b2b25',
+    league_id: '5fb9cf9965f84d0017928887',
+    start_date: '2020-11-26T00:09:00.000Z',
+    end_date: '2020-12-30T00:09:00.000Z',
+    game_days: [ 'monday', 'tuesday' ],
+    match_sets: {
+      match_set_1: [Array],
+      match_set_2: [Array],
+      match_set_3: [Array],
+      match_set_4: [Array],
+      match_set_5: [Array]
+    },
+    game_dates: [
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object]
+    ],
+    events: [
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object],
+      [Object]
+    ],
+    season_arenas: {
+      monday: 'Hillcrest Community and Aquatics Centre',
+      tuesday: 'Hillcrest Community and Aquatics Centre',
+      wednesday: '',
+      thursday: '',
+      friday: '',
+      saturday: '',
+      sunday: ''
+    },
+    skip_holidays: false
+        }
+    ]
 
     const getUser = async () => {
         const rawToken = await AsyncStorage.getItem('access_token')  
@@ -183,14 +224,16 @@ export default function Schedule(){
         {/* Calendar */}
 
         <View style={styles.calendar}>
-        <CalendarList 
-
+        <Calendar
+        
         theme={{
             calendarBackground: '#F8F8F8',
             textDayFontWeight:"bold",
             todayTextColor:"#F35B04",
             textMonthFontWeight:"bold",
-            textDayHeaderFontWeight:"bold"
+            textDayHeaderFontWeight:"bold",
+            selectedDayBackgroundColor:"#F35B04",
+            arrowColor:"#F35B04"
         }}
         // Callback which gets executed when visible months change in scroll view. Default = undefined
         onVisibleMonthsChange={(months) => {console.log('now these months are visible', months);}}
@@ -214,6 +257,16 @@ export default function Schedule(){
         {/* <View style={styles.event}>
             <EventSection eventName="Game at BCIT" eventTime="9:00AM - 11:00AM" eventLocation="Burnaby, BC" eventDesc="Don't forget the ID!"/>
         </View> */}
+        {/* {arr.map((o,i)=>{
+        return<View style={styles.event} key={i}>
+            <EventSection  eventName="Game Day!" 
+            eventTime={[o.start_date," -"]} 
+            eventEnd={o.end_date}
+            eventLocation={o.season_arenas.monday}
+            eventDesc="Fun times!!!"
+            />
+        </View> 
+        })}*/}
     </ScrollView>
     <View style={styles.navigation}><NavBar active={2}/></View>
 </View>
