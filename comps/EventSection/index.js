@@ -23,13 +23,13 @@ const EventSection = ({ eventName, eventTime, eventDesc, eventLocation }) => {
             <View><Text>{eventLocation}</Text></View>
           </View>
 
-          <View style={styles.descriptionCont}>
+          {/* <View style={styles.descriptionCont}>
             <Image
               style={styles.locationIcon}
               source={require('../../public/description.png')}
             ></Image>
             <View><Text>{eventDesc}</Text></View>
-          </View>
+          </View> */}
         </View>
       </View>
     </View>
@@ -92,7 +92,6 @@ EventSection.defaultProps = {
   eventName: "event name goes here",
   eventTime: "event time goes here",
   eventLocation: "event location goes here",
-  eventDesc: "event description goes here"
 };
 
 export default EventSection;

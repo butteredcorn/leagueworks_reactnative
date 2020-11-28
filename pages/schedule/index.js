@@ -99,6 +99,7 @@ export default function Schedule(){
     const history = useHistory()
     const [user, updateUser] = useState("")
     const [userSchedule, updateUserSchedule] = useState({loading: true, data: []})
+    const [unifiedEvents, updateUnifiedEvents] = useState({loading: true, data: []})
     const [page, update] = useState({redirect: false})
 
     const getUser = async () => {
@@ -121,8 +122,21 @@ export default function Schedule(){
                 console.log(result.data.error)
                 alert(result.data.error)
             } else {
-                console.log(result.data)
-                return result.data
+                let unifiedEvents = []
+                for(let schedule of result.data) {
+                    if(schedule.events && schedule.events.length > 0) {
+                        if(unifiedEvents.length == 0) {
+                            unifiedEvents = schedule.events
+                        } else {
+                            unifiedEvents.concat(schedule.events)
+                        }
+                    }
+                }
+                unifiedEvents.sort((eventA, eventB) => {
+                    const upcomingEvent = new Date(eventA.start_date) < new Date(eventB.start_date) ? eventA : eventB
+                    return upcomingEvent
+                })
+                return {userSchedule: result.data, unifiedEvents: unifiedEvents}
             }
         } catch (err) {
             console.log(err)
@@ -132,8 +146,10 @@ export default function Schedule(){
     const loadPage = async() => {
         const user = await getUser()
         updateUser(user)
-        const userSchedule = await getUserSchedule(user)
+        const {userSchedule, unifiedEvents} = await getUserSchedule(user)
         updateUserSchedule({loading: false, data: userSchedule})
+        updateUnifiedEvents({loading: false, data: unifiedEvents})
+        console.log(unifiedEvents.slice(0, 3))
     }
 
     useEffect(() => {
@@ -190,9 +206,14 @@ export default function Schedule(){
 
         {/* Event List */}
 
+        {!unifiedEvents.loading && Array.isArray(unifiedEvents.data) && unifiedEvents.data.slice(0, 10).map(event =>
         <View style={styles.event}>
+            <EventSection key={`${event.home_team} ${event.away_team}`} eventName={event.summary} eventTime={event.start_date} eventLocation={event.arena}/>
+        </View>)}
+
+        {/* <View style={styles.event}>
             <EventSection eventName="Game at BCIT" eventTime="9:00AM - 11:00AM" eventLocation="Burnaby, BC" eventDesc="Don't forget the ID!"/>
-        </View>
+        </View> */}
     </ScrollView>
     <View style={styles.navigation}><NavBar active={2}/></View>
 </View>
