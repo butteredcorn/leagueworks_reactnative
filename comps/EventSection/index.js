@@ -23,7 +23,7 @@ const EventSection = ({ eventName, eventTime, eventEnd, eventDesc, eventLocation
               style={styles.locationIcon}
               source={require('../../public/location.png')}
             ></Image>
-            <View><Text>{eventLocation}</Text></View>
+            <View style={{width:170}}><Text>{eventLocation}</Text></View>
           </View>
 
           {/* <View style={styles.descriptionCont}>
@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
   timeIcon: {
     width: 17.14,
     height: 17.14,
-    marginRight: 10
+    marginRight: 5
   },
   locationCont: {
     flex: 1,
@@ -80,6 +80,7 @@ const styles = StyleSheet.create({
   locationIcon: {
     width: 18,
     height: 18,
+    marginRight: 5
   },
   descriptionCont: {
     flex: 1,
