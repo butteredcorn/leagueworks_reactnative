@@ -13,15 +13,17 @@ import MyLargeButton from "../../comps/buttonlarge";
 
 const styles = StyleSheet.create({
     Cont:{
-        height:"100%"
+        height:"100%",
     },
     topCont: {
         justifyContent: "center",
-        alignItems: "center",
+        textAlign:"left",
+        width:"100%", 
+        paddingTop:75
     },
     bottomCont: {
         alignItems: "center",
-        marginTop: 50
+        marginTop: 10
     },
     inputMargin: {
         marginBottom: 20

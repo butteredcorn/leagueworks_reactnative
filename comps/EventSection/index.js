@@ -61,8 +61,8 @@ const styles = StyleSheet.create({
     fontSize: 14
   },
   eventName: {
-    marginTop: 10,
-    marginBottom: 10,
+    marginTop: 15,
+    marginBottom: 15,
     fontSize: 18,
     fontWeight:"900"
   },
@@ -77,9 +77,8 @@ const styles = StyleSheet.create({
     fontSize: 14
   },
   locationIcon: {
-    width: 18.86,
-    height: 18.86,
-    marginRight: 10
+    width: 18,
+    height: 18,
   },
   descriptionCont: {
     flex: 1,
