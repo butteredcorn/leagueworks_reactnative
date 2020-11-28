@@ -12,6 +12,16 @@ import MyLargeButton from "../../comps/buttonlarge";
 
 
 const styles = StyleSheet.create({
+
+    Cont:{
+        height:"100%",
+    },
+    topCont: {
+        justifyContent: "center",
+        textAlign:"left",
+        width:"100%", 
+        paddingTop:7
+    },
     container:{
         alignItems:"center",
         position: "relative",
@@ -22,7 +32,7 @@ const styles = StyleSheet.create({
     },
     bottomCont: {
         alignItems: "center",
-        marginTop: 50
+        marginTop: 10
     },
     pageName:{
         fontSize: 36,
