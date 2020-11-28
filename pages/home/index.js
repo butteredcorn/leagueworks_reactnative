@@ -1,6 +1,9 @@
 import React,{ useState, useEffect } from "react";
-import {View, StyleSheet, TouchableOpacity, Image, Text, ScrollView} from "react-native";
+import {Redirect} from 'react-router-native'
+import {View, StyleSheet, TouchableOpacity, Image, Text, ScrollView, AsyncStorage} from "react-native";
+import * as axios from 'react-native-axios'
 
+import { globals } from '../../globals'
 import NavBar from "../../comps/navbar";
 import Post from "../../comps/post"
 
@@ -43,32 +46,87 @@ const styles = StyleSheet.create({
 
 
 export default function Home(){
-return<View>
+    const [page, update] = useState({redirect: false})
+    const [posts, updatePosts] = useState({loading: true, data: []})
+    const [user, updateUser] = useState("")
+
+    const getUser = async () => {
+        const rawToken = await AsyncStorage.getItem('access_token')  
+        const rawID = await AsyncStorage.getItem('user_id')
+        return {access_token: rawToken, user_id: rawID}
+    }
+
+    async function getFullUser(user) {
+        const result = await axios.post(`${globals.webserverURL}/database/read/user`, {
+            user: {
+                user_id: user.user_id,
+            },
+            access_token: user.access_token
+        })
+      
+        if(result.data.error) {
+            console.log(result.data.error)
+            alert(result.data.error)
+        } else {
+            return result.data
+        }
+      }
+
+    async function getAllPosts(user){
+        const result = await axios.post(`${globals.webserverURL}/database/read/posts`, {
+            access_token: user.access_token
+        })
+        if(result.data.error) {
+            console.log(result.data.error)
+            alert(result.data.error)
+        } else {
+            return result.data
+        }
+    }
+
+    const redirectCreatePost = (user) => {
+        update({redirect: !page.redirect, path: "/create-post", user: user})
+    }
+
+    async function loadPage() {
+        try {
+            const user = await getUser()
+            const fullUser = await getFullUser(user)
+            updateUser(fullUser)
+            const posts = await getAllPosts(user)
+            console.log(posts)
+            updatePosts({loading: false, data: posts})
+            
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
+    useEffect(() => {
+        try {
+            loadPage()
+        } catch (err) {
+            console.log(err)
+        }
+    }, [])
+
+return page.redirect ? <Redirect to={{pathname: page.path, state: page.user}}></Redirect> :<View>
     <ScrollView contentContainerStyles={styles.container}>
     
     <View style={styles.header}>
         <Text style={styles.pageName}>Home</Text>
-            <TouchableOpacity >
+            <TouchableOpacity onPress={() => redirectCreatePost(user)}>
                 <Image  source={require("../../public/edit.png")} style={styles.editIcon}/>
             </TouchableOpacity>   
     </View>
-    
-    <View style={{alignItems:"center"}}>
-        <Post Username="Ally Lee" 
-        Title="BC SR Volleyball Provincials" 
-        Description="Bring your A-game this Saturday!"
-        img={require("../../public/girl.jpg")} />
-
-        <Post Username="Ally Lee" 
-        Title="Just another post!!!" 
-        Description="And another description 😇"
-        img={require("../../public/girl2.png")} />
-
-        <Post Username="Ally Lee" 
-        Title="BC SR Volleyball Provincials" 
-        Description="Bring your A-game this Saturday!"
-        img={require("../../public/girl.jpg")} />
-    </View>
+    {!posts.loading && Array.isArray(posts.data) && posts.data.map(post => 
+        <View style={{alignItems:"center"}}>
+        <Post Username={post.username}
+        Title={post.title} 
+        Description={post.description}
+        img={{uri: post.thumbnail_link}} />
+        </View>
+    )}
     </ScrollView>
     <View style={styles.navigation}>
         <NavBar active={0} />
