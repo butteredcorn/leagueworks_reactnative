@@ -119,7 +119,9 @@ const styles = StyleSheet.create({
 
 
 export default function Account({setToken}){
-const [user, updateUser] = useState({loading: true, user: {}})
+const [user, updateUser] = useState("")
+const [fullUser, updateFullUser] = useState({loading: true, user: {}})
+const [userPosts, updateUserPosts] = useState({loading: true, data: []})
 const [selected, setSelected] = useState(0);
 const history = useHistory();
 
@@ -145,6 +147,21 @@ async function getFullUser(user) {
   }
 }
 
+async function getUserPosts(user){
+  const result = await axios.post(`${globals.webserverURL}/database/read/userposts`, {
+      user: {
+        user_id: user.user_id
+      },
+      access_token: user.access_token
+  })
+  if(result.data.error) {
+      console.log(result.data.error)
+      alert(result.data.error)
+  } else {
+      return result.data
+  }
+}
+
 async function logout() {
   try {
     await AsyncStorage.removeItem('access_token')
@@ -161,8 +178,12 @@ async function logout() {
 async function loadPage() {
   try {
     const user = await getUser()
+    updateUser(user)
     const fullUser = await getFullUser(user)
-    updateUser({loading: false, user: fullUser})
+    updateFullUser({loading: false, user: fullUser})
+    const userPosts = await getUserPosts(user)
+    updateUserPosts({loading: false, data: userPosts})
+    console.log(userPosts)
     console.log(fullUser)
   } catch (err) {
     console.log(err)
@@ -204,22 +225,17 @@ return <View style={styles.container}>
 
             <View>
             {/* POSTS START */}
+                {!userPosts.loading && Array.isArray(userPosts.data) && userPosts.data.map(post => 
                 <View style={[selected === 0 ? styles.postcont : styles.none]}>
-                  <Profilepost />
-                </View>
-                <View style={[selected === 0 ? styles.postcont : styles.none]}>
-                  <Profilepost />
-                </View>
-                <View style={[selected === 0 ? styles.postcont : styles.none]}>
-                  <Profilepost />
-                </View>
+                  <Profilepost title={post.title} description={post.description} thumbnail={post.thumbnail_link} timeStamp={post.timeStamp}/>
+                </View>)}
             {/* POSTS END */}
             {/* Profile Start */}
                 <View style={[selected === 1 ? styles.profiletabcont : styles.none]}>
                   <View style={[selected === 1 ? styles.postcont : styles.none]}>
-                    <Text>{`${user.user.first_name} ${user.user.last_name}`}</Text>
-                    <Text>{`${user.user.email}`}</Text>
-                    <Text>{`${user.user.phone_number}`}</Text>
+                    <Text>{`${fullUser.user.first_name} ${fullUser.user.last_name}`}</Text>
+                    <Text>{`${fullUser.user.email}`}</Text>
+                    <Text>{`${fullUser.user.phone_number}`}</Text>
                   </View>
                   <View style={[selected === 1 ? styles.postcont : styles.none]}>
                     <Input text="Email" />
