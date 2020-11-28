@@ -92,10 +92,10 @@ export default function AllUsers(){
         const user = await getUser()
         updateUser(user)
         getOtherUsers(user)
-        
-        console.log(user)
-        console.log(page)
-        console.log(otherUsers)
+
+        // console.log(user)
+        // console.log(page)
+        // console.log(otherUsers)
     }
 
     useEffect(() => {

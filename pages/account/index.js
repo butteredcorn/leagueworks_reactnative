@@ -10,7 +10,9 @@ import Input from "../../comps/input";
 import MyLargeButton from "../../comps/buttonlarge";
 import MySection from "../../comps/settings_section";
 import { Link, useHistory } from "react-router-native";
+import * as axios from 'react-native-axios'
 
+import { globals } from '../../globals'
 
 const styles = StyleSheet.create({
     container:{
@@ -117,10 +119,48 @@ const styles = StyleSheet.create({
 
 
 export default function Account({setToken}){
-
+const [user, updateUser] = useState("")
+const [fullUser, updateFullUser] = useState({loading: true, user: {}})
+const [userPosts, updateUserPosts] = useState({loading: true, data: []})
 const [selected, setSelected] = useState(0);
 const history = useHistory();
 
+async function getUser() {
+  const rawToken = await AsyncStorage.getItem('access_token')  
+  const rawID = await AsyncStorage.getItem('user_id')
+  return {access_token: rawToken, user_id: rawID}
+}
+
+async function getFullUser(user) {
+  const result = await axios.post(`${globals.webserverURL}/database/read/user`, {
+      user: {
+          user_id: user.user_id,
+      },
+      access_token: user.access_token
+  })
+
+  if(result.data.error) {
+      console.log(result.data.error)
+      alert(result.data.error)
+  } else {
+      return result.data
+  }
+}
+
+async function getUserPosts(user){
+  const result = await axios.post(`${globals.webserverURL}/database/read/userposts`, {
+      user: {
+        user_id: user.user_id
+      },
+      access_token: user.access_token
+  })
+  if(result.data.error) {
+      console.log(result.data.error)
+      alert(result.data.error)
+  } else {
+      return result.data
+  }
+}
 
 async function logout() {
   try {
@@ -135,6 +175,25 @@ async function logout() {
   }
 }
 
+async function loadPage() {
+  try {
+    const user = await getUser()
+    updateUser(user)
+    const fullUser = await getFullUser(user)
+    updateFullUser({loading: false, user: fullUser})
+    const userPosts = await getUserPosts(user)
+    updateUserPosts({loading: false, data: userPosts})
+    console.log(userPosts)
+    console.log(fullUser)
+  } catch (err) {
+    console.log(err)
+  }
+}
+
+useEffect(() => {
+  loadPage()
+}, [])
+
 return <View style={styles.container}>
       <ScrollView contentContainerStyles={styles.container}>
 
@@ -147,7 +206,7 @@ return <View style={styles.container}>
                 <Avatar />
               </View>
               <View>
-              <MyHeader  head="Profile"/>
+{fullUser.user && <MyHeader  head={fullUser.user.first_name}/>}
               </View>
             </View>
               
@@ -166,26 +225,20 @@ return <View style={styles.container}>
 
             <View>
             {/* POSTS START */}
+                {!userPosts.loading && Array.isArray(userPosts.data) && userPosts.data.map(post => 
                 <View style={[selected === 0 ? styles.postcont : styles.none]}>
-                  <Profilepost />
-                </View>
-                <View style={[selected === 0 ? styles.postcont : styles.none]}>
-                  <Profilepost />
-                </View>
-                <View style={[selected === 0 ? styles.postcont : styles.none]}>
-                  <Profilepost />
-                </View>
+                  <Profilepost title={post.title} description={post.description} thumbnail={post.thumbnail_link} timeStamp={post.timeStamp}/>
+                </View>)}
             {/* POSTS END */}
             {/* Profile Start */}
                 <View style={[selected === 1 ? styles.profiletabcont : styles.none]}>
                   <View style={[selected === 1 ? styles.postcont : styles.none]}>
-                    <Input text="Name" />
+                    <Text>{`${fullUser.user.first_name} ${fullUser.user.last_name}`}</Text>
+                    <Text>{`${fullUser.user.email}`}</Text>
+                    <Text>{`${fullUser.user.phone_number}`}</Text>
                   </View>
                   <View style={[selected === 1 ? styles.postcont : styles.none]}>
                     <Input text="Email" />
-                  </View>
-                  <View style={[selected === 1 ? styles.postcont : styles.none]}>
-                    <Input text="ID Number" />
                   </View>
                 </View>
             {/* Profile End */}

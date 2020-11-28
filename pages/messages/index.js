@@ -81,40 +81,8 @@ export default function Messages(){
             console.log(result.data.error)
             alert(result.data.error)
         } else {
-            console.log(result.data)
-            const sortedUniqueMessages = sortMessages(user.user_id, result.data)
-            updateUserMessages({loading: false, data: sortedUniqueMessages})
-            console.log(sortedUniqueMessages)
+            return result.data
         }
-    }
-
-    function sortMessages(user_id, messages) {
-        const uniqueOtherUsers = {}
-
-        //for timestamp, larger date is newer
-        for (let message of messages) {
-            if(message.sender_id != user_id) {
-                if (!uniqueOtherUsers[message.sender_id] && message.timeStamp) {
-                    uniqueOtherUsers[message.sender_id] = message
-                } else {
-                    if (new Date(uniqueOtherUsers[message.sender_id].timeStamp) < new Date(message.timeStamp)) {
-                        //bind the latest message
-                        uniqueOtherUsers[message.sender_id] = message
-                    }
-                }
-            } else if (!message.receivers.includes(user_id)) {
-                //if private message, ignore broadcasts here
-                if(!uniqueOtherUsers[message.receivers[0]] && message.timeStamp) {
-                    uniqueOtherUsers[message.receivers[0]] = message
-                } else {
-                    if(message.timeStamp && new Date(uniqueOtherUsers[message.receivers[0]].timeStamp) < new Date(message.timeStamp)) {
-                        uniqueOtherUsers[message.receivers[0]] = message
-                    }
-                }
-            }
-        }
-        //now we have a map of uniqueOtherUserIDs to the most recent message
-        return uniqueOtherUsers
     }
 
     const redirectChat = (otherUserID) => {
@@ -129,7 +97,9 @@ export default function Messages(){
         try {
             const user = await getUser()
             updateUser(user)
-            await getUserMessages(user)
+            const userMessages = await getUserMessages(user)
+            updateUserMessages({loading: false, data: userMessages})
+            console.log(userMessages)
         } catch (err) {
             console.log(err)
         }
@@ -168,7 +138,7 @@ return page.redirect ? <Redirect to={
             <MessageSection
             onPress={() => redirectChat(otherUserID)}
             otherUserID={otherUserID}
-            name={otherUserID}
+            name={`${userMessages.data[otherUserID].other_user_first_name} ${userMessages.data[otherUserID].other_user_last_name}`}
             messageContent={userMessages.data[otherUserID].message}
             time={new Date(userMessages.data[otherUserID].timeStamp).toTimeString()}
             key={index}
