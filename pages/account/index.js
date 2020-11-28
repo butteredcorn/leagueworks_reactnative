@@ -206,7 +206,7 @@ return <View style={styles.container}>
                 <Avatar />
               </View>
               <View>
-              <MyHeader  head="Profile"/>
+{fullUser.user && <MyHeader  head={fullUser.user.first_name}/>}
               </View>
             </View>
               
