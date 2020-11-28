@@ -21,7 +21,7 @@ const Avatar = ({img, dim, logout, thumbnail_link}) => {
   return (
     <View style={[styles.container, widthstyle]}>
       <TouchableOpacity onPress={logout}>
-        <Image source={{uri: thumbnail_link}} style={[styles.avatar, imagestyle]} resizeMode="cover"/>
+        <Image source={thumbnail_link ? {uri: thumbnail_link} : img} style={[styles.avatar, imagestyle]} resizeMode="cover"/>
       </TouchableOpacity>
     </View>
   );
