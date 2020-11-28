@@ -61,7 +61,8 @@ export default function LeagueReg ({}) {
         league_name: "",
         phone_number: "",
         email: "",
-        sport_type: ""
+        sport_type: "",
+        thumbnail_link: ""
     }
 
     function reducer(league, action) {
@@ -81,6 +82,9 @@ export default function LeagueReg ({}) {
                 return league
             case 'headline':
                 league.headline = action.value
+                return league
+            case 'thumbnail_link':
+                league.thumbnail_link = action.value
                 return league
             default:
                 throw new Error('Issue with reducer in league registration.')
@@ -160,6 +164,11 @@ export default function LeagueReg ({}) {
             <View style={styles.inputMargin}>
                 <Input text="Headline"
                     setValue={(text) => dispatch({type: "headline", value: text})}
+                ></Input>
+            </View>
+            <View style={styles.inputMargin}>
+                <Input text="Photo Link"
+                    setValue={(text) => dispatch({type: "thumbnail_link", value: text})}
                 ></Input>
             </View>
             <View style={styles.buttonMargin}>
