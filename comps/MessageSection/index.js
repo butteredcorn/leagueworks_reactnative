@@ -56,7 +56,8 @@ const styles = StyleSheet.create({
   },
   time: {
     marginTop: 20,
-    color: "#BDBDBD"
+    color: "#BDBDBD",
+    width: "25%"
   }
 });
 

@@ -50,7 +50,11 @@ const styles = StyleSheet.create({
         zIndex:1,
         position:"absolute",
         bottom:0
-      }
+      },
+      spacer: {
+        // Adds space to the bottom so you can see the content on the bottom of the scroll view without it being cutoff
+        height: 120
+    },
 });
 
 export default function Leagues(){
@@ -197,7 +201,7 @@ return page.redirect ? <Redirect to={{pathname: page.path, state: page.leagueID}
             <Image  source={require("../../public/edit.png")} style={styles.editIcon}/>
         </TouchableOpacity>
     </View>
-    <Button text={`${!userLeaguesOnly.setting ? "Your Leagues" : "All Leagues"}`} onPress={ () => updateSettings({setting: !userLeaguesOnly.setting, filter: !userLeaguesOnly.filter})}/>
+    <Button text={`${!userLeaguesOnly.setting ? "My Leagues" : "All Leagues"}`} onPress={ () => updateSettings({setting: !userLeaguesOnly.setting, filter: !userLeaguesOnly.filter})}/>
     <View style={styles.pillcont}>
 
         {!allLeagues.loading && Array.isArray(allLeagues.data) ? 
@@ -211,6 +215,9 @@ return page.redirect ? <Redirect to={{pathname: page.path, state: page.leagueID}
         ) 
         : <Text>Loading</Text>}
     </View>
+
+    <View style={styles.spacer} />
+
     </ScrollView>
     <View style={styles.navigation}><NavBar active={1}/></View>
 </View>

@@ -65,7 +65,7 @@ const NavBar = ({socket, active}) => {
             <View style={[styles.active]} />
             <Image
               source={require("../../public/home.png")}
-              style={[selected === 0 ? styles.iconImg : styles.none]}
+              style={[selected === 0 ? styles.iconImg: styles.none, {resizeMode:"contain"}]}
             />
             <Image
               source={require("../../public/home2.png")}

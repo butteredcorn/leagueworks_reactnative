@@ -92,8 +92,7 @@ const styles = StyleSheet.create({
         width:370,
         height:294,
         backgroundColor:"#ECECEC",
-        borderRadius:31,
-        zIndex:1
+        borderRadius:31
     },
     bodycontainer: {
         position: "relative",
@@ -118,10 +117,15 @@ const styles = StyleSheet.create({
     },
     picker: {
         // alignSelf: "center",
-        height: 50,
-        width: 120,
-        position: "relative",
-        top: -85
+        // height: 50,
+        width: "100%",
+        backgroundColor: "#ececec",
+        borderTopLeftRadius: 10,
+        borderTopRightRadius: 10,
+        borderBottomLeftRadius: 25,
+        borderBottomRightRadius: 25,
+        // position: "relative",
+        // top: -85
     }
 })
 
@@ -329,6 +333,28 @@ export default function LeagueSchedule(){
             <View style={styles.selectdate_cont}>
                 <DatePicker title={"Season Start Date"} style={styles.datePicker} setValue={(date) => dispatch({type: "season_start", value: date})}/>
             </View>
+            <View>
+            {/* <CalendarList 
+
+                theme={{
+                    calendarBackground: '#F8F8F8',
+                    textDayFontWeight:"bold",
+                    todayTextColor:"#F35B04",
+                    textMonthFontWeight:"bold",
+                    textDayHeaderFontWeight:"bold",
+
+                }}
+                // Callback which gets executed when visible months change in scroll view. Default = undefined
+                onVisibleMonthsChange={(months) => {console.log('now these months are visible', months);}}
+                // Max amount of months allowed to scroll to the past. Default = 50
+                pastScrollRange={50}
+                // Max amount of months allowed to scroll to the future. Default = 50
+                futureScrollRange={50}
+                // Enable or disable scrolling of calendar list
+                scrollEnabled={true}
+                // Enable or disable vertical scroll indicator. Default = false
+                showScrollIndicator={true}/> */}
+            </View>
             {/* <View>
                 <DatePicker title={"End Date"} style={styles.datePicker} setValue={(date) => dispatch({type: "season_end", value: date})}/>
             </View> */}
@@ -345,7 +371,7 @@ export default function LeagueSchedule(){
                 /> 
             </View>
             <View style={styles.day_check}>
-                <Text>Play On Holidays?</Text>
+                <Text style={styles.boldtext}>Play On Holidays?</Text>
                 <CheckBox
                     disabled={false}
                     value={!season.skip_holidays}
@@ -355,7 +381,10 @@ export default function LeagueSchedule(){
             </View>
 
             {<View>
-            <Text style={styles.boldtext}>Play on which days?</Text>
+
+            <View style={styles.day_check}>                
+                <Text style={styles.boldtext}>Play on which days?</Text>
+            </View>
                 
                 <View style={styles.day_check}>
                     <Text>Monday</Text>
@@ -513,7 +542,7 @@ export default function LeagueSchedule(){
 
         {/* Nav Bar */}
         <View style={styles.navbar}>
-            <NavBar />
+            <NavBar NavBar active={1} />
         </View>
 
     </View>
