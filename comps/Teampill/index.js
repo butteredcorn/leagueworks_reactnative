@@ -297,7 +297,8 @@ const MyPill = ({
   membername,
   coach,
   player,
-  joined
+  joined,
+  thumbnail_link
 }) => {
   const [selected, setSelected] = useState(0);
 
@@ -318,7 +319,7 @@ const MyPill = ({
                 <View style={styles.container}>
                   <View style={styles.teamcont}>
                     <View style={styles.avatarcont}>
-                      <Avatar dim={60}/>
+                      <Avatar dim={60} thumbnail_link={thumbnail_link}/>
                       {/* Team/League Icon */}
                     </View>
 

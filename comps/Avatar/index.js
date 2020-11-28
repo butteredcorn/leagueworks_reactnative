@@ -13,10 +13,6 @@ const Avatar = ({img, dim, logout, thumbnail_link}) => {
   const imagestyle = {
     borderRadius: dim ? dim/2 : 50
   }
-
-  useEffect(()=> {
-    console.log(thumbnail_link)
-  },[])
   
   return (
     <View style={[styles.container, widthstyle]}>

@@ -207,7 +207,7 @@ return page.redirect ? <Redirect to={{pathname: page.path, state: page.leagueID}
         //<Text>{JSON.stringify(teams.data)}</Text>
         teamsWithRosters.data.map(team => 
             <View style={styles.pillMargin}>
-                <MyPill onPress={joinTeam} joined={team.user_team} teamID={team._id} TeamName={team.team_name} email={team.email} phoneNumber={team.phone_number} team_captain={team.team_captain} players={team.players} userTeam={team.user_team} img={require("../../public/girl.jpg")}></MyPill>
+                <MyPill thumbnail_link={team.thumbnail_link} onPress={joinTeam} joined={team.user_team} teamID={team._id} TeamName={team.team_name} email={team.email} phoneNumber={team.phone_number} team_captain={team.team_captain} players={team.players} userTeam={team.user_team} img={require("../../public/girl.jpg")}></MyPill>
             </View>   
         ) 
         : <Text>Loading</Text>}
