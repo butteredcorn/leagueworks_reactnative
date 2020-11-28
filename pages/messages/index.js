@@ -29,15 +29,15 @@ const styles = StyleSheet.create({
         marginBottom: 15
     },
     newGroupCont:{
-        width: "90%",
-        flexDirection: "row-reverse",
+        flexDirection: "row",
+        justifyContent: "space-between"
     },
     newGroup:{
         fontSize: 16,
         fontWeight: "bold",
         color: "#F35B04",
-        paddingTop: 10,
-        paddingBottom: 10,
+        paddingTop: 20,
+        paddingBottom: 15,
     },
         navbar: {
         position: "absolute",
@@ -127,11 +127,17 @@ return page.redirect ? <Redirect to={
 
         <SearchInput />
 
-        <Button text={"All Users"} onPress={redirectUsers}></Button>
+        {/* <Button text={"All Users"} onPress={redirectUsers}></Button> */}
 
-        <TouchableOpacity style={styles.newGroupCont}>
-            <Text style={styles.newGroup}>New Group</Text>
-        </TouchableOpacity>
+        <View style={styles.newGroupCont}>
+            <TouchableOpacity>
+                <Text style={styles.newGroup} onPress={redirectUsers}>All Users</Text>
+            </TouchableOpacity>
+            <TouchableOpacity>
+                <Text style={styles.newGroup}>New Group</Text>
+            </TouchableOpacity>
+        </View>
+
 
         {/* map function here, get params from map function, so you will have param from that */}
         {!userMessages.loading && Array.isArray(Object.keys(userMessages.data)) && Object.keys(userMessages.data).map((otherUserID, index) => 

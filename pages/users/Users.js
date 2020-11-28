@@ -29,15 +29,15 @@ const styles = StyleSheet.create({
         marginBottom: 15
     },
     newGroupCont:{
-        width: "90%",
-        flexDirection: "row-reverse",
+        flexDirection: "row",
+        justifyContent: "space-between"
     },
     newGroup:{
         fontSize: 16,
         fontWeight: "bold",
         color: "#F35B04",
-        paddingTop: 10,
-        paddingBottom: 10,
+        paddingTop: 20,
+        paddingBottom: 15,
     },
         navbar: {
         position: "absolute",
@@ -48,7 +48,12 @@ const styles = StyleSheet.create({
         zIndex:1,
         position:"absolute",
         bottom:0
-      }
+      },
+      spacer: {
+        // Adds space to the bottom so you can see the content on the bottom of the scroll view without it being cutoff
+        height: 120
+    },
+      
 })
 
 
@@ -116,7 +121,15 @@ return page.redirect ? <Redirect to={
 
         <SearchInput />
 
-        <Button text={"Messages"} onPress={redirectMessages}></Button>
+        {/* <Button text={"Messages"} onPress={redirectMessages}></Button> */}
+        <View style={styles.newGroupCont}>
+            <TouchableOpacity>
+                <Text style={styles.newGroup} onPress={redirectMessages}> All Messages</Text>
+            </TouchableOpacity>
+            <TouchableOpacity>
+                <Text style={styles.newGroup}>New Group</Text>
+            </TouchableOpacity>
+        </View>
 
         {/* map function here, get params from map function, so you will have param from that */}
         {!otherUsers.loading && Array.isArray(otherUsers) && otherUsers.map((otherUser) => 
@@ -129,6 +142,8 @@ return page.redirect ? <Redirect to={
             key={otherUser._id}
             />
         )}
+
+        <View style={styles.spacer} />
 
     </ScrollView>
 

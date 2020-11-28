@@ -44,7 +44,11 @@ const styles = StyleSheet.create({
         zIndex:1,
         position:"absolute",
         bottom:0
-      }
+    },
+    spacer: {
+        // Adds space to the bottom so you can see the content on the bottom of the scroll view without it being cutoff
+        height: 120
+    },
 })
 
 /* //user schedule example, note that it is an array of schedules, could contain more than one.
@@ -217,6 +221,7 @@ export default function Schedule(){
 
         {/* <View style={styles.event}>
             <EventSection eventName="Game at BCIT" eventTime="9:00AM - 11:00AM" eventLocation="Burnaby, BC" eventDesc="Don't forget the ID!"/>
+
         </View> */}
         {/* {arr.map((o,i)=>{
         return<View style={styles.event} key={i}>
@@ -228,8 +233,10 @@ export default function Schedule(){
             />
         </View> 
         })}*/}
+
     </ScrollView>
-    <View style={styles.navigation}><NavBar active={2}/></View>
+    
+  <View style={styles.navigation}><NavBar active={2}/></View>
 </View>
         
 
