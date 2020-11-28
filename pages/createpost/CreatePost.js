@@ -45,11 +45,12 @@ const styles = StyleSheet.create({
 export default function CreatePost ({}) {
     const [page, update] = useState({redirect: false})
     const data = useLocation()
-    const user = data.state
+    const user = data.state.user
+    const fullUser = data.state.fullUser
 
     const initialState = {
         user_id: user.user_id,
-        username: `${user.first_name} ${user.last_name}`,
+        username: `${fullUser.first_name} ${fullUser.last_name}`,
         title: "",
         description: "",
         thumbnail_link: "",

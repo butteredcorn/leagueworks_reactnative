@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     }
 })
 
-const Post = ({Username, Title, Description, img})=> {
+const Post = ({Username, Title, Description, img, delete_auth, onPress})=> {
 
     
 
@@ -98,7 +98,8 @@ const Post = ({Username, Title, Description, img})=> {
                     }}
                     />
                     </TouchableOpacity>
-                    <TouchableOpacity>
+
+                    {delete_auth && <TouchableOpacity onPress={onPress}>
                         <Image 
                         source={require("../../public/trash.png")}
                         style={{
@@ -107,7 +108,7 @@ const Post = ({Username, Title, Description, img})=> {
                             resizeMode:"contain"
                         }}
                         />
-                    </TouchableOpacity>
+                    </TouchableOpacity>}
                 </View>
 
         </View>
