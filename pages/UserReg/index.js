@@ -1,6 +1,8 @@
-import React, { useState, useReducer } from "react";
+import React, { useState, useReducer, useEffect } from "react";
 import {View, ScrollView, StyleSheet, Text, TextInput, Image, AsyncStorage} from "react-native";
 import { Redirect, useLocation } from 'react-router-native'
+import DatePicker from '../../comps/datepicker/DatePicker'
+
 import * as axios from 'react-native-axios'
 
 import { globals } from '../../globals'
@@ -41,6 +43,9 @@ const styles = StyleSheet.create({
         width:280,
         padding:12,
         borderRadius: 33
+    },
+    datePicker: {
+        width: 280
     }
 })
 
@@ -53,6 +58,7 @@ export default function UserReg ({token, setToken}) {
         first_name: "",
         last_name: "",
         birth_date: "",
+        thumbnail_link: "",
         phone_number: "",
         email: "",
         password: "",
@@ -71,6 +77,10 @@ export default function UserReg ({token, setToken}) {
             case 'birth_date':
                 user.birth_date = action.value
                 return user
+            case 'thumbnail_link':
+                user.thumbnail_link = action.value
+                console.log(action.value)
+                return user
             case 'email':
                 user.email = action.value
                 return user
@@ -86,7 +96,7 @@ export default function UserReg ({token, setToken}) {
 
     async function signup() {
         try {
-            // console.log('attempting to connect...')
+            // console.log('attempting to connect...' ${globals.webserverURL})
             const result = await axios.post(`${globals.webserverURL}/auth/signup`, {
                 user: user
             })
@@ -115,6 +125,10 @@ export default function UserReg ({token, setToken}) {
         }
     }
 
+    useEffect(() => {
+        console.log(user)
+    },[user])
+
     return token && token.token && token.loggedin ? <Redirect to="/"/> : <ScrollView>
         <View style={styles.topCont}>
             <MyProgressBar></MyProgressBar>
@@ -140,13 +154,21 @@ export default function UserReg ({token, setToken}) {
 
             {/* change to date picker */}
             <View style={styles.inputMargin}>
-            <Input
-            text="Birth Date"
-            placeholder="Birth Date"
-            setValue={(text) => dispatch({type: "birth_date", value: text})}
-
+            <Text style={{fontWeight: "bold", marginBottom: 0}}>Birth Date</Text>
+            <DatePicker
+            style={styles.datePicker}
+            title=""
+            setValue={(date) => dispatch({type: "birth_date", value: date})}
             />
-            </View>          
+            </View> 
+
+            <View style={styles.inputMargin}>
+            <Input
+            text="Photo Link"
+            placeholder="Photo Link"
+            setValue={(text) => dispatch({type: "thumbnail_link", value: text})}
+            />
+            </View>           
 
             <View style={styles.inputMargin}>
                 <Input text="Email"
