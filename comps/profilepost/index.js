@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, StyleSheet, TouchableHighlight } from "react-native";
+import { View, Text, StyleSheet, Image, TouchableHighlight } from "react-native";
 
 const styles = StyleSheet.create({
   container: {
@@ -56,21 +56,21 @@ const styles = StyleSheet.create({
     backgroundColor: "grey"
   }
 });
-const Profilepost = ({ header, description, time }) => {
+const Profilepost = ({ title, description, timeStamp, thumbnail }) => {
   return (
     <View style={styles.container}>
       <View style={styles.flexcontainer}>
         <View style={styles.contentcontainer}>
-          <View style={styles.contentbox}> 
-          </View>
+          <Image style={styles.contentbox} source={{uri: thumbnail}}> 
+          </Image>
           <View>
-            <Text style={styles.titletext}>{header}</Text>
+            <Text style={styles.titletext}>{title}</Text>
             <Text style={styles.desctext}>{description}</Text>
           </View>
         </View>
 
         <View style={styles.timecontainer}>
-          <Text style={styles.timetext}>{time}m ago</Text>
+          <Text style={styles.timetext}>{timeStamp}</Text>
         </View>
       </View>
     </View>
@@ -78,9 +78,10 @@ const Profilepost = ({ header, description, time }) => {
 };
 
 Profilepost.defaultProps = {
-  header: "Post title",
+  title: "Post title",
   description: "Post description",
-  time: "1"
+  timeStamp: "",
+  thumbnail: '',
 };
 
 export default Profilepost;

@@ -48,6 +48,7 @@ const styles = StyleSheet.create({
 export default function Home(){
     const [page, update] = useState({redirect: false})
     const [posts, updatePosts] = useState({loading: true, data: []})
+    const [fullUser, updateFullUser] = useState({loading: true, user: {}})
     const [user, updateUser] = useState("")
 
     const getUser = async () => {
@@ -80,6 +81,11 @@ export default function Home(){
             console.log(result.data.error)
             alert(result.data.error)
         } else {
+            for (let post of result.data) {
+                if (post.user_id == user.user_id) {
+                    post.delete_auth = true; //auth to render delete button, still check serverside auth
+                }
+            }
             return result.data
         }
     }
@@ -91,10 +97,10 @@ export default function Home(){
     async function loadPage() {
         try {
             const user = await getUser()
+            updateUser(user)
             const fullUser = await getFullUser(user)
-            updateUser(fullUser)
+            updateFullUser(fullUser)
             const posts = await getAllPosts(user)
-            console.log(posts)
             updatePosts({loading: false, data: posts})
             
         } catch (err) {
@@ -110,7 +116,7 @@ export default function Home(){
         }
     }, [])
 
-return page.redirect ? <Redirect to={{pathname: page.path, state: page.user}}></Redirect> :<View>
+return page.redirect ? <Redirect to={{pathname: page.path, state: {user: page.user, fullUser: fullUser}}}></Redirect> : <View>
     <ScrollView contentContainerStyles={styles.container}>
     
     <View style={styles.header}>
@@ -121,7 +127,10 @@ return page.redirect ? <Redirect to={{pathname: page.path, state: page.user}}></
     </View>
     {!posts.loading && Array.isArray(posts.data) && posts.data.map(post => 
         <View style={{alignItems:"center"}}>
-        <Post Username={post.username}
+        <Post 
+        key={post._id}
+        delete_auth={post.delete_auth}
+        Username={post.username}
         Title={post.title} 
         Description={post.description}
         img={{uri: post.thumbnail_link}} />

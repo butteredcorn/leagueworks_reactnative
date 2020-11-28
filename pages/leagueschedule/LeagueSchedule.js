@@ -92,8 +92,7 @@ const styles = StyleSheet.create({
         width:370,
         height:294,
         backgroundColor:"#ECECEC",
-        borderRadius:31,
-        zIndex:1
+        borderRadius:31
     },
     bodycontainer: {
         position: "relative",
@@ -333,6 +332,28 @@ export default function LeagueSchedule(){
             <View>
             <View style={styles.selectdate_cont}>
                 <DatePicker title={"Season Start Date"} style={styles.datePicker} setValue={(date) => dispatch({type: "season_start", value: date})}/>
+            </View>
+            <View>
+            {/* <CalendarList 
+
+                theme={{
+                    calendarBackground: '#F8F8F8',
+                    textDayFontWeight:"bold",
+                    todayTextColor:"#F35B04",
+                    textMonthFontWeight:"bold",
+                    textDayHeaderFontWeight:"bold",
+
+                }}
+                // Callback which gets executed when visible months change in scroll view. Default = undefined
+                onVisibleMonthsChange={(months) => {console.log('now these months are visible', months);}}
+                // Max amount of months allowed to scroll to the past. Default = 50
+                pastScrollRange={50}
+                // Max amount of months allowed to scroll to the future. Default = 50
+                futureScrollRange={50}
+                // Enable or disable scrolling of calendar list
+                scrollEnabled={true}
+                // Enable or disable vertical scroll indicator. Default = false
+                showScrollIndicator={true}/> */}
             </View>
             {/* <View>
                 <DatePicker title={"End Date"} style={styles.datePicker} setValue={(date) => dispatch({type: "season_end", value: date})}/>

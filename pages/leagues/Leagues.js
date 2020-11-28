@@ -201,7 +201,7 @@ return page.redirect ? <Redirect to={{pathname: page.path, state: page.leagueID}
             <Image  source={require("../../public/edit.png")} style={styles.editIcon}/>
         </TouchableOpacity>
     </View>
-    <Button text={`${!userLeaguesOnly.setting ? "Your Leagues" : "All Leagues"}`} onPress={ () => updateSettings({setting: !userLeaguesOnly.setting, filter: !userLeaguesOnly.filter})}/>
+    <Button text={`${!userLeaguesOnly.setting ? "My Leagues" : "All Leagues"}`} onPress={ () => updateSettings({setting: !userLeaguesOnly.setting, filter: !userLeaguesOnly.filter})}/>
     <View style={styles.pillcont}>
 
         {!allLeagues.loading && Array.isArray(allLeagues.data) ? 
