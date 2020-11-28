@@ -56,8 +56,10 @@ const styles = StyleSheet.create({
         width: "100%"
     },
     datePicker: {
-        width: "50%",
-        margin: 30
+        width: 250,
+        margin: 30,
+        backgroundColor:"#F0F0F0",
+        borderRadius:20
         // display: "flex",
         // flexDirection: "row"
     },
@@ -111,7 +113,8 @@ const styles = StyleSheet.create({
         fontWeight: "bold"
     },
     inputMargins:{
-        marginBottom: 20
+        marginBottom: 20,
+        alignItems:"center"
     },
     picker: {
         // alignSelf: "center",

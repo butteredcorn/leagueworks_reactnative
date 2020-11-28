@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "submark-new.png",
+      "filename" : "splash.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "submark-new-1.png",
+      "filename" : "splash-1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "submark-new-2.png",
+      "filename" : "splash-2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
