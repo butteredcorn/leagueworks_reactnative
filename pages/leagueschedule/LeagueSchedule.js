@@ -130,6 +130,8 @@ export default function LeagueSchedule(){
     const data = useLocation()
     const [user, update] = useState("")
     const [arenas, updateArenas] = useState({loading: true, data: []})
+    const [seasonSchedule, updateSchedule] = useState({loading: true, data: []})
+    const [editTemplate, updateView] = useState(false)
     const [numSetsPerweek, updateSetsPerWeek] = useState(false)
     const [numSetsPerOpponent, updateSetsPerOpponent] = useState(false)
     //if i didn't have to do the following, and could combine it into a reducer i would have. but after 4 hours of trying, i've determined it isn't possible.
@@ -168,7 +170,7 @@ export default function LeagueSchedule(){
         switch(action.type) {
             case 'season_start':
                 season.season_start = action.value
-                console.log(season.season_start)
+                //console.log(season.season_start)
                 return season
             //optional hard stop
             // case 'season_end':
@@ -176,16 +178,16 @@ export default function LeagueSchedule(){
             //     return season
             case 'match_number':
                 season.match_number = action.value
-                updateSetsPerOpponent(action.value)
+                // updateSetsPerOpponent(action.value)
                 return season
             case 'match_sets_per_week':
                 season.match_sets_per_week = action.value
-                updateSetsPerWeek(action.value)
+                // updateSetsPerWeek(action.value)
                 return season
             case 'match_days': //ie. monday
                 action.callpicker(!season.match_days[action.value]) //render state
                 season.match_days[action.value] = !season.match_days[action.value] //actual data form
-                console.log(season.match_days)
+                //console.log(season.match_days)
                 return season
             case 'skip_holidays':
                 season.skip_holidays = action.value
@@ -201,7 +203,7 @@ export default function LeagueSchedule(){
 
     async function createLeagueSchedule(user, season) {
         try {
-            console.log(season)
+            //console.log(season)
             //console.log(user)
             //${globals.webserverURL}
             const access_token = user.access_token
@@ -214,6 +216,30 @@ export default function LeagueSchedule(){
                 alert(result.data.error)
             } else {
                 console.log(result.data)
+                updateView(true)
+            }
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
+    async function getLeagueSchedule(user) {
+        try {
+            //${globals.webserverURL}
+            const access_token = user.access_token
+            const result = await axios.post(`${globals.webserverURL}/database/read/leagueSchedule`, {
+                league: {
+                    league_id: _id
+                },
+                access_token: access_token
+            })
+            if(result.data.error) {
+                console.log(result.data.error)
+                alert(result.data.error)
+            } else {
+                const schedules = result.data
+                const latestSchedule = schedules.reduce((a, b) => (a.timeStamp > b.timeStamp ? a : b));
+                return latestSchedule
             }
         } catch (err) {
             console.log(err)
@@ -247,6 +273,8 @@ export default function LeagueSchedule(){
     const loadPage = async() => {
         const user = await getUser()
         update(user)
+        const leagueSchedule = await getLeagueSchedule(user)
+        updateSchedule({loading: false, data: leagueSchedule})
         const arenas = await getArenas(user)
         //console.log(arenas)
         updateArenas({loading: false, data: arenas})
@@ -261,7 +289,28 @@ export default function LeagueSchedule(){
         }
     }, [])
 
-    return<View style={styles.container}>
+    return editTemplate && !seasonSchedule.loading && seasonSchedule.data ? 
+    //viewing template
+    <View style={styles.container}>
+        <ScrollView style={styles.bodycontainer}>
+            <View style={styles.pagetitle}>
+                    <MyHeader  head="League Schedule"/>
+                    {league_name && <MyHeader  head={league_name}/>}
+            </View>
+            <Text>{seasonSchedule.data._id}</Text>
+            <Text>{seasonSchedule.data.start_date}</Text>
+            <Text>{seasonSchedule.data.end_date}</Text>
+            {/* seasonSchedule.data.game_dates
+            seasonSchedule.data.events
+            seasonSchedule.data.game_days
+            seasonSchedule.data.season_arenas */}
+            <MyButton text={"change schedule"} onPress={() => updateView(!editTemplate)}></MyButton>
+        </ScrollView>
+    </View> 
+    
+    
+    //editing template
+    : <View style={styles.container}>
 
         {/* Inputs */}
         <ScrollView style={styles.bodycontainer}>
