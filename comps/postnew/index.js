@@ -1,6 +1,10 @@
 import React from "react";
 import {View, TextInput, Text, StyleSheet, Image, TouchableHighlight, TouchableOpacity} from "react-native";
 import MyButton from "../../comps/button";
+import postbutton1 from "../../public/"
+import postbutton2 from "../../public/postbutton2.png"
+import postbutton3 from "../../public/postbutton3.png"
+import postbutton4 from "../../public/postbutton4.png"
 
 const styles=StyleSheet.create({
     container:{
@@ -50,25 +54,25 @@ const PostNew = () => {
             <View style={{flexDirection:"row", maxWidth:350, marginTop:20}}>
                 {/* Icon 1 */}
                 <TouchableOpacity>
-                    <Image style={styles.icons} source={require("../../public/postbutton1.png")}/>
+                    <Image style={styles.icons} source={postbutton1}/>
 
                 </TouchableOpacity>
                 
                 {/* Icon 2 */}
                 <TouchableOpacity>
-                <Image style={styles.icons} source={require("../../public/postbutton2.png")}/>
+                <Image style={styles.icons} source={postbutton2}/>
 
                 </TouchableOpacity>
                 
                 {/* Icon 3 */}
                 <TouchableOpacity>
-                <Image style={styles.icons} source={require("../../public/postbutton3.png")}/>
+                <Image style={styles.icons} source={postbutton3}/>
 
                 </TouchableOpacity>
                 
                 {/* Icon 4 */}
                 <TouchableOpacity>
-                <Image style={styles.icons} source={require("../../public/postbutton4.png")}/>
+                <Image style={styles.icons} source={postbutton4}/>
                 </TouchableOpacity>
             </View>
             <View style={{

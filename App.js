@@ -23,6 +23,7 @@ import Password from './pages/password';
 import Notifications from "./pages/notifications";
 import Help from "./pages/help";
 import AllUsers from './pages/users/Users'
+import CreatePost from './pages/createpost/CreatePost'
 
 
 import Avatar from "./comps/Avatar";
@@ -104,6 +105,7 @@ const App = () => {
         <ProtectedRoute token={token} path={"/league-schedule"} component={LeagueSchedule}/>
         <ProtectedRoute token={token} path={"/teams"} component={Teams}/>
         <ProtectedRoute token={token} path={"/team-registration"} component={TeamRegistration}/>
+        <ProtectedRoute token={token} path={"/create-post"} component={CreatePost}/>
         <ProtectedRoute token={token} path={"/schedule"} component={Schedule}/>
         <ProtectedRoute token={token} path={"/messages"} component={Messages}/>
         <ProtectedRoute token={token} path={"/users"} component={AllUsers}/>

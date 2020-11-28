@@ -1,8 +1,8 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import { View, StyleSheet, Image, TouchableHighlight, TouchableOpacity } from "react-native";
 
 
-const Avatar = ({img, dim, logout}) => {
+const Avatar = ({img, dim, logout, thumbnail_link}) => {
 
   const widthstyle = {
     width: dim ? dim : 90,
@@ -13,11 +13,15 @@ const Avatar = ({img, dim, logout}) => {
   const imagestyle = {
     borderRadius: dim ? dim/2 : 50
   }
+
+  useEffect(()=> {
+    console.log(thumbnail_link)
+  },[])
   
   return (
     <View style={[styles.container, widthstyle]}>
       <TouchableOpacity onPress={logout}>
-        <Image source={img} style={[styles.avatar, imagestyle]} resizeMode="cover"/>
+        <Image source={{uri: thumbnail_link}} style={[styles.avatar, imagestyle]} resizeMode="cover"/>
       </TouchableOpacity>
     </View>
   );
