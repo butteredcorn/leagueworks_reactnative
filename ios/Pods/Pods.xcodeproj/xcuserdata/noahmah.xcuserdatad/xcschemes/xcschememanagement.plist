@@ -147,17 +147,22 @@
 		<key>RNCAsyncStorage.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>48</integer>
+			<integer>49</integer>
 		</dict>
 		<key>RNCCheckbox.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>46</integer>
+			<integer>48</integer>
+		</dict>
+		<key>RNCPicker.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>47</integer>
 		</dict>
 		<key>RNDateTimePicker.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>47</integer>
+			<integer>50</integer>
 		</dict>
 		<key>React-Core-AccessibilityResources.xcscheme</key>
 		<dict>
@@ -321,6 +326,11 @@
 			<integer>14</integer>
 		</dict>
 		<key>react-native-config.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>46</integer>
+		</dict>
+		<key>react-native-splash-screen.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>45</integer>

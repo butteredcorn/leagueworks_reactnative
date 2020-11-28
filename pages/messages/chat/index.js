@@ -109,6 +109,7 @@ return <View style={styles.container}>
         <View style={styles.contact}>
             <Avatar dim={40} style={styles.avatar}/>
             <Header head={otherUserID} />
+            {/* <Header head={otherUserID} /> */}
         </View>
     </View>
 
