@@ -203,7 +203,7 @@ return <View style={styles.container}>
                 
             <View style={styles.profilecont}>
               <View style={styles.avatarcont}>
-                <Avatar />
+                {!fullUser.loading && <Avatar thumbnail_link={fullUser.user.thumbnail_link}/>}
               </View>
               <View>
 {fullUser.user && <MyHeader  head={fullUser.user.first_name}/>}
