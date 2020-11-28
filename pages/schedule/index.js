@@ -99,49 +99,6 @@ export default function Schedule(){
     const [userSchedule, updateUserSchedule] = useState({loading: true, data: []})
     const [unifiedEvents, updateUnifiedEvents] = useState({loading: true, data: []})
     const [page, update] = useState({redirect: false})
-    const arr = [
-    {
-    _id: '5fc19e8ac7c409d3f32b2b25',
-    league_id: '5fb9cf9965f84d0017928887',
-    start_date: '2020-11-26T00:09:00.000Z',
-    end_date: '2020-12-30T00:09:00.000Z',
-    game_days: [ 'monday', 'tuesday' ],
-    match_sets: {
-      match_set_1: [Array],
-      match_set_2: [Array],
-      match_set_3: [Array],
-      match_set_4: [Array],
-      match_set_5: [Array]
-    },
-    game_dates: [
-      [Object], [Object],
-      [Object], [Object],
-      [Object], [Object],
-      [Object], [Object],
-      [Object], [Object]
-    ],
-    events: [
-      [Object], [Object],
-      [Object], [Object],
-      [Object], [Object],
-      [Object], [Object],
-      [Object], [Object],
-      [Object], [Object],
-      [Object], [Object],
-      [Object]
-    ],
-    season_arenas: {
-      monday: 'Hillcrest Community and Aquatics Centre',
-      tuesday: 'Hillcrest Community and Aquatics Centre',
-      wednesday: '',
-      thursday: '',
-      friday: '',
-      saturday: '',
-      sunday: ''
-    },
-    skip_holidays: false
-        }
-    ]
 
     const getUser = async () => {
         const rawToken = await AsyncStorage.getItem('access_token')  
@@ -195,6 +152,9 @@ export default function Schedule(){
 
     useEffect(() => {
         loadPage()
+        setTimeout(() => {
+            console.log(unifiedEvents.data.slice(0,2))
+        }, 2500)
     }, [])
 
     return page.redirect ? <Redirect to={{pathname: page.path, state: page}}></Redirect> : <View>
@@ -252,7 +212,8 @@ export default function Schedule(){
         {!unifiedEvents.loading && Array.isArray(unifiedEvents.data) && unifiedEvents.data.slice(0, 10).map(event =>
         <View style={styles.event}>
             <EventSection key={`${event.home_team} ${event.away_team}`} eventName={event.summary} eventTime={event.start_date} eventLocation={event.arena}/>
-        </View>)}
+        </View>
+        )}
 
         {/* <View style={styles.event}>
             <EventSection eventName="Game at BCIT" eventTime="9:00AM - 11:00AM" eventLocation="Burnaby, BC" eventDesc="Don't forget the ID!"/>
