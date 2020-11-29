@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     opacity: 0
   }
 });
-const MyTab = ({ tab1, tab2, press1, press2 }) => {
+const MyTabTwo = ({ tab1, tab2, press1, press2 }) => {
   const [selected, setSelected] = useState(1);
 
   return (
@@ -69,10 +69,9 @@ const MyTab = ({ tab1, tab2, press1, press2 }) => {
   );
 };
 
-MyTab.defaultProps = {
+MyTabTwo.defaultProps = {
   tab1: "Default",
   tab2: "Default",
-  tab3: "Default"
 };
 
-export default MyTab;
+export default MyTabTwo;

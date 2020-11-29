@@ -8,10 +8,10 @@ import {
   TouchableOpacity
 } from "react-native";
 import Avatar from "../Avatar";
-import MyTab from "../Tab";
 import SearchInput from "../searchinput";
 import MyCheck from "../Check";
 import MyButton from "../button";
+import MyTabTwo from "../tabtwo";
 
 const styles = StyleSheet.create({
   container: {
@@ -296,7 +296,6 @@ const MyPill = ({
   Awaylosses,
   Homewins,
   Homelosses,
-  admin,
   playername,
   membername,
   team_captain,
@@ -511,19 +510,14 @@ const MyPill = ({
                       : styles.tabcont
                   ]}
                 >
-                  <MyTab
-                    tab1="Admins"
-                    tab2="Captains"
-                    tab3="Players"
+                  <MyTabTwo
+                    tab1="Captains"
+                    tab2="Players"
                     press1={(tab) => {
-                      setSelected(1);
-                      //alert(tab);
-                    }}
-                    press2={(tab) => {
                       setSelected(5);
                       //alert(tab);
                     }}
-                    press3={(tab) => {
+                    press2={(tab) => {
                       setSelected(6);
                       //alert(tab);
                     }}
@@ -536,7 +530,7 @@ const MyPill = ({
                     style={[selected === 1 ? styles.roster : styles.no]}
                   ></View>
 
-                  {/* ADMIN CONTAINER START */}
+                   {/* ADMIN CONTAINER START */}
                   <View style={[selected === 1 ? styles.admincont : styles.no]}>
                     <View
                       style={[
@@ -544,7 +538,7 @@ const MyPill = ({
                       ]}
                     >
                       <Avatar dim={50}/>
-                      <Text style={styles.membertext}>{admin}</Text>
+                      
                     </View>
                     <View
                       style={[
@@ -552,7 +546,7 @@ const MyPill = ({
                       ]}
                     >
                       <Avatar dim={50}/>
-                      <Text style={styles.membertext}>{admin}</Text>
+                      
                     </View>
                     <View
                       style={[
@@ -560,10 +554,10 @@ const MyPill = ({
                       ]}
                     >
                       <Avatar dim={50}/>
-                      <Text style={styles.membertext}>{admin}</Text>
+                    
                     </View>
                   </View>
-                </View>
+                </View> 
                 {/* COACH CONTAINER START */}
                 <View
                   style={[selected === 5 ? styles.rosterinfo : styles.none]}
@@ -860,7 +854,6 @@ MyPill.defaultProps = {
   Homelosses: "0",
   Awaywins: "0",
   Awaylosses: "0",
-  admin: " Admin Name",
   playername: "Player Name",
   membername: "Member Name",
   team_captain: "Captain Name",
