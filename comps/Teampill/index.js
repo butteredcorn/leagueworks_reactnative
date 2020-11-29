@@ -22,7 +22,8 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 4 },
     shadowColor: "black",
     shadowOpacity: 0.2,
-    shadowRadius: 10
+    shadowRadius: 10,
+    elevation: 10,
   },
   teamcont: {
     width: 325,
@@ -60,6 +61,7 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 4 },
     shadowColor: "black",
     shadowOpacity: 0.2,
+    elevation: 10,
     display: "flex",
     alignItems: "center"
   },
@@ -94,6 +96,7 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 4 },
     shadowColor: "black",
     shadowOpacity: 0.2,
+    elevation: 10,
     display: "flex",
     alignItems: "center"
   },
@@ -112,6 +115,7 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 4 },
     shadowColor: "black",
     shadowOpacity: 0.2,
+    elevation: 10,
     display: "flex",
     alignItems: "center"
   },
@@ -123,6 +127,7 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 4 },
     shadowColor: "black",
     shadowOpacity: 0.2,
+    elevation: 10,
     display: "flex",
     alignItems: "center",
   },
@@ -281,7 +286,6 @@ const MyPill = ({
   teamID,
   email,
   phoneNumber,
-  team_captain,
   players,
   userTeam,
   onPress,
@@ -295,7 +299,7 @@ const MyPill = ({
   admin,
   playername,
   membername,
-  coach,
+  team_captain,
   player,
   joined,
   thumbnail_link
@@ -509,7 +513,7 @@ const MyPill = ({
                 >
                   <MyTab
                     tab1="Admins"
-                    tab2="Coaches"
+                    tab2="Captains"
                     tab3="Players"
                     press1={(tab) => {
                       setSelected(1);
@@ -578,7 +582,7 @@ const MyPill = ({
                       ]}
                     >
                       <Avatar dim={50}/>
-                      <Text style={styles.membertext}>{coach}</Text>
+                      <Text style={styles.membertext}>{team_captain}</Text>
                     </View>
                     <View
                       style={[
@@ -586,7 +590,7 @@ const MyPill = ({
                       ]}
                     >
                       <Avatar dim={50}/>
-                      <Text style={styles.membertext}>{coach}</Text>
+                      <Text style={styles.membertext}>{team_captain}</Text>
                     </View>
                     <View
                       style={[
@@ -594,7 +598,7 @@ const MyPill = ({
                       ]}
                     >
                       <Avatar dim={50}/>
-                      <Text style={styles.membertext}>{coach}</Text>
+                      <Text style={styles.membertext}>{team_captain}</Text>
                     </View>
                   </View>
                 </View>
@@ -715,7 +719,7 @@ const MyPill = ({
                     />
 
                     <Text style={styles.addmembertext}>
-                      Add Admin/Coach/Player
+                      Add Admin/Team Captain/Player
                     </Text>
                   </View>
                 </TouchableHighlight>
@@ -859,7 +863,7 @@ MyPill.defaultProps = {
   admin: " Admin Name",
   playername: "Player Name",
   membername: "Member Name",
-  coach: "Coach Name",
+  team_captain: "Captain Name",
   player: "Player Name"
 };
 

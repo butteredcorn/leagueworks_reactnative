@@ -11,7 +11,9 @@ MERGED from [com.facebook.flipper:flipper-fresco-plugin:0.37.0] C:\Users\Herma\.
 MERGED from [:react-native-async-storage_async-storage] C:\Users\Herma\Desktop\leagueworks_reactnative\node_modules\@react-native-async-storage\async-storage\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:react-native-community_checkbox] C:\Users\Herma\Desktop\leagueworks_reactnative\node_modules\@react-native-community\checkbox\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:react-native-community_datetimepicker] C:\Users\Herma\Desktop\leagueworks_reactnative\node_modules\@react-native-community\datetimepicker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-13:12
+MERGED from [:react-native-picker_picker] C:\Users\Herma\Desktop\leagueworks_reactnative\node_modules\@react-native-picker\picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:react-native-config] C:\Users\Herma\Desktop\leagueworks_reactnative\node_modules\react-native-config\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-11:12
+MERGED from [:react-native-splash-screen] C:\Users\Herma\Desktop\leagueworks_reactnative\node_modules\react-native-splash-screen\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-14:12
 MERGED from [com.facebook.react:react-native:0.63.2] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\3a02e2e80caa68eaa2aaa97ae703e846\jetified-react-native-0.63.2\AndroidManifest.xml:2:1-13:12
 MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\20725fa20214e86eb8fa55394d5d409e\swiperefreshlayout-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [org.webkit:android-jsc:r245459] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\7909fc1527cbbfa5280fa34f69372979\jetified-android-jsc-r245459\AndroidManifest.xml:2:1-11:12
@@ -85,6 +87,8 @@ MERGED from C:\Users\Herma\Desktop\leagueworks_reactnative\android\app\src\main\
 MERGED from C:\Users\Herma\Desktop\leagueworks_reactnative\android\app\src\main\AndroidManifest.xml:6:5-25:19
 MERGED from [:react-native-community_datetimepicker] C:\Users\Herma\Desktop\leagueworks_reactnative\node_modules\@react-native-community\datetimepicker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:11:5-20
 MERGED from [:react-native-community_datetimepicker] C:\Users\Herma\Desktop\leagueworks_reactnative\node_modules\@react-native-community\datetimepicker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:11:5-20
+MERGED from [:react-native-splash-screen] C:\Users\Herma\Desktop\leagueworks_reactnative\node_modules\react-native-splash-screen\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:11:5-12:19
+MERGED from [:react-native-splash-screen] C:\Users\Herma\Desktop\leagueworks_reactnative\node_modules\react-native-splash-screen\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:11:5-12:19
 MERGED from [com.facebook.react:react-native:0.63.2] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\3a02e2e80caa68eaa2aaa97ae703e846\jetified-react-native-0.63.2\AndroidManifest.xml:11:5-20
 MERGED from [com.facebook.react:react-native:0.63.2] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\3a02e2e80caa68eaa2aaa97ae703e846\jetified-react-native-0.63.2\AndroidManifest.xml:11:5-20
 MERGED from [com.facebook.soloader:soloader:0.8.2] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\d8e32bb008753e9c127bddce1fd30455\jetified-soloader-0.8.2\AndroidManifest.xml:11:5-20
@@ -163,8 +167,12 @@ MERGED from [:react-native-community_checkbox] C:\Users\Herma\Desktop\leaguework
 MERGED from [:react-native-community_checkbox] C:\Users\Herma\Desktop\leagueworks_reactnative\node_modules\@react-native-community\checkbox\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-community_datetimepicker] C:\Users\Herma\Desktop\leagueworks_reactnative\node_modules\@react-native-community\datetimepicker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-community_datetimepicker] C:\Users\Herma\Desktop\leagueworks_reactnative\node_modules\@react-native-community\datetimepicker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-picker_picker] C:\Users\Herma\Desktop\leagueworks_reactnative\node_modules\@react-native-picker\picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-picker_picker] C:\Users\Herma\Desktop\leagueworks_reactnative\node_modules\@react-native-picker\picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-config] C:\Users\Herma\Desktop\leagueworks_reactnative\node_modules\react-native-config\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-config] C:\Users\Herma\Desktop\leagueworks_reactnative\node_modules\react-native-config\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-splash-screen] C:\Users\Herma\Desktop\leagueworks_reactnative\node_modules\react-native-splash-screen\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-splash-screen] C:\Users\Herma\Desktop\leagueworks_reactnative\node_modules\react-native-splash-screen\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-9:41
 MERGED from [com.facebook.react:react-native:0.63.2] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\3a02e2e80caa68eaa2aaa97ae703e846\jetified-react-native-0.63.2\AndroidManifest.xml:7:5-9:41
 MERGED from [com.facebook.react:react-native:0.63.2] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\3a02e2e80caa68eaa2aaa97ae703e846\jetified-react-native-0.63.2\AndroidManifest.xml:7:5-9:41
 MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\20725fa20214e86eb8fa55394d5d409e\swiperefreshlayout-1.0.0\AndroidManifest.xml:20:5-44
