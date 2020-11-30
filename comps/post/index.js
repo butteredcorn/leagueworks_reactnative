@@ -15,13 +15,15 @@ const styles = StyleSheet.create({
     },
     imgCont:{
         width: "100%",
-        minHeight: 100,
-        maxHeight: 175,
+        minHeight: 200,
+        maxHeight: 250,
+        marginBottom:40
     },
     img:{
         width: "100%",
-        minHeight: 100,
-        maxHeight: 175
+        minHeight: 200,
+        maxHeight: 250,
+        marginBottom:40
     },
     buttonCont: {
         flexDirection: "row",
@@ -73,12 +75,14 @@ const Post = ({Username, Title, Description, img, delete_auth, calllike, calldel
                 <Text style={{
                     fontWeight:"bold",
                     color:"#333333",
-                    marginTop: -10
+                    marginTop: -10,
+                    paddingLeft:30
                 }}>{Title}</Text>
 
                 {/* Description */}
                 <Text style={{
-                    color:"#333333"
+                    color:"#333333",
+                    paddingLeft:30
                 }}>{Description}</Text> 
             </View>
 
