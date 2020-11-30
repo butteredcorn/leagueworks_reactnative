@@ -4,9 +4,11 @@ import { View, Text, StyleSheet, Image, TouchableHighlight } from "react-native"
 const styles = StyleSheet.create({
   container: {
     width: 325,
-    height: 100,
+    height: 120,
     backgroundColor: "#ececec",
-    borderRadius: 20
+    borderRadius: 20,
+    justifyContent:"center",
+    paddingBottom:25
   },
   flexcontainer: {
     width: 230,
@@ -53,7 +55,8 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
     borderRadius: 10,
-    backgroundColor: "grey"
+    backgroundColor: "grey",
+    marginRight:15
   }
 });
 const Profilepost = ({ title, description, timeStamp, thumbnail }) => {

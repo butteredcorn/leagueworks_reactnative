@@ -13,7 +13,7 @@ const Input = ({ text, placeholder, width, value, setValue }) => {
         style={[{
           height: 37,
           borderRadius: 33,
-          padding: 12,
+          padding: 10,
           marginBottom:5,
           backgroundColor:"#F8F8F8"
         }, newstyle]}
