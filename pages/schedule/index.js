@@ -238,6 +238,25 @@ export default function Schedule(){
             <EventSection redirect={redirectArenas} key={`${event.home_team} ${event.away_team}`} eventName={event.summary} eventTime={event.start_date} eventLocation={event.arena} editable={true}/>
         </View>
         )}
+
+
+        {/* <View style={styles.event}>
+            <EventSection eventName="Game at BCIT" eventTime="9:00AM - 11:00AM" eventLocation="Burnaby, BC" eventDesc="Don't forget the ID!"/>
+
+        </View> */}
+        {/* {arr.map((o,i)=>{
+        return<View style={styles.event} key={i}>
+            <EventSection  eventName="Game Day!" 
+            eventTime={[o.start_date," -"]} 
+            eventEnd={o.end_date}
+            eventLocation={o.season_arenas.monday}
+            eventDesc="Fun times!!!"
+            />
+        </View> 
+        })}*/}
+        <View style={styles.spacer} />
+        <View style={styles.spacer} />
+
         
 
     </ScrollView>

@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     }
 })
 
-const Post = ({Username, Title, Description, img, delete_auth, calllike, calldelete, likes, user_id})=> {
+const Post = ({Username, Title, Description, img, delete_auth, calllike, calldelete, likes, user_id, user_profile_thumbnail})=> {
     const [userLikes, updateUserLikes] = useState(false)
     
     useEffect(() => {
@@ -53,7 +53,7 @@ const Post = ({Username, Title, Description, img, delete_auth, calllike, calldel
                 position: "relative",
                 left: -80
             }}>
-                <Avatar dim={45} style={styles.topCont}/>
+                <Avatar thumbnail_link={user_profile_thumbnail} dim={45} style={styles.topCont}/>
                 <Text style={{
                     position:"relative",
                     left:0,

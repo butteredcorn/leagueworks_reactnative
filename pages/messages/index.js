@@ -77,6 +77,25 @@ export default function Messages(){
             console.log(result.data.error)
             alert(result.data.error)
         } else {
+
+            for (let key in result.data) {
+                //change on server side to get only other user's profile picture
+                const otherUser = await axios.post(`${globals.webserverURL}/database/read/user`, {
+                    user: {
+                        user_id: key
+                    },
+                    access_token: user.access_token
+                })
+                if(result.data.error) {
+                    console.log(result.data.error)
+                    alert(result.data.error)
+                } else {
+                    //console.log(otherUser.data)
+                    result.data[key].thumbnail_link = otherUser.data.thumbnail_link
+                }
+
+            }
+            console.log(result.data)
             return result.data
         }
     }
@@ -144,6 +163,7 @@ return page.redirect ? <Redirect to={
             messageContent={userMessages.data[otherUserID].message}
             time={new Date(userMessages.data[otherUserID].timeStamp).toTimeString()}
             key={index}
+            userAvatar={userMessages.data[otherUserID].thumbnail_link}
             />
         )}
 

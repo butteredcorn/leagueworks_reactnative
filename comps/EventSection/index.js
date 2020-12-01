@@ -53,8 +53,11 @@ const styles = StyleSheet.create({
   container: {
   },
   bigBox: {
-    width: 322,
-    height: 180,
+
+    width: 320,
+    height: 150,
+
+
     backgroundColor: "#ECECEC",
     borderRadius: 12,
     margin:15
