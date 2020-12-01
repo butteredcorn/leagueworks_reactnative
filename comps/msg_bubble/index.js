@@ -19,7 +19,8 @@ const styles = StyleSheet.create({
     width: 205,
     minHeight: 16,
     paddingTop: 15,
-    paddingBottom: 15
+    paddingBottom: 15,
+    fontFamily:"Ubuntu-Light",
   }
 });
 

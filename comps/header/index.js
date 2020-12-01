@@ -5,7 +5,8 @@ const styles = StyleSheet.create({
   firstText: {
     fontWeight: "bold",
     fontSize: 25,
-    color: "black"
+    color: "black",
+    fontFamily:"Ubuntu-Bold"
   }
 });
 

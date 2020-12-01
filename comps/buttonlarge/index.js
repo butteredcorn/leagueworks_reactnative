@@ -16,7 +16,8 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "bold",
     color: "#FFF",
-    textAlign: "center"
+    textAlign: "center",
+    fontFamily:"Ubuntu-Bold"
   }
 });
 

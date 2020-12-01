@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
     margin: 5
   },
   text: {
-    fontWeight: "bold",
+    fontFamily:"Ubuntu-Bold",
     fontSize: 16,
     paddingBottom: 5
   },

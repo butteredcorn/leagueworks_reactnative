@@ -1,29 +1,32 @@
 import React, { useEffect, useState } from "react";
 import {StyleSheet, Text, View, AsyncStorage} from "react-native";
-//import AsyncStorage from '@react-native-async-storage/async-storage'
+//import AsyncStorage from '@react-native-async-storage/async-storage';
 import {NativeRouter, Route, Link} from "react-router-native";
 // import Config from "react-native-config";
-import * as axios from 'react-native-axios'
-import { globals } from "./globals"
+import * as axios from 'react-native-axios';
+import { globals } from "./globals";
 
-import ProtectedRoute from './comps/protectedRoute/ProtectedRoute'
+import * as Font from 'expo-font';
+import  { AppLoading } from "expo";
+
+import ProtectedRoute from './comps/protectedRoute/ProtectedRoute';
 import CreateEvent from "./pages/createevent";
 import TeamRegistration from './pages/adminregteam'
 import UserReg from "./pages/UserReg";
 import FinishPlayerReg from "./pages/finishplayerreg";
 import PlayerWaiver from "./pages/playerwaiver";
 import Teams from "./pages/teams";
-import Messages from "./pages/messages"
-import NewMsg from "./pages/messages/newmsg"
-import Chat from "./pages/messages/chat"
+import Messages from "./pages/messages";
+import NewMsg from "./pages/messages/newmsg";
+import Chat from "./pages/messages/chat";
 import Account from './pages/account';
 import NavBar from './comps/navbar';
 import Schedule from './pages/schedule';
 import Password from './pages/password';
 import Notifications from "./pages/notifications";
 import Help from "./pages/help";
-import AllUsers from './pages/users/Users'
-import CreatePost from './pages/createpost/CreatePost'
+import AllUsers from './pages/users/Users';
+import CreatePost from './pages/createpost/CreatePost';
 
 
 import Avatar from "./comps/Avatar";
@@ -31,8 +34,8 @@ import Home from './pages/home';
 import Login from './pages/login';
 import GettingStarted from './pages/gettingstarted';
 import Leagues from "./pages/leagues/Leagues";
-import LeagueReg from "./pages/leagueregistration/LeagueRegistration"
-import LeagueSchedule from "./pages/leagueschedule/LeagueSchedule"
+import LeagueReg from "./pages/leagueregistration/LeagueRegistration";
+import LeagueSchedule from "./pages/leagueschedule/LeagueSchedule";
 
 
 
@@ -51,7 +54,15 @@ const styles = StyleSheet.create({
     bottom:0
   }
 
-})
+});
+
+const getFonts = ()=> Font.loadAsync({
+    'ubuntu-light' : require('./public/fonts/Ubuntu-Light.ttf'),
+    'ubuntu-regular' : require('./public/fonts/Ubuntu-Regular.ttf'),
+    'ubuntu-bold' : require('./public/fonts/Ubuntu-Bold.ttf')
+
+  });
+
 
 const App = () => {
 
@@ -71,7 +82,11 @@ const App = () => {
   // }, [])
 
   //check for JWT
-  const [token, setToken] = useState({token: null, loggedin: false})
+  const [token, setToken] = useState({token: null, loggedin: false});
+
+  const [fontsLoaded, setFontsLoaded] = useState(false);
+
+
 
   //authentication
   useEffect(() => {
@@ -85,6 +100,10 @@ const App = () => {
     run()
   }, [])
 
+
+  if(fontsLoaded){
+
+  
     return ( <NativeRouter style={styles.cont}> 
       {/* this is how to resize avatar with dim prop*/}
       {/* <Avatar dim={200} />  */}
@@ -136,7 +155,16 @@ const App = () => {
   
   
     </NativeRouter>
-    )
+    );
+    }
+    else{
+      return(
+          <AppLoading 
+          startAsync={getFonts}
+          onFinish={()=> setFontsLoaded(true)}
+        />
+      );
+    }
   }
 
 

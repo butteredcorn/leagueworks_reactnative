@@ -39,6 +39,7 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         color: "#333333",
         height: 45,
+        fontFamily:"Ubuntu-Bold"
     },
     headercont:{
         display:"flex",
