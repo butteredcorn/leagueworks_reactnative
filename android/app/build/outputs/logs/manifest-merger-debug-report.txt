@@ -13,6 +13,7 @@ MERGED from [:react-native-community_checkbox] C:\Users\Herma\Desktop\leaguework
 MERGED from [:react-native-community_datetimepicker] C:\Users\Herma\Desktop\leagueworks_reactnative\node_modules\@react-native-community\datetimepicker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-13:12
 MERGED from [:react-native-picker_picker] C:\Users\Herma\Desktop\leagueworks_reactnative\node_modules\@react-native-picker\picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:react-native-config] C:\Users\Herma\Desktop\leagueworks_reactnative\node_modules\react-native-config\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-11:12
+MERGED from [:react-native-maps] C:\Users\Herma\Desktop\leagueworks_reactnative\node_modules\react-native-maps\lib\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-12:12
 MERGED from [:react-native-splash-screen] C:\Users\Herma\Desktop\leagueworks_reactnative\node_modules\react-native-splash-screen\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-14:12
 MERGED from [com.facebook.react:react-native:0.63.2] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\3a02e2e80caa68eaa2aaa97ae703e846\jetified-react-native-0.63.2\AndroidManifest.xml:2:1-13:12
 MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\20725fa20214e86eb8fa55394d5d409e\swiperefreshlayout-1.0.0\AndroidManifest.xml:17:1-22:12
@@ -36,6 +37,12 @@ MERGED from [androidx.appcompat:appcompat:1.1.0] C:\Users\Herma\.gradle\caches\t
 MERGED from [androidx.appcompat:appcompat-resources:1.1.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\82e63553b4b022cfff1711ae9819aad4\jetified-appcompat-resources-1.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\89148e3dbb2482b98d2c6649d887f30f\vectordrawable-animated-1.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\2c4abb3c9f84da22a9da11e175a85c23\interpolator-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\a998b89aa33dba7d2af0bd1f1f02715b\jetified-play-services-maps-17.0.0\AndroidManifest.xml:17:1-38:12
+MERGED from [com.google.android.gms:play-services-location:17.0.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\4a765e29fbcc8ca9a2405c69a7b44837\jetified-play-services-location-17.0.0\AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.gms:play-services-base:17.0.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\4858ba8f6e273fdf2dcb9d88023c9534\jetified-play-services-base-17.0.0\AndroidManifest.xml:17:1-29:12
+MERGED from [com.google.android.gms:play-services-tasks:17.0.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\16d5b34ac826313f3853309ce0aebded\jetified-play-services-tasks-17.0.0\AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.gms:play-services-places-placereport:17.0.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\2d842f5130416003c18cd7d7d90969a0\jetified-play-services-places-placereport-17.0.0\AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.gms:play-services-basement:17.0.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\f46279d3478497538e817a8da381f082\jetified-play-services-basement-17.0.0\AndroidManifest.xml:17:1-28:12
 MERGED from [androidx.fragment:fragment:1.1.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\bfe66e5c1e3890ed194fe4c90f780fb5\fragment-1.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\727f4567341fcf59ba6ec2fbb4290436\drawerlayout-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\1aafd20561bc3ee9f58c28dfa8215062\viewpager-1.0.0\AndroidManifest.xml:17:1-22:12
@@ -52,6 +59,7 @@ MERGED from [androidx.savedstate:savedstate:1.0.0] C:\Users\Herma\.gradle\caches
 MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\aaff256ac919a45448a380ca9a0003ca\lifecycle-livedata-2.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\06bc4641de51b04d4df94808d6e05292\lifecycle-livedata-core-2.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\1b64911e987df0fea019408e241659d7\core-runtime-2.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [com.google.maps.android:android-maps-utils:0.5] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\18d0743646f517bb5644e5718bd7d867\jetified-android-maps-utils-0.5\AndroidManifest.xml:2:1-13:12
 MERGED from [com.facebook.soloader:annotation:0.8.2] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\732500eb9e2f3ac95feee7aa2ddeede9\jetified-annotation-0.8.2\AndroidManifest.xml:2:1-13:12
 MERGED from [com.facebook.fresco:fbcore:2.2.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\93631a34b99ed001e2b0fad5d2f119cc\jetified-fbcore-2.2.0\AndroidManifest.xml:2:1-9:12
 MERGED from [com.facebook.fresco:ui-common:2.2.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\570f8ba84fcb7e14932353951c08cc5e\jetified-ui-common-2.2.0\AndroidManifest.xml:2:1-9:12
@@ -79,6 +87,10 @@ uses-permission#android.permission.INTERNET
 ADDED from C:\Users\Herma\Desktop\leagueworks_reactnative\android\app\src\main\AndroidManifest.xml:4:5-67
 MERGED from [com.facebook.flipper:flipper:0.37.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\54d7cee8c0e51f0042216ca2a065d180\jetified-flipper-0.37.0\AndroidManifest.xml:15:5-67
 MERGED from [com.facebook.flipper:flipper:0.37.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\54d7cee8c0e51f0042216ca2a065d180\jetified-flipper-0.37.0\AndroidManifest.xml:15:5-67
+MERGED from [:react-native-maps] C:\Users\Herma\Desktop\leagueworks_reactnative\node_modules\react-native-maps\lib\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:9:5-67
+MERGED from [:react-native-maps] C:\Users\Herma\Desktop\leagueworks_reactnative\node_modules\react-native-maps\lib\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:9:5-67
+MERGED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\a998b89aa33dba7d2af0bd1f1f02715b\jetified-play-services-maps-17.0.0\AndroidManifest.xml:24:5-67
+MERGED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\a998b89aa33dba7d2af0bd1f1f02715b\jetified-play-services-maps-17.0.0\AndroidManifest.xml:24:5-67
 	android:name
 		ADDED from C:\Users\Herma\Desktop\leagueworks_reactnative\android\app\src\main\AndroidManifest.xml:4:22-64
 application
@@ -93,10 +105,24 @@ MERGED from [com.facebook.react:react-native:0.63.2] C:\Users\Herma\.gradle\cach
 MERGED from [com.facebook.react:react-native:0.63.2] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\3a02e2e80caa68eaa2aaa97ae703e846\jetified-react-native-0.63.2\AndroidManifest.xml:11:5-20
 MERGED from [com.facebook.soloader:soloader:0.8.2] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\d8e32bb008753e9c127bddce1fd30455\jetified-soloader-0.8.2\AndroidManifest.xml:11:5-20
 MERGED from [com.facebook.soloader:soloader:0.8.2] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\d8e32bb008753e9c127bddce1fd30455\jetified-soloader-0.8.2\AndroidManifest.xml:11:5-20
+MERGED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\a998b89aa33dba7d2af0bd1f1f02715b\jetified-play-services-maps-17.0.0\AndroidManifest.xml:30:5-36:19
+MERGED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\a998b89aa33dba7d2af0bd1f1f02715b\jetified-play-services-maps-17.0.0\AndroidManifest.xml:30:5-36:19
+MERGED from [com.google.android.gms:play-services-location:17.0.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\4a765e29fbcc8ca9a2405c69a7b44837\jetified-play-services-location-17.0.0\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-location:17.0.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\4a765e29fbcc8ca9a2405c69a7b44837\jetified-play-services-location-17.0.0\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-base:17.0.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\4858ba8f6e273fdf2dcb9d88023c9534\jetified-play-services-base-17.0.0\AndroidManifest.xml:22:5-27:19
+MERGED from [com.google.android.gms:play-services-base:17.0.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\4858ba8f6e273fdf2dcb9d88023c9534\jetified-play-services-base-17.0.0\AndroidManifest.xml:22:5-27:19
+MERGED from [com.google.android.gms:play-services-tasks:17.0.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\16d5b34ac826313f3853309ce0aebded\jetified-play-services-tasks-17.0.0\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-tasks:17.0.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\16d5b34ac826313f3853309ce0aebded\jetified-play-services-tasks-17.0.0\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-places-placereport:17.0.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\2d842f5130416003c18cd7d7d90969a0\jetified-play-services-places-placereport-17.0.0\AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-places-placereport:17.0.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\2d842f5130416003c18cd7d7d90969a0\jetified-play-services-places-placereport-17.0.0\AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-basement:17.0.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\f46279d3478497538e817a8da381f082\jetified-play-services-basement-17.0.0\AndroidManifest.xml:22:5-26:19
+MERGED from [com.google.android.gms:play-services-basement:17.0.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\f46279d3478497538e817a8da381f082\jetified-play-services-basement-17.0.0\AndroidManifest.xml:22:5-26:19
 MERGED from [androidx.core:core:1.1.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\73530a2d0c1df4b3085807c82555ce12\core-1.1.0\AndroidManifest.xml:24:5-89
 MERGED from [androidx.core:core:1.1.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\73530a2d0c1df4b3085807c82555ce12\core-1.1.0\AndroidManifest.xml:24:5-89
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\fa40148eab14a6d2386ba091992d3749\versionedparcelable-1.1.0\AndroidManifest.xml:24:5-25:19
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\fa40148eab14a6d2386ba091992d3749\versionedparcelable-1.1.0\AndroidManifest.xml:24:5-25:19
+MERGED from [com.google.maps.android:android-maps-utils:0.5] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\18d0743646f517bb5644e5718bd7d867\jetified-android-maps-utils-0.5\AndroidManifest.xml:7:5-11:19
+MERGED from [com.google.maps.android:android-maps-utils:0.5] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\18d0743646f517bb5644e5718bd7d867\jetified-android-maps-utils-0.5\AndroidManifest.xml:7:5-11:19
 MERGED from [com.facebook.soloader:annotation:0.8.2] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\732500eb9e2f3ac95feee7aa2ddeede9\jetified-annotation-0.8.2\AndroidManifest.xml:11:5-20
 MERGED from [com.facebook.soloader:annotation:0.8.2] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\732500eb9e2f3ac95feee7aa2ddeede9\jetified-annotation-0.8.2\AndroidManifest.xml:11:5-20
 	android:appComponentFactory
@@ -171,6 +197,8 @@ MERGED from [:react-native-picker_picker] C:\Users\Herma\Desktop\leagueworks_rea
 MERGED from [:react-native-picker_picker] C:\Users\Herma\Desktop\leagueworks_reactnative\node_modules\@react-native-picker\picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-config] C:\Users\Herma\Desktop\leagueworks_reactnative\node_modules\react-native-config\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-config] C:\Users\Herma\Desktop\leagueworks_reactnative\node_modules\react-native-config\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-maps] C:\Users\Herma\Desktop\leagueworks_reactnative\node_modules\react-native-maps\lib\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-maps] C:\Users\Herma\Desktop\leagueworks_reactnative\node_modules\react-native-maps\lib\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-splash-screen] C:\Users\Herma\Desktop\leagueworks_reactnative\node_modules\react-native-splash-screen\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-splash-screen] C:\Users\Herma\Desktop\leagueworks_reactnative\node_modules\react-native-splash-screen\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-9:41
 MERGED from [com.facebook.react:react-native:0.63.2] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\3a02e2e80caa68eaa2aaa97ae703e846\jetified-react-native-0.63.2\AndroidManifest.xml:7:5-9:41
@@ -217,6 +245,18 @@ MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] C:\Users\Her
 MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\89148e3dbb2482b98d2c6649d887f30f\vectordrawable-animated-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\2c4abb3c9f84da22a9da11e175a85c23\interpolator-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\2c4abb3c9f84da22a9da11e175a85c23\interpolator-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\a998b89aa33dba7d2af0bd1f1f02715b\jetified-play-services-maps-17.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\a998b89aa33dba7d2af0bd1f1f02715b\jetified-play-services-maps-17.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-location:17.0.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\4a765e29fbcc8ca9a2405c69a7b44837\jetified-play-services-location-17.0.0\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-location:17.0.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\4a765e29fbcc8ca9a2405c69a7b44837\jetified-play-services-location-17.0.0\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-base:17.0.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\4858ba8f6e273fdf2dcb9d88023c9534\jetified-play-services-base-17.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-base:17.0.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\4858ba8f6e273fdf2dcb9d88023c9534\jetified-play-services-base-17.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-tasks:17.0.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\16d5b34ac826313f3853309ce0aebded\jetified-play-services-tasks-17.0.0\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-tasks:17.0.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\16d5b34ac826313f3853309ce0aebded\jetified-play-services-tasks-17.0.0\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-places-placereport:17.0.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\2d842f5130416003c18cd7d7d90969a0\jetified-play-services-places-placereport-17.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-places-placereport:17.0.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\2d842f5130416003c18cd7d7d90969a0\jetified-play-services-places-placereport-17.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-basement:17.0.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\f46279d3478497538e817a8da381f082\jetified-play-services-basement-17.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-basement:17.0.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\f46279d3478497538e817a8da381f082\jetified-play-services-basement-17.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.fragment:fragment:1.1.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\bfe66e5c1e3890ed194fe4c90f780fb5\fragment-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.fragment:fragment:1.1.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\bfe66e5c1e3890ed194fe4c90f780fb5\fragment-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\727f4567341fcf59ba6ec2fbb4290436\drawerlayout-1.0.0\AndroidManifest.xml:20:5-44
@@ -249,6 +289,8 @@ MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\Herma\.g
 MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\06bc4641de51b04d4df94808d6e05292\lifecycle-livedata-core-2.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\1b64911e987df0fea019408e241659d7\core-runtime-2.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\1b64911e987df0fea019408e241659d7\core-runtime-2.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.maps.android:android-maps-utils:0.5] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\18d0743646f517bb5644e5718bd7d867\jetified-android-maps-utils-0.5\AndroidManifest.xml:5:5-43
+MERGED from [com.google.maps.android:android-maps-utils:0.5] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\18d0743646f517bb5644e5718bd7d867\jetified-android-maps-utils-0.5\AndroidManifest.xml:5:5-43
 MERGED from [com.facebook.soloader:annotation:0.8.2] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\732500eb9e2f3ac95feee7aa2ddeede9\jetified-annotation-0.8.2\AndroidManifest.xml:7:5-9:41
 MERGED from [com.facebook.soloader:annotation:0.8.2] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\732500eb9e2f3ac95feee7aa2ddeede9\jetified-annotation-0.8.2\AndroidManifest.xml:7:5-9:41
 MERGED from [com.facebook.fresco:fbcore:2.2.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\93631a34b99ed001e2b0fad5d2f119cc\jetified-fbcore-2.2.0\AndroidManifest.xml:5:5-7:41
@@ -271,3 +313,39 @@ uses-permission#android.permission.ACCESS_WIFI_STATE
 ADDED from [com.facebook.flipper:flipper:0.37.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\54d7cee8c0e51f0042216ca2a065d180\jetified-flipper-0.37.0\AndroidManifest.xml:16:5-76
 	android:name
 		ADDED from [com.facebook.flipper:flipper:0.37.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\54d7cee8c0e51f0042216ca2a065d180\jetified-flipper-0.37.0\AndroidManifest.xml:16:22-73
+uses-permission#android.permission.ACCESS_COARSE_LOCATION
+ADDED from [:react-native-maps] C:\Users\Herma\Desktop\leagueworks_reactnative\node_modules\react-native-maps\lib\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:10:5-81
+	android:name
+		ADDED from [:react-native-maps] C:\Users\Herma\Desktop\leagueworks_reactnative\node_modules\react-native-maps\lib\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:10:22-78
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\a998b89aa33dba7d2af0bd1f1f02715b\jetified-play-services-maps-17.0.0\AndroidManifest.xml:23:5-79
+	android:name
+		ADDED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\a998b89aa33dba7d2af0bd1f1f02715b\jetified-play-services-maps-17.0.0\AndroidManifest.xml:23:22-76
+uses-feature#0x00020000
+ADDED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\a998b89aa33dba7d2af0bd1f1f02715b\jetified-play-services-maps-17.0.0\AndroidManifest.xml:26:5-28:35
+	android:glEsVersion
+		ADDED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\a998b89aa33dba7d2af0bd1f1f02715b\jetified-play-services-maps-17.0.0\AndroidManifest.xml:27:9-41
+	android:required
+		ADDED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\a998b89aa33dba7d2af0bd1f1f02715b\jetified-play-services-maps-17.0.0\AndroidManifest.xml:28:9-32
+uses-library#org.apache.http.legacy
+ADDED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\a998b89aa33dba7d2af0bd1f1f02715b\jetified-play-services-maps-17.0.0\AndroidManifest.xml:33:9-35:40
+	android:required
+		ADDED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\a998b89aa33dba7d2af0bd1f1f02715b\jetified-play-services-maps-17.0.0\AndroidManifest.xml:35:13-37
+	android:name
+		ADDED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\a998b89aa33dba7d2af0bd1f1f02715b\jetified-play-services-maps-17.0.0\AndroidManifest.xml:34:13-50
+activity#com.google.android.gms.common.api.GoogleApiActivity
+ADDED from [com.google.android.gms:play-services-base:17.0.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\4858ba8f6e273fdf2dcb9d88023c9534\jetified-play-services-base-17.0.0\AndroidManifest.xml:23:9-26:75
+	android:exported
+		ADDED from [com.google.android.gms:play-services-base:17.0.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\4858ba8f6e273fdf2dcb9d88023c9534\jetified-play-services-base-17.0.0\AndroidManifest.xml:25:13-37
+	android:theme
+		ADDED from [com.google.android.gms:play-services-base:17.0.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\4858ba8f6e273fdf2dcb9d88023c9534\jetified-play-services-base-17.0.0\AndroidManifest.xml:26:13-72
+	android:name
+		ADDED from [com.google.android.gms:play-services-base:17.0.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\4858ba8f6e273fdf2dcb9d88023c9534\jetified-play-services-base-17.0.0\AndroidManifest.xml:24:13-79
+meta-data#com.google.android.gms.version
+ADDED from [com.google.android.gms:play-services-basement:17.0.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\f46279d3478497538e817a8da381f082\jetified-play-services-basement-17.0.0\AndroidManifest.xml:23:9-25:69
+MERGED from [com.google.maps.android:android-maps-utils:0.5] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\18d0743646f517bb5644e5718bd7d867\jetified-android-maps-utils-0.5\AndroidManifest.xml:8:9-10:69
+MERGED from [com.google.maps.android:android-maps-utils:0.5] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\18d0743646f517bb5644e5718bd7d867\jetified-android-maps-utils-0.5\AndroidManifest.xml:8:9-10:69
+	android:value
+		ADDED from [com.google.android.gms:play-services-basement:17.0.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\f46279d3478497538e817a8da381f082\jetified-play-services-basement-17.0.0\AndroidManifest.xml:25:13-66
+	android:name
+		ADDED from [com.google.android.gms:play-services-basement:17.0.0] C:\Users\Herma\.gradle\caches\transforms-2\files-2.1\f46279d3478497538e817a8da381f082\jetified-play-services-basement-17.0.0\AndroidManifest.xml:24:13-58

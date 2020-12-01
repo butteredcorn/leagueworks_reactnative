@@ -21,6 +21,8 @@ import com.reactcommunity.rndatetimepicker.RNDateTimePickerPackage;
 import com.reactnativecommunity.picker.RNCPickerPackage;
 // react-native-config
 import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
+// react-native-maps
+import com.airbnb.android.react.maps.MapsPackage;
 // react-native-splash-screen
 import org.devio.rn.splashscreen.SplashScreenReactPackage;
 
@@ -73,6 +75,7 @@ public class PackageList {
       new RNDateTimePickerPackage(),
       new RNCPickerPackage(),
       new ReactNativeConfigPackage(),
+      new MapsPackage(),
       new SplashScreenReactPackage()
     ));
   }
