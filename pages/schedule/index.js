@@ -208,12 +208,12 @@ export default function Schedule(){
         
         theme={{
             calendarBackground: '#F8F8F8',
-            textDayFontWeight:"bold",
+            textDayFontFamily:"Ubuntu-Bold",
             todayTextColor:"#F35B04",
-            textMonthFontWeight:"bold",
-            textDayHeaderFontWeight:"bold",
+            textMonthFontFamily:"Ubuntu-Bold",
+            textDayHeaderFontFamily:"Ubuntu-Bold",
             selectedDayBackgroundColor:"#F35B04",
-            arrowColor:"#F35B04"
+            arrowColor:"#F35B04",
         }}
         // Callback which gets executed when visible months change in scroll view. Default = undefined
         onVisibleMonthsChange={(months) => {console.log('now these months are visible', months);}}
