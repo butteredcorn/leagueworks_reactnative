@@ -37,7 +37,7 @@ import Leagues from "./pages/leagues/Leagues";
 import LeagueReg from "./pages/leagueregistration/LeagueRegistration"
 import LeagueSchedule from "./pages/leagueschedule/LeagueSchedule"
 import Arenas from './pages/arenadetails/ArenaDetails'
-
+import MatchEdit from './pages/matchedit/MatchEdit'
 
 const styles = StyleSheet.create({
   cont:{
@@ -126,6 +126,7 @@ const App = () => {
         <ProtectedRoute token={token} path={"/team-registration"} component={TeamRegistration}/>
         <ProtectedRoute token={token} path={"/create-post"} component={CreatePost}/>
         <ProtectedRoute token={token} path={"/schedule"} component={Schedule}/>
+        <ProtectedRoute token={token} path={"/match-edit"} component={MatchEdit}/>
         <ProtectedRoute token={token} path={"/arenas"} component={Arenas}/>
         <ProtectedRoute token={token} path={"/messages"} component={Messages}/>
         <ProtectedRoute token={token} path={"/users"} component={AllUsers}/>

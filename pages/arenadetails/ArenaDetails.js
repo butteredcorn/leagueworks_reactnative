@@ -34,6 +34,7 @@ const styles = StyleSheet.create({
         fontSize: 36,
         fontWeight: "bold",
         color: "#333333",
+        fontFamily:"Ubuntu-Bold"
     },
     navigation:{
         zIndex:1,
@@ -86,18 +87,20 @@ const styles = StyleSheet.create({
     heading: {
         width: "80%",
         fontSize: 24,
-        marginTop: 25
+        marginTop: 25,
+        fontFamily:"Ubuntu-Light"
     },
     address: {
         width: "80%",
         textAlign: "center",
         marginTop: 25,
-        marginBottom: 5
+        marginBottom: 5,
+        fontFamily:"Ubuntu-Light"
     },
     spacer: {
         // Adds space to the bottom so you can see the content on the bottom of the scroll view without it being cutoff
         height: 50
-    },
+    }
 });
 
 
@@ -170,7 +173,7 @@ return <View>
 
         <View style={styles.arenaContainer}>
         <Text style={styles.address}>{arena.data.address}</Text>
-        <Text>{arena.data.phone_number}</Text>
+        <Text style={{fontFamily:"Ubuntu-Light"}}>{arena.data.phone_number}</Text>
         <View style={styles.mapCont}>
             <MapView provider={PROVIDER_GOOGLE} style={styles.map} region={{latitude: arena.data.location.lat, longitude: arena.data.location.long, latitudeDelta: 0.05, longitudeDelta: 0.05}} showsUserLocation={true}>
             {/* {"lat": 49.2438697, "long": -123.1077187} */}
