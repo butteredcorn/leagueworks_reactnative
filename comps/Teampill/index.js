@@ -428,73 +428,7 @@ const MyPill = ({
                           </View>
                         </TouchableHighlight>
 
-                        <TouchableHighlight
-                          onPress={() => {
-                            setSelected(3);
-                          }}
-                        >
                         
-                          
-                          
-                          <View style={styles.indivcont}>
-                            {/* EDIT TEXT STATE START */}
-                            <Text
-                              style={[
-                                selected === 3
-                                  ? styles.textselected
-                                  : styles.none
-                              ]}
-                            >
-                              Edit
-                            </Text>
-                            <Text
-                              style={[
-                                selected === 4
-                                  ? styles.textselected
-                                  : styles.none
-                              ]}
-                            >
-                              Edit
-                            </Text>
-                            <Text
-                              style={[
-                                selected === 2 ? styles.text : styles.none
-                              ]}
-                            >
-                              Edit
-                            </Text>
-                            <Text
-                              style={[
-                                selected === 1 ? styles.text : styles.none
-                              ]}
-                            >
-                              Edit
-                            </Text>
-                            <Text
-                              style={[
-                                selected === 0 ? styles.text : styles.none
-                              ]}
-                            >
-                              Edit
-                            </Text>
-                            <Text
-                              style={[
-                                selected === 5 ? styles.text : styles.none
-                              ]}
-                            >
-                              Edit
-                            </Text>
-                            <Text
-                              style={[
-                                selected === 6 ? styles.text : styles.none
-                              ]}
-                            >
-                              Edit
-                            </Text>
-                            {/* EDIT TEXT STATE END */}
-                            <View></View>
-                          </View>
-                        </TouchableHighlight>
                       </View>
                     </View>
                   </View>
