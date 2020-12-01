@@ -253,6 +253,8 @@ export default function Schedule(){
             />
         </View> 
         })}*/}
+        <View style={styles.spacer} />
+        <View style={styles.spacer} />
 
     </ScrollView>
     
