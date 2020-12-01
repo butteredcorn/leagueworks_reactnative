@@ -65,9 +65,10 @@ export default function Chat(){
     const access_token = user.access_token
     const user_id = user.user_id
     const otherUserID = data.state.otherUserID
+    const otherUserFirstName = data.state.otherUserFirstName
+    const otherUserLastName = data.state.otherUserLastName
 
-    //`${globals.webserverURL}` //'http://localhost:5000'
-    const [socket] = useSocket(`${globals.webserverURL}`, { query: { token: access_token, user_id: user_id, other_user_id: otherUserID } }) //useSocket('http://localhost:5000', { query: { token: "" } }) //transports: ['websocket'], 
+    const [socket] = useSocket(`${globals.webserverURL}`, { query: { token: access_token, user_id: user_id, other_user_id: otherUserID } }) 
     const [message, updateMessage] = useState(null)
     const [messages, updateMessages] = useState({loading: true, data: []})
     const [otherUser, updateOtherUser] = useState({loading: true, data: {}})
@@ -109,8 +110,7 @@ return <View style={styles.container}>
     <View style={styles.contactCont}>
         <View style={styles.contact}>
             <Avatar dim={40} style={styles.avatar}/>
-            <Header head={otherUserID} />
-            {/* <Header head={otherUserID} /> */}
+            <Header key={otherUserID} head={`${otherUserFirstName} ${otherUserLastName}`} />
         </View>
     </View>
 
@@ -119,8 +119,7 @@ return <View style={styles.container}>
     <ScrollView style={styles.chat}>
 
         {!messages.loading && Array.isArray(messages.data) && messages.data.map(message =>
-            //textcolor and position need to be dynamically determined within MyBubble
-            <MyBubble messageID={message._id} userID={user_id} senderID={message.sender_id} receivers={message.receivers} text={message.message} rightposition={user_id == message.sender_id ? -105 : 15}/>
+            <MyBubble messageID={message._id} userID={user_id} senderID={message.sender_id} receivers={message.receivers} text={message.message} bgcolor={user_id == message.sender_id ? '#F18701' : '#F18701'} rightposition={user_id == message.sender_id ? -105 : -15}/>
         )}
        
     </ScrollView>
