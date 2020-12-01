@@ -11,7 +11,7 @@ import { globals } from '../../globals'
 const styles = StyleSheet.create({
     container:{
         alignItems:"center",
-        
+        maxHeight:"500%"
     },
     header:{
         position:"relative",
