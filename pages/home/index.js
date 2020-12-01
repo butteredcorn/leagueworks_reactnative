@@ -49,6 +49,7 @@ const styles = StyleSheet.create({
 export default function Home(){
     const [page, update] = useState({redirect: false})
     const [posts, updatePosts] = useState({loading: true, data: []})
+    const [liked, updateLiked] = useState(false)
     const [fullUser, updateFullUser] = useState({loading: true, user: {}})
     const [user, updateUser] = useState("")
 
@@ -118,6 +119,7 @@ export default function Home(){
             const fullUser = await getFullUser(user)
             updateFullUser(fullUser)
             const posts = await getAllPosts(user)
+            console.log(posts[0])
             updatePosts({loading: false, data: posts})
             
         } catch (err) {
@@ -147,6 +149,7 @@ return page.redirect ? <Redirect to={{pathname: page.path, state: {user: page.us
         <Post 
         key={post._id}
         user_id={user.user_id}
+        user_profile_thumbnail={post.user_profile_thumbnail}
         calllike={() => likePost(user, post._id)}
         likes={post.likes}
         delete_auth={post.delete_auth}
