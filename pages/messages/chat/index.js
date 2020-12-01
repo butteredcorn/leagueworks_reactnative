@@ -65,11 +65,13 @@ export default function Chat(){
     const access_token = user.access_token
     const user_id = user.user_id
     const otherUserID = data.state.otherUserID
+    const otherUserFirstName = data.state.otherUserFirstName
+    const otherUserLastName = data.state.otherUserLastName
 
-    //`${globals.webserverURL}` //'http://localhost:5000'
-    const [socket] = useSocket(`${globals.webserverURL}`, { query: { token: access_token, user_id: user_id, other_user_id: otherUserID } }) //useSocket('http://localhost:5000', { query: { token: "" } }) //transports: ['websocket'], 
+    const [socket] = useSocket(`${globals.webserverURL}`, { query: { token: access_token, user_id: user_id, other_user_id: otherUserID } }) 
     const [message, updateMessage] = useState(null)
     const [messages, updateMessages] = useState({loading: true, data: []})
+    const [otherUser, updateOtherUser] = useState({loading: true, data: {}})
 
     //initialize web socket
     function socketInit() {
@@ -108,8 +110,7 @@ return <View style={styles.container}>
     <View style={styles.contactCont}>
         <View style={styles.contact}>
             <Avatar dim={40} style={styles.avatar}/>
-            <Header head={otherUserID} />
-            {/* <Header head={otherUserID} /> */}
+            <Header key={otherUserID} head={`${otherUserFirstName} ${otherUserLastName}`} />
         </View>
     </View>
 
@@ -117,22 +118,10 @@ return <View style={styles.container}>
 
     <ScrollView style={styles.chat}>
 
-        <MyBubble bgcolor="#ECECEC" textcolor="#333333" text="Hello" leftposition={15}/>
-        <MyBubble text="Hi." rightposition={-105}/>
-        <MyBubble bgcolor="#ECECEC" textcolor="#333333" text="What are you up to on this fine evening Monsieur? 😝" leftposition={15}/>
-        <MyBubble text="ça ne vous concerne pas!! 😤😤😤" rightposition={-105}/>
-
-          
         {!messages.loading && Array.isArray(messages.data) && messages.data.map(message =>
-            //textcolor and position need to be dynamically determined within MyBubble
-            <MyBubble messageID={message._id} userID={user_id} senderID={message.sender_id} receivers={message.receivers} text={message.message} rightposition={-105}/>
+            <MyBubble messageID={message._id} userID={user_id} senderID={message.sender_id} receivers={message.receivers} text={message.message} textcolor={user_id == message.sender_id ? "#E8E8E8" : '#F18701'} bgcolor={user_id == message.sender_id ? '#F18701' : '#ECECEC'} rightposition={user_id == message.sender_id ? -105 : -15}/>
         )}
-        {/* <MyBubble bgcolor="#ECECEC" textcolor="#333333" text="Hello" leftposition={-45}/>
-        <MyBubble text="Hi." rightposition={-45}/>
-        <MyBubble bgcolor="#ECECEC" textcolor="#333333" text="What are you up to on this fine evening Monsieur? 😝" leftposition={-40}/>
-        <MyBubble text="ça ne vous concerne pas!! 😤😤😤" rightposition={-45}/> */}
-        
-
+       
     </ScrollView>
 
 

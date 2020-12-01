@@ -2,13 +2,13 @@ import React from "react";
 import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
 import Avatar from "../Avatar";
 
-const MessageSection = ({ name, messageContent, time, onPress }) => {
+const MessageSection = ({ name, messageContent, time, onPress, userAvatar}) => {
   return (
     <TouchableOpacity style={styles.container} onPress={onPress}>
       <View style={styles.hr} />
       <View style={styles.messagecont}>
         <View style={styles.avatar}>
-          <Avatar dim={38}/>
+          <Avatar thumbnail_link={userAvatar} dim={38}/>
         </View>
         <View>
           <Text style={styles.name}>{name}</Text>

@@ -56,13 +56,8 @@ const styles = StyleSheet.create({
 export default function Messages(){
 
     const [page, update] = useState({redirect: false})
-    //all other users in an array
-    //const [otherUsers, updateOtherUsers] = useState("")
     const [userMessages, updateUserMessages] = useState({loading: true, data: []})
     const [user, updateUser] = useState("")
-    
-    //TODO, get otherUser names from current otherUserIDs  
-
 
     async function getUser() {
         const rawToken = await AsyncStorage.getItem('access_token')  
@@ -82,12 +77,31 @@ export default function Messages(){
             console.log(result.data.error)
             alert(result.data.error)
         } else {
+
+            for (let key in result.data) {
+                //change on server side to get only other user's profile picture
+                const otherUser = await axios.post(`${globals.webserverURL}/database/read/user`, {
+                    user: {
+                        user_id: key
+                    },
+                    access_token: user.access_token
+                })
+                if(result.data.error) {
+                    console.log(result.data.error)
+                    alert(result.data.error)
+                } else {
+                    //console.log(otherUser.data)
+                    result.data[key].thumbnail_link = otherUser.data.thumbnail_link
+                }
+
+            }
+            console.log(result.data)
             return result.data
         }
     }
 
-    const redirectChat = (otherUserID) => {
-        update({redirect: !page.redirect, path: "/chat", user: user, otherUserID: otherUserID})
+    const redirectChat = (otherUserID, otherUserFirstName, otherUserLastName) => {
+        update({redirect: !page.redirect, path: "/chat", user: user, otherUserID: otherUserID, otherUserFirstName: otherUserFirstName, otherUserLastName: otherUserLastName})
     }
 
     const redirectUsers = () => {
@@ -118,7 +132,9 @@ return page.redirect ? <Redirect to={
     {pathname: page.path,
      state: {
         user: page.user,
-        otherUserID: page.otherUserID
+        otherUserID: page.otherUserID,
+        otherUserFirstName: page.otherUserFirstName,
+        otherUserLastName: page.otherUserLastName
      }
      }}></Redirect>
 
@@ -127,8 +143,6 @@ return page.redirect ? <Redirect to={
             <Text style={styles.pageName}>Messages</Text>
 
         <SearchInput />
-
-        {/* <Button text={"All Users"} onPress={redirectUsers}></Button> */}
 
         <View style={styles.newGroupCont}>
             <TouchableOpacity>
@@ -143,20 +157,15 @@ return page.redirect ? <Redirect to={
         {/* map function here, get params from map function, so you will have param from that */}
         {!userMessages.loading && Array.isArray(Object.keys(userMessages.data)) && Object.keys(userMessages.data).map((otherUserID, index) => 
             <MessageSection
-            onPress={() => redirectChat(otherUserID)}
+            onPress={() => redirectChat(otherUserID, userMessages.data[otherUserID].other_user_first_name, userMessages.data[otherUserID].other_user_last_name)}
             otherUserID={otherUserID}
             name={`${userMessages.data[otherUserID].other_user_first_name} ${userMessages.data[otherUserID].other_user_last_name}`}
             messageContent={userMessages.data[otherUserID].message}
             time={new Date(userMessages.data[otherUserID].timeStamp).toTimeString()}
             key={index}
+            userAvatar={userMessages.data[otherUserID].thumbnail_link}
             />
         )}
-        {/* // <MessageSection 
-        // onPress={() => redirectChat("5fbc6140ad13df00172f6eca")}
-        // name="James Harden" 
-        // otherUserID="5fbc6140ad13df00172f6eca" //for example
-        // messageContent="Yo bro, when's the game?" 
-        // time="5:01 PM" /> */}
 
     </ScrollView>
 

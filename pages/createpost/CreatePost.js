@@ -79,6 +79,7 @@ export default function CreatePost ({}) {
     const initialState = {
         user_id: user.user_id,
         username: `${fullUser.first_name} ${fullUser.last_name}`,
+        user_profile_thumbnail: fullUser.thumbnail_link,
         title: "",
         description: "",
         thumbnail_link: "",

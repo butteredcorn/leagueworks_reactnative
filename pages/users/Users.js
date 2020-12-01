@@ -69,8 +69,8 @@ export default function AllUsers(){
         return {access_token: rawToken, user_id: rawID}
     }
 
-    const redirectChat = (otherUserID) => {
-        update({redirect: !page.redirect, path: "/chat", user: user, otherUserID: otherUserID})
+    const redirectChat = (otherUserID, otherUserFirstName, otherUserLastName) => {
+        update({redirect: !page.redirect, path: "/chat", user: user, otherUserID: otherUserID, otherUserFirstName: otherUserFirstName, otherUserLastName: otherUserLastName})
     }
 
     const redirectMessages = () => {
@@ -111,7 +111,9 @@ return page.redirect ? <Redirect to={
     {pathname: page.path,
      state: {
         user: page.user,
-        otherUserID: page.otherUserID
+        otherUserID: page.otherUserID,
+        otherUserFirstName: page.otherUserFirstName,
+        otherUserLastName: page.otherUserLastName
      }
      }}></Redirect>
 
@@ -134,12 +136,13 @@ return page.redirect ? <Redirect to={
         {/* map function here, get params from map function, so you will have param from that */}
         {!otherUsers.loading && Array.isArray(otherUsers) && otherUsers.map((otherUser) => 
             <MessageSection
-            onPress={() => redirectChat(otherUser._id)}
+            onPress={() => redirectChat(otherUser._id, otherUser.first_name, otherUser.last_name)}
             otherUserID={otherUser._id}
             name={`${otherUser.first_name} ${otherUser.last_name}`}
             messageContent={"Message them now!"}
             time={null}
             key={otherUser._id}
+            userAvatar={otherUser.thumbnail_link}
             />
         )}
 
