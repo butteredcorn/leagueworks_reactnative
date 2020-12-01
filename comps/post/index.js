@@ -51,7 +51,8 @@ const Post = ({Username, Title, Description, img, delete_auth, calllike, calldel
                 flexDirection:"row",
                 justifyContent:"center",
                 position: "relative",
-                left: -80
+                left: -80,
+                paddingLeft:35
             }}>
                 <Avatar thumbnail_link={user_profile_thumbnail} dim={45} style={styles.topCont}/>
                 <Text style={{
