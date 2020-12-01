@@ -36,6 +36,7 @@ const styles = StyleSheet.create({
         bottom:-75,
         width:320,
         height:320,
+        marginBottom:50
     },
     event:{
         position:"relative",
@@ -213,15 +214,26 @@ export default function Schedule(){
 
         <View style={styles.calendar}>
         <Calendar
+
+        style={{
+            borderRadius:30,
+            padding:20,
+            marginBottom:30
+        }}
         
         theme={{
-            calendarBackground: '#F8F8F8',
+            calendarBackground: '#ECECEC',
             textDayFontFamily:"Ubuntu-Bold",
             todayTextColor:"#F35B04",
             textMonthFontFamily:"Ubuntu-Bold",
             textDayHeaderFontFamily:"Ubuntu-Bold",
             selectedDayBackgroundColor:"#F35B04",
             arrowColor:"#F35B04",
+            'stylesheet.calendar.main':{
+                monthview:{
+                    borderRadius:30
+                }
+            }
         }}
         // Callback which gets executed when visible months change in scroll view. Default = undefined
         onVisibleMonthsChange={(months) => {console.log('now these months are visible', months);}}
