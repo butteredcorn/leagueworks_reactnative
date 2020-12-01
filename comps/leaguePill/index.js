@@ -199,47 +199,47 @@ const styles = StyleSheet.create({
     height: 18
   },
   title: {
-    fontWeight: "bold",
+    fontFamily:"Ubuntu-Bold",
     fontSize: 16
   },
   text: {
-    fontWeight: "normal",
+    fontFamily:"Ubuntu-Light",
     fontSize: 9,
     paddingBottom: 5,
     color: "#111111"
   },
   textbold: {
-    fontWeight: "bold",
+    fontFamily:"Ubuntu-Bold",
     fontSize: 9,
     paddingBottom: 5,
     color: "#111111"
   },
   winnumber: {
-    fontWeight: "bold",
+    fontFamily:"Ubuntu-Bold",
     fontSize: 36,
     paddingBottom: 5,
     color: "#111111"
   },
   losenumber: {
-    fontWeight: "100",
+    fontFamily:"Ubuntu-Bold",
     fontSize: 16,
     paddingBottom: 5,
     color: "#111111"
   },
   textselected: {
-    fontWeight: "bold",
+    fontFamily:"Ubuntu-Bold",
     fontSize: 9,
     paddingBottom: 5,
     color: "#F35B04"
   },
   addmembertext: {
-    fontWeight: "bold",
+    fontFamily:"Ubuntu-Bold",
     fontSize: 12,
     color: "#111111",
     paddingLeft:10
   },
   membertext: {
-    fontWeight: "bold",
+    fontFamily:"Ubuntu-Bold",
     fontSize: 18,
     color: "#111111"
   },
@@ -271,7 +271,7 @@ const styles = StyleSheet.create({
   joinbtntext: {
     color: "#F8F9FA",
     fontSize: 12,
-    fontWeight: "bold"
+    fontFamily:"Ubuntu-Bold",
   }
 });
 

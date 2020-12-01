@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     borderRadius: 50
   },
   text: {
-    fontWeight: "bold",
+    fontFamily:"Ubuntu-Bold",
     fontSize: 16,
     paddingBottom: 5
   },

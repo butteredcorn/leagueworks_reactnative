@@ -112,7 +112,7 @@ const styles = StyleSheet.create({
   },
     pageName:{
       fontSize: 36,
-      fontWeight: "bold",
+      fontFamily:"Ubuntu-Bold",
       color: "#333333",
   },
 })
@@ -233,9 +233,9 @@ return <View style={styles.container}>
             {/* Profile Start */}
                 <View style={[selected === 1 ? styles.profiletabcont : styles.none]}>
                   <View style={[selected === 1 ? styles.postcont : styles.none]}>
-                    <Text>{`${fullUser.user.first_name} ${fullUser.user.last_name}`}</Text>
-                    <Text>{`${fullUser.user.email}`}</Text>
-                    <Text>{`${fullUser.user.phone_number}`}</Text>
+                    <Text style={{fontFamily:"Ubuntu-Light"}}>{`${fullUser.user.first_name} ${fullUser.user.last_name}`}</Text>
+                    <Text style={{fontFamily:"Ubuntu-Light"}}>{`${fullUser.user.email}`}</Text>
+                    <Text style={{fontFamily:"Ubuntu-Light"}}>{`${fullUser.user.phone_number}`}</Text>
                   </View>
                   <View style={[selected === 1 ? styles.postcont : styles.none]}>
                     <Input text="Email" />

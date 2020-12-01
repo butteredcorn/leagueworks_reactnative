@@ -8,14 +8,15 @@ const Input = ({ text, placeholder, width, value, setValue }) => {
 
   return (
     <View>
-      <Text style={{ fontWeight: "bold", marginBottom: 5 }}>{text}</Text>
+      <Text style={{fontFamily:"Ubuntu-Bold", marginBottom: 5 }}>{text}</Text>
       <TextInput
         style={[{
           height: 37,
           borderRadius: 33,
           padding: 10,
           marginBottom:5,
-          backgroundColor:"#F8F8F8"
+          backgroundColor:"#F8F8F8",
+          fontFamily:"Ubuntu-Light"
         }, newstyle]}
         onChangeText={(text) => setValue(text)}
         value={value} placeholder={placeholder}

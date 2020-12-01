@@ -59,7 +59,7 @@ const Post = ({Username, Title, Description, img, delete_auth, calllike, calldel
                     left:0,
                     bottom:-15,
                     marginLeft: 20,
-                    fontWeight:"bold",
+                    fontFamily:"Ubuntu-Bold",
                     color:"#F35B04"
                 }}>{Username}</Text>
             </View>
@@ -73,7 +73,7 @@ const Post = ({Username, Title, Description, img, delete_auth, calllike, calldel
 
                 {/* Title */}
                 <Text style={{
-                    fontWeight:"bold",
+                    fontFamily:"Ubuntu-Bold",
                     color:"#333333",
                     marginTop: -10,
                     paddingLeft:30
@@ -82,7 +82,8 @@ const Post = ({Username, Title, Description, img, delete_auth, calllike, calldel
                 {/* Description */}
                 <Text style={{
                     color:"#333333",
-                    paddingLeft:30
+                    paddingLeft:30,
+                    fontFamily:"Ubuntu-Light"
                 }}>{Description}</Text> 
             </View>
 

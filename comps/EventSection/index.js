@@ -5,7 +5,7 @@ const EventSection = ({ eventName, eventTime, eventEnd, eventDesc, eventLocation
     <View style={styles.container}>
       <View style={styles.bigBox}>
         <View style={styles.eventCont}>
-          <View style={styles.eventName}><Text>{eventName}</Text></View>
+          <View style={styles.eventName}><Text style={{fontFamily:"Ubuntu-Bold"}}>{eventName}</Text></View>
 
           <View style={styles.timeCont}>
             <Image
@@ -13,8 +13,8 @@ const EventSection = ({ eventName, eventTime, eventEnd, eventDesc, eventLocation
               source={require('../../public/time.png')}
             ></Image>
             <View>
-              <Text>{eventTime}</Text>
-              <Text>{eventEnd}</Text>
+              <Text style={{fontFamily:"Ubuntu-Light"}}>{eventTime}</Text>
+              <Text style={{fontFamily:"Ubuntu-Light"}}>{eventEnd}</Text>
             </View>
           </View>
 
@@ -23,7 +23,7 @@ const EventSection = ({ eventName, eventTime, eventEnd, eventDesc, eventLocation
               style={styles.locationIcon}
               source={require('../../public/location.png')}
             ></Image>
-            <View style={{width:170}}><Text>{eventLocation}</Text></View>
+            <View style={{width:170}}><Text style={{fontFamily:"Ubuntu-Light"}}>{eventLocation}</Text></View>
           </View>
 
           {/* <View style={styles.descriptionCont}>
@@ -58,12 +58,14 @@ const styles = StyleSheet.create({
   timeCont: {
     flex: 1,
     flexDirection: "row",
-    fontSize: 14
+    fontSize: 14,
+    fontFamily:"Ubuntu-Light"
   },
   eventName: {
     marginTop: 15,
     marginBottom: 15,
     fontSize: 18,
+    fontFamily:"Ubuntu-Light",
     fontWeight:"900"
   },
   timeIcon: {
@@ -84,10 +86,11 @@ const styles = StyleSheet.create({
   descriptionCont: {
     flex: 1,
     flexDirection: "row",
-    fontSize: 14
+    fontSize: 14,
+    fontFamily:"Ubuntu-Light"
   },
   eventheader:{
-    fontWeight:"bold"
+    fontFamily:"Ubuntu-Bold"
   }
 });
 

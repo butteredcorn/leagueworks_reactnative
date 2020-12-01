@@ -27,6 +27,7 @@ const SearchInput = () => {
           // borderColor: "white",
           // position: "relative",
           right: -20,
+          fontFamily:"Ubuntu-Light"
         }}
         placeholder="Search..."
       />

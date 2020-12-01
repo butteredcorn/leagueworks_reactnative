@@ -1,7 +1,8 @@
 import React,{ useState, useEffect } from "react";
 import {Redirect} from 'react-router-native'
 import {View, StyleSheet, TouchableOpacity, Image, Text, ScrollView, AsyncStorage} from "react-native";
-import * as axios from 'react-native-axios'
+import * as axios from 'react-native-axios';
+import { globalStyles } from "../../styles/global";
 
 import { globals } from '../../globals'
 import NavBar from "../../comps/navbar";
@@ -136,7 +137,7 @@ return page.redirect ? <Redirect to={{pathname: page.path, state: {user: page.us
     <ScrollView contentContainerStyles={styles.container}>
     
     <View style={styles.header}>
-        <Text style={styles.pageName}>Home</Text>
+        <Text style={globalStyles.titleText}>Home</Text>
             <TouchableOpacity onPress={() => redirectCreatePost(user)}>
                 <Image  source={require("../../public/edit.png")} style={styles.editIcon}/>
             </TouchableOpacity>   

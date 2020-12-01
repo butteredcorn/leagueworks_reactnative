@@ -40,16 +40,18 @@ const styles = StyleSheet.create({
   },
   timetext: {
     color: "#BDBDBD",
-    fontSize: 14
+    fontSize: 14,
+    fontFamily:"Ubuntu-Light"
   },
   titletext: {
     color: "black",
     fontSize: 16,
-    fontWeight: "bold"
+    fontFamily:"Ubuntu-Bold"
   },
   desctext: {
     color: "black",
-    fontSize: 14
+    fontSize: 14,
+    fontFamily:"Ubuntu-Light"
   },
   contentbox: {
     width: 40,

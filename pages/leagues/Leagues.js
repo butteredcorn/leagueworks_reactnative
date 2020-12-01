@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     },
     pageName:{
         fontSize: 36,
-        fontWeight: "bold",
+        fontFamily:"Ubuntu-Bold",
         color: "#333333",
         width: "90%",
         
@@ -213,7 +213,7 @@ return page.redirect ? <Redirect to={{pathname: page.path, state: page.leagueID}
             </TouchableOpacity>
             </View>   
         ) 
-        : <Text>Loading</Text>}
+        : <Text style={{fontFamily:"Ubuntu-Light"}}>Loading</Text>}
     </View>
 
     <View style={styles.spacer} />
