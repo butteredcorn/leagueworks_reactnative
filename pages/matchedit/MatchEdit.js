@@ -14,12 +14,15 @@ import { globals } from '../../globals'
 
 const styles = StyleSheet.create({
     container:{
-        position: "relative",
+        // position: "relative",
         height: "100%",
         width:  380,
         justifyContent:"center",
         alignItems: "center"
         
+    },
+    edits:{
+        fontFamily:"Ubuntu-Light"
     }
 })
 
@@ -92,9 +95,9 @@ export default function MatchEdit(){
 return page.redirect ? <Redirect to={{pathname: page.path, state: page}}></Redirect> : <View style={styles.container}>
 
 
-    <View style={{
+    {/* <View style={{
         // flexDirection:"row",
-    }}> 
+    }}>  */}
         {/* Top */}
         {/* <TouchableOpacity>
         <Image style={{
@@ -106,8 +109,8 @@ return page.redirect ? <Redirect to={{pathname: page.path, state: page}}></Redir
         }}
         source={require ("../../public/backarrow.png")}/>
         </TouchableOpacity> */}
-    </View>
-    <ScrollView>
+    {/* </View> */}
+    <ScrollView contentContainerStyle={styles.container}>
     <View style={[{
         position:"absolute",
         top:-80
@@ -120,17 +123,17 @@ return page.redirect ? <Redirect to={{pathname: page.path, state: page}}></Redir
 
     <View style={{ marginBottom:15}}>
         {/* need reference to winning team/losing team, home team/away team */}
-        <Text>Set Winner</Text>
+        <Text style={styles.edits}>Set Winner</Text>
         
     </View>
 
     <View style={{ marginBottom:15}}>
-        <Text>Change Start Date</Text>
+        <Text style={styles.edits}>Change Start Date</Text>
 
     </View>
 
     <View style={{ marginBottom:15}}>
-        <Text>Change Event Location</Text>
+        <Text style={styles.edits}>Change Event Location</Text>
         {/* <Input 
         text="Phone Number"
         placeholder="Phone Number"
@@ -148,7 +151,7 @@ return page.redirect ? <Redirect to={{pathname: page.path, state: page}}></Redir
 
     <View style={{
         position:"absolute",
-        bottom:-87
+        bottom:20
     }}>
         <TouchableOpacity>
         <MyLargeButton 
