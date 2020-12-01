@@ -3,7 +3,7 @@ import { View, StyleSheet, TouchableHighlight, Image } from "react-native";
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "blue",
+    // backgroundColor: "blue",
     width: 30,
     height: 30,
     display: "flex",
