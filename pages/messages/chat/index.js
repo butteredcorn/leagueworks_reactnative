@@ -125,7 +125,7 @@ return <View style={styles.container}>
           
         {!messages.loading && Array.isArray(messages.data) && messages.data.map(message =>
             //textcolor and position need to be dynamically determined within MyBubble
-            <MyBubble messageID={message._id} userID={user_id} senderID={message.sender_id} receivers={message.receivers} text={message.message}/>
+            <MyBubble messageID={message._id} userID={user_id} senderID={message.sender_id} receivers={message.receivers} text={message.message} rightposition={-105}/>
         )}
         {/* <MyBubble bgcolor="#ECECEC" textcolor="#333333" text="Hello" leftposition={-45}/>
         <MyBubble text="Hi." rightposition={-45}/>
