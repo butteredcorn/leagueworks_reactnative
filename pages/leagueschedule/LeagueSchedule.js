@@ -10,6 +10,7 @@ import DatePicker from '../../comps/datepicker/DatePicker'
 import CheckBox from '@react-native-community/checkbox'
 import {Picker} from '@react-native-picker/picker';
 
+import EventSection from '../../comps/EventSection'
 
 import * as axios from 'react-native-axios'
 import { globals } from '../../globals'
@@ -138,7 +139,7 @@ export default function LeagueSchedule(){
     const [user, update] = useState("")
     const [arenas, updateArenas] = useState({loading: true, data: []})
     const [seasonSchedule, updateSchedule] = useState({loading: true, data: []})
-    const [editTemplate, updateView] = useState(false)
+    const [viewTemplate, updateView] = useState(false)
     const [numSetsPerweek, updateSetsPerWeek] = useState(false)
     const [numSetsPerOpponent, updateSetsPerOpponent] = useState(false)
     //if i didn't have to do the following, and could combine it into a reducer i would have. but after 4 hours of trying, i've determined it isn't possible.
@@ -287,42 +288,46 @@ export default function LeagueSchedule(){
         updateArenas({loading: false, data: arenas})
     }
 
+    function switchView() {
+        console.log(viewTemplate)
+        updateView(!viewTemplate)
+        setTimeout(() => {
+            console.log(viewTemplate)
+
+        },1000)
+    }
+
+    function getYYYYMMDD(date) {
+        let d = new Date(date),
+            month = '' + (d.getMonth() + 1),
+            day = '' + d.getDate(),
+            year = d.getFullYear();
+    
+        if (month.length < 2) 
+            month = '0' + month;
+        if (day.length < 2) 
+            day = '0' + day;
+    
+        return [year, month, day].join('-');
+    }
+
     useEffect(() => {
         try {
             loadPage()
             setTimeout(()=> {
                 console.log(seasonSchedule)
             },2500)
+            setTimeout(()=> {
+                console.log(viewTemplate)
+            },2500)
         } catch (err) {
             console.log(err)
         }
     }, [])
 
-    return editTemplate && !seasonSchedule.loading && seasonSchedule.data ? 
-    //viewing template
-    <View style={styles.container}>
-        <ScrollView style={styles.bodycontainer}>
-            <View style={styles.pagetitle}>
-                    <MyHeader  head="League Schedule"/>
-                    {league_name && <MyHeader  head={league_name}/>}
-            </View>
-            <Text>{seasonSchedule.data._id}</Text>
-            <Text>{seasonSchedule.data.start_date}</Text>
-            <Text>{seasonSchedule.data.end_date}</Text>
-            {/* seasonSchedule.data.game_dates
-            seasonSchedule.data.events
-            seasonSchedule.data.game_days
-            seasonSchedule.data.season_arenas */}
-            <MyButton text={"change schedule"} onPress={() => updateView(!editTemplate)}></MyButton>
-        </ScrollView>
-        <View style={styles.navbar}>
-            <NavBar NavBar active={1} />
-        </View>
-    </View> 
-    
-    
+    return !seasonSchedule.loading && seasonSchedule.data && viewTemplate  ? 
     //editing template
-    : <View style={styles.container}>
+    <View style={styles.container}>
 
         {/* Inputs */}
         <ScrollView style={styles.bodycontainer}>
@@ -550,5 +555,36 @@ export default function LeagueSchedule(){
             <NavBar NavBar active={1} />
         </View>
 
-    </View>
+    </View> :
+
+    //viewing template
+    <View style={styles.container}>
+        <ScrollView style={styles.bodycontainer}>
+        <View style={styles.header}>
+            <View style={styles.pagetitle}>
+                    <MyHeader  head="League Schedule"/>
+                    {league_name && <MyHeader  head={league_name}/>}
+                    <MyButton text={"change schedule"} onPress={() => switchView()}></MyButton>
+            </View>
+        </View>
+        <View>
+            <Text key={seasonSchedule.data._id}></Text>
+            <Text>Season Start: {getYYYYMMDD(seasonSchedule.data.start_date)}</Text>
+            <Text>Season End: {getYYYYMMDD(seasonSchedule.data.end_date)}</Text>
+            {/* seasonSchedule.data.game_dates
+            seasonSchedule.data.events
+            seasonSchedule.data.game_days
+            seasonSchedule.data.season_arenas */}
+            <Text>Next 10 Upcoming Games:</Text>
+            {Array.isArray( seasonSchedule.data.events) &&  seasonSchedule.data.events.slice(0, 10).map(event =>
+                <View style={styles.event}>
+                    <EventSection redirect={""} key={`${event.home_team} ${event.away_team}`} eventName={event.summary} eventTime={event.start_date} eventLocation={event.arena}/>
+                </View>
+            )}
+        </View>
+        </ScrollView>
+        <View style={styles.navbar}>
+            <NavBar NavBar active={1} />
+        </View>
+    </View> 
 }
