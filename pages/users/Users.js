@@ -142,6 +142,7 @@ return page.redirect ? <Redirect to={
             messageContent={"Message them now!"}
             time={null}
             key={otherUser._id}
+            userAvatar={otherUser.thumbnail_link}
             />
         )}
 
