@@ -334,7 +334,41 @@ export default function LeagueSchedule(){
         return <Redirect to={{pathname: page.path, state: page}}></Redirect>
     }
 
-    return !seasonSchedule.loading && seasonSchedule.data && viewTemplate  ? 
+    // if (!viewTemplate) {
+    //     return (
+    //     //viewing template
+    //     <View style={styles.container}>
+    //         {seasonSchedule.data && <ScrollView style={styles.bodycontainer}>
+    //         <View style={styles.header}>
+    //             <View style={styles.pagetitle}>
+    //                     <MyHeader  head="League Schedule"/>
+    //                     {league_name && <MyHeader  head={league_name}/>}
+    //                     <MyButton text={"change schedule"} onPress={() => switchView()}></MyButton>
+    //             </View>
+    //         </View>
+    //         <View>
+    //             <Text key={seasonSchedule.data._id}></Text>
+    //             <Text>Season Start: {getYYYYMMDD(seasonSchedule.data.start_date)}</Text>
+    //             <Text>Season End: {getYYYYMMDD(seasonSchedule.data.end_date)}</Text>
+    //             {/* seasonSchedule.data.game_dates
+    //             seasonSchedule.data.events
+    //             seasonSchedule.data.game_days
+    //             seasonSchedule.data.season_arenas */}
+    //             <Text>Next 10 Upcoming Games:</Text>
+    //             {Array.isArray( seasonSchedule.data.events) &&  seasonSchedule.data.events.slice(0, 10).map(event =>
+    //                 <View style={styles.event}>
+    //                     <EventSection redirect={redirectArenas} key={`${event.home_team} ${event.away_team}`} eventName={event.summary} eventTime={event.start_date} eventLocation={event.arena}/>
+    //                 </View>
+    //             )}
+    //         </View>
+    //         </ScrollView>}
+    //         <View style={styles.navbar}>
+    //             <NavBar NavBar active={1} />
+    //         </View>
+    //     </View>)
+    // }
+
+    return !seasonSchedule.loading && Array.isArray(seasonSchedule.data) && seasonSchedule.data.length > 0 || !viewTemplate ? 
     //editing template
     <View style={styles.container}>
 
@@ -570,7 +604,7 @@ export default function LeagueSchedule(){
 
     //viewing template
     <View style={styles.container}>
-        <ScrollView style={styles.bodycontainer}>
+        {seasonSchedule.data && <ScrollView style={styles.bodycontainer}>
         <View style={styles.header}>
             <View style={styles.pagetitle}>
                     <MyHeader  head="League Schedule"/>
@@ -593,7 +627,7 @@ export default function LeagueSchedule(){
                 </View>
             )}
         </View>
-        </ScrollView>
+        </ScrollView>}
         <View style={styles.navbar}>
             <NavBar NavBar active={1} />
         </View>

@@ -531,30 +531,14 @@ const MyPill = ({
                   ></View>
 
                    {/* ADMIN CONTAINER START */}
-                  <View style={[selected === 1 ? styles.admincont : styles.no]}>
+                  <View>
                     <View
                       style={[
                         selected === 1 ? styles.indivadmincont : styles.no
                       ]}
                     >
-                      <Avatar dim={50}/>
-                      
-                    </View>
-                    <View
-                      style={[
-                        selected === 1 ? styles.indivadmincont : styles.no
-                      ]}
-                    >
-                      <Avatar dim={50}/>
+                      <Avatar thumbnail_link={players[0].thumbnail_link} dim={50}/>
                       <Text style={styles.membertext}>{`${players[0].first_name} ${players[0].last_name}`}</Text>
-                    </View>
-                    <View
-                      style={[
-                        selected === 1 ? styles.indivadmincont : styles.no
-                      ]}
-                    >
-                      <Avatar dim={50}/>
-                    
                     </View>
                   </View>
                 </View> 
@@ -575,7 +559,7 @@ const MyPill = ({
                         selected === 5 ? styles.indivadmincont : styles.none
                       ]}
                     >
-                      <Avatar dim={50}/>
+                      <Avatar thumbnail_link={players[0].thumbnail_link} dim={50}/>
                       <Text style={styles.membertext}>{`${players[0].first_name} ${players[0].last_name}`}</Text>
                     </View>
                     {/* <View
@@ -617,7 +601,7 @@ const MyPill = ({
                         selected === 6 ? styles.indivadmincont : styles.none
                       ]}
                     >
-                      <Avatar dim={50}/>
+                      <Avatar thumbnail_link={player.thumbnail_link} dim={50}/>
                       <Text style={styles.membertext}>{`${player.first_name} ${player.last_name}`}</Text>
                     </View>)}
 

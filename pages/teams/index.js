@@ -119,12 +119,26 @@ export default function Teams(){
             for(let team of teams) {
                 let userTeam = false
                 for(let player of team.players) {
+
+                    const playerObj = await axios.post(`${globals.webserverURL}/database/read/user`, {
+                        user: {
+                            user_id: player.user_id
+                        },
+                        access_token: user.access_token
+                    })
+            
+                    if(result.data.error) {
+                        console.log(result.data.error)
+                        alert(result.data.error)
+                    } else {
+                        player.thumbnail_link = playerObj.thumbnail_link
+                    }
+
                     if(player.user_id == user.user_id) {
                         //signed in user's team
                         team.user_team = true
                         userTeams.push(team)
                         userTeam = true
-                        break;
                     }
                 }
                 if(!userTeam) {
