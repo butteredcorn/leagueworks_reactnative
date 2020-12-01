@@ -4,6 +4,8 @@ import android.app.Application;
 import android.content.Context;
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
+import com.airbnb.android.react.maps.MapsPackage;
+import com.airbnb.android.react.maps.MapsPackage;
 // import com.reactcommunity.rndatetimepicker.RNDateTimePickerPackage;
 // import com.reactcommunity.rndatetimepicker.RNDateTimePickerPackage;
 // import com.henninghall.date_picker.DatePickerPackage;

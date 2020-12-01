@@ -161,6 +161,10 @@ export default function Schedule(){
         }
     }
 
+    const redirectArenas = (arena) => {
+        update({redirect: !page.redirect, path: "/arenas", arena: arena})
+    }
+
     const loadPage = async() => {
         const user = await getUser()
         updateUser(user)
@@ -231,7 +235,7 @@ export default function Schedule(){
 
         {!unifiedEvents.loading && Array.isArray(unifiedEvents.data) && unifiedEvents.data.slice(0, 10).map(event =>
         <View style={styles.event}>
-            <EventSection key={`${event.home_team} ${event.away_team}`} eventName={event.summary} eventTime={event.start_date} eventLocation={event.arena}/>
+            <EventSection redirect={redirectArenas} key={`${event.home_team} ${event.away_team}`} eventName={event.summary} eventTime={event.start_date} eventLocation={event.arena}/>
         </View>
         )}
 
