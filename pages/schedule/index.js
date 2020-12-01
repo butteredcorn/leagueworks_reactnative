@@ -212,12 +212,12 @@ export default function Schedule(){
         
         theme={{
             calendarBackground: '#F8F8F8',
-            textDayFontWeight:"bold",
+            textDayFontFamily:"Ubuntu-Bold",
             todayTextColor:"#F35B04",
-            textMonthFontWeight:"bold",
-            textDayHeaderFontWeight:"bold",
+            textMonthFontFamily:"Ubuntu-Bold",
+            textDayHeaderFontFamily:"Ubuntu-Bold",
             selectedDayBackgroundColor:"#F35B04",
-            arrowColor:"#F35B04"
+            arrowColor:"#F35B04",
         }}
         // Callback which gets executed when visible months change in scroll view. Default = undefined
         onVisibleMonthsChange={(months) => {console.log('now these months are visible', months);}}
@@ -235,9 +235,10 @@ export default function Schedule(){
 
         {!unifiedEvents.loading && Array.isArray(unifiedEvents.data) && unifiedEvents.data.slice(0, 10).map(event =>
         <View style={styles.event}>
-            <EventSection redirect={redirectArenas} key={`${event.home_team} ${event.away_team}`} eventName={event.summary} eventTime={event.start_date} eventLocation={event.arena}/>
+            <EventSection redirect={redirectArenas} key={`${event.home_team} ${event.away_team}`} eventName={event.summary} eventTime={event.start_date} eventLocation={event.arena} editable={true}/>
         </View>
         )}
+
 
         {/* <View style={styles.event}>
             <EventSection eventName="Game at BCIT" eventTime="9:00AM - 11:00AM" eventLocation="Burnaby, BC" eventDesc="Don't forget the ID!"/>
@@ -253,6 +254,10 @@ export default function Schedule(){
             />
         </View> 
         })}*/}
+        <View style={styles.spacer} />
+        <View style={styles.spacer} />
+
+        
 
     </ScrollView>
     

@@ -15,14 +15,14 @@ const styles = StyleSheet.create({
     },
     imgCont:{
         width: "100%",
-        minHeight: 200,
-        maxHeight: 250,
+        minHeight: 300,
+        maxHeight: 350,
         marginBottom:40
     },
     img:{
         width: "100%",
-        minHeight: 200,
-        maxHeight: 250,
+        minHeight: 300,
+        maxHeight: 350,
         marginBottom:40
     },
     buttonCont: {
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     }
 })
 
-const Post = ({Username, Title, Description, img, delete_auth, calllike, calldelete, likes, user_id})=> {
+const Post = ({Username, Title, Description, img, delete_auth, calllike, calldelete, likes, user_id, user_profile_thumbnail})=> {
     const [userLikes, updateUserLikes] = useState(false)
     
     useEffect(() => {
@@ -51,9 +51,10 @@ const Post = ({Username, Title, Description, img, delete_auth, calllike, calldel
                 flexDirection:"row",
                 justifyContent:"center",
                 position: "relative",
-                left: -80
+                left: -80,
+                paddingLeft:35
             }}>
-                <Avatar dim={45} style={styles.topCont}/>
+                <Avatar thumbnail_link={user_profile_thumbnail} dim={45} style={styles.topCont}/>
                 <Text style={{
                     position:"relative",
                     left:0,
