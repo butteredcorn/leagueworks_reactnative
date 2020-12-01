@@ -42,19 +42,18 @@ const EventSection = ({ eventName, eventTime, eventEnd, eventDesc, eventLocation
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
   },
   bigBox: {
     width: 322,
-    height: 155,
+    height: 300,
     backgroundColor: "#ECECEC",
-    borderRadius: 12
+    borderRadius: 12,
+    margin:15
   },
   eventCont: {
     marginLeft: 30,
     flex: 1,
-    flexDirection: "column",
-    justifyContent: "space-between"
+    flexDirection: "column"
   },
   timeCont: {
     flex: 1,
