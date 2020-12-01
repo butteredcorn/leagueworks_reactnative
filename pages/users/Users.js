@@ -88,8 +88,16 @@ export default function AllUsers(){
             console.log(result.data.error)
             alert(result.data.error)
         } else { 
-            console.log(result.data)
-            updateOtherUsers(result.data)
+            const otherUsers = []
+            for (let eachUser of result.data) {
+                if (eachUser._id == user.user_id) {
+                    continue;
+                } else {
+                    otherUsers.push(eachUser);
+                }
+            }
+            console.log(otherUsers)
+            updateOtherUsers(otherUsers)
         }
     }
 
