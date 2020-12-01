@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
   name: {
     width: 200,
     height: 100,
-    fontWeight: "bold",
+    fontFamily:"Ubuntu-Bold",
     marginLeft: 10,
     marginTop: 20
   },
@@ -52,12 +52,14 @@ const styles = StyleSheet.create({
   },
   text: {
     marginTop: -60,
-    marginLeft: 10
+    marginLeft: 10,
+    fontFamily:"Ubuntu-Light"
   },
   time: {
     marginTop: 20,
     color: "#BDBDBD",
-    width: "25%"
+    width: "25%",
+    fontFamily:"Ubuntu-Light"
   }
 });
 

@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     },
     newGroup:{
         fontSize: 16,
-        fontWeight: "bold",
+        fontFamily:"Ubuntu-Bold",
         color: "#F35B04",
         paddingTop: 20,
         paddingBottom: 15,

@@ -44,7 +44,8 @@ const MsgInput = ({ text, onPress, socket }) => {
           borderColor: "#FFF",
           borderWidth: 0,
           marginLeft: 10,
-          marginRight: 10
+          marginRight: 10,
+          fontFamily:"Ubuntu-Light"
         }}
         onChangeText={(text) => onChangeText(text)}
         value={value}
