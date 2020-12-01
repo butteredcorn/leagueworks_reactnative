@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
     container: {
         position: "relative",
         height: "100%",
-        justifyContent:"center"
+        justifyContent:"center",
     },
     // navbar: {
     //     position: "absolute",
@@ -35,10 +35,6 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         color: "#333333",
     },
-    editIcon: {
-        position: "relative",
-        left: 170
-    },
     navigation:{
         zIndex:1,
         // Not sure why but the position made everything on the page off-center
@@ -47,13 +43,10 @@ const styles = StyleSheet.create({
     },
     arenaContainer:{
         backgroundColor:"#ECECEC",
-        width:319,
-        minHeight:400,
-        maxHeight:600,
         borderRadius:25,
-        margin: 10,
-        position: "relative",
-        alignItems: "center"
+        margin: "5%",
+        alignItems: "center",
+        justifyContent: "center"
     },
     imgCont:{
         width: "100%",
@@ -62,10 +55,12 @@ const styles = StyleSheet.create({
         marginBottom:40
     },
     img:{
-        width: "100%",
+        width: "80%",
         minHeight: 200,
         maxHeight: 250,
-        marginBottom:40
+        marginBottom:40,
+        borderRadius: 25,
+        margin: 10
     },
     buttonCont: {
         flexDirection: "row",
@@ -76,15 +71,33 @@ const styles = StyleSheet.create({
     },
     mapCont: {
         height: 300,
-        width: 300
+        width: 300,
+        margin: 10,
+        marginBottom: 25
     },
     map: {
-        ...StyleSheet.absoluteFillObject
+        ...StyleSheet.absoluteFillObject,
+        borderRadius: 25,
     },
     marker: {
         width: 50,
         height: 50
-    }
+    },
+    heading: {
+        width: "80%",
+        fontSize: 24,
+        marginTop: 25
+    },
+    address: {
+        width: "80%",
+        textAlign: "center",
+        marginTop: 25,
+        marginBottom: 5
+    },
+    spacer: {
+        // Adds space to the bottom so you can see the content on the bottom of the scroll view without it being cutoff
+        height: 50
+    },
 });
 
 
@@ -148,11 +161,15 @@ return <View>
     </View>
     
     {!arena.loading && typeof arena.data == 'object' &&
-    <View style={styles.arenaContainer}>
-        <Text>{arena.data.name}</Text>
-        {/* arena.photos[0] */}
-        <Image source={{uri: 'https://s3-media0.fl.yelpcdn.com/bphoto/F8-wSk_FseiYtVShXPw18Q/348s.jpg'}} style={styles.img} resizeMode="cover"/>
-        <Text>{arena.data.address}</Text>
+    <View>
+        <View style={styles.arenaContainer}>
+            <Text style={styles.heading}>{arena.data.name}</Text>
+            {/* arena.photos[0] */}
+            <Image source={{uri: 'https://s3-media0.fl.yelpcdn.com/bphoto/F8-wSk_FseiYtVShXPw18Q/348s.jpg'}} style={styles.img} resizeMode="cover"/>
+        </View>
+
+        <View style={styles.arenaContainer}>
+        <Text style={styles.address}>{arena.data.address}</Text>
         <Text>{arena.data.phone_number}</Text>
         <View style={styles.mapCont}>
             <MapView provider={PROVIDER_GOOGLE} style={styles.map} region={{latitude: arena.data.location.lat, longitude: arena.data.location.long, latitudeDelta: 0.05, longitudeDelta: 0.05}} showsUserLocation={true}>
@@ -161,15 +178,17 @@ return <View>
                 title="this is a marker"
                 description="this is a marker example"/>
             </MapView>
+            </View>
         </View>
         {/* <Text>lat: {arena.data.location.lat} long: {arena.data.location.long}</Text> */}
     </View>}
     
+    <View style={styles.spacer} />
 
 
     </ScrollView>
     <View style={styles.navigation}>
-        <NavBar active={0} />
+        <NavBar active={2} />
     </View>
     </View>
 }
