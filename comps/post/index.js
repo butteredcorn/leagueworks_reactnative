@@ -15,14 +15,14 @@ const styles = StyleSheet.create({
     },
     imgCont:{
         width: "100%",
-        minHeight: 200,
-        maxHeight: 250,
+        minHeight: 300,
+        maxHeight: 350,
         marginBottom:40
     },
     img:{
         width: "100%",
-        minHeight: 200,
-        maxHeight: 250,
+        minHeight: 300,
+        maxHeight: 350,
         marginBottom:40
     },
     buttonCont: {
