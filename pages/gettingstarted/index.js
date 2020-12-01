@@ -23,14 +23,14 @@ return <View style={styles.container}>
 
     <View>
     <MyHeader head="Let's sign you in"/>
-    <Text>Welcome back, we missed you!</Text>
+    <Text style={{fontFamily:"Ubuntu-Light"}}>Welcome back, we missed you!</Text>
     </View>
 
     <Link to={"./login"}><MyLargeButton text="Login"></MyLargeButton></Link>
 
     <View>
     <MyHeader head="New to the app?"/>
-    <Text>Tell us who you are to register</Text>
+    <Text style={{fontFamily:"Ubuntu-Light"}}>Tell us who you are to register</Text>
     </View>
 
     <Link to={{pathname: "./signup", state: "admin"}}><MyLargeButton text="Admin" /></Link>

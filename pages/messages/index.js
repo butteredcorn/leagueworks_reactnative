@@ -26,7 +26,8 @@ const styles = StyleSheet.create({
         width: "90%",
         height: 45,
         marginTop: 50,
-        marginBottom: 15
+        marginBottom: 15,
+        fontFamily:"Ubuntu-Bold"
     },
     newGroupCont:{
         flexDirection: "row",

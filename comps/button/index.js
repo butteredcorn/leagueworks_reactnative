@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
     borderRadius:5
   },
   firstText: {
-    fontWeight: "bold",
+    fontFamily:"Ubuntu-Bold",
     color: "#FFF"
   }
 });
