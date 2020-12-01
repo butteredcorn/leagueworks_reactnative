@@ -1,6 +1,6 @@
 import React from "react";
-import { View, StyleSheet, Image, Text } from "react-native";
-const EventSection = ({ eventName, eventTime, eventEnd, eventDesc, eventLocation }) => {
+import { View, StyleSheet, Image, Text, TouchableOpacity } from "react-native";
+const EventSection = ({ eventName, eventTime, eventEnd, eventDesc, eventLocation, redirect }) => {
   return (
     <View style={styles.container}>
       <View style={styles.bigBox}>
@@ -23,7 +23,7 @@ const EventSection = ({ eventName, eventTime, eventEnd, eventDesc, eventLocation
               style={styles.locationIcon}
               source={require('../../public/location.png')}
             ></Image>
-            <View style={{width:170}}><Text>{eventLocation}</Text></View>
+            <View style={{width:170}}><TouchableOpacity onPress={() => redirect(eventLocation)}><Text>{eventLocation}</Text></TouchableOpacity></View>
           </View>
 
           {/* <View style={styles.descriptionCont}>
