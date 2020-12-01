@@ -34,9 +34,10 @@ const styles = StyleSheet.create({
     },
     pageName:{
         fontSize: 36,
-        fontWeight: "bold",
+ 
         color: "#333333",
         width: "90%",
+        fontFamily:"Ubuntu-Bold"
         
     },
     navigation:{

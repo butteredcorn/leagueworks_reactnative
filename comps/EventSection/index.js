@@ -8,7 +8,7 @@ const EventSection = ({ eventName, eventTime, eventEnd, eventDesc, eventLocation
 
           <View style={styles.headerFlex}>
             <View style={styles.eventName}>
-              <Text style={{fontFamily:"Ubuntu-Bold"}}>{eventName}</Text>
+              <Text style={{fontFamily:"Ubuntu-Bold", width:220}}>{eventName}</Text>
             </View>
 
             {editable && <TouchableOpacity onPress={() => redirect2(match_id)}>
