@@ -87,26 +87,27 @@ export default function CreateEvent(){
 
         {selected ? (
         <View style={styles.calendar}>
-        <Calendar 
-
-            theme={{
-                calendarBackground: '#F8F8F8',
-                textDayFontWeight:"bold",
-                todayTextColor:"#F35B04",
-                textMonthFontWeight:"bold",
-                textDayHeaderFontWeight:"bold",
-                arrowColor:"#F35B04"
-            }}
-            // Callback which gets executed when visible months change in scroll view. Default = undefined
-            onVisibleMonthsChange={(months) => {console.log('now these months are visible', months);}}
-            // Max amount of months allowed to scroll to the past. Default = 50
-            pastScrollRange={50}
-            // Max amount of months allowed to scroll to the future. Default = 50
-            futureScrollRange={50}
-            // Enable or disable scrolling of calendar list
-            scrollEnabled={true}
-            // Enable or disable vertical scroll indicator. Default = false
-            showScrollIndicator={true}/>
+        <Calendar
+        
+        theme={{
+            calendarBackground: '#F8F8F8',
+            textDayFontFamily:"Ubuntu-Bold",
+            todayTextColor:"#F35B04",
+            textMonthFontFamily:"Ubuntu-Bold",
+            textDayHeaderFontFamily:"Ubuntu-Bold",
+            selectedDayBackgroundColor:"#F35B04",
+            arrowColor:"#F35B04",
+        }}
+        // Callback which gets executed when visible months change in scroll view. Default = undefined
+        onVisibleMonthsChange={(months) => {console.log('now these months are visible', months);}}
+        // Max amount of months allowed to scroll to the past. Default = 50
+        pastScrollRange={50}
+        // Max amount of months allowed to scroll to the future. Default = 50
+        futureScrollRange={50}
+        // Enable or disable scrolling of calendar list
+        scrollEnabled={true}
+        // Enable or disable vertical scroll indicator. Default = false
+        showScrollIndicator={true}/>
         </View>
         ) : null}
 
