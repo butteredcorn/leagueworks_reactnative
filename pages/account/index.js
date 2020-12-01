@@ -227,7 +227,7 @@ return <View style={styles.container}>
             {/* POSTS START */}
                 {!userPosts.loading && Array.isArray(userPosts.data) && userPosts.data.map(post => 
                 <View style={[selected === 0 ? styles.postcont : styles.none]}>
-                  <Profilepost title={post.title} description={post.description} thumbnail={post.thumbnail_link} timeStamp={post.timeStamp}/>
+                  <Profilepost key={post._id} title={post.title} description={post.description} thumbnail={post.thumbnail_link} timeStamp={post.timeStamp}/>
                 </View>)}
             {/* POSTS END */}
             {/* Profile Start */}

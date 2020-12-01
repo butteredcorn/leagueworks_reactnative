@@ -119,7 +119,7 @@ return <View style={styles.container}>
     <ScrollView style={styles.chat}>
 
         {!messages.loading && Array.isArray(messages.data) && messages.data.map(message =>
-            <MyBubble messageID={message._id} userID={user_id} senderID={message.sender_id} receivers={message.receivers} text={message.message} textcolor={user_id == message.sender_id ? "#E8E8E8" : '#F18701'} bgcolor={user_id == message.sender_id ? '#F18701' : '#ECECEC'} rightposition={user_id == message.sender_id ? -105 : -15}/>
+            <MyBubble key={user_id == message.sender_id ? user_id + message.message : message.receivers[0] + message.message} messageID={message._id} userID={user_id} senderID={message.sender_id} receivers={message.receivers} text={message.message} textcolor={user_id == message.sender_id ? "#E8E8E8" : '#F18701'} bgcolor={user_id == message.sender_id ? '#F18701' : '#ECECEC'} rightposition={user_id == message.sender_id ? -105 : -15}/>
         )}
        
     </ScrollView>
