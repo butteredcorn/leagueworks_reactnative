@@ -136,6 +136,7 @@ export default function LeagueSchedule(){
     //create a view/create template, based on whether data from server is null
     
     const data = useLocation()
+    const [page, updatePage] = useState({redirect: false})
     const [user, update] = useState("")
     const [arenas, updateArenas] = useState({loading: true, data: []})
     const [seasonSchedule, updateSchedule] = useState({loading: true, data: []})
@@ -311,6 +312,10 @@ export default function LeagueSchedule(){
         return [year, month, day].join('-');
     }
 
+    const redirectArenas = (arena) => {
+        updatePage({redirect: !page.redirect, path: "/arenas", arena: arena})
+    }
+
     useEffect(() => {
         try {
             loadPage()
@@ -324,6 +329,10 @@ export default function LeagueSchedule(){
             console.log(err)
         }
     }, [])
+
+    if (page.redirect) {
+        return <Redirect to={{pathname: page.path, state: page}}></Redirect>
+    }
 
     return !seasonSchedule.loading && seasonSchedule.data && viewTemplate  ? 
     //editing template
@@ -555,7 +564,9 @@ export default function LeagueSchedule(){
             <NavBar NavBar active={1} />
         </View>
 
-    </View> :
+    </View> 
+    
+    :
 
     //viewing template
     <View style={styles.container}>
@@ -578,7 +589,7 @@ export default function LeagueSchedule(){
             <Text>Next 10 Upcoming Games:</Text>
             {Array.isArray( seasonSchedule.data.events) &&  seasonSchedule.data.events.slice(0, 10).map(event =>
                 <View style={styles.event}>
-                    <EventSection redirect={""} key={`${event.home_team} ${event.away_team}`} eventName={event.summary} eventTime={event.start_date} eventLocation={event.arena}/>
+                    <EventSection redirect={redirectArenas} key={`${event.home_team} ${event.away_team}`} eventName={event.summary} eventTime={event.start_date} eventLocation={event.arena}/>
                 </View>
             )}
         </View>
