@@ -42,6 +42,9 @@ const styles = StyleSheet.create({
     },
     chat: {
         width: "100%"
+    },
+    avatarmargin:{
+        marginRight:20
     }
 })
 
@@ -109,7 +112,9 @@ return <View style={styles.container}>
     
     <View style={styles.contactCont}>
         <View style={styles.contact}>
+            <View style={styles.avatarmargin}>
             <Avatar dim={40} style={styles.avatar}/>
+            </View>
             <Header key={otherUserID} head={`${otherUserFirstName} ${otherUserLastName}`} />
         </View>
     </View>
