@@ -546,7 +546,7 @@ const MyPill = ({
                       ]}
                     >
                       <Avatar dim={50}/>
-                      
+                      <Text style={styles.membertext}>{`${players[0].first_name} ${players[0].last_name}`}</Text>
                     </View>
                     <View
                       style={[
@@ -576,24 +576,24 @@ const MyPill = ({
                       ]}
                     >
                       <Avatar dim={50}/>
-                      <Text style={styles.membertext}>{team_captain}</Text>
+                      <Text style={styles.membertext}>{`${players[0].first_name} ${players[0].last_name}`}</Text>
                     </View>
-                    <View
+                    {/* <View
                       style={[
                         selected === 5 ? styles.indivadmincont : styles.none
                       ]}
                     >
                       <Avatar dim={50}/>
                       <Text style={styles.membertext}>{team_captain}</Text>
-                    </View>
-                    <View
+                    </View> */}
+                    {/* <View
                       style={[
                         selected === 5 ? styles.indivadmincont : styles.none
                       ]}
                     >
                       <Avatar dim={50}/>
                       <Text style={styles.membertext}>{team_captain}</Text>
-                    </View>
+                    </View> */}
                   </View>
                 </View>
                 {/* Players CONTAINER START */}
@@ -604,33 +604,24 @@ const MyPill = ({
                     style={[selected === 6 ? styles.roster : styles.none]}
                   ></View>
                   {/* Players CONTAINER START */}
+                  
+                  
+                  
                   <View
                     style={[selected === 6 ? styles.admincont : styles.none]}
                   >
-                    <View
+
+                    
+                    {Array.isArray(players) && players.map(player => <View
                       style={[
                         selected === 6 ? styles.indivadmincont : styles.none
                       ]}
                     >
                       <Avatar dim={50}/>
-                      <Text style={styles.membertext}>{player}</Text>
-                    </View>
-                    <View
-                      style={[
-                        selected === 6 ? styles.indivadmincont : styles.none
-                      ]}
-                    >
-                      <Avatar dim={50}/>
-                      <Text style={styles.membertext}>{player}</Text>
-                    </View>
-                    <View
-                      style={[
-                        selected === 6 ? styles.indivadmincont : styles.none
-                      ]}
-                    >
-                      <Avatar dim={50}/>
-                      <Text style={styles.membertext}>{player}</Text>
-                    </View>
+                      <Text style={styles.membertext}>{`${player.first_name} ${player.last_name}`}</Text>
+                    </View>)}
+
+                   
                   </View>
                 </View>
 
