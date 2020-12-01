@@ -165,6 +165,10 @@ export default function Schedule(){
         update({redirect: !page.redirect, path: "/arenas", arena: arena})
     }
 
+    const redirectMatchEdit = (match_id) => {
+        update({redirect: !page.redirect, path: "/match-edit", match_d: match_id})
+    }
+
     const loadPage = async() => {
         const user = await getUser()
         updateUser(user)
@@ -235,25 +239,10 @@ export default function Schedule(){
 
         {!unifiedEvents.loading && Array.isArray(unifiedEvents.data) && unifiedEvents.data.slice(0, 10).map(event =>
         <View style={styles.event}>
-            <EventSection redirect={redirectArenas} key={`${event.home_team} ${event.away_team}`} eventName={event.summary} eventTime={event.start_date} eventLocation={event.arena} editable={true}/>
+            <EventSection key={event.match_id} match_id={event.match_id} redirect={redirectArenas} redirect2={redirectMatchEdit} key={`${event.home_team} ${event.away_team}`} eventName={event.summary} eventTime={event.start_date} eventLocation={event.arena} editable={true}/>
         </View>
         )}
 
-
-        {/* <View style={styles.event}>
-            <EventSection eventName="Game at BCIT" eventTime="9:00AM - 11:00AM" eventLocation="Burnaby, BC" eventDesc="Don't forget the ID!"/>
-
-        </View> */}
-        {/* {arr.map((o,i)=>{
-        return<View style={styles.event} key={i}>
-            <EventSection  eventName="Game Day!" 
-            eventTime={[o.start_date," -"]} 
-            eventEnd={o.end_date}
-            eventLocation={o.season_arenas.monday}
-            eventDesc="Fun times!!!"
-            />
-        </View> 
-        })}*/}
         <View style={styles.spacer} />
         <View style={styles.spacer} />
 
