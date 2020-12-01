@@ -11,7 +11,7 @@ const EventSection = ({ eventName, eventTime, eventEnd, eventDesc, eventLocation
               <Text style={{fontFamily:"Ubuntu-Bold"}}>{eventName}</Text>
             </View>
 
-            {editable && <TouchableOpacity onPress={() => redirect2()}>
+            {editable && <TouchableOpacity onPress={() => redirect2(match_id)}>
                 <Image  source={require("../../public/edit.png")} style={styles.editIcon}/>
             </TouchableOpacity>} 
           </View>
