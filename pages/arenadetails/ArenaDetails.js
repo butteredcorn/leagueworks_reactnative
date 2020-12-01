@@ -165,7 +165,7 @@ return <View>
         <View style={styles.arenaContainer}>
             <Text style={styles.heading}>{arena.data.name}</Text>
             {/* arena.photos[0] */}
-            <Image source={{uri: 'https://s3-media0.fl.yelpcdn.com/bphoto/F8-wSk_FseiYtVShXPw18Q/348s.jpg'}} style={styles.img} resizeMode="cover"/>
+            <Image source={{uri: arena.data.photos[0]}} style={styles.img} resizeMode="cover"/>
         </View>
 
         <View style={styles.arenaContainer}>

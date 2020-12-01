@@ -368,7 +368,7 @@ export default function LeagueSchedule(){
     //     </View>)
     // }
 
-    return !seasonSchedule.loading && Array.isArray(seasonSchedule.data) && seasonSchedule.data.length > 0 || !viewTemplate ? 
+    return !seasonSchedule.loading && Array.isArray(seasonSchedule.data) && seasonSchedule.data.length > 0 || viewTemplate ? 
     //editing template
     <View style={styles.container}>
 
@@ -612,7 +612,7 @@ export default function LeagueSchedule(){
                     <MyButton text={"change schedule"} onPress={() => switchView()}></MyButton>
             </View>
         </View>
-        <View>
+        <View style={{top: 50}}>
             <Text key={seasonSchedule.data._id}></Text>
             <Text>Season Start: {getYYYYMMDD(seasonSchedule.data.start_date)}</Text>
             <Text>Season End: {getYYYYMMDD(seasonSchedule.data.end_date)}</Text>
