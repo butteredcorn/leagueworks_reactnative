@@ -166,6 +166,7 @@ return <View style={styles.container}>
 
             <View>
             {/* POSTS START */}
+<<<<<<< HEAD
                 <View style={[selected === 0 ? styles.postcont : styles.none]}>
                   <Profilepost />
                 </View>
@@ -175,6 +176,12 @@ return <View style={styles.container}>
                 <View style={[selected === 0 ? styles.postcont : styles.none]}>
                   <Profilepost />
                 </View>
+=======
+                {!userPosts.loading && Array.isArray(userPosts.data) && userPosts.data.map(post => 
+                <View key={post._id} style={[selected === 0 ? styles.postcont : styles.none]}>
+                  <Profilepost post_id={post._id} title={post.title} description={post.description} thumbnail={post.thumbnail_link} timeStamp={post.timeStamp}/>
+                </View>)}
+>>>>>>> 98341780b27966d1a20d722de996fc30f1fa0d7c
             {/* POSTS END */}
             {/* Profile Start */}
                 <View style={[selected === 1 ? styles.profiletabcont : styles.none]}>

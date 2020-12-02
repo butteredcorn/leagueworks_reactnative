@@ -1,5 +1,5 @@
 import React, {useState, useReducer, useEffect} from "react";
-import {Redirect, useLocation} from 'react-router-native'
+import {Redirect, useLocation, useHistory} from 'react-router-native'
 import {Text, View, StyleSheet, Image, TouchableOpacity, ScrollView, AsyncStorage} from "react-native";
 import MyHeader from "../../comps/header";
 import NavBar from "../../comps/navbar";
@@ -158,6 +158,8 @@ export default function LeagueSchedule(){
     const [saturdayPicker, updateSaturdayPicker] = useState(false)
     const [sundayArena, updateSunday] = useState('')
     const [sundayPicker, updateSundayPicker] = useState(false)
+    const history = useHistory();
+
 
     const {_id, league_name, email, phone_number, sport_type, headline} = data.state
 
@@ -225,7 +227,7 @@ export default function LeagueSchedule(){
                 alert(result.data.error)
             } else {
                 console.log(result.data)
-                updateView(true)
+                updateView(!viewTemplate)
             }
         } catch (err) {
             console.log(err)
@@ -377,6 +379,12 @@ export default function LeagueSchedule(){
         {/* Header */}
         <View style={styles.header}>
             <View style={styles.pagetitle}>
+            <TouchableOpacity 
+                onPress={() => {
+                history.push("/leagues");
+                }}>
+            <Image source={require("../../public/backarrow.png")} />
+        </TouchableOpacity>
                 <MyHeader  head="League Schedule"/>
                 {league_name && <MyHeader  head={league_name}/>}
             </View>
@@ -607,6 +615,12 @@ export default function LeagueSchedule(){
         {seasonSchedule.data && <ScrollView style={styles.bodycontainer}>
         <View style={styles.header}>
             <View style={styles.pagetitle}>
+            <TouchableOpacity 
+                onPress={() => {
+                history.push("/leagues");
+                }}>
+            <Image source={require("../../public/backarrow.png")} />
+        </TouchableOpacity>
                     <MyHeader  head="League Schedule"/>
                     {league_name && <MyHeader  head={league_name}/>}
                     <MyButton text={"change schedule"} onPress={() => switchView()}></MyButton>
@@ -622,7 +636,7 @@ export default function LeagueSchedule(){
             seasonSchedule.data.season_arenas */}
             <Text>Next 10 Upcoming Games:</Text>
             {Array.isArray( seasonSchedule.data.events) &&  seasonSchedule.data.events.slice(0, 10).map(event =>
-                <View style={styles.event}>
+                <View key={event.match_id} style={styles.event}>
                     <EventSection redirect={redirectArenas} key={`${event.home_team} ${event.away_team}`} eventName={event.summary} eventTime={event.start_date} eventLocation={event.arena}/>
                 </View>
             )}

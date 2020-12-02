@@ -1,6 +1,6 @@
 import React, {useState, useReducer, useEffect} from "react";
 import {View, StyleSheet, Text, Image, TouchableOpacity, AsyncStorage, ScrollView} from "react-native";
-import {Redirect, useLocation} from 'react-router-native'
+import {Redirect, useLocation, useHistory} from 'react-router-native'
 import MyProgressBar from "../../comps/progress_bar";
 import MyHeader from "../../comps/header";
 import MyLargeButton from "../../comps/buttonlarge";
@@ -28,6 +28,7 @@ const styles = StyleSheet.create({
 
 export default function MatchEdit(){
     const data = useLocation()
+    const history = useHistory()
     const match_id = data.state
     const [page, updatePage] = useState({redirect: false})
     const [user, update] = useState("")
@@ -116,9 +117,27 @@ return page.redirect ? <Redirect to={{pathname: page.path, state: page}}></Redir
         top:-80
     },styles.container]}>
         {/* Header */}
+        <View>
+
+        
+        <TouchableOpacity onPress={() => {
+                history.push("/schedule");
+                }}>
+        <Image style={{
+            height:22,
+            width:13,
+            position:"absolute",
+            top:45,
+            left:-25
+        }}
+        source={require ("../../public/backarrow.png")}/>
+        
+        </TouchableOpacity>
+
         <MyHeader 
         head="Match Edit"
         />
+        </View>
     </View>
 
     <View style={{ marginBottom:15}}>
