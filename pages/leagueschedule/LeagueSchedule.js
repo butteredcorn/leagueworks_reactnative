@@ -225,7 +225,7 @@ export default function LeagueSchedule(){
                 alert(result.data.error)
             } else {
                 console.log(result.data)
-                updateView(true)
+                updateView(!viewTemplate)
             }
         } catch (err) {
             console.log(err)
