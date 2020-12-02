@@ -1,12 +1,13 @@
 import React, {useEffect, useState} from "react";
-import {View, ScrollView, StyleSheet, Image, TouchableOpacity, Text, AsyncStorage} from "react-native";
+import {View, ScrollView, StyleSheet, Image, TouchableOpacity, AsyncStorage} from "react-native";
 import {Calendar} from 'react-native-calendars';
 import { Link, useHistory, Redirect } from "react-router-native";
 import EventSection from "../../comps/EventSection";
 import MyHeader from "../../comps/header";
 import NavBar from "../../comps/navbar";
 import * as axios from 'react-native-axios'
-import { globals } from '../../globals'
+import { globals } from '../../globals';
+import Text from '../../comps/Text';
 
 const styles = StyleSheet.create({
     container:{

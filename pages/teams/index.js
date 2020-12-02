@@ -1,12 +1,13 @@
 import React,{ useState, useEffect } from "react";
-import {View, StyleSheet, TouchableOpacity, Image, Text, ScrollView, AsyncStorage} from "react-native";
+import {View, StyleSheet, TouchableOpacity, Image, ScrollView, AsyncStorage} from "react-native";
 import {Redirect, useLocation} from 'react-router-native'
 import MyHeader from "../../comps/header";
 import NavBar from "../../comps/navbar";
 import MyPill from "../../comps/Teampill";
 import * as axios from 'react-native-axios'
 
-import { globals } from '../../globals'
+import { globals } from '../../globals';
+import Text from '../../comps/Text';
 
 const styles = StyleSheet.create({
     container: {

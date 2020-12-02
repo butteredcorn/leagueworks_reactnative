@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import {
   View,
-  Text,
   StyleSheet,
   TouchableHighlight,
   Image,
   TouchableOpacity
 } from "react-native";
+import Text from '../Text';
 import Avatar from "../Avatar";
 import SearchInput from "../searchinput";
 import MyCheck from "../Check";

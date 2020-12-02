@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, StyleSheet, Image, TouchableHighlight } from "react-native";
+import { View, StyleSheet, Image, TouchableHighlight } from "react-native";
+import Text from '../Text';
 
 const styles = StyleSheet.create({
   container: {

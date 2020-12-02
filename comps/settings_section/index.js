@@ -1,6 +1,7 @@
 import React from "react";
-import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
+import { View, StyleSheet, Image, TouchableOpacity } from "react-native";
 import { useHistory } from "react-router-native";
+import Text from '../Text';
 
 const styles = StyleSheet.create({
   container: {

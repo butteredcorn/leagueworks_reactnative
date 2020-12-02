@@ -1,5 +1,6 @@
 import React from "react";
-import { View, StyleSheet, Image, Text, TouchableOpacity } from "react-native";
+import { View, StyleSheet, Image, TouchableOpacity } from "react-native";
+import Text from '../Text';
 const EventSection = ({ eventName, eventTime, eventEnd, eventDesc, eventLocation, redirect, editable, redirect2, match_id}) => {
   return (
     <View style={styles.container}>

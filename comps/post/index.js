@@ -1,6 +1,7 @@
 import React, { Component, useEffect, useState } from "react";
-import {View, Text, StyleSheet, Image, TouchableHighlight, TouchableOpacity} from "react-native";
+import {View, StyleSheet, Image, TouchableHighlight, TouchableOpacity} from "react-native";
 import Avatar from "../Avatar";
+import Text from '../Text';
 
 const styles = StyleSheet.create({
     container:{

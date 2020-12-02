@@ -1,5 +1,5 @@
 import React, {useState, useReducer, useEffect} from "react";
-import {View, StyleSheet, Text, Image, TouchableOpacity, AsyncStorage, ScrollView} from "react-native";
+import {View, StyleSheet, Image, TouchableOpacity, AsyncStorage, ScrollView} from "react-native";
 import {Redirect, useLocation} from 'react-router-native'
 import MyProgressBar from "../../comps/progress_bar";
 import MyHeader from "../../comps/header";
@@ -9,7 +9,8 @@ import PlayerAdminInput from "../../comps/playeradmininput";
 import Addbutton from "../../comps/addbutton";
 import NavBar from "../../comps/navbar"
 import * as axios from 'react-native-axios'
-import { globals } from '../../globals'
+import { globals } from '../../globals';
+import Text from '../../comps/Text';
 
 
 const styles = StyleSheet.create({
