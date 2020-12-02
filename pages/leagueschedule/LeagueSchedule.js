@@ -1,5 +1,5 @@
 import React, {useState, useReducer, useEffect} from "react";
-import {Redirect, useLocation} from 'react-router-native'
+import {Redirect, useLocation, useHistory} from 'react-router-native'
 import {Text, View, StyleSheet, Image, TouchableOpacity, ScrollView, AsyncStorage} from "react-native";
 import MyHeader from "../../comps/header";
 import NavBar from "../../comps/navbar";
@@ -158,6 +158,8 @@ export default function LeagueSchedule(){
     const [saturdayPicker, updateSaturdayPicker] = useState(false)
     const [sundayArena, updateSunday] = useState('')
     const [sundayPicker, updateSundayPicker] = useState(false)
+    const history = useHistory();
+
 
     const {_id, league_name, email, phone_number, sport_type, headline} = data.state
 
@@ -377,6 +379,12 @@ export default function LeagueSchedule(){
         {/* Header */}
         <View style={styles.header}>
             <View style={styles.pagetitle}>
+            <TouchableOpacity 
+                onPress={() => {
+                history.push("/leagues");
+                }}>
+            <Image source={require("../../public/backarrow.png")} />
+        </TouchableOpacity>
                 <MyHeader  head="League Schedule"/>
                 {league_name && <MyHeader  head={league_name}/>}
             </View>
@@ -607,6 +615,12 @@ export default function LeagueSchedule(){
         {seasonSchedule.data && <ScrollView style={styles.bodycontainer}>
         <View style={styles.header}>
             <View style={styles.pagetitle}>
+            <TouchableOpacity 
+                onPress={() => {
+                history.push("/leagues");
+                }}>
+            <Image source={require("../../public/backarrow.png")} />
+        </TouchableOpacity>
                     <MyHeader  head="League Schedule"/>
                     {league_name && <MyHeader  head={league_name}/>}
                     <MyButton text={"change schedule"} onPress={() => switchView()}></MyButton>
