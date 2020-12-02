@@ -250,8 +250,8 @@ export default function Schedule(){
         {/* Event List */}
 
         {!unifiedEvents.loading && Array.isArray(unifiedEvents.data) && unifiedEvents.data.slice(0, 10).map(event =>
-        <View style={styles.event}>
-            <EventSection key={event.match_id} match_id={event.match_id} redirect={redirectArenas} redirect2={redirectMatchEdit} key={`${event.home_team} ${event.away_team}`} eventName={event.summary} eventTime={event.start_date} eventLocation={event.arena} editable={true}/>
+        <View key={event.match_id} style={styles.event}>
+            <EventSection  match_id={event.match_id} redirect={redirectArenas} redirect2={redirectMatchEdit} key={`${event.home_team} ${event.away_team}`} eventName={event.summary} eventTime={event.start_date} eventLocation={event.arena} editable={true}/>
         </View>
         )}
 

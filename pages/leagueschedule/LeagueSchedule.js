@@ -636,7 +636,7 @@ export default function LeagueSchedule(){
             seasonSchedule.data.season_arenas */}
             <Text>Next 10 Upcoming Games:</Text>
             {Array.isArray( seasonSchedule.data.events) &&  seasonSchedule.data.events.slice(0, 10).map(event =>
-                <View style={styles.event}>
+                <View key={event.match_id} style={styles.event}>
                     <EventSection redirect={redirectArenas} key={`${event.home_team} ${event.away_team}`} eventName={event.summary} eventTime={event.start_date} eventLocation={event.arena}/>
                 </View>
             )}
