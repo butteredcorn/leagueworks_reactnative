@@ -186,7 +186,7 @@ export default function Schedule(){
         }, 2500)
     }, [])
 
-    return page.redirect ? <Redirect to={{pathname: page.path, state: page.event}}></Redirect> : <View>
+    return page.redirect ? <Redirect to={{pathname: page.path, state: {event: page.event, arena: page.arena}}}></Redirect> : <View>
 
     <ScrollView contentContainerStyle={styles.container}>
         

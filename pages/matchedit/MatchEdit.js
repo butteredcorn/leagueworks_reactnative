@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
 export default function MatchEdit(){
     const data = useLocation()
     const history = useHistory()
-    const thisEvent = data.state
+    const thisEvent = data.state.event
 
     const [page, updatePage] = useState({redirect: false})
     const [arenas, updateArenas] = useState({loading: true, data: []})

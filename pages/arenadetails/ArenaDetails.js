@@ -139,6 +139,7 @@ export default function Arenas(){
         try {
             const user = await getUser()
             updateUser(user)
+            console.log(data.state)
             const arenaDetails = await getArenaDetails(user, arenaName)
             updateArena({loading: false, data: arenaDetails})
             console.log(arenaDetails)
@@ -149,6 +150,7 @@ export default function Arenas(){
 
     useEffect(() => {
         try {
+
             loadPage()
 
         } catch (err) {
