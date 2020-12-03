@@ -1,6 +1,6 @@
 import React from "react";
 import { View, StyleSheet, Image, Text, TouchableOpacity } from "react-native";
-const EventSection = ({ eventName, eventTime, eventEnd, eventDesc, eventLocation, redirect, editable, redirect2, match_id}) => {
+const EventSection = ({ eventName, eventTime, eventEnd, eventDesc, eventLocation, redirect, editable, redirect2, match_id, event}) => {
   return (
     <View style={styles.container}>
       <View style={styles.bigBox}>
@@ -11,7 +11,7 @@ const EventSection = ({ eventName, eventTime, eventEnd, eventDesc, eventLocation
               <Text style={{fontFamily:"Ubuntu-Bold", width:220}}>{eventName}</Text>
             </View>
 
-            {editable && <TouchableOpacity onPress={() => redirect2(match_id)}>
+            {editable && <TouchableOpacity onPress={() => redirect2(event)}>
                 <Image  source={require("../../public/edit.png")} style={styles.editIcon}/>
             </TouchableOpacity>} 
           </View>

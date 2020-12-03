@@ -166,8 +166,8 @@ export default function Schedule(){
         update({redirect: !page.redirect, path: "/arenas", arena: arena})
     }
 
-    const redirectMatchEdit = (match_id) => {
-        update({redirect: !page.redirect, path: "/match-edit", match_d: match_id})
+    const redirectMatchEdit = (event) => {
+        update({redirect: !page.redirect, path: "/match-edit", event: event})
     }
 
     const loadPage = async() => {
@@ -186,7 +186,7 @@ export default function Schedule(){
         }, 2500)
     }, [])
 
-    return page.redirect ? <Redirect to={{pathname: page.path, state: page}}></Redirect> : <View>
+    return page.redirect ? <Redirect to={{pathname: page.path, state: page.event}}></Redirect> : <View>
 
     <ScrollView contentContainerStyle={styles.container}>
         
@@ -251,7 +251,7 @@ export default function Schedule(){
 
         {!unifiedEvents.loading && Array.isArray(unifiedEvents.data) && unifiedEvents.data.slice(0, 10).map(event =>
         <View key={event.match_id} style={styles.event}>
-            <EventSection  match_id={event.match_id} redirect={redirectArenas} redirect2={redirectMatchEdit} key={`${event.home_team} ${event.away_team}`} eventName={event.summary} eventTime={event.start_date} eventLocation={event.arena} editable={true}/>
+            <EventSection event={event} match_id={event.match_id} redirect={redirectArenas} redirect2={redirectMatchEdit} key={`${event.home_team} ${event.away_team}`} eventName={event.summary} eventTime={event.start_date} eventLocation={event.arena} editable={true}/>
         </View>
         )}
 
