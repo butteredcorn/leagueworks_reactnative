@@ -1,7 +1,7 @@
 import React, {useState, useReducer, useEffect} from "react";
 
 import {Redirect, useLocation, useHistory} from 'react-router-native'
-import {Text, View, StyleSheet, Image, TouchableOpacity, ScrollView, AsyncStorage} from "react-native";
+import {View, StyleSheet, Image, TouchableOpacity, ScrollView, AsyncStorage} from "react-native";
 
 import MyHeader from "../../comps/header";
 import NavBar from "../../comps/navbar";
