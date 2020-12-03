@@ -40,6 +40,7 @@ const styles = StyleSheet.create({
         fontFamily:"Ubuntu-Bold",
         color: "#333333",
         width: "90%",
+        fontWeight:"bold"
         
     },
     leagueview:{
@@ -55,6 +56,14 @@ const styles = StyleSheet.create({
       spacer: {
         // Adds space to the bottom so you can see the content on the bottom of the scroll view without it being cutoff
         height: 120
+    },
+    buttonMargin: {
+        paddingBottom: 20,
+        marginLeft: 11
+    },
+    edit:{
+        position:"relative",
+        right: 12
     },
 });
 
@@ -198,11 +207,13 @@ return page.redirect ? <Redirect to={{pathname: page.path, state: page.leagueID}
     <ScrollView contentContainerStyles={styles.container}>
     <View style={styles.header}>
         <Text style={styles.pageName}>{!userLeaguesOnly.setting ? "All Leagues" : "Your Leagues"}</Text>
-        <TouchableOpacity onPress={redirectLeagueReg}>
+        <TouchableOpacity onPress={redirectLeagueReg} style={styles.edit}>
             <Image  source={require("../../public/edit.png")} style={styles.editIcon}/>
         </TouchableOpacity>
     </View>
-    <Button text={`${!userLeaguesOnly.setting ? "My Leagues" : "All Leagues"}`} onPress={ () => updateSettings({setting: !userLeaguesOnly.setting, filter: !userLeaguesOnly.filter})}/>
+    <View style={styles.buttonMargin}>
+        <Button text={`${!userLeaguesOnly.setting ? "My Leagues" : "All Leagues"}`} onPress={ () => updateSettings({setting: !userLeaguesOnly.setting, filter: !userLeaguesOnly.filter})}/>
+    </View>
     <View style={styles.pillcont}>
 
         {!allLeagues.loading && Array.isArray(allLeagues.data) ? 

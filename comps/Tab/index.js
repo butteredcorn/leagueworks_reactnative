@@ -24,7 +24,8 @@ const styles = StyleSheet.create({
   text: {
     fontFamily:"Ubuntu-Bold",
     fontSize: 16,
-    paddingBottom: 5
+    paddingBottom: 5,
+    fontWeight:"bold"
   },
   noborder: {
     width: 80,

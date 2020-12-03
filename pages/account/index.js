@@ -115,6 +115,7 @@ const styles = StyleSheet.create({
       fontSize: 36,
       fontFamily:"Ubuntu-Bold",
       color: "#333333",
+      fontWeight:"bold"
   },
 })
 

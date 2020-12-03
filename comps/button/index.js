@@ -14,7 +14,8 @@ const styles = StyleSheet.create({
   },
   firstText: {
     fontFamily:"Ubuntu-Bold",
-    color: "#FFF"
+    color: "#FFF",
+    fontWeight: "bold"
   }
 });
 

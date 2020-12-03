@@ -9,7 +9,7 @@ const Input = ({ text, placeholder, width, value, setValue }) => {
 
   return (
     <View>
-      <Text style={{fontFamily:"Ubuntu-Bold", marginBottom: 5 }}>{text}</Text>
+      <Text style={{fontFamily:"Ubuntu-Bold", marginBottom: 5, fontWeight: "bold"}}>{text}</Text>
       <TextInput
         style={[{
           height: 37,

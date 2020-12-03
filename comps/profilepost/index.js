@@ -47,7 +47,8 @@ const styles = StyleSheet.create({
   titletext: {
     color: "black",
     fontSize: 16,
-    fontFamily:"Ubuntu-Bold"
+    fontFamily:"Ubuntu-Bold",
+    fontWeight:"bold"
   },
   desctext: {
     color: "black",

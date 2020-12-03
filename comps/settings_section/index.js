@@ -11,12 +11,13 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     width: 325,
     height: 50,
-    margin: 5
+    margin: 5,
   },
   text: {
     fontFamily:"Ubuntu-Bold",
     fontSize: 16,
-    paddingBottom: 5
+    paddingBottom: 5,
+    fontWeight:"bold"
   },
   line: {
     position: "absolute",
@@ -30,7 +31,7 @@ const styles = StyleSheet.create({
     width: 18,
     height: 18,
     position: "absolute",
-    left: 0
+    left: 0,
   },
   arrow: {
     resizeMode: "contain",

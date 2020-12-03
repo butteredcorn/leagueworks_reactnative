@@ -9,10 +9,10 @@ const EventSection = ({ eventName, eventTime, eventEnd, eventDesc, eventLocation
 
           <View style={styles.headerFlex}>
             <View style={styles.eventName}>
-              <Text style={{fontFamily:"Ubuntu-Bold"}}>{eventName}</Text>
+              <Text style={{fontFamily:"Ubuntu-Bold", fontWeight: "bold"}}>{eventName}</Text>
             </View>
 
-            {editable && <TouchableOpacity onPress={() => redirect2(match_id)}>
+            {editable && <TouchableOpacity onPress={() => redirect2(match_id)} style={styles.edit}>
                 <Image  source={require("../../public/edit.png")} style={styles.editIcon}/>
             </TouchableOpacity>} 
           </View>
@@ -80,6 +80,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontFamily:"Ubuntu-Light",
     fontWeight:"900",
+    width: "70%",
     
   },
   timeIcon: {
@@ -104,13 +105,19 @@ const styles = StyleSheet.create({
     fontFamily:"Ubuntu-Light"
   },
   eventheader:{
-    fontFamily:"Ubuntu-Bold"
+    fontFamily:"Ubuntu-Bold",
+    fontWeight: "bold"
   },
   headerFlex: {
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between"
-  }
+  },
+  edit:{
+    position:"relative",
+    right: 5,
+    top:13
+},
 });
 
 // const styles = StyleSheet.create({})

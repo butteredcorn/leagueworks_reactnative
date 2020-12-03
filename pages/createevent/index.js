@@ -97,6 +97,7 @@ export default function CreateEvent(){
             textDayHeaderFontFamily:"Ubuntu-Bold",
             selectedDayBackgroundColor:"#F35B04",
             arrowColor:"#F35B04",
+            fontWeight:"bold"
         }}
         // Callback which gets executed when visible months change in scroll view. Default = undefined
         onVisibleMonthsChange={(months) => {console.log('now these months are visible', months);}}
