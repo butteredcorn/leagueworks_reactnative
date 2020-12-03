@@ -61,6 +61,8 @@ const styles = StyleSheet.create({
         bottom:150,
         width:320,
         height:320,
+        borderBottomLeftRadius:30,
+        borderBottomRightRadius:30,
         zIndex:1
     }
 })
@@ -88,6 +90,13 @@ export default function CreateEvent(){
         {selected ? (
         <View style={styles.calendar}>
         <Calendar
+
+        style={{
+            borderBottomLeftRadius:30,
+            borderBottomRightRadius:30,
+            paddingBottom:10,
+            marginBottom:30
+        }}
         
         theme={{
             calendarBackground: '#F8F8F8',

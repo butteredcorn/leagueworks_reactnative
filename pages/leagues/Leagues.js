@@ -219,9 +219,9 @@ return page.redirect ? <Redirect to={{pathname: page.path, state: page.leagueID}
         {!allLeagues.loading && Array.isArray(allLeagues.data) ? 
         //these are already filtered for league joined by the user
         allLeagues.data.filter(userLeagueFilter).map(league => 
-            <View style={styles.pillMargin}>
-            <TouchableOpacity key={league._id} onPress={() => redirectTeams(league._id)}>
-                <MyPill key={league._id} thumbnail_link={league.thumbnail_link} league={league} onPress={joinLeague} joined={league.user_league} redirect={redirectSchedule}  leagueID={league._id} leagueName={league.league_name} email={league.email} phoneNumber={league.phone_number} sportType={league.sport_type} headline={league.headline} img={require("../../public/girl.jpg")}></MyPill>
+            <View key={league._id} style={styles.pillMargin}>
+            <TouchableOpacity  onPress={() => redirectTeams(league._id)}>
+                <MyPill thumbnail_link={league.thumbnail_link} league={league} onPress={joinLeague} joined={league.user_league} redirect={redirectSchedule}  leagueID={league._id} leagueName={league.league_name} email={league.email} phoneNumber={league.phone_number} sportType={league.sport_type} headline={league.headline} img={require("../../public/girl.jpg")}></MyPill>
             </TouchableOpacity>
             </View>   
         ) 

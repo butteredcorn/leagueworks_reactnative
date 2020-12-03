@@ -157,9 +157,8 @@ return page.redirect ? <Redirect to={{pathname: page.path, state: {user: page.us
             </TouchableOpacity>   
     </View>
     {!posts.loading && Array.isArray(posts.data) && posts.data.map(post => 
-        <View style={{alignItems:"center"}}>
+        <View key={post._id} style={{alignItems:"center"}}>
         <Post 
-        key={post._id}
         user_id={user.user_id}
         user_profile_thumbnail={post.user_profile_thumbnail}
         calllike={() => likePost(user, post._id)}

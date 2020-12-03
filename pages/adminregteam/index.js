@@ -1,6 +1,6 @@
 import React, {useState, useReducer, useEffect} from "react";
 import {View, StyleSheet, Image, TouchableOpacity, AsyncStorage} from "react-native";
-import {Redirect, useLocation} from 'react-router-native'
+import {Redirect, useLocation, useHistory} from 'react-router-native'
 import MyProgressBar from "../../comps/progress_bar";
 import MyHeader from "../../comps/header";
 import MyLargeButton from "../../comps/buttonlarge";
@@ -18,6 +18,7 @@ const styles = StyleSheet.create({
 })
 
 export default function TeamReg(){
+    const history = useHistory()
     const data = useLocation()
     const leagueID = data.state
     const [page, updatePage] = useState({redirect: false})
@@ -118,7 +119,9 @@ return page.redirect ? <Redirect to={{pathname: page.path, state: page.leagueID}
         flexDirection:"row",
     }}> 
         {/* Top */}
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => {
+                history.push("/leagues");
+                }}>
         <Image style={{
             height:22,
             width:13,
@@ -127,6 +130,7 @@ return page.redirect ? <Redirect to={{pathname: page.path, state: page.leagueID}
             left:-25
         }}
         source={require ("../../public/backarrow.png")}/>
+        
         </TouchableOpacity>
         <MyProgressBar/>
     </View>

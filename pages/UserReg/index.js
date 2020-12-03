@@ -47,6 +47,9 @@ const styles = StyleSheet.create({
     },
     datePicker: {
         width: 280
+    },
+    headmargin:{
+        marginBottom:20
     }
 })
 
@@ -133,7 +136,9 @@ export default function UserReg ({token, setToken}) {
     return token && token.token && token.loggedin ? <Redirect to="/"/> : <ScrollView>
         <View style={styles.topCont}>
             <MyProgressBar></MyProgressBar>
+            <View style={styles.headmargin}>
             <MyHeader head={`${data.state == "admin" ? "Admin" : "Player"} Registration`}></MyHeader>
+            </View>
             <Avatar img={require("../../public/girl2.png")}></Avatar>
         </View>
         <View style={styles.bottomCont}>

@@ -153,8 +153,7 @@ export default function CreatePost ({}) {
             <TouchableOpacity 
                 onPress={() => {
                 history.push("/");
-                }}     
-        >
+                }}>
             <Image source={require("../../public/backarrow.png")} />
         </TouchableOpacity>
         <Text style={styles.pageName}>Create Post</Text>

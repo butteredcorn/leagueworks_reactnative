@@ -542,6 +542,7 @@ const MyPill = ({
 
                     
                     {Array.isArray(players) && players.map(player => <View
+                      key={player._id}
                       style={[
                         selected === 6 ? styles.indivadmincont : styles.none
                       ]}

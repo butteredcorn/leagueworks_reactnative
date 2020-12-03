@@ -37,6 +37,7 @@ const styles = StyleSheet.create({
         bottom:-75,
         width:320,
         height:320,
+        marginBottom:50
     },
     event:{
         position:"relative",
@@ -166,8 +167,8 @@ export default function Schedule(){
         update({redirect: !page.redirect, path: "/arenas", arena: arena})
     }
 
-    const redirectMatchEdit = (match_id) => {
-        update({redirect: !page.redirect, path: "/match-edit", match_d: match_id})
+    const redirectMatchEdit = (event) => {
+        update({redirect: !page.redirect, path: "/match-edit", event: event})
     }
 
     const loadPage = async() => {
@@ -186,7 +187,7 @@ export default function Schedule(){
         }, 2500)
     }, [])
 
-    return page.redirect ? <Redirect to={{pathname: page.path, state: page}}></Redirect> : <View>
+    return page.redirect ? <Redirect to={{pathname: page.path, state: page.event}}></Redirect> : <View>
 
     <ScrollView contentContainerStyle={styles.container}>
         
@@ -214,17 +215,30 @@ export default function Schedule(){
 
         <View style={styles.calendar}>
         <Calendar
+
+        style={{
+            borderRadius:30,
+            padding:20,
+            marginBottom:30
+        }}
         
         theme={{
-            calendarBackground: '#F8F8F8',
+            calendarBackground: '#ECECEC',
             textDayFontFamily:"Ubuntu-Bold",
             todayTextColor:"#F35B04",
             textMonthFontFamily:"Ubuntu-Bold",
             textDayHeaderFontFamily:"Ubuntu-Bold",
             selectedDayBackgroundColor:"#F35B04",
             arrowColor:"#F35B04",
-            fontWeight:"bold"
-            
+
+            fontWeight:"bold",
+
+            'stylesheet.calendar.main':{
+                monthview:{
+                    borderRadius:30
+                }
+            }
+
         }}
         // Callback which gets executed when visible months change in scroll view. Default = undefined
         onVisibleMonthsChange={(months) => {console.log('now these months are visible', months);}}
@@ -241,8 +255,8 @@ export default function Schedule(){
         {/* Event List */}
 
         {!unifiedEvents.loading && Array.isArray(unifiedEvents.data) && unifiedEvents.data.slice(0, 10).map(event =>
-        <View style={styles.event}>
-            <EventSection key={event.match_id} match_id={event.match_id} redirect={redirectArenas} redirect2={redirectMatchEdit} key={`${event.home_team} ${event.away_team}`} eventName={event.summary} eventTime={event.start_date} eventLocation={event.arena} editable={true}/>
+        <View key={event.match_id} style={styles.event}>
+            <EventSection event={event} match_id={event.match_id} redirect={redirectArenas} redirect2={redirectMatchEdit} key={`${event.home_team} ${event.away_team}`} eventName={event.summary} eventTime={event.start_date} eventLocation={event.arena} editable={true}/>
         </View>
         )}
 
