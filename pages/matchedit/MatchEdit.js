@@ -1,7 +1,9 @@
 import React, {useState, useReducer, useEffect} from "react";
 
-import {View, StyleSheet,Image, TouchableOpacity, AsyncStorage, ScrollView} from "react-native";
-import {Redirect, useLocation, useHistory} from 'react-router-native'
+
+import {View, StyleSheet, Image, TouchableOpacity, AsyncStorage, ScrollView} from "react-native";
+
+import {Redirect, useLocation, useHistory} from 'react-router-native';
 
 import MyProgressBar from "../../comps/progress_bar";
 import MyHeader from "../../comps/header";
@@ -40,7 +42,7 @@ const styles = StyleSheet.create({
 export default function MatchEdit(){
     const data = useLocation()
     const history = useHistory()
-    const thisEvent = data.state
+    const thisEvent = data.state.event
 
     const [page, updatePage] = useState({redirect: false})
     const [arenas, updateArenas] = useState({loading: true, data: []})
