@@ -106,7 +106,7 @@ export default function MatchEdit(){
     async function updateMatch(user, match_id) {
         try {
 
-            const result = await axios.post(`${globals.webserverURL}/database/update/match`, {
+            const result = await axios.post(`http://localhost:5000/database/update/match`, {
                 match: {
                     match_id: match_id,
                     update: event
@@ -211,7 +211,7 @@ return page.redirect ? <Redirect to={{pathname: page.path, state: page}}></Redir
     <View style={{ marginBottom:15}}>
         <View style={styles.selectdate_cont}>
     <Text>Current Start Date: {thisEvent.start_date}</Text>
-                <DatePicker title={"Change Start Date?"} style={styles.datePicker} setValue={(date) => dispatch({type: "match_start", value: date})}/>
+                <DatePicker title={"Change Start Date?"} style={styles.datePicker} defaultDate={event.start_date} setValue={(date) => dispatch({type: "match_start", value: date})}/>
         </View>
     </View>
 
