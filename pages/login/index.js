@@ -83,7 +83,7 @@ export default function Login({token, setToken}){
         <View>
         {/* <Input text="Password" value={password} setValue={setPassword}/> */}
         <Text style={{ fontWeight:"bold"}}>Password</Text>
-        <TextInput  secureTextEntry={true} placeholder="Password" style={styles.passwordInput} value={password} setValue={setPassword}/>
+        <TextInput  secureTextEntry={true} placeholder="Password" style={styles.passwordInput} value={password} onChangeText={(text) => setPassword(text)}/>
         </View>
 
 
