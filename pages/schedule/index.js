@@ -1,12 +1,13 @@
 import React, {useEffect, useState} from "react";
-import {View, ScrollView, StyleSheet, Image, TouchableOpacity, Text, AsyncStorage} from "react-native";
+import {View, ScrollView, StyleSheet, Image, TouchableOpacity, AsyncStorage} from "react-native";
 import {Calendar} from 'react-native-calendars';
 import { Link, useHistory, Redirect } from "react-router-native";
 import EventSection from "../../comps/EventSection";
 import MyHeader from "../../comps/header";
 import NavBar from "../../comps/navbar";
 import * as axios from 'react-native-axios'
-import { globals } from '../../globals'
+import { globals } from '../../globals';
+import Text from '../../comps/Text';
 
 const styles = StyleSheet.create({
     container:{
@@ -229,11 +230,15 @@ export default function Schedule(){
             textDayHeaderFontFamily:"Ubuntu-Bold",
             selectedDayBackgroundColor:"#F35B04",
             arrowColor:"#F35B04",
+
+            fontWeight:"bold",
+
             'stylesheet.calendar.main':{
                 monthview:{
                     borderRadius:30
                 }
             }
+
         }}
         // Callback which gets executed when visible months change in scroll view. Default = undefined
         onVisibleMonthsChange={(months) => {console.log('now these months are visible', months);}}

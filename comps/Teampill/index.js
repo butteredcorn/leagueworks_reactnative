@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import {
   View,
-  Text,
   StyleSheet,
   TouchableHighlight,
   Image,
   TouchableOpacity
 } from "react-native";
+import Text from '../Text';
 import Avatar from "../Avatar";
 import SearchInput from "../searchinput";
 import MyCheck from "../Check";
@@ -208,6 +208,8 @@ const styles = StyleSheet.create({
   title: {
     fontFamily:"Ubuntu-Bold",
     fontSize: 16,
+    fontWeight:"bold",
+    width: "100%",
   },
   text: {
     fontFamily:"Ubuntu-Light",
@@ -219,13 +221,16 @@ const styles = StyleSheet.create({
     fontFamily:"Ubuntu-Bold",
     fontSize: 9,
     paddingBottom: 5,
-    color: "#111111"
+    color: "#111111",
+    fontWeight:"bold"
   },
   winnumber: {
     fontFamily:"Ubuntu-Bold",
     fontSize: 36,
     paddingBottom: 5,
-    color: "#111111"
+    color: "#111111",
+    fontWeight:"bold"
+    
   },
   losenumber: {
     fontFamily:"Ubuntu-Light",
@@ -237,18 +242,21 @@ const styles = StyleSheet.create({
     fontFamily:"Ubuntu-Bold",
     fontSize: 9,
     paddingBottom: 5,
-    color: "#F35B04"
+    color: "#F35B04",
+    fontWeight:"bold"
   },
   addmembertext: {
     fontFamily:"Ubuntu-Bold",
     fontSize: 12,
     color: "#111111",
-    paddingLeft:10
+    paddingLeft:10,
+    fontWeight:"bold"
   },
   membertext: {
     fontFamily:"Ubuntu-Bold",
     fontSize: 18,
-    color: "#111111"
+    color: "#111111",
+    fontWeight:"bold"
   },
   avatarcont: {
     height:60
@@ -272,13 +280,16 @@ const styles = StyleSheet.create({
     backgroundColor: "#F35B04",
     alignItems: "center",
     justifyContent: "center",
-    borderRadius: 50
+    borderRadius: 50,
+    position: "relative",
+    right: -10
 
   },
   joinbtntext: {
     color: "#F8F9FA",
     fontSize: 12,
-    fontFamily:"Ubuntu-Bold"
+    fontFamily:"Ubuntu-Bold",
+    fontWeight:"bold"
   }
 });
 

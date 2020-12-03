@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import { Redirect } from 'react-router-native'
-import {View, StyleSheet, Text, TouchableOpacity, ScrollView, AsyncStorage} from "react-native";
+import {View, StyleSheet, TouchableOpacity, ScrollView, AsyncStorage} from "react-native";
 import MyHeader from "../../comps/header";
 import Avatar from "../../comps/Avatar";
 import NavBar from "../../comps/navbar"
@@ -11,13 +11,16 @@ import * as axios from 'react-native-axios'
 
 import { globals } from '../../globals'
 
-import Button from '../../comps/button'
+import Button from '../../comps/button';
+import Text from '../../comps/Text';
 
 const styles = StyleSheet.create({
     container:{
         alignItems:"center",
         position: "relative",
         height: "100%",
+        
+
     },
     pageName:{
         fontSize: 36,

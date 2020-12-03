@@ -1,11 +1,12 @@
 import React from "react";
-import {View, StyleSheet, Text, TouchableOpacity, ScrollView} from "react-native";
+import {View, StyleSheet, TouchableOpacity, ScrollView} from "react-native";
 import SendToInput from "../../../comps/sendtoinput";
 import Avatar from "../../../comps/Avatar";
 import Header from "../../../comps/header";
 import Button from "../../../comps/button";
 import MyHeader from "../../../comps/header";
 import MyButton from "../../../comps/button";
+import Text from '../../../comps/Text';
 
 const styles = StyleSheet.create({
     container:{

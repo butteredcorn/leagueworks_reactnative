@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {View, StyleSheet, Text, Image, AsyncStorage, TouchableOpacity, ScrollView} from "react-native";
+import {View, StyleSheet, Image, AsyncStorage, TouchableOpacity, ScrollView} from "react-native";
 import {Redirect} from 'react-router-native'
 import MyHeader from "../../comps/header";
 import Avatar from "../../comps/Avatar";
@@ -11,6 +11,7 @@ import MyLargeButton from "../../comps/buttonlarge";
 import MySection from "../../comps/settings_section";
 import { Link, useHistory } from "react-router-native";
 import * as axios from 'react-native-axios'
+import Text from '../../comps/Text';
 
 import { globals } from '../../globals'
 
@@ -114,6 +115,7 @@ const styles = StyleSheet.create({
       fontSize: 36,
       fontFamily:"Ubuntu-Bold",
       color: "#333333",
+      fontWeight:"bold"
   },
 })
 

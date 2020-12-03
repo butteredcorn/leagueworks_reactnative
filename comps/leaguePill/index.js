@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import {
   View,
-  Text,
   StyleSheet,
   TouchableHighlight,
   Image,
   TouchableOpacity
 } from "react-native";
+import Text from '../Text';
 import Avatar from "../Avatar";
 import MyTab from "../Tab";
 import SearchInput from "../searchinput";
@@ -200,7 +200,9 @@ const styles = StyleSheet.create({
   },
   title: {
     fontFamily:"Ubuntu-Bold",
-    fontSize: 16
+    fontSize: 16,
+    fontWeight:"bold",
+    width: "100%"
   },
   text: {
     fontFamily:"Ubuntu-Light",
@@ -212,34 +214,40 @@ const styles = StyleSheet.create({
     fontFamily:"Ubuntu-Bold",
     fontSize: 9,
     paddingBottom: 5,
-    color: "#111111"
+    color: "#111111",
+    fontWeight:"bold"
   },
   winnumber: {
     fontFamily:"Ubuntu-Bold",
     fontSize: 36,
     paddingBottom: 5,
-    color: "#111111"
+    color: "#111111",
+    fontWeight:"bold"
   },
   losenumber: {
     fontFamily:"Ubuntu-Bold",
     fontSize: 16,
     paddingBottom: 5,
-    color: "#111111"
+    color: "#111111",
+    fontWeight:"bold"
   },
   textselected: {
     fontFamily:"Ubuntu-Bold",
+    fontWeight:"bold",
     fontSize: 9,
     paddingBottom: 5,
     color: "#F35B04"
   },
   addmembertext: {
     fontFamily:"Ubuntu-Bold",
+    fontWeight:"bold",
     fontSize: 12,
     color: "#111111",
     paddingLeft:10
   },
   membertext: {
     fontFamily:"Ubuntu-Bold",
+    fontWeight:"bold",
     fontSize: 18,
     color: "#111111"
   },
@@ -260,18 +268,21 @@ const styles = StyleSheet.create({
   },
 
   joinbtn: {
-    width: 60,
-    height: 20,
+    width: 65,
+    height: 25,
     backgroundColor: "#F35B04",
     alignItems: "center",
     justifyContent: "center",
-    borderRadius: 50
+    borderRadius: 50,
+    position: "relative",
+    right: -10
 
   },
   joinbtntext: {
     color: "#F8F9FA",
     fontSize: 12,
     fontFamily:"Ubuntu-Bold",
+    fontWeight:"bold",
   }
 });
 

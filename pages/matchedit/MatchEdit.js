@@ -1,6 +1,8 @@
 import React, {useState, useReducer, useEffect} from "react";
-import {View, StyleSheet, Text, Image, TouchableOpacity, AsyncStorage, ScrollView} from "react-native";
+
+import {View, StyleSheet, Image, TouchableOpacity, AsyncStorage, ScrollView} from "react-native";
 import {Redirect, useLocation, useHistory} from 'react-router-native'
+
 import MyProgressBar from "../../comps/progress_bar";
 import MyHeader from "../../comps/header";
 import MyLargeButton from "../../comps/buttonlarge";
@@ -12,7 +14,8 @@ import DatePicker from '../../comps/datepicker/DatePicker'
 import CheckBox from '@react-native-community/checkbox'
 import {Picker} from '@react-native-picker/picker';
 import * as axios from 'react-native-axios'
-import { globals } from '../../globals'
+import { globals } from '../../globals';
+import Text from '../../comps/Text';
 
 
 const styles = StyleSheet.create({

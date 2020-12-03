@@ -1,5 +1,6 @@
 import React from "react";
-import { View, Text, TextInput } from "react-native";
+import { View, TextInput } from "react-native";
+import Text from '../Text';
 
 const Input = ({ text, placeholder, width, value, setValue }) => {
   //const [value, onChangeText] = React.useState();
@@ -8,7 +9,7 @@ const Input = ({ text, placeholder, width, value, setValue }) => {
 
   return (
     <View>
-      <Text style={{fontFamily:"Ubuntu-Bold", marginBottom: 5 }}>{text}</Text>
+      <Text style={{fontFamily:"Ubuntu-Bold", marginBottom: 5, fontWeight: "bold"}}>{text}</Text>
       <TextInput
         style={[{
           height: 37,

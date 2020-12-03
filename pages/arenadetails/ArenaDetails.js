@@ -1,6 +1,6 @@
 import React,{ useState, useEffect } from "react";
 import {Redirect, useLocation } from 'react-router-native'
-import {View, StyleSheet, TouchableOpacity, Image, Text, ScrollView, AsyncStorage} from "react-native";
+import {View, StyleSheet, TouchableOpacity, Image, ScrollView, AsyncStorage} from "react-native";
 import MapView, { Marker, PROVIDER_GOOGLE} from 'react-native-maps'
 import * as axios from 'react-native-axios'
 
@@ -8,7 +8,8 @@ import pin from '../../public/location.png'
 
 import { globals } from '../../globals'
 import NavBar from "../../comps/navbar";
-import Post from "../../comps/post"
+import Post from "../../comps/post";
+import Text from '../../comps/Text';
 
 const styles = StyleSheet.create({
     container: {
