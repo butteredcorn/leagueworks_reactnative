@@ -1,6 +1,7 @@
 import React, { Component, useEffect, useState } from "react";
-import {View, Text, StyleSheet, Image, TouchableHighlight, TouchableOpacity} from "react-native";
+import {View, StyleSheet, Image, TouchableHighlight, TouchableOpacity} from "react-native";
 import Avatar from "../Avatar";
+import Text from '../Text';
 
 const styles = StyleSheet.create({
     container:{
@@ -31,7 +32,8 @@ const styles = StyleSheet.create({
         width: "80%",
         position: "absolute",
         bottom: 20
-    }
+    },
+    
 })
 
 const Post = ({Username, Title, Description, img, delete_auth, calllike, calldelete, likes, user_id, user_profile_thumbnail})=> {
@@ -61,7 +63,8 @@ const Post = ({Username, Title, Description, img, delete_auth, calllike, calldel
                     bottom:-15,
                     marginLeft: 20,
                     fontFamily:"Ubuntu-Bold",
-                    color:"#F35B04"
+                    color:"#F35B04",
+                    fontWeight:"bold"
                 }}>{Username}</Text>
             </View>
             <View style={{
@@ -75,6 +78,7 @@ const Post = ({Username, Title, Description, img, delete_auth, calllike, calldel
                 {/* Title */}
                 <Text style={{
                     fontFamily:"Ubuntu-Bold",
+                    fontWeight:"bold",
                     color:"#333333",
                     marginTop: -10,
                     paddingLeft:30

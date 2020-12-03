@@ -1,5 +1,5 @@
 import React, { useState, useReducer, useEffect } from "react";
-import {View, ScrollView, StyleSheet, TouchableOpacity, Text, TextInput, Image, AsyncStorage} from "react-native";
+import {View, ScrollView, StyleSheet, TouchableOpacity, TextInput, Image, AsyncStorage} from "react-native";
 import { Redirect, useLocation, useHistory } from 'react-router-native'
 import * as axios from 'react-native-axios'
 
@@ -9,6 +9,7 @@ import MyHeader from "../../comps/header";
 import Avatar from "../../comps/Avatar";
 import Input from "../../comps/input";
 import MyLargeButton from "../../comps/buttonlarge";
+import Text from '../../comps/Text';
 
 
 const styles = StyleSheet.create({

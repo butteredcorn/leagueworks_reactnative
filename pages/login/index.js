@@ -1,6 +1,6 @@
 import React, { Component, useState } from "react";
 import {Redirect} from 'react-router-native';
-import { Button, Image, StyleSheet, Text, TextInput, View, AsyncStorage } from "react-native";
+import { Button, Image, StyleSheet, TextInput, View, AsyncStorage } from "react-native";
 
 import MyHeader from "../../comps/header";
 import MyLargeButton from "../../comps/buttonlarge";
@@ -8,7 +8,8 @@ import Input from "../../comps/input";
 
 import { globals } from '../../globals'
 //const { webserverURL } = globals
-import * as axios from 'react-native-axios'
+import * as axios from 'react-native-axios';
+import Text from '../../comps/Text';
 
 
 import Logo from "../../public/Logo1.png";

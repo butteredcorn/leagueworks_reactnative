@@ -1,6 +1,8 @@
 import React, {useState, useReducer, useEffect} from "react";
+
 import {Redirect, useLocation, useHistory} from 'react-router-native'
 import {Text, View, StyleSheet, Image, TouchableOpacity, ScrollView, AsyncStorage} from "react-native";
+
 import MyHeader from "../../comps/header";
 import NavBar from "../../comps/navbar";
 import Input from "../../comps/input";
@@ -13,7 +15,8 @@ import {Picker} from '@react-native-picker/picker';
 import EventSection from '../../comps/EventSection'
 
 import * as axios from 'react-native-axios'
-import { globals } from '../../globals'
+import { globals } from '../../globals';
+import Text from '../../comps/Text';
 
 const styles = StyleSheet.create({
     container:{

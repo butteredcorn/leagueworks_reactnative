@@ -1,5 +1,6 @@
 import React from "react";
-import { Text, View, TextInput } from "react-native";
+import {View, TextInput } from "react-native";
+import Text from '../Text';
 
 const SendToInput = () => {
   return (

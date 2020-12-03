@@ -1,5 +1,6 @@
 import React from "react";
-import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
+import { View, StyleSheet, TouchableOpacity } from "react-native";
+import Text from '../Text';
 import Avatar from "../Avatar";
 
 const MessageSection = ({ name, messageContent, time, onPress, userAvatar}) => {
