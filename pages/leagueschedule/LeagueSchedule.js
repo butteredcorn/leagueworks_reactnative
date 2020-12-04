@@ -33,14 +33,15 @@ const styles = StyleSheet.create({
         // flexDirection:"row",
         // alignItems:"center",
         // justifyContent:"center"
-        flexDirection: "row",
         width: "100%",
-        height: 45,
+        height: 120,
         marginTop: 50,
         marginBottom: 15,
     },
     pagetitle:{
         position:"relative",
+        flexDirection:"row",
+        width:250
         // left:-85
     },
     date:{
@@ -130,6 +131,17 @@ const styles = StyleSheet.create({
         borderBottomRightRadius: 25,
         // position: "relative",
         // top: -85
+    },
+    backarrow_margin:{
+        marginRight:25
+    },
+    see_sched:{
+        alignItems:"center"
+    },
+    team_name:{
+        textAlign:"center",
+        justifyContent:"center",
+        marginTop:50
     }
 })
 
@@ -346,16 +358,22 @@ export default function LeagueSchedule(){
         <View style={styles.header}>
             <View style={styles.pagetitle}>
             <TouchableOpacity 
+                style={styles.backarrow_margin}
                 onPress={() => {
                 history.push("/leagues");
                 }}>
             <Image source={require("../../public/backarrow.png")} />
         </TouchableOpacity>
-        <MyButton text={"view schedule"} onPress={() => switchView()}></MyButton>
+        
                 <MyHeader  head="League Schedule"/>
-                {league_name && <MyHeader  head={league_name}/>}
+                
+                
+            </View>
+            <View style={styles.team_name}>
+            {league_name && <MyHeader  head={league_name}/>}
             </View>
         </View>
+        <View style={styles.see_sched}><MyButton text={"See Schedule"} onPress={() => switchView()}></MyButton></View>
 
             <View>
             <View style={styles.selectdate_cont}>
