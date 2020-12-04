@@ -128,7 +128,8 @@ export default function MatchEdit(){
                 alert(result.data.error)
             } else {
                 console.log(result.data)
-                //then redirect
+                //then 
+                redirectSchedules()
             }
         } catch (err) {
             console.log(err)
@@ -154,9 +155,10 @@ export default function MatchEdit(){
         const arenas = await getArenas(user)
         updateArenas({loading: false, data: arenas})
 
-        console.log(arenas)
-        console.log(thisEvent)
+    }
 
+    const redirectSchedules = () => {
+        updatePage({redirect: !page.redirect, path: "/schedule"})
     }
 
     useEffect(() => {

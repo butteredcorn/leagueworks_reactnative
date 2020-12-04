@@ -301,6 +301,7 @@ const MyPill = ({
   players,
   userTeam,
   onPress,
+  matchResults,
 
   text,
   TeamName,
@@ -316,13 +317,6 @@ const MyPill = ({
   thumbnail_link
 }) => {
   const [selected, setSelected] = useState(0);
-
-  //example
-  if(players) {
-    for (let player of players) {
-      console.log(`${player.first_name} ${player.last_name}`)
-    }
-  }
 
   return (
     <View style={[selected === 1 ? styles.rostercont : styles.no]}>
@@ -543,7 +537,7 @@ const MyPill = ({
 
                     
                     {Array.isArray(players) && players.map(player => <View
-                      key={player._id}
+                      key={player.user_id}
                       style={[
                         selected === 6 ? styles.indivadmincont : styles.none
                       ]}
@@ -576,7 +570,7 @@ const MyPill = ({
                             : styles.none
                         ]}
                       >
-                        <Text style={styles.winnumber}>{Homewins}</Text>
+                        <Text style={styles.winnumber}>{matchResults.home_wins}</Text>
                         <Text style={styles.textbold}>Wins</Text>
                       </View>
                       <View
@@ -586,7 +580,7 @@ const MyPill = ({
                             : styles.none
                         ]}
                       >
-                        <Text style={styles.losenumber}>{Homelosses}</Text>
+                        <Text style={styles.losenumber}>{matchResults.home_losses}</Text>
                         <Text style={styles.text}>Losses</Text>
                       </View>
                     </View>
@@ -601,7 +595,7 @@ const MyPill = ({
                             : styles.none
                         ]}
                       >
-                        <Text style={styles.winnumber}>{Awaywins}</Text>
+                        <Text style={styles.winnumber}>{matchResults.away_wins}</Text>
                         <Text style={styles.textbold}>Wins</Text>
                       </View>
                       <View
@@ -611,7 +605,7 @@ const MyPill = ({
                             : styles.none
                         ]}
                       >
-                        <Text style={styles.losenumber}>{Awaylosses}</Text>
+                        <Text style={styles.losenumber}>{matchResults.away_losses}</Text>
                         <Text style={styles.text}>Losses</Text>
                       </View>
                     </View>
