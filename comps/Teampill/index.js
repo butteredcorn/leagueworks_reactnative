@@ -570,7 +570,7 @@ const MyPill = ({
                             : styles.none
                         ]}
                       >
-                        <Text style={styles.winnumber}>{matchResults.home_wins}</Text>
+                        <Text style={styles.winnumber}>{matchResults? matchResults.home_wins : 0}</Text>
                         <Text style={styles.textbold}>Wins</Text>
                       </View>
                       <View
@@ -580,7 +580,7 @@ const MyPill = ({
                             : styles.none
                         ]}
                       >
-                        <Text style={styles.losenumber}>{matchResults.home_losses}</Text>
+                        <Text style={styles.losenumber}>{matchResults ? matchResults.home_losses : 0}</Text>
                         <Text style={styles.text}>Losses</Text>
                       </View>
                     </View>
@@ -595,7 +595,7 @@ const MyPill = ({
                             : styles.none
                         ]}
                       >
-                        <Text style={styles.winnumber}>{matchResults.away_wins}</Text>
+                        <Text style={styles.winnumber}>{matchResults ? matchResults.away_wins : 0}</Text>
                         <Text style={styles.textbold}>Wins</Text>
                       </View>
                       <View
@@ -605,7 +605,7 @@ const MyPill = ({
                             : styles.none
                         ]}
                       >
-                        <Text style={styles.losenumber}>{matchResults.away_losses}</Text>
+                        <Text style={styles.losenumber}>{matchResults ? matchResults.away_losses : 0}</Text>
                         <Text style={styles.text}>Losses</Text>
                       </View>
                     </View>

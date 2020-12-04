@@ -119,7 +119,8 @@ export default function Teams(){
         })
         if(result.data.error) {
             console.log(result.data.error)
-            alert(result.data.error)
+            //alert(result.data.error)
+            return false
         } else {
             return result.data
         }
@@ -187,39 +188,42 @@ export default function Teams(){
         const user = await getUser()
         updateUser(user)
         const leagueSchedule = await getLatestLeagueSchedule(user, league_id)
-        updateSeason({loading: false, data: leagueSchedule})
+        if (leagueSchedule) updateSeason({loading: false, data: leagueSchedule})
         const leagueTeams = await getTeamsByLeague(user)
 
-        for (let team of leagueTeams) {
-            let teamTies = 0;
-            let teamHomeWins = 0;
-            let teamHomeLosses = 0;
-            let teamAwayWins = 0;
-            let teamAwayLosses = 0;
-            for (let match of leagueSchedule.events) {
-                if (team._id == match.home_team && match.match_tied || team._id == match.away_team && match.match_tied) {
-                    teamTies++;
-                } else if (team._id == match.home_team && team._id == match.winner_id) {
-                    teamHomeWins++;
-                } else if (team._id == match.away_team && team._id == match.winner_id) {
-                    teamAwayWins++;
-                } else if (team._id == match.home_team && team._id == match.loser_id) {
-                    teamHomeLosses++;
-                } else if (team._id == match.away_team && team._id == match.loser_id) {
-                    teamAwayLosses++;
+        if (leagueSchedule) {
+            for (let team of leagueTeams) {
+                let teamTies = 0;
+                let teamHomeWins = 0;
+                let teamHomeLosses = 0;
+                let teamAwayWins = 0;
+                let teamAwayLosses = 0;
+                for (let match of leagueSchedule.events) {
+                    if (team._id == match.home_team && match.match_tied || team._id == match.away_team && match.match_tied) {
+                        teamTies++;
+                    } else if (team._id == match.home_team && team._id == match.winner_id) {
+                        teamHomeWins++;
+                    } else if (team._id == match.away_team && team._id == match.winner_id) {
+                        teamAwayWins++;
+                    } else if (team._id == match.home_team && team._id == match.loser_id) {
+                        teamHomeLosses++;
+                    } else if (team._id == match.away_team && team._id == match.loser_id) {
+                        teamAwayLosses++;
+                    }
                 }
+                const teamSeasonResults = {
+                    home_wins: teamHomeWins,
+                    home_losses: teamHomeLosses,
+                    away_wins: teamAwayWins,
+                    away_losses: teamAwayLosses,
+                    ties: teamTies
+                }
+                team.match_results = teamSeasonResults
+                console.log(team)
             }
-            const teamSeasonResults = {
-                home_wins: teamHomeWins,
-                home_losses: teamHomeLosses,
-                away_wins: teamAwayWins,
-                away_losses: teamAwayLosses,
-                ties: teamTies
-            }
-            team.match_results = teamSeasonResults
-            console.log(team)
+    
         }
-
+        
         updateTeams({loading: false, data: leagueTeams})
 
         const fullUser = await getFullUser(user)
