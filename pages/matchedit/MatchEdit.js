@@ -1,7 +1,9 @@
 import React, {useState, useReducer, useEffect} from "react";
 
+
 import {View, StyleSheet, Image, TouchableOpacity, AsyncStorage, ScrollView} from "react-native";
-import {Redirect, useLocation, useHistory} from 'react-router-native'
+
+import {Redirect, useLocation, useHistory} from 'react-router-native';
 
 import MyProgressBar from "../../comps/progress_bar";
 import MyHeader from "../../comps/header";

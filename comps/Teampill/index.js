@@ -294,6 +294,7 @@ const styles = StyleSheet.create({
 });
 
 const MyPill = ({
+  user,
   teamID,
   email,
   phoneNumber,
@@ -341,7 +342,7 @@ const MyPill = ({
                       <View style={styles.namecont}>
                         <Text style={styles.title}>{TeamName}</Text>
 
-                        {!joined && <TouchableOpacity style={styles.joinbtn} onPress={() => onPress(teamID, players)}>
+                        {!joined && <TouchableOpacity style={styles.joinbtn} onPress={() => onPress({teamID, players, fullUser: user})}>
                           <Text style={styles.joinbtntext}>Join</Text>
                         </TouchableOpacity>}
                       </View>
