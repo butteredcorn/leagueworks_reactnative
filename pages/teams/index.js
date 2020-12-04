@@ -62,12 +62,10 @@ export default function Teams(){
 
     const data = useLocation()
     const league_id = data.state
-
     const [teams, updateTeams] = useState({loading: true, data: []})
-    const [teamsRosters, updateTeamsRoster] = useState({loading: true, teams: {}})
-    const [teamsWithRosters, updateTWR] = useState({loading: true, data: []})
     const [user, updateUser] = useState("")
     const [fullUser, updateFullUser] = useState({loading: true, data: {}})
+    const [season, updateSeason] = useState({loading: true, data: []})
     const [page, reload] = useState({redirect: false})
 
     const redirectTeamReg = () => {
@@ -80,7 +78,7 @@ export default function Teams(){
         try {
             //${globals.webserverURL}
             const updatedPlayers = [...players, {captain: false, jersey_number: null, user_id: user.user_id, first_name: fullUser.first_name, last_name: fullUser.last_name, thumbnail_link: fullUser.thumbnail_link}]
-            const result = await axios.post(`http://localhost:5000/database/update/team`, {
+            const result = await axios.post(`${globals.webserverURL}/database/update/team`, {
                 team: {
                     team_id: teamID,
                     updates: {
@@ -108,6 +106,23 @@ export default function Teams(){
         const rawToken = await AsyncStorage.getItem('access_token')  
         const rawID = await AsyncStorage.getItem('user_id')
         return {access_token: rawToken, user_id: rawID}
+    }
+
+    
+    //${globals.webserverURL}
+    const getLatestLeagueSchedule = async (user, league_id) => {
+        const result = await axios.post(`${globals.webserverURL}/database/read/latestLeagueSchedule`, {
+            league: {
+                league_id: league_id
+            },
+            access_token: user.access_token
+        })
+        if(result.data.error) {
+            console.log(result.data.error)
+            alert(result.data.error)
+        } else {
+            return result.data
+        }
     }
 
     const getFullUser = async (user) => {
@@ -147,20 +162,6 @@ export default function Teams(){
                 let userTeam = false
                 for(let player of team.players) {
 
-                    // const playerObj = await axios.post(`${globals.webserverURL}/database/read/user`, {
-                    //     user: {
-                    //         user_id: player.user_id
-                    //     },
-                    //     access_token: user.access_token
-                    // })
-            
-                    // if(result.data.error) {
-                    //     console.log(result.data.error)
-                    //     alert(result.data.error)
-                    // } else {
-                    //     player.thumbnail_link = playerObj.thumbnail_link
-                    // }
-
                     if(player.user_id == user.user_id) {
                         //signed in user's team
                         team.user_team = true
@@ -181,47 +182,51 @@ export default function Teams(){
         }
     }
 
-    async function getTeamsRosters(user, teams){
-        const result = await axios.post(`${globals.webserverURL}/database/read/teamsplayers`, {
-            teams: {
-                teams: teams
-            },
-            access_token: user.access_token
-        })
-        if(result.data.error) {
-            console.log(result.data.error)
-            alert(result.data.error)
-        } else {
-            console.log(result.data)
-            return result.data
-        }
-    }
-
     //one last thing, get roster for each team
     async function loadPage() {
         const user = await getUser()
         updateUser(user)
+        const leagueSchedule = await getLatestLeagueSchedule(user, league_id)
+        updateSeason({loading: false, data: leagueSchedule})
         const leagueTeams = await getTeamsByLeague(user)
+
+        for (let team of leagueTeams) {
+            let teamTies = 0;
+            let teamHomeWins = 0;
+            let teamHomeLosses = 0;
+            let teamAwayWins = 0;
+            let teamAwayLosses = 0;
+            for (let match of leagueSchedule.events) {
+                if (team._id == match.home_team && match.match_tied || team._id == match.away_team && match.match_tied) {
+                    teamTies++;
+                } else if (team._id == match.home_team && team._id == match.winner_id) {
+                    teamHomeWins++;
+                } else if (team._id == match.away_team && team._id == match.winner_id) {
+                    teamAwayWins++;
+                } else if (team._id == match.home_team && team._id == match.loser_id) {
+                    teamHomeLosses++;
+                } else if (team._id == match.away_team && team._id == match.loser_id) {
+                    teamAwayLosses++;
+                }
+            }
+            const teamSeasonResults = {
+                home_wins: teamHomeWins,
+                home_losses: teamHomeLosses,
+                away_wins: teamAwayWins,
+                away_losses: teamAwayLosses,
+                ties: teamTies
+            }
+            team.match_results = teamSeasonResults
+            console.log(team)
+        }
+
         updateTeams({loading: false, data: leagueTeams})
-
-        //example
-        // const rosterExample = leagueTeams[0].players
-        // console.log(rosterExample)
-
-        // const teamsRosters = await getTeamsRosters(user, leagueTeams)
-        // updateTeamsRoster({loading: false, teams: teamsRosters})
-        // //console.log(teamsRosters)
-
-        // for (let leagueTeam of leagueTeams) {
-        //     leagueTeam.players = teamsRosters[leagueTeam._id]
-        // }
-        // updateTWR({loading: false, data: leagueTeams})
 
         const fullUser = await getFullUser(user)
         updateFullUser(fullUser)
-        //example
-        // console.log(leagueTeams)
-        // console.log(leagueTeams[0].players)
+        
+        //console.log(leagueSchedule.events)
+
     }
 
     useEffect(()=> {
@@ -245,7 +250,7 @@ return page.redirect ? <Redirect to={{pathname: page.path, state: page.leagueID}
     {!teams.loading && Array.isArray(teams.data) ? 
         teams.data.map(team => 
             <View key={team._id} style={styles.pillMargin}>
-                <MyPill user={{first_name: fullUser.first_name, last_name: fullUser.last_name, thumbnail_link: fullUser.thumbnail_link}} thumbnail_link={team.thumbnail_link} onPress={joinTeam} joined={team.user_team} teamID={team._id} TeamName={team.team_name} email={team.email} phoneNumber={team.phone_number} team_captain={team.team_captain} players={team.players} userTeam={team.user_team} img={require("../../public/girl.jpg")}></MyPill>
+                <MyPill matchResults={team.match_results} user={{first_name: fullUser.first_name, last_name: fullUser.last_name, thumbnail_link: fullUser.thumbnail_link}} thumbnail_link={team.thumbnail_link} onPress={joinTeam} joined={team.user_team} teamID={team._id} TeamName={team.team_name} email={team.email} phoneNumber={team.phone_number} team_captain={team.team_captain} players={team.players} userTeam={team.user_team} img={require("../../public/girl.jpg")}></MyPill>
             </View>   
         ) 
         : <Text>Loading</Text>}

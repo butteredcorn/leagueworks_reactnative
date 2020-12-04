@@ -363,17 +363,14 @@ export default function LeagueSchedule(){
                 history.push("/leagues");
                 }}>
             <Image source={require("../../public/backarrow.png")} />
-        </TouchableOpacity>
-        
+            </TouchableOpacity>
                 <MyHeader  head="League Schedule"/>
-                
-                
             </View>
             <View style={styles.team_name}>
             {league_name && <MyHeader  head={league_name}/>}
+            <View style={styles.see_sched}><MyButton text={"See Schedule"} onPress={() => switchView()}></MyButton></View>
             </View>
         </View>
-        <View style={styles.see_sched}><MyButton text={"See Schedule"} onPress={() => switchView()}></MyButton></View>
 
             <View>
             <View style={styles.selectdate_cont}>
@@ -605,10 +602,12 @@ export default function LeagueSchedule(){
                 history.push("/leagues");
                 }}>
             <Image source={require("../../public/backarrow.png")} />
-        </TouchableOpacity>
+            </TouchableOpacity>
+                <View style={{left: 40}}>
                     <MyHeader  head="League Schedule"/>
                     {league_name && <MyHeader  head={league_name}/>}
                     <MyButton text={"change schedule"} onPress={() => switchView()}></MyButton>
+                </View>
             </View>
         </View>
         {seasonSchedule.data && <View style={{top: 50}}>
