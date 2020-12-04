@@ -146,8 +146,14 @@ export default function Schedule(){
                 for(let schedule of result.data) {
                     if(schedule.events && schedule.events.length > 0) {
                         if(unifiedEvents.length == 0) {
+                            for (let event of schedule.events) {
+                                event.season_id = schedule._id
+                            }
                             unifiedEvents = schedule.events
                         } else {
+                            for (let event of schedule.events) {
+                                event.season_id = schedule._id
+                            }
                             unifiedEvents.concat(schedule.events)
                         }
                     }
