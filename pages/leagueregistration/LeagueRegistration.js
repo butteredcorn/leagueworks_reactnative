@@ -1,6 +1,6 @@
 import React, { useState, useReducer, useEffect } from "react";
 import {View, StyleSheet, Image, AsyncStorage, ScrollView, TouchableOpacity} from "react-native";
-import { Redirect, useLocation } from 'react-router-native'
+import { Redirect, useLocation, history, useHistory } from 'react-router-native'
 import * as axios from 'react-native-axios'
 
 import { globals } from '../../globals'
@@ -15,24 +15,33 @@ import NavBar from "../../comps/navbar"
 
 
 const styles = StyleSheet.create({
+    container: {
+        height: "100%",
+        marginTop: 50
+
+    },
     topCont: {
         justifyContent: "center",
         alignItems: "center",
     },
     bottomCont: {
         alignItems: "center",
-        marginTop: 30
+        // marginTop: 30
     },
     inputMargin: {
-        marginBottom: 20
+        // marginBottom: 20
     },
     buttonMargin: {
-        marginTop: 20
+        // marginTop: 20
     },
     name: {
-        marginBottom: 20,
+        // marginBottom: 20,
         flexDirection: "row"
+    },
+    spacer: {
+        height: 30
     }
+    
 })
 
 export default function LeagueReg ({}) {
@@ -91,7 +100,9 @@ export default function LeagueReg ({}) {
         }
     }
 
-    const [league, dispatch] = useReducer(reducer, initialState)
+    const [league, dispatch] = useReducer(reducer, initialState);
+
+    const history = useHistory();
 
     async function createLeague() {
         try {
@@ -129,25 +140,19 @@ export default function LeagueReg ({}) {
     }
 
     return page.redirect ? <Redirect to={page.path}></Redirect> : <View>
-        <ScrollView>
+        <ScrollView style={styles.container}>
         <View style={styles.topCont}>
         {/* add a spacer here */}
-        
-            <MyHeader head={`League Registration`}>
-            <TouchableOpacity onPress={() => {
-                history.push("/leagues");
-                }}>
-        <Image style={{
-            height:22,
-            width:13,
-            position:"absolute",
-            top:45,
-            left:-25
-        }}
-        source={require ("../../public/backarrow.png")}/>
-        
-        </TouchableOpacity>
-            </MyHeader>
+            <View style={{flexDirection:"row", alignItems:"center",
+        width:"75%", justifyContent:"space-between", marginBottom:15}}>
+            <TouchableOpacity 
+                    onPress={() => {
+                    history.push("/leagues");
+                    }}>
+                    <Image source={require("../../public/backarrow.png")} />
+                </TouchableOpacity>
+                <MyHeader head={`League Registration`} />
+            </View>
             <Avatar img={require("../../public/girl2.png")}></Avatar>
         </View>
         <View style={styles.bottomCont}>
@@ -190,7 +195,10 @@ export default function LeagueReg ({}) {
             </View>
 
         </View>
+
+        <View style={styles.spacer} />
+
         </ScrollView>
-        <View style={styles.navigation}><NavBar /></View>
+        <View style={styles.navigation}><NavBar active={1} /></View>
     </View>
 }

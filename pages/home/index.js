@@ -55,6 +55,10 @@ const styles = StyleSheet.create({
         position:"relative",
         right: -13
     },
+    spacer: {
+        // Adds space to the bottom so you can see the content on the bottom of the scroll view without it being cutoff
+        height: 60
+    }
 });
 
 
@@ -170,6 +174,9 @@ return page.redirect ? <Redirect to={{pathname: page.path, state: {user: page.us
         img={{uri: post.thumbnail_link}} />
         </View>
     )}
+
+    <View style={styles.spacer} />
+
     </ScrollView>
     <View style={styles.navigation}>
         <NavBar active={0} />

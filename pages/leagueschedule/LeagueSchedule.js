@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
         // position:"relative",
         // top:50,
         // flexDirection:"row",
-        // alignItems:"center",
+        alignItems:"center",
         // justifyContent:"center"
         width: "100%",
         height: 120,
@@ -41,7 +41,9 @@ const styles = StyleSheet.create({
     pagetitle:{
         position:"relative",
         flexDirection:"row",
-        width:250
+        width:250,
+        alignItems: "center",
+        justifyContent: "space-between"
         // left:-85
     },
     date:{
@@ -141,7 +143,15 @@ const styles = StyleSheet.create({
     team_name:{
         textAlign:"center",
         justifyContent:"center",
+        alignItems: "center",
         marginTop:50
+    },
+    viewingcontainer:{
+        alignItems: "center"
+    },
+    season_text: {
+        alignItems: "center",
+        top: 15
     }
 })
 
@@ -593,38 +603,42 @@ export default function LeagueSchedule(){
     :
 
     //viewing template
-    <View style={styles.container}>
+    <View style={styles.viewingcontainer}>
         <ScrollView style={styles.bodycontainer}>
         <View style={styles.header}>
             <View style={styles.pagetitle}>
-            <TouchableOpacity 
-                onPress={() => {
-                history.push("/leagues");
-                }}>
-            <Image source={require("../../public/backarrow.png")} />
-            </TouchableOpacity>
-                <View style={{left: 40}}>
-                    <MyHeader  head="League Schedule"/>
-                    {league_name && <MyHeader  head={league_name}/>}
+                <TouchableOpacity 
+                    onPress={() => {
+                    history.push("/leagues");
+                    }}>
+                <Image source={require("../../public/backarrow.png")} />
+                </TouchableOpacity>
+                <MyHeader  head="League Schedule"/>
+            </View>
+            <View style={styles.team_name}>
+            {league_name && <MyHeader  head={league_name}/>}
                     <MyButton text={"change schedule"} onPress={() => switchView()}></MyButton>
-                </View>
             </View>
         </View>
-        {seasonSchedule.data && <View style={{top: 50}}>
-            <Text key={seasonSchedule.data._id}></Text>
-            <Text>Season Start: {getYYYYMMDD(seasonSchedule.data.start_date)}</Text>
-            <Text>Season End: {getYYYYMMDD(seasonSchedule.data.end_date)}</Text>
-            {/* seasonSchedule.data.game_dates
-            seasonSchedule.data.events
-            seasonSchedule.data.game_days
-            seasonSchedule.data.season_arenas */}
-            <Text>Next 10 Upcoming Games:</Text>
-            {Array.isArray( seasonSchedule.data.events) &&  seasonSchedule.data.events.slice(0, 10).map(event =>
-                <View key={event.match_id} style={styles.event}>
-                    <EventSection redirect={redirectArenas} key={`${event.home_team} ${event.away_team}`} eventName={event.summary} eventTime={event.start_date} eventLocation={event.arena}/>
-                </View>
-            )}
-        </View>}
+        <View>
+            {seasonSchedule.data && <View style={styles.season_text}>
+                <Text key={seasonSchedule.data._id}></Text>
+                <Text>Season Start: {getYYYYMMDD(seasonSchedule.data.start_date)}</Text>
+                <Text>Season End: {getYYYYMMDD(seasonSchedule.data.end_date)}</Text>
+                {/* seasonSchedule.data.game_dates
+                seasonSchedule.data.events
+                seasonSchedule.data.game_days
+                seasonSchedule.data.season_arenas */}
+                <Text>Next 10 Upcoming Games:</Text>
+                {Array.isArray( seasonSchedule.data.events) &&  seasonSchedule.data.events.slice(0, 10).map(event =>
+                    <View key={event.match_id} style={styles.event}>
+                        <EventSection redirect={redirectArenas} key={`${event.home_team} ${event.away_team}`} eventName={event.summary} eventTime={event.start_date} eventLocation={event.arena}/>
+                    </View>
+                )}
+            </View>}
+        </View>
+        <View style={styles.spacer} />
+        <View style={styles.spacer} />
         </ScrollView>
         <View style={styles.navbar}>
             <NavBar NavBar active={1} />
