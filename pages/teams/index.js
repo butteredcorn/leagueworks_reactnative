@@ -50,6 +50,10 @@ const styles = StyleSheet.create({
         position:"relative",
         right: 12
     },
+    spacer: {
+        // Adds space to the bottom so you can see the content on the bottom of the scroll view without it being cutoff
+        height: 120
+    },
 });
 
 
@@ -232,6 +236,9 @@ return page.redirect ? <Redirect to={{pathname: page.path, state: page.leagueID}
         : <Text>Loading</Text>}
 
     </View>
+
+    <View style={styles.spacer} />
+    
     </ScrollView>
     <View style={styles.navigation}><NavBar active={1}/></View>
 </View>
