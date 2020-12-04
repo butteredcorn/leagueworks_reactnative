@@ -23,6 +23,7 @@ export default function TeamReg(){
     const leagueID = data.state
     const [page, updatePage] = useState({redirect: false})
     const [user, update] = useState("")
+    const [fullUser, updateFullUser] = useState({loading: true, data: {}})
 
     const getUser = async () => {
         const rawToken = await AsyncStorage.getItem('access_token')  
@@ -30,13 +31,35 @@ export default function TeamReg(){
         return {access_token: rawToken, user_id: rawID}
     }
 
+    const getFullUser = async (user) => {
+        const result = await axios.post(`${globals.webserverURL}/database/read/user`, {
+            user: {
+                user_id: user.user_id
+            },
+            access_token: user.access_token
+        })
+        if(result.data.error) {
+            console.log(result.data.error)
+            alert(result.data.error)
+        } else {
+            return result.data
+        }
+    }
+
     const redirect = () => {
         updatePage({redirect: !page.redirect, path: "/teams", leagueID: leagueID})
     }
 
+    async function loadPage() {
+        const user = await getUser()
+        update(user)
+        const fullUser = await getFullUser(user)
+        updateFullUser(fullUser)
+    }
+
     useEffect(() => {
         try {
-            update(getUser)
+            loadPage()
         } catch (err) {
             console.log(err)
         }
@@ -51,7 +74,10 @@ export default function TeamReg(){
         players: [{
             user_id: "",
             jersey_number: "",
-            captain: true
+            captain: true,
+            first_name: "",
+            last_name: "",
+            thumbnail_link: ""
         }],
         thumbnail_link: ""
     }
@@ -74,6 +100,9 @@ export default function TeamReg(){
             case 'captain_id':
                 team.captain_id = action.value
                 team.players[0].user_id = action.value
+                team.players[0].first_name = action.thisUser.first_name
+                team.players[0].last_name = action.thisUser.last_name
+                team.players[0].thumbnail_link = action.thisUser.thumbnail_link
                 return team
             case 'thumbnail_link':
                 team.thumbnail_link = action.value
@@ -85,12 +114,12 @@ export default function TeamReg(){
 
     const [team, dispatch] = useReducer(reducer, initialState)
 
-    async function createTeam() {
+    async function createTeam(user, fullUser) {
         try {
-            const access_token = (user._W.access_token)
-            const user_id = user._W.user_id
+            const access_token = (user.access_token)
+            const user_id = user.user_id
 
-            dispatch({type: "captain_id", value: user_id})
+            dispatch({type: "captain_id", value: user_id, thisUser: fullUser})
 
             //console.log(team)
 
@@ -213,7 +242,7 @@ return page.redirect ? <Redirect to={{pathname: page.path, state: page.leagueID}
         <TouchableOpacity>
         <MyLargeButton 
         text="Create Team"
-        onPress={createTeam}
+        onPress={() => createTeam(user, fullUser)}
         />
         </TouchableOpacity>
     </View>    

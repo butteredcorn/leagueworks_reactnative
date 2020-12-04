@@ -63,6 +63,7 @@ export default function Teams(){
     const [teamsRosters, updateTeamsRoster] = useState({loading: true, teams: {}})
     const [teamsWithRosters, updateTWR] = useState({loading: true, data: []})
     const [user, updateUser] = useState("")
+    const [fullUser, updateFullUser] = useState({loading: true, data: {}})
     const [page, reload] = useState({redirect: false})
 
     const redirectTeamReg = () => {
@@ -71,10 +72,11 @@ export default function Teams(){
     }
 
     //need to add jerseyNumber functionality
-    async function joinTeam(teamID, players, jerseyNumber) {
+    async function joinTeam({teamID, players, fullUser, jerseyNumber}) {
         try {
-            const updatedPlayers = [...players, {captain: false, jersey_number: null, user_id: user.user_id}]
-            const result = await axios.post(`${globals.webserverURL}/database/update/team`, {
+            //${globals.webserverURL}
+            const updatedPlayers = [...players, {captain: false, jersey_number: null, user_id: user.user_id, first_name: fullUser.first_name, last_name: fullUser.last_name, thumbnail_link: fullUser.thumbnail_link}]
+            const result = await axios.post(`http://localhost:5000/database/update/team`, {
                 team: {
                     team_id: teamID,
                     updates: {
@@ -104,6 +106,21 @@ export default function Teams(){
         return {access_token: rawToken, user_id: rawID}
     }
 
+    const getFullUser = async (user) => {
+        const result = await axios.post(`${globals.webserverURL}/database/read/user`, {
+            user: {
+                user_id: user.user_id
+            },
+            access_token: user.access_token
+        })
+        if(result.data.error) {
+            console.log(result.data.error)
+            alert(result.data.error)
+        } else {
+            return result.data
+        }
+    }
+
     async function getTeamsByLeague(user) {
         const result = await axios.post(`${globals.webserverURL}/database/read/leagueteams`, {
             league: {
@@ -126,19 +143,19 @@ export default function Teams(){
                 let userTeam = false
                 for(let player of team.players) {
 
-                    const playerObj = await axios.post(`${globals.webserverURL}/database/read/user`, {
-                        user: {
-                            user_id: player.user_id
-                        },
-                        access_token: user.access_token
-                    })
+                    // const playerObj = await axios.post(`${globals.webserverURL}/database/read/user`, {
+                    //     user: {
+                    //         user_id: player.user_id
+                    //     },
+                    //     access_token: user.access_token
+                    // })
             
-                    if(result.data.error) {
-                        console.log(result.data.error)
-                        alert(result.data.error)
-                    } else {
-                        player.thumbnail_link = playerObj.thumbnail_link
-                    }
+                    // if(result.data.error) {
+                    //     console.log(result.data.error)
+                    //     alert(result.data.error)
+                    // } else {
+                    //     player.thumbnail_link = playerObj.thumbnail_link
+                    // }
 
                     if(player.user_id == user.user_id) {
                         //signed in user's team
@@ -153,12 +170,8 @@ export default function Teams(){
 
             }
 
-            // console.log(userTeams)
-            // console.log(otherTeams)
 
             const sortedTeams = userTeams.concat(otherTeams)
-
-            console.log(sortedTeams)
 
             return sortedTeams
         }
@@ -191,15 +204,17 @@ export default function Teams(){
         // const rosterExample = leagueTeams[0].players
         // console.log(rosterExample)
 
-        const teamsRosters = await getTeamsRosters(user, leagueTeams)
-        updateTeamsRoster({loading: false, teams: teamsRosters})
-        //console.log(teamsRosters)
+        // const teamsRosters = await getTeamsRosters(user, leagueTeams)
+        // updateTeamsRoster({loading: false, teams: teamsRosters})
+        // //console.log(teamsRosters)
 
-        for (let leagueTeam of leagueTeams) {
-            leagueTeam.players = teamsRosters[leagueTeam._id]
-        }
-        updateTWR({loading: false, data: leagueTeams})
+        // for (let leagueTeam of leagueTeams) {
+        //     leagueTeam.players = teamsRosters[leagueTeam._id]
+        // }
+        // updateTWR({loading: false, data: leagueTeams})
 
+        const fullUser = await getFullUser(user)
+        updateFullUser(fullUser)
         //example
         // console.log(leagueTeams)
         // console.log(leagueTeams[0].players)
@@ -223,10 +238,10 @@ return page.redirect ? <Redirect to={{pathname: page.path, state: page.leagueID}
     </View>
     <View style={styles.pillcont}>
 
-    {!teamsWithRosters.loading && Array.isArray(teamsWithRosters.data) ? 
-        teamsWithRosters.data.map(team => 
+    {!teams.loading && Array.isArray(teams.data) ? 
+        teams.data.map(team => 
             <View key={team._id} style={styles.pillMargin}>
-                <MyPill thumbnail_link={team.thumbnail_link} onPress={joinTeam} joined={team.user_team} teamID={team._id} TeamName={team.team_name} email={team.email} phoneNumber={team.phone_number} team_captain={team.team_captain} players={team.players} userTeam={team.user_team} img={require("../../public/girl.jpg")}></MyPill>
+                <MyPill user={{first_name: fullUser.first_name, last_name: fullUser.last_name, thumbnail_link: fullUser.thumbnail_link}} thumbnail_link={team.thumbnail_link} onPress={joinTeam} joined={team.user_team} teamID={team._id} TeamName={team.team_name} email={team.email} phoneNumber={team.phone_number} team_captain={team.team_captain} players={team.players} userTeam={team.user_team} img={require("../../public/girl.jpg")}></MyPill>
             </View>   
         ) 
         : <Text>Loading</Text>}
