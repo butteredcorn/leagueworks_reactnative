@@ -235,9 +235,9 @@ return <View style={styles.container}>
             {/* Profile Start */}
                 <View style={[selected === 1 ? styles.profiletabcont : styles.none]}>
                   <View style={[selected === 1 ? styles.postcont : styles.none]}>
-                    <Text style={{fontFamily:"Ubuntu-Light"}}>{`${fullUser.user.first_name} ${fullUser.user.last_name}`}</Text>
-                    <Text style={{fontFamily:"Ubuntu-Light"}}>{`${fullUser.user.email}`}</Text>
-                    <Text style={{fontFamily:"Ubuntu-Light"}}>{`${fullUser.user.phone_number}`}</Text>
+                    <Text style={{fontFamily:"Ubuntu-Light", margin:10, textAlign:"center"}}>{`${fullUser.user.first_name} ${fullUser.user.last_name}`}</Text>
+                    <Text style={{fontFamily:"Ubuntu-Light", margin:10, textAlign:"center"}}>{`${fullUser.user.email}`}</Text>
+                    <Text style={{fontFamily:"Ubuntu-Light", margin:10, textAlign:"center"}}>{`${fullUser.user.phone_number}`}</Text>
                   </View>
                   <View style={[selected === 1 ? styles.postcont : styles.none]}>
                     <Input text="Email" />

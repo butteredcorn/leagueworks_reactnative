@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     backgroundColor: "#FD8700",
     height: 50,
-    width: 286,
+    width: 250,
     padding: 10,
     borderRadius: 50
   },

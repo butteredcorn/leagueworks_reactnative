@@ -1,5 +1,5 @@
 import React, {useState, useReducer, useEffect} from "react";
-import {View, StyleSheet, Image, TouchableOpacity, AsyncStorage} from "react-native";
+import {View, StyleSheet, Image, TouchableOpacity, AsyncStorage, ScrollView} from "react-native";
 import {Redirect, useLocation, useHistory} from 'react-router-native'
 import MyProgressBar from "../../comps/progress_bar";
 import MyHeader from "../../comps/header";
@@ -14,6 +14,7 @@ import { globals } from '../../globals'
 const styles = StyleSheet.create({
     container:{
         alignItems:"center",
+        paddingTop: 15
     }
 })
 
@@ -142,10 +143,11 @@ export default function TeamReg(){
         }
     }
 
-return page.redirect ? <Redirect to={{pathname: page.path, state: page.leagueID}}></Redirect> : <View style={styles.container}>
+return page.redirect ? <Redirect to={{pathname: page.path, state: page.leagueID}}></Redirect> : <ScrollView><View style={styles.container}>
 
     <View style={{
         flexDirection:"row",
+        width: "80%",
     }}> 
         {/* Top */}
         <TouchableOpacity onPress={() => {
@@ -161,9 +163,9 @@ return page.redirect ? <Redirect to={{pathname: page.path, state: page.leagueID}
         source={require ("../../public/backarrow.png")}/>
         
         </TouchableOpacity>
-        <MyProgressBar/>
-    </View>
 
+    </View>
+    <MyProgressBar/>
     <View style={[{
         position:"absolute",
         top:78
@@ -237,7 +239,7 @@ return page.redirect ? <Redirect to={{pathname: page.path, state: page.leagueID}
 
     <View style={{
         position:"absolute",
-        bottom:-87
+        bottom:-80,
     }}>
         <TouchableOpacity>
         <MyLargeButton 
@@ -249,4 +251,5 @@ return page.redirect ? <Redirect to={{pathname: page.path, state: page.leagueID}
 
 
 </View>
+</ScrollView>
 }

@@ -23,20 +23,51 @@ import Text from '../../comps/Text';
 const styles = StyleSheet.create({
     container:{
         // position: "relative",
-        height: "100%",
+        // height: "100%",
         width:  380,
-        justifyContent:"center",
+        // justifyContent:"center",
         alignItems: "center"
         
     },
     edits:{
-        fontFamily:"Ubuntu-Light"
+        fontFamily:"Ubuntu-Light",
+        marginBottom:5,
+        textAlign:"center"
     },
     selectdate_cont:{
-        justifyContent: "center",
+        // justifyContent: "center",
         alignItems: "center",
         width: "100%"
     },
+    header:{
+        marginTop:50,
+        width:"80%",
+        height:50,
+        flexDirection:"row",
+        alignItems:"center",
+    },
+    headerspace:{
+        marginRight:"25%"
+    },
+    set_home:{
+        alignItems: "center",
+        margin: 10
+    },
+    spacer:{
+        height:120
+    },
+    picker:{
+        // position:"relative"
+        width:300,
+        backgroundColor:"#ececec",
+        borderTopLeftRadius: 10,
+        borderTopRightRadius: 10,
+        borderBottomLeftRadius: 25,
+        borderBottomRightRadius: 25,    },
+    navigation:{
+        position:"absolute",
+        bottom:0
+    }
 })
 
 export default function MatchEdit(){
@@ -172,53 +203,44 @@ export default function MatchEdit(){
 return page.redirect ? <Redirect to={{pathname: page.path, state: page}}></Redirect> : <View style={styles.container}>
 
     <ScrollView contentContainerStyle={styles.container}>
-    <View style={[{
-        position:"absolute",
-        top:-80
-    },styles.container]}>
-        {/* Header */}
-        <View>
 
-        
-        <TouchableOpacity onPress={() => {
-                history.push("/schedule");
-                }}>
-        <Image style={{
-            height:22,
-            width:13,
-            position:"absolute",
-            top:45,
-            left:-25
-        }}
-        source={require ("../../public/backarrow.png")}/>
-        
-        </TouchableOpacity>
-
-        <MyHeader 
-        head="Match Edit"
-        />
-        <MyHeader
-        head={thisEvent.summary}
-        />
+        <View style={styles.header}>
+            <TouchableOpacity onPress={() => {
+                    history.push("/schedule");
+                    }} style={styles.headerspace}>
+            <Image
+            source={require ("../../public/backarrow.png")} />  
+            </TouchableOpacity>
+            <MyHeader 
+            head="Match Edit"
+            />
         </View>
-        
-    </View>
+
+        <View style={{margin:25}}>
+            <MyHeader
+            head={thisEvent.summary}
+            />
+        </View>
 
     <View style={{ marginBottom:15}}>
         {/* need reference to winning team/losing team, home team/away team */}
-        <Text style={styles.edits}>Set Winner</Text>
-        <Text>Home Team: {(thisEvent.summary.split(" vs. "))[0]}</Text>
-        <CheckBox
-            disabled={false}
-            value={event.match_result.home_team_win}
-            onValueChange={() => dispatch({type: "home_team_win", value: thisEvent.home_team})}
-        />
-        <Text>Away Team: {(thisEvent.summary.split(" vs. "))[1]}</Text>
-        <CheckBox
-            disabled={false}
-            value={event.match_result.away_team_win}
-            onValueChange={() => dispatch({type: "away_team_win", value: thisEvent.away_team})}
-        />
+        <View style={styles.set_home}>
+            <Text style={styles.edits}>Set Winner</Text>
+            <Text style={styles.edits}> Home Team: {(thisEvent.summary.split(" vs. "))[0]}</Text>
+            <CheckBox
+                disabled={false}
+                value={event.match_result.home_team_win}
+                onValueChange={() => dispatch({type: "home_team_win", value: thisEvent.home_team})}
+            />
+        </View>
+        <View style={styles.set_home}>
+            <Text style={styles.edits}>Away Team: {(thisEvent.summary.split(" vs. "))[1]}</Text>
+            <CheckBox
+                disabled={false}
+                value={event.match_result.away_team_win}
+                onValueChange={() => dispatch({type: "away_team_win", value: thisEvent.away_team})}
+            />
+        </View>
     </View>
 
     <View style={{ marginBottom:15}}>
@@ -235,8 +257,7 @@ return page.redirect ? <Redirect to={{pathname: page.path, state: page}}></Redir
                         onValueChange={((arena, index) => {
                             updateMatchArena(arena)
                             dispatch({type: "match_day_arena", value: arena})
-                        })}
-                    >
+                        })}                    >
                 <Picker.Item label="Pick Arena" value={""}></Picker.Item>
                 {!arenas.loading && Array.isArray(arenas.data) && arenas.data.map(arena =>
                 <Picker.Item key={arena._id} label={arena.name} value={arena.name} />
@@ -253,8 +274,8 @@ return page.redirect ? <Redirect to={{pathname: page.path, state: page}}></Redir
     </View>
 
     <View style={{
-        position:"absolute",
-        bottom:20
+        // position:"absolute",
+        // top:"75%"
     }}>
         <TouchableOpacity>
         <MyLargeButton 
@@ -262,10 +283,16 @@ return page.redirect ? <Redirect to={{pathname: page.path, state: page}}></Redir
         onPress={() => updateMatch(user, thisEvent.match_id)}
         />
         </TouchableOpacity>
-    </View>    
+    </View>  
+
+  <View style={styles.spacer} />
+
     </ScrollView>
+
+
+
     <View style={styles.navigation}>
-        <NavBar active={0} />
+        <NavBar active={2} />
     </View>
 </View>
 }
