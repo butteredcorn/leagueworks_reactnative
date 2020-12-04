@@ -47,6 +47,21 @@ export default function MatchEdit(){
     const [matchArena, updateMatchArena] = useState("")
     const [user, update] = useState("")
 
+
+    const initialState = {
+        arena: thisEvent.arena,
+        start_date: thisEvent.start_date,
+        match_result: {
+            home_team: thisEvent.home_team,
+            away_team: thisEvent.away_team,
+            home_team_win: false,
+            away_team_win: false,
+        }
+        
+    }
+
+    const [event, dispatch] = useReducer(reducer, initialState)
+
     const getUser = async () => {
         const rawToken = await AsyncStorage.getItem('access_token')  
         const rawID = await AsyncStorage.getItem('user_id')
@@ -71,17 +86,6 @@ export default function MatchEdit(){
         }
     }
 
-    const initialState = {
-        arena: thisEvent.arena,
-        start_date: thisEvent.start_date,
-        match_result: {
-            home_team: thisEvent.home_team,
-            away_team: thisEvent.away_team,
-            home_team_win: false,
-            away_team_win: false,
-        }
-        
-    }
 
     function reducer(event, action) {
         switch(action.type) {
@@ -104,7 +108,6 @@ export default function MatchEdit(){
         }
     }
 
-    const [event, dispatch] = useReducer(reducer, initialState)
 
     async function updateMatch(user, match_id) {
         try {
@@ -130,6 +133,8 @@ export default function MatchEdit(){
     }
 
     async function loadPage() {
+
+        console.log(data.state)
         updateMatchArena(thisEvent.arena)
         const user = await getUser()
         for (let player in thisEvent.home_team_players) {

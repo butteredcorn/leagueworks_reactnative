@@ -2,7 +2,7 @@ import React from "react";
 
 import { View, StyleSheet, Image, TouchableOpacity } from "react-native";
 import Text from '../Text';
-const EventSection = ({ eventName, eventTime, eventEnd, eventDesc, eventLocation, redirect, editable, redirect2, match_id}) => {
+const EventSection = ({ eventName, eventTime, eventEnd, eventDesc, eventLocation, redirect, editable, redirect2, match_id, event}) => {
 
 
   return (
