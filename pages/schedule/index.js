@@ -132,7 +132,7 @@ export default function Schedule(){
         try {
             //${globals.webserverURL}
             const access_token = user.access_token
-            const result = await axios.post(`${globals.webserverURL}/database/read/userSchedules`, {
+            const result = await axios.post(`${"http://localhost:5000"}/database/read/userSchedules`, {
                 user: {
                     user_id: user.user_id
                 },
@@ -143,6 +143,7 @@ export default function Schedule(){
                 alert(result.data.error)
             } else {
                 let unifiedEvents = []
+                console.log(result.data)
                 for(let schedule of result.data) {
                     if(schedule.events && schedule.events.length > 0) {
                         if(unifiedEvents.length == 0) {
