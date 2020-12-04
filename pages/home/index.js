@@ -1,12 +1,13 @@
 import React,{ useState, useEffect } from "react";
 import {Redirect} from 'react-router-native'
-import {View, StyleSheet, TouchableOpacity, Image, Text, ScrollView, AsyncStorage} from "react-native";
+import {View, StyleSheet, TouchableOpacity, Image, ScrollView, AsyncStorage} from "react-native";
 import * as axios from 'react-native-axios';
 import { globalStyles } from "../../styles/global";
 
 import { globals } from '../../globals'
 import NavBar from "../../comps/navbar";
-import Post from "../../comps/post"
+import Post from "../../comps/post";
+import Text from '../../comps/Text';
 
 const styles = StyleSheet.create({
     container: {
@@ -42,7 +43,18 @@ const styles = StyleSheet.create({
         // Not sure why but the position made everything on the page off-center
         // position:"absolute",
         bottom:0
-      }
+      },
+      pageName:{
+        fontSize: 36,
+        fontWeight: "bold",
+        color: "#333333",
+        height: 45,
+        fontFamily:"Ubuntu-Bold",
+    },
+    edit:{
+        position:"relative",
+        right: -13
+    },
 });
 
 
@@ -139,8 +151,8 @@ return page.redirect ? <Redirect to={{pathname: page.path, state: {user: page.us
     <ScrollView contentContainerStyles={styles.container}>
     
     <View style={styles.header}>
-        <Text style={globalStyles.titleText}>Home</Text>
-            <TouchableOpacity onPress={() => redirectCreatePost(user)}>
+        <Text style={styles.pageName}>Home</Text>
+            <TouchableOpacity onPress={() => redirectCreatePost(user)} style={styles.edit}>
                 <Image  source={require("../../public/edit.png")} style={styles.editIcon}/>
             </TouchableOpacity>   
     </View>

@@ -1,12 +1,13 @@
 import React, {useEffect, useState} from "react";
-import {View, ScrollView, StyleSheet, Image, TouchableOpacity, Text, AsyncStorage} from "react-native";
+import {View, ScrollView, StyleSheet, Image, TouchableOpacity, AsyncStorage} from "react-native";
 import {Calendar} from 'react-native-calendars';
 import { Link, useHistory, Redirect } from "react-router-native";
 import EventSection from "../../comps/EventSection";
 import MyHeader from "../../comps/header";
 import NavBar from "../../comps/navbar";
 import * as axios from 'react-native-axios'
-import { globals } from '../../globals'
+import { globals } from '../../globals';
+import Text from '../../comps/Text';
 
 const styles = StyleSheet.create({
     container:{
@@ -166,8 +167,8 @@ export default function Schedule(){
         update({redirect: !page.redirect, path: "/arenas", arena: arena})
     }
 
-    const redirectMatchEdit = (match_id) => {
-        update({redirect: !page.redirect, path: "/match-edit", match_d: match_id})
+    const redirectMatchEdit = (event) => {
+        update({redirect: !page.redirect, path: "/match-edit", event: event})
     }
 
     const loadPage = async() => {
@@ -186,7 +187,7 @@ export default function Schedule(){
         }, 2500)
     }, [])
 
-    return page.redirect ? <Redirect to={{pathname: page.path, state: page}}></Redirect> : <View>
+    return page.redirect ? <Redirect to={{pathname: page.path, state: {event: page.event, arena: page.arena}}}></Redirect> : <View>
 
     <ScrollView contentContainerStyle={styles.container}>
         
@@ -229,11 +230,15 @@ export default function Schedule(){
             textDayHeaderFontFamily:"Ubuntu-Bold",
             selectedDayBackgroundColor:"#F35B04",
             arrowColor:"#F35B04",
+
+            fontWeight:"bold",
+
             'stylesheet.calendar.main':{
                 monthview:{
                     borderRadius:30
                 }
             }
+
         }}
         // Callback which gets executed when visible months change in scroll view. Default = undefined
         onVisibleMonthsChange={(months) => {console.log('now these months are visible', months);}}
@@ -251,7 +256,7 @@ export default function Schedule(){
 
         {!unifiedEvents.loading && Array.isArray(unifiedEvents.data) && unifiedEvents.data.slice(0, 10).map(event =>
         <View key={event.match_id} style={styles.event}>
-            <EventSection  match_id={event.match_id} redirect={redirectArenas} redirect2={redirectMatchEdit} key={`${event.home_team} ${event.away_team}`} eventName={event.summary} eventTime={event.start_date} eventLocation={event.arena} editable={true}/>
+            <EventSection event={event} match_id={event.match_id} redirect={redirectArenas} redirect2={redirectMatchEdit} key={`${event.home_team} ${event.away_team}`} eventName={event.summary} eventTime={event.start_date} eventLocation={event.arena} editable={true}/>
         </View>
         )}
 

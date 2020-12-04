@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import { Button, Image, StyleSheet, Text, View } from "react-native";
+import { Button, Image, StyleSheet, View } from "react-native";
 import { Link, useHistory } from "react-router-native";
+import Text from '../../comps/Text';
 
 
 import MyHeader from "../../comps/header";

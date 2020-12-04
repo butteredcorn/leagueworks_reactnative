@@ -1,5 +1,5 @@
 import React, { useState, useReducer, useEffect } from "react";
-import {View, StyleSheet, Image, AsyncStorage, ScrollView} from "react-native";
+import {View, StyleSheet, Image, AsyncStorage, ScrollView, TouchableOpacity} from "react-native";
 import { Redirect, useLocation } from 'react-router-native'
 import * as axios from 'react-native-axios'
 
@@ -132,8 +132,22 @@ export default function LeagueReg ({}) {
         <ScrollView>
         <View style={styles.topCont}>
         {/* add a spacer here */}
-            <MyProgressBar></MyProgressBar> 
-            <MyHeader head={`League Registration`}></MyHeader>
+        
+            <MyHeader head={`League Registration`}>
+            <TouchableOpacity onPress={() => {
+                history.push("/leagues");
+                }}>
+        <Image style={{
+            height:22,
+            width:13,
+            position:"absolute",
+            top:45,
+            left:-25
+        }}
+        source={require ("../../public/backarrow.png")}/>
+        
+        </TouchableOpacity>
+            </MyHeader>
             <Avatar img={require("../../public/girl2.png")}></Avatar>
         </View>
         <View style={styles.bottomCont}>

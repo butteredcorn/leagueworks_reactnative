@@ -1,9 +1,10 @@
 import React from "react";
-import {View, StyleSheet, TouchableOpacity, Image, Text} from "react-native";
+import {View, StyleSheet, TouchableOpacity, Image} from "react-native";
 import MyProgressBar from "../../comps/progress_bar";
 import MyHeader from "../../comps/header";
 import MyCheck from "../../comps/Check";
 import MyLargeButton from "../../comps/buttonlarge";
+import Text from '../../comps/Text';
 
 const styles = StyleSheet.create({
     container:{

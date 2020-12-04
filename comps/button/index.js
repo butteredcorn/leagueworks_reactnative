@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { View, StyleSheet, TouchableOpacity } from "react-native";
+import Text from '../Text';
 
 const styles = StyleSheet.create({
   container: {
@@ -13,7 +14,8 @@ const styles = StyleSheet.create({
   },
   firstText: {
     fontFamily:"Ubuntu-Bold",
-    color: "#FFF"
+    color: "#FFF",
+    fontWeight: "bold"
   }
 });
 

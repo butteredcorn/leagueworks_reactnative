@@ -1,5 +1,6 @@
 import React from "react";
-import { Text, View, StyleSheet, TextInput} from "react-native";
+import { View, StyleSheet, TextInput} from "react-native";
+import Text from '../Text';
 
 const styles = StyleSheet.create({
   container: {

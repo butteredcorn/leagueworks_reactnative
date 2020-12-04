@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {View, StyleSheet, Text, Image, TouchableOpacity, TextInput} from "react-native";
+import {View, StyleSheet, Image, TouchableOpacity, TextInput} from "react-native";
 import MyHeader from "../../comps/header";
 import Avatar from "../../comps/Avatar";
 import NavBar from "../../comps/navbar"
@@ -9,6 +9,7 @@ import MySwitch from "../../comps/MySwitch";
 import MyButton from "../../comps/button";
 import Input from "../../comps/input";
 import { useHistory } from "react-router-native";
+import Text from '../../comps/Text';
 
 
 const styles = StyleSheet.create({

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, StyleSheet, TouchableHighlight } from "react-native";
+import { View, StyleSheet, TouchableHighlight } from "react-native";
+import Text from '../Text';
 
 const styles = StyleSheet.create({
   container: {
@@ -23,7 +24,8 @@ const styles = StyleSheet.create({
   text: {
     fontFamily:"Ubuntu-Bold",
     fontSize: 16,
-    paddingBottom: 5
+    paddingBottom: 5,
+    fontWeight:"bold"
   },
   noborder: {
     width: 80,

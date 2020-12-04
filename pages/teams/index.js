@@ -1,12 +1,13 @@
 import React,{ useState, useEffect } from "react";
-import {View, StyleSheet, TouchableOpacity, Image, Text, ScrollView, AsyncStorage} from "react-native";
+import {View, StyleSheet, TouchableOpacity, Image, ScrollView, AsyncStorage} from "react-native";
 import {Redirect, useLocation} from 'react-router-native'
 import MyHeader from "../../comps/header";
 import NavBar from "../../comps/navbar";
 import MyPill from "../../comps/Teampill";
 import * as axios from 'react-native-axios'
 
-import { globals } from '../../globals'
+import { globals } from '../../globals';
+import Text from '../../comps/Text';
 
 const styles = StyleSheet.create({
     container: {
@@ -44,7 +45,11 @@ const styles = StyleSheet.create({
         zIndex:1,
         position:"absolute",
         bottom:0
-      }
+      },
+      edit:{
+        position:"relative",
+        right: 12
+    },
 });
 
 
@@ -212,7 +217,7 @@ return page.redirect ? <Redirect to={{pathname: page.path, state: page.leagueID}
     <ScrollView contentContainerStyles={styles.container}>
     <View style={styles.header}>
         <Text style={styles.pageName}>Teams</Text>
-        <TouchableOpacity onPress={redirectTeamReg} >
+        <TouchableOpacity onPress={redirectTeamReg} style={styles.edit}>
                 <Image  source={require("../../public/edit.png")} style={styles.editIcon}/>
         </TouchableOpacity>   
     </View>
