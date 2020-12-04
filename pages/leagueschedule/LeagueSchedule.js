@@ -221,7 +221,7 @@ export default function LeagueSchedule(){
             //console.log(user)
             //${globals.webserverURL}
             const access_token = user.access_token
-            const result = await axios.post(`${"http://localhost:5000"}/database/create/schedule`, {
+            const result = await axios.post(`${globals.webserverURL}/database/create/schedule`, {
                 season: season,
                 access_token: access_token
             })
@@ -230,7 +230,7 @@ export default function LeagueSchedule(){
                 alert(result.data.error)
             } else {
                 console.log(result.data)
-                updateView(!viewTemplate)
+                updatePage({redirect: !page.redirect, path: "/leagues"})
             }
         } catch (err) {
             console.log(err)
@@ -351,9 +351,9 @@ export default function LeagueSchedule(){
                 }}>
             <Image source={require("../../public/backarrow.png")} />
         </TouchableOpacity>
+        <MyButton text={"view schedule"} onPress={() => switchView()}></MyButton>
                 <MyHeader  head="League Schedule"/>
                 {league_name && <MyHeader  head={league_name}/>}
-                <MyButton text={"view schedule"} onPress={() => switchView()}></MyButton>
             </View>
         </View>
 

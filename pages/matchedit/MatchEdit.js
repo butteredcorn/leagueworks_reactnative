@@ -49,6 +49,7 @@ export default function MatchEdit(){
 
 
     const initialState = {
+        season_id: thisEvent.season_id,
         arena: thisEvent.arena,
         start_date: thisEvent.start_date,
         match_result: {
@@ -112,7 +113,7 @@ export default function MatchEdit(){
     async function updateMatch(user, match_id) {
         try {
 
-            const result = await axios.post(`http://localhost:5000/database/update/match`, {
+            const result = await axios.post(`${globals.webserverURL}/database/update/match`, {
                 match: {
                     match_id: match_id,
                     update: event
